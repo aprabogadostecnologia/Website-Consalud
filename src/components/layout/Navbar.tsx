@@ -1,13 +1,12 @@
 "use client";
-
 import { useState, useEffect } from "react";
 
-// scrollFraction: 0–1 of total page scroll distance
 const NAV_ITEMS = [
-  { label: "Inicio",    scrollFraction: 0 },
-  { label: "Nosotros",  scrollFraction: 0.30 },
-  { label: "Servicios", scrollFraction: 0.58 },
-  { label: "Contacto",  scrollFraction: 0.85 },
+  { label: "Inicio",    fraction: 0.00 },
+  { label: "Nosotros",  fraction: 0.22 },
+  { label: "Servicios", fraction: 0.48 },
+  { label: "Marcas",    fraction: 0.73 },
+  { label: "Contacto",  fraction: 0.95 },
 ];
 
 function scrollTo(fraction: number) {
@@ -32,33 +31,29 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <button
           onClick={() => scrollTo(0)}
-          className="text-xl font-bold tracking-tight text-[#ff8d2b] bg-transparent border-none cursor-pointer"
+          className="bg-transparent border-none cursor-pointer flex items-center"
         >
-          Consalud
+          <img src="/Consalud.png" alt="Consalud" className="h-9 w-auto"
+            width={40}
+            height={40}
+          />
         </button>
 
         <ul className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <li key={item.label}>
               <button
-                onClick={() => scrollTo(item.scrollFraction)}
-                className="text-sm text-white/70 hover:text-[#ff8d2b] transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                onClick={() => scrollTo(item.fraction)}
+                className="text-sm text-white/60 hover:text-[#ff8d2b] transition-colors duration-200 bg-transparent border-none cursor-pointer"
               >
                 {item.label}
               </button>
             </li>
           ))}
         </ul>
-
-        <button
-          onClick={() => scrollTo(0.85)}
-          className="px-4 py-2 rounded-full text-sm font-semibold bg-[#ff8d2b] hover:bg-[#e87a20] text-[#05123e] transition-colors duration-200 cursor-pointer border-none"
-        >
-          Comenzar
-        </button>
       </nav>
     </header>
   );
