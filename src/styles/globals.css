@@ -50,3 +50,20 @@
   animation: flagWave 3s ease-in-out infinite;
   transform-origin: left center;
 }
+
+.glass-effect {
+  background: rgba(5, 18, 62, 0.39);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 0 30px -6px rgba(0, 0, 0, 0.26);
+}
+
+.navbar-glass {
+  background: linear-gradient(90deg, rgba(5, 18, 62, 0.70) 0%, rgba(255, 141, 43, 0.45) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 141, 43, 0.15);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.40);
+}
