@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Shield, Users, AlertTriangle, Leaf, BookOpen, Scale, CheckSquare, Heart, Eye, Award, Zap, ChevronDown } from "lucide-react";
@@ -114,7 +114,7 @@ const SERVICIOS = [
 
 const MARCAS = [
   { name: "Submarca 1", desc: "Descripción de la primera submarca",  accent: "#ff8d2b" },
-  { name: "Submarca 2", desc: "Descripción de la segunda submarca",  accent: "#0546f2" },
+  //{ name: "Submarca 2", desc: "Descripción de la segunda submarca", accent: "#4d7fff" },//
 ];
 const CONTACTO_INFO = [
   { label: "Email",     value: "direccion@consalud.com.co" },
@@ -137,10 +137,11 @@ const SECTIONS = [
 
 export default function HeroPage() {
   const p = useScrollProgress();
+  const [sceneReady, setSceneReady] = useState(false);
 
   // ── Section opacities (asymmetric bands) ─────────────────────────────────
   const heroO = p < 0.10 ? 1 : p < 0.15 ? 1 - (p - 0.10) / 0.05 : 0;
-  const nosO  = fade(p, 0.10, 0.12, 0.19, 0.22);
+  const nosO  = fade(p, 0.10, 0.12, 0.205, 0.22);
   const servO = fade(p, 0.22, 0.25, 0.75, 0.78);
   const marcO = fade(p, 0.78, 0.80, 0.85, 0.88);
   const contO = fade(p, 0.88, 0.90, 0.98, 1.01);
@@ -198,6 +199,54 @@ export default function HeroPage() {
   const cForm  = e(cL, 0.22, 0.50);
   const cInfo  = e(cL, 0.46, 0.68);
 
+  // Scroll snap: pulls into nearest section only from travel zones
+  useEffect(() => {
+    // Safe zones = full content band per section — no snap while user is reading
+    const SAFE_ZONES: [number, number][] = [
+      [0.00, 0.10],  // Inicio
+      [0.10, 0.22],  // Nosotros
+      [0.22, 0.78],  // Servicios
+      [0.78, 0.88],  // Marcas
+      [0.88, 1.01],  // Contacto
+    ];
+    // Travel zones (camera moving, no readable content) + where to snap
+    const TRAVEL_ZONES: [number, number, number][] = [
+      [0.072, 0.10,  0.13], // Inicio→Nosotros
+      [0.187, 0.22,  0.25], // Nosotros→Servicios
+      [0.852, 0.88,  0.91], // Marcas→Contacto
+    ];
+
+    let snapping = false;
+    let snapTimeout: ReturnType<typeof setTimeout>;
+
+    function doSnap() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total <= 0) return;
+      const p = window.scrollY / total;
+      // Don't snap if user is inside any content zone
+      if (SAFE_ZONES.some(([a, b]) => p >= a && p < b)) return;
+      // Find matching travel zone
+      const zone = TRAVEL_ZONES.find(([a, b]) => p >= a && p < b);
+      if (!zone) return;
+      snapping = true;
+      window.scrollTo({ top: zone[2] * total, behavior: "smooth" });
+      // Lock long enough for smooth scroll to finish before accepting new events
+      setTimeout(() => { snapping = false; }, 900);
+    }
+
+    const onScroll = () => {
+      if (snapping) return;
+      clearTimeout(snapTimeout);
+      snapTimeout = setTimeout(doSnap, 300);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      clearTimeout(snapTimeout);
+    };
+  }, []);
+
   // Form state
   const [empRange, setEmpRange] = useState("");
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
@@ -211,7 +260,7 @@ export default function HeroPage() {
       <div className="sticky top-0 h-screen overflow-hidden">
 
         {/* ── WebGL Road background ─────────────────────────────────────────── */}
-        <RoadScene progress={p} className="absolute inset-0 w-full h-full" />
+        <RoadScene progress={p} className="absolute inset-0 w-full h-full" onReady={() => setSceneReady(true)} />
 
         {/* ── Section watermark ─────────────────────────────────────────────── */}
         {SECTIONS.map(({ num }, i) => (
@@ -258,7 +307,7 @@ export default function HeroPage() {
         </div>
 
         {/* ── SCENE 1: HERO ─────────────────────────────────────────────────── */}
-        <div className="absolute inset-0 flex items-center z-10 pointer-events-none" style={{ opacity: heroO }}>
+        {sceneReady && <div className="absolute inset-0 flex items-center z-10 pointer-events-none" style={{ opacity: heroO }}>
           <div className="max-w-6xl mx-auto px-8 w-full">
 
             <div style={ha(0.1)}>
@@ -271,7 +320,7 @@ export default function HeroPage() {
               <span className="block overflow-hidden">
                 <span className="block" style={ha(0.2)}>Tu socio</span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="block">
                 <span
                   className="block text-transparent bg-clip-text"
                   style={{ ...ha(0.3), backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)" }}
@@ -285,7 +334,7 @@ export default function HeroPage() {
             </h1>
 
             <p className="text-xl text-white/45 max-w-lg leading-relaxed mb-12" style={ha(0.5)}>
-              Protegemos a tu equipo con soluciones a la medida —&nbsp;sin
+              Protegemos a tu equipo con soluciones a la medida &nbsp;sin
               improvisaciones, con respaldo académico y experiencia real.
             </p>
 
@@ -293,11 +342,11 @@ export default function HeroPage() {
               className="flex flex-col sm:flex-row gap-4"
               style={{ ...ha(0.6), pointerEvents: "auto" }}
             >
-              <button
+              <button 
                 className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
                 style={{ background: "#ff8d2b" }}
               >
-                Ver servicios
+                Diagnostico Gratuito ➤               
               </button>
               <button className="px-8 py-3.5 rounded-full border border-white/20 hover:border-[#ff8d2b]/50 text-white/60 hover:text-white font-semibold transition-all cursor-pointer bg-transparent">
                 Conocer Consalud
@@ -306,14 +355,23 @@ export default function HeroPage() {
           </div>
 
           <div
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
             style={{ opacity: hCue }}
           >
-            <span className="tracking-[0.3em] uppercase text-[10px] text-white/30 mb-1">Scroll</span>
-            <ChevronDown size={22} strokeWidth={1.5} style={{ color: "#ff8d2b", opacity: 0.5, animation: "scrollArrow 1.6s ease-in-out infinite" }} />
-            <ChevronDown size={22} strokeWidth={1.5} style={{ color: "#ff8d2b", animation: "scrollArrow 1.6s ease-in-out infinite 0.25s" }} />
+            <span className="tracking-[0.3em] uppercase text-[11px] font-semibold text-white/40">Scroll</span>
+            {/* Mouse outline */}
+            <div
+              className="relative flex justify-center pt-2.5 rounded-full border-2"
+              style={{ width: 30, height: 48, borderColor: "rgba(255,141,43,0.55)" }}
+            >
+              <div
+                className="rounded-full"
+                style={{ width: 5, height: 8, background: "#ff8d2b", animation: "scrollArrow 1.6s ease-in-out infinite" }}
+              />
+            </div>
+            <ChevronDown size={20} strokeWidth={2.5} style={{ color: "#ff8d2b", opacity: 0.7, animation: "scrollArrow 1.6s ease-in-out infinite 0.35s" }} />
           </div>
-        </div>
+        </div>}
 
         {/* ── SCENE 2: NOSOTROS ─────────────────────────────────────────────── */}
         <div className="absolute inset-0 flex items-center z-10 pointer-events-none" style={{ opacity: nosO }}>
@@ -331,7 +389,7 @@ export default function HeroPage() {
               <div style={lft(nText, 30)}>
                 <p className="text-white/45 text-lg leading-relaxed mb-10">
                   Desde 1998 en Bogotá, acompañamos a empresas colombianas
-                  con un modelo a la medida — equipo interdisciplinar,
+                  con un modelo a la medida equipo interdisciplinar,
                   respaldo académico y cero improvisaciones.
                 </p>
               </div>
