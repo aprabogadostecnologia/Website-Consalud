@@ -34,6 +34,21 @@ const NAV_ITEMS = [
         fraction: 0.95
     }
 ];
+// Band boundaries matching PAGE_BANDS in HeroPage
+const BANDS = [
+    0,
+    0.10,
+    0.22,
+    0.78,
+    0.88,
+    1.00
+];
+function getActiveIndex(p) {
+    for(let i = BANDS.length - 2; i >= 0; i--){
+        if (p >= BANDS[i]) return i;
+    }
+    return 0;
+}
 function scrollTo(fraction) {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     window.scrollTo({
@@ -66,19 +81,19 @@ function Navbar() {
                     onClick: ()=>scrollTo(0),
                     className: "bg-transparent border-none cursor-pointer flex items-center",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                        src: "/Consalud.png",
+                        src: "/conSaludWhite.png",
                         alt: "Consalud",
                         className: "h-9 w-auto",
                         width: 40,
                         height: 40
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Navbar.tsx",
-                        lineNumber: 39,
-                        columnNumber: 11
+                        lineNumber: 50,
+                        columnNumber: 9
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Navbar.tsx",
-                    lineNumber: 35,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -90,28 +105,28 @@ function Navbar() {
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/src/components/layout/Navbar.tsx",
-                                lineNumber: 48,
+                                lineNumber: 59,
                                 columnNumber: 15
                             }, this)
                         }, item.label, false, {
                             fileName: "[project]/src/components/layout/Navbar.tsx",
-                            lineNumber: 47,
+                            lineNumber: 58,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Navbar.tsx",
-                    lineNumber: 45,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/layout/Navbar.tsx",
-            lineNumber: 34,
+            lineNumber: 45,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/layout/Navbar.tsx",
-        lineNumber: 27,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }
