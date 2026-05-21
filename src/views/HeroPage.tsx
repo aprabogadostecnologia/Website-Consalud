@@ -113,9 +113,28 @@ const SERVICIOS = [
 ];
 
 const MARCAS = [
-  { name: "Submarca 1", desc: "Descripción de la primera submarca",  accent: "#ff8d2b" },
-  //{ name: "Submarca 2", desc: "Descripción de la segunda submarca", accent: "#4d7fff" },//
+  { name: "VIGIA", logo: "/vigia.png", accent: "#ff8d2b" },
 ];
+
+function BrandCard({ name, logo, accent, style }: { name: string; logo: string; accent: string; style?: React.CSSProperties }) {
+  return (
+    <div
+      className="p-10 rounded-3xl border pointer-events-auto cursor-pointer select-none"
+      style={{ borderColor: `${accent}33`, background: "rgba(5,18,62,0.92)", ...style }}
+    >
+      <div className="flex flex-col items-center gap-6">
+        <div className="brand-logo-wrap">
+          <div className="brand-logo-spin">
+            <img src={logo} alt={name} className="h-20 object-contain" draggable={false} />
+          </div>
+        </div>
+        <h3 className="text-2xl font-bold text-white tracking-wide">{name}</h3>
+        <div className="h-0.5" style={{ width: 36, background: accent }} />
+        <span className="text-sm font-semibold" style={{ color: accent }}>Explorar →</span>
+      </div>
+    </div>
+  );
+}
 const CONTACTO_INFO = [
   { label: "Email",     value: "direccion@consalud.com.co" },
   { label: "Numero",       value: "311 265 2715 · 324 209 7512" },
@@ -571,22 +590,15 @@ export default function HeroPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {MARCAS.map(({ name, desc, accent }, i) => (
-                <div
+            <div className="flex justify-center">
+              {MARCAS.map(({ name, logo, accent }, i) => (
+                <BrandCard
                   key={name}
-                  className="p-10 rounded-3xl border"
-                  style={{
-                    ...(i === 0 ? lft(mC[0]) : rgt(mC[1])),
-                    borderColor: `${accent}33`,
-                    background: "rgba(5,18,62,0.92)",
-                  }}
-                >
-                  <div className="h-0.5 mb-6" style={{ width: 36, background: accent }} />
-                  <h3 className="text-2xl font-bold text-white mb-3">{name}</h3>
-                  <p className="text-white/35 text-sm mb-8 leading-relaxed">{desc}</p>
-                  <span className="text-sm font-semibold" style={{ color: accent }}>Explorar →</span>
-                </div>
+                  name={name}
+                  logo={logo}
+                  accent={accent}
+                  style={i === 0 ? lft(mC[0]) : rgt(mC[1])}
+                />
               ))}
             </div>
           </div>

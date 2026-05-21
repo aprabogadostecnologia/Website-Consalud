@@ -62,7 +62,6 @@
     --color-white: #fff;
     --spacing: .25rem;
     --container-lg: 32rem;
-    --container-3xl: 48rem;
     --container-5xl: 64rem;
     --container-6xl: 72rem;
     --text-xs: .75rem;
@@ -604,6 +603,10 @@
     height: calc(var(--spacing) * 16);
   }
 
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+
   .h-\[2px\] {
     height: 2px;
   }
@@ -630,10 +633,6 @@
 
   .w-full {
     width: 100%;
-  }
-
-  .max-w-3xl {
-    max-width: var(--container-3xl);
   }
 
   .max-w-5xl {
@@ -819,6 +818,10 @@
   .bg-clip-text {
     -webkit-background-clip: text;
     background-clip: text;
+  }
+
+  .object-contain {
+    object-fit: contain;
   }
 
   .p-5 {
@@ -1364,6 +1367,31 @@
     opacity: 1;
     transform: translateY(6px);
   }
+}
+
+@keyframes spinY {
+  from {
+    transform: rotateY(0);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.brand-logo-wrap {
+  perspective: 380px;
+  justify-content: center;
+  display: flex;
+}
+
+.brand-logo-spin {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.brand-logo-wrap:hover .brand-logo-spin {
+  animation: 2.2s linear infinite spinY;
 }
 
 @keyframes flagWave {

@@ -13,7 +13,7 @@ const C = {
   neonA:    0x2563eb, // trustful royal blue of healthcare security
   neonB:    0xe2b13c, // warm amber-gold of protection and justice
   neonC:    0x00d8f6, // bright digital cyan-blue accent for lanes
-  road:     0x05070a, // elegant near-black slate/carbon roadbed
+  road:       0x05123e, // Consalud navy brand color
   roadEmit: 0x000000, // no emissive glow on the road surface to keep it dark and neutral
   wire:     0x0e1c3a, // subtle protective blue structural wireframe
   mtnSolid: 0x01081f, // deep space-navy mountain bases
@@ -307,8 +307,8 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     shape.moveTo(-5, 0); shape.lineTo(5, 0); shape.lineTo(5, -.4); shape.lineTo(-5, -.4); shape.closePath();
     roadGroup.add(new THREE.Mesh(
       new THREE.ExtrudeGeometry(shape, { steps: N, bevelEnabled: false, extrudePath: PATH }),
-      new THREE.MeshStandardMaterial({
-        color: C.road, roughness: .85, emissive: C.roadEmit, emissiveIntensity: .5,
+      new THREE.MeshBasicMaterial({
+        color: C.road,
         polygonOffset: true, polygonOffsetFactor: -6, polygonOffsetUnits: -6,
       })
     ));
@@ -365,8 +365,30 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     addGradientTube(-5.1,  '#05123e', '#ff8d2b', .16, 75);
     addGradientTube( 5.1,  '#05123e', '#ff8d2b', .16, 75);
 
-    // Central line (plain, thin dashed yellow)
-    addTube(   0, C.neonB, .09);
+    // Central line — neon orange Consalud
+    {
+      const ep = pathPts.map((p, i) => {
+        const right = new THREE.Vector3().crossVectors(PATH.getTangentAt(i / N), UP_V).normalize();
+        return p.clone().addScaledVector(right, 0).add(new THREE.Vector3(0, 0.18, 0));
+      });
+      const curve = new THREE.CatmullRomCurve3(ep);
+      const pOff = { polygonOffset: true, polygonOffsetFactor: -16, polygonOffsetUnits: -16 };
+      // Core — bright white-orange solid
+      roadGroup.add(new THREE.Mesh(
+        new THREE.TubeGeometry(curve, N, 0.06, 8, false),
+        new THREE.MeshBasicMaterial({ color: 0xfff0e0, ...pOff })
+      ));
+      // Glow layer 1 — orange halo
+      roadGroup.add(new THREE.Mesh(
+        new THREE.TubeGeometry(curve, N, 0.22, 8, false),
+        new THREE.MeshBasicMaterial({ color: 0xff8d2b, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false, ...pOff })
+      ));
+      // Glow layer 2 — wide soft corona
+      roadGroup.add(new THREE.Mesh(
+        new THREE.TubeGeometry(curve, N, 0.55, 8, false),
+        new THREE.MeshBasicMaterial({ color: 0xff6a00, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending, depthWrite: false, ...pOff })
+      ));
+    }
 
     // Inner lane lines: gorgeous scrolling gradient between #0b125e and #00d8f6 (brand cyan)
     addGradientTube(-4.2, '#05123e', '#ff8d2b', .055, 110);

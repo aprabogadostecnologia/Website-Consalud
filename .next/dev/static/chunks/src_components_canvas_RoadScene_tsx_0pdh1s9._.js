@@ -20,7 +20,7 @@ const C = {
     neonA: 0x2563eb,
     neonB: 0xe2b13c,
     neonC: 0x00d8f6,
-    road: 0x05070a,
+    road: 0x05123e,
     roadEmit: 0x000000,
     wire: 0x0e1c3a,
     mtnSolid: 0x01081f
@@ -324,11 +324,8 @@ function RoadScene({ progress, className, onReady }) {
                 steps: N,
                 bevelEnabled: false,
                 extrudePath: PATH
-            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
+            }), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
                 color: C.road,
-                roughness: .85,
-                emissive: C.roadEmit,
-                emissiveIntensity: .5,
                 polygonOffset: true,
                 polygonOffsetFactor: -6,
                 polygonOffsetUnits: -6
@@ -381,8 +378,44 @@ function RoadScene({ progress, className, onReady }) {
             // Outer boundary edge lines: gorgeous scrolling gradient between #0b125e and #2563eb
             addGradientTube(-5.1, '#05123e', '#ff8d2b', .16, 75);
             addGradientTube(5.1, '#05123e', '#ff8d2b', .16, 75);
-            // Central line (plain, thin dashed yellow)
-            addTube(0, C.neonB, .09);
+            // Central line — neon orange Consalud
+            {
+                const ep = pathPts.map({
+                    "RoadScene.useEffect.ep": (p, i)=>{
+                        const right = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"]().crossVectors(PATH.getTangentAt(i / N), UP_V).normalize();
+                        return p.clone().addScaledVector(right, 0).add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"](0, 0.18, 0));
+                    }
+                }["RoadScene.useEffect.ep"]);
+                const curve = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CatmullRomCurve3"](ep);
+                const pOff = {
+                    polygonOffset: true,
+                    polygonOffsetFactor: -16,
+                    polygonOffsetUnits: -16
+                };
+                // Core — bright white-orange solid
+                roadGroup.add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TubeGeometry"](curve, N, 0.06, 8, false), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
+                    color: 0xfff0e0,
+                    ...pOff
+                })));
+                // Glow layer 1 — orange halo
+                roadGroup.add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TubeGeometry"](curve, N, 0.22, 8, false), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
+                    color: 0xff8d2b,
+                    transparent: true,
+                    opacity: 0.45,
+                    blending: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdditiveBlending"],
+                    depthWrite: false,
+                    ...pOff
+                })));
+                // Glow layer 2 — wide soft corona
+                roadGroup.add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TubeGeometry"](curve, N, 0.55, 8, false), new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
+                    color: 0xff6a00,
+                    transparent: true,
+                    opacity: 0.15,
+                    blending: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AdditiveBlending"],
+                    depthWrite: false,
+                    ...pOff
+                })));
+            }
             // Inner lane lines: gorgeous scrolling gradient between #0b125e and #00d8f6 (brand cyan)
             addGradientTube(-4.2, '#05123e', '#ff8d2b', .055, 110);
             addGradientTube(4.2, '#05123e', '#ff8d2b', .055, 110);
@@ -1184,7 +1217,7 @@ function RoadScene({ progress, className, onReady }) {
         }
     }, void 0, false, {
         fileName: "[project]/src/components/canvas/RoadScene.tsx",
-        lineNumber: 1129,
+        lineNumber: 1151,
         columnNumber: 10
     }, this);
 }
