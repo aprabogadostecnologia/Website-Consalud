@@ -39,6 +39,26 @@
   50%       { transform: translateY(6px); opacity: 1;    }
 }
 
+@keyframes spinY {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+.brand-logo-wrap {
+  perspective: 380px;
+  display: flex;
+  justify-content: center;
+}
+
+.brand-logo-spin {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.brand-logo-wrap:hover .brand-logo-spin {
+  animation: spinY 2.2s linear infinite;
+}
+
 @keyframes flagWave {
   0%, 100% { transform: skewY(0deg)    scaleY(1.000); }
   20%      { transform: skewY(2.5deg)  scaleY(0.975); }
