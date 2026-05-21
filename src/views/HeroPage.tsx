@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { Shield, Users, AlertTriangle, Leaf, BookOpen, Scale, CheckSquare, Heart, Eye, Award, Zap, ChevronDown } from "lucide-react";
+import { Shield, Users, AlertTriangle, Leaf, BookOpen, Scale, CheckSquare, Heart, Eye, Award, Zap, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const RoadScene = dynamic(() => import("@/components/canvas/RoadScene"), { ssr: false });
 
@@ -37,19 +39,19 @@ const VALORES = [
     name:   "Integridad",
     icon:   Eye,
     desc:   "Transparencia y confiabilidad frente a todos los procesos, guardando siempre confidencialidad y lealtad con nuestros clientes.",
-    accent: "#4d7fff",
+    accent: " #05123e ",
   },
   {
     name:   "Experiencia",
     icon:   Award,
     desc:   "Contamos con un equipo de trabajo multidisciplinar con gran trayectoria en diferentes sectores económicos que permiten tener una visión acertada a las necesidades de nuestros clientes.",
-    accent: "#ff8d2b",
+    accent: "linear-gradient(90deg, #05123e, #ff8d2b)",
   },
   {
     name:   "Adaptabilidad",
     icon:   Zap,
     desc:   "Tenemos la capacidad de responder adecuada y oportunamente a las exigencias del entorno y de nuestros clientes, generando soluciones específicas para cada uno.",
-    accent: "#4d7fff",
+    accent: " #0546f2",
   },
 ];
 
@@ -68,7 +70,7 @@ const SERVICIOS = [
     icon:    Users,
     desc:    "Proveemos profesionales competentes en SST, medicina laboral, psicología, enfermería y ergonomía para que tu empresa se enfoque en su negocio.",
     bullets: ["Medicina Preventiva y del Trabajo", "Psicología organizacional", "Ergonomía", "Enfermería laboral", "Prevención de emergencias", "Ambiental y calidad", "Batería de riesgo psicosocial"],
-    accent:  "#4d7fff",
+    accent:  " #0546f2",
   },
   {
     title:   "Gestión del Riesgo",
@@ -84,7 +86,7 @@ const SERVICIOS = [
     icon:    Leaf,
     desc:    "Diseñamos e implementamos el sistema de gestión ambiental con acciones estratégicas para el control de aspectos e impactos sobre el entorno.",
     bullets: ["Gestión integral de residuos sólidos (PGIRS)", "Plan de residuos peligrosos", "Plan de saneamiento ambiental", "Uso eficiente de agua y energía", "Preparación ante emergencias ambientales"],
-    accent:  "#4d7fff",
+    accent:  " #0546f2",
   },
   {
     title:   "Capacitaciones",
@@ -100,7 +102,7 @@ const SERVICIOS = [
     icon:    Scale,
     desc:    "Abogados especialistas en seguridad social y salud ocupacional con amplia experiencia en el Sistema General de Riesgos Laborales colombiano.",
     bullets: ["Estabilidad laboral reforzada", "Consultoría en Sistema General de Riesgos Laborales", "Aspectos legales del SG-SST"],
-    accent:  "#4d7fff",
+    accent:  " #0546f2",
   },
   {
     title:   "Auditorías",
@@ -114,133 +116,118 @@ const SERVICIOS = [
 
 type Marca = {
   name: string;
+  fullName?: string;
   logo: string;
   accent: string;
+  badge?: string;
   tagline: string;
+  role?: string;
   description: string;
   features: { icon: React.ReactNode; title: string; desc: string }[];
   extras: string[];
+  status?: string;
 };
 
 const MARCAS: Marca[] = [
   {
     name: "VIGIA",
+    fullName: "Vigía Salud Inteligente",
     logo: "/vigia.png",
     accent: "#ff8d2b",
+    badge: "PLATAFORMA TECNOLÓGICA SST",
     tagline: "Con inteligencia artificial",
-    description: "Utiliza cámaras y sensores para detectar situaciones de riesgo, notificar al usuario y desarrollar planes de acción correctivos en tiempo real y a futuro.",
+    role: "MONITOREO PREDICTIVO & SST",
+    description: "Plataforma inteligente de vigilancia laboral mediante IA, cámaras y sensores para detectar riesgos en tiempo real, notificar y generar planes de acción correctivos.",
     features: [
       { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Identifica 6 EPP: cascos, guantes, gafas, tapaoídos, tapabocas y chalecos reflectivos." },
       { icon: <AlertTriangle size={16} />, title: "Control de Distracciones", desc: "Detecta teléfonos en manos del personal y genera alertas visuales inmediatas." },
       { icon: <Eye size={16} />, title: "Seguimiento Ocular 3D", desc: "Determina si un trabajador opera maquinaria mientras usa su celular." },
       { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificaciones por email con captura de la infracción y app exclusiva del cliente." },
     ],
-    extras: ["Conteo de producción en tiempo real", "Análisis de ergonomía y postura", "Detección de emergencias y accidentes"],
+    extras: [
+      "Conteo de producción en tiempo real",
+      "Análisis de ergonomía y postura",
+      "Detección de emergencias y accidentes",
+    ],
+    status: "Activa & Disponible",
   },
 ];
 
-function BrandCard({ name, logo, accent, tagline, description, features, extras }: Marca) {
-  const [flipped, setFlipped] = useState(false);
+function BrandCard({ name, logo, accent, tagline, onExpand }: Marca & { onExpand: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setTilt({
+      y:  ((e.clientX - rect.left  - rect.width  / 2) / (rect.width  / 2)) * 10,
+      x: -((e.clientY - rect.top   - rect.height / 2) / (rect.height / 2)) * 10,
+    });
+  };
 
   return (
     <div
+      ref={cardRef}
       style={{
-        width: 420,
-        minHeight: 520,
+        width: 380,
+        height: 460,
         position: "relative",
         cursor: "pointer",
-        pointerEvents: "auto",
         userSelect: "none",
+        transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.03 : 1})`,
+        transition: hovered ? "transform 0.08s linear" : "transform 0.45s cubic-bezier(0.23,1,0.32,1)",
       }}
-      onClick={() => setFlipped(f => !f)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { setHovered(false); setTilt({ x: 0, y: 0 }); }}
+      onClick={onExpand}
     >
-      {/* ── Frente ── */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: 24,
-          border: `1px solid ${accent}33`,
-          background: "rgba(5,18,62,0.92)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 24,
-          padding: 40,
-          transition: "opacity 0.3s",
-          opacity: flipped ? 0 : 1,
-          pointerEvents: flipped ? "none" : "auto",
-          zIndex: flipped ? 0 : 1,
-        }}
-      >
-        <div className="brand-logo-wrap">
-          <div className="brand-logo-spin">
-            <img src={logo} alt={name} style={{ height: 110, objectFit: "contain" }} draggable={false} />
-          </div>
+      <div style={{
+        position: "absolute", inset: 0,
+        borderRadius: 24,
+        border: `1px solid ${hovered ? `${accent}66` : `${accent}33`}`,
+        background: hovered ? "rgba(255,255,255,0.07)" : "rgba(5,18,62,0.92)",
+        backdropFilter: hovered ? "blur(8px)" : undefined,
+        boxShadow: hovered
+          ? `0 12px 45px rgba(255,141,43,0.18), 0 6px 30px rgba(0,0,0,0.4)`
+          : "0 6px 30px rgba(0,0,0,0.4)",
+        display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+        gap: 24, padding: 40, overflow: "hidden",
+        transition: "background 0.3s, box-shadow 0.3s, border-color 0.3s",
+      }}>
+        {/* Glow blob */}
+        <div style={{
+          position: "absolute", top: -40, right: -40,
+          width: 140, height: 140,
+          background: `radial-gradient(circle, ${accent}25, transparent 70%)`,
+          borderRadius: "50%", filter: "blur(20px)", pointerEvents: "none",
+          opacity: hovered ? 1 : 0, transition: "opacity 0.4s",
+        }} />
+
+        <div style={{ perspective: 1000, display: "flex", justifyContent: "center" }}>
+          <motion.img
+            src={logo} alt={name} draggable={false}
+            animate={{ rotateY: hovered ? 360 : 0 }}
+            transition={hovered ? { duration: 1.2, ease: [0.25, 1, 0.5, 1] } : { duration: 0.4 }}
+            style={{ height: 100, objectFit: "contain", display: "block" }}
+          />
         </div>
+
         <div style={{ textAlign: "center" }}>
-          <h3 style={{ fontSize: 28, fontWeight: 800, color: "white", margin: 0, letterSpacing: 3 }}>{name}</h3>
+          <h3 style={{ fontSize: 26, fontWeight: 800, color: "white", margin: 0, letterSpacing: 3 }}>{name}</h3>
           <p style={{ fontSize: 13, fontWeight: 600, color: accent, margin: "6px 0 0" }}>{tagline}</p>
         </div>
         <div style={{ height: 2, width: 36, background: accent }} />
-        <span style={{ fontSize: 14, fontWeight: 600, color: accent }}>Ver más →</span>
-      </div>
-
-      {/* ── Reverso ── */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: 24,
-          border: `1px solid ${accent}33`,
-          background: "rgba(3,10,38,0.97)",
-          padding: 24,
-          overflowY: "auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          transition: flipped ? "opacity 0.3s 0.15s" : "opacity 0.2s",
-          opacity: flipped ? 1 : 0,
-          pointerEvents: flipped ? "auto" : "none",
-          zIndex: flipped ? 1 : 0,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
-          <div>
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: "white", margin: 0 }}>{name}</h3>
-            <p style={{ fontSize: 10, fontWeight: 600, color: accent, margin: "2px 0 0", textTransform: "uppercase", letterSpacing: "0.1em" }}>{tagline}</p>
-          </div>
-          <button
-            style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, cursor: "pointer", background: "none", border: "none", pointerEvents: "auto" }}
-            onClick={e => { e.stopPropagation(); setFlipped(false); }}
-          >← Volver</button>
-        </div>
-
-        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, lineHeight: 1.6, margin: 0 }}>{description}</p>
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          {features.map(({ icon, title, desc }) => (
-            <div key={title} style={{ borderRadius: 12, padding: 12, background: "rgba(255,141,43,0.07)", border: `1px solid ${accent}22` }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4, color: accent }}>
-                {icon}
-                <span style={{ fontSize: 11, fontWeight: 700, color: "white" }}>{title}</span>
-              </div>
-              <p style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", lineHeight: 1.5, margin: 0 }}>{desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div>
-          <p style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: accent, marginBottom: 8, margin: "0 0 8px" }}>Módulos adicionales</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {extras.map(ex => (
-              <div key={ex} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ width: 4, height: 4, borderRadius: "50%", background: accent, flexShrink: 0 }} />
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{ex}</span>
-              </div>
-            ))}
-          </div>
+        <div style={{
+          fontSize: 13, fontWeight: 600, color: accent,
+          border: `1px solid ${accent}44`, borderRadius: 20, padding: "8px 20px",
+          background: hovered ? `${accent}15` : "transparent",
+          transition: "background 0.2s",
+        }}>
+          Explorar →
         </div>
       </div>
     </div>
@@ -268,6 +255,13 @@ const SECTIONS = [
 export default function HeroPage() {
   const p = useScrollProgress();
   const [sceneReady, setSceneReady] = useState(false);
+  const [activeMarca, setActiveMarca] = useState<number | null>(null);
+  const [heroSlide, setHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setHeroSlide(s => (s + 1) % 2), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   // ── Section opacities (asymmetric bands) ─────────────────────────────────
   const heroO = p < 0.10 ? 1 : p < 0.15 ? 1 - (p - 0.10) / 0.05 : 0;
@@ -377,9 +371,64 @@ export default function HeroPage() {
     };
   }, []);
 
+  // Lock scroll while a marca panel is open
+  useEffect(() => {
+    if (activeMarca !== null) {
+      document.documentElement.style.overflowY = "hidden";
+    } else {
+      document.documentElement.style.overflowY = "";
+    }
+    return () => { document.documentElement.style.overflowY = ""; };
+  }, [activeMarca]);
+
   // Form state
   const [empRange, setEmpRange] = useState("");
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
+  const [formData, setFormData] = useState({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const setField = (k: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFormData(prev => ({ ...prev, [k]: e.target.value }));
+
+  const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    if (!formData.nombre || !formData.email) return;
+    setFormStatus("loading");
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.nombre,
+          empresa:   formData.empresa,
+          cargo:     formData.cargo,
+          telefono:  formData.telefono,
+          reply_to:  formData.email,
+          servicio:  servicioSel || "No especificado",
+          empleados: empRange   || "No especificado",
+          mensaje:   formData.mensaje,
+          name: formData.nombre,
+          title : `Nuevo contacto: ${formData.nombre} (${formData.empresa})`,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      setFormStatus("success");
+      setFormData({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "", });
+      setEmpRange("");
+      setServicioSel("");
+    } catch {
+      setFormStatus("error");
+    }
+  };
+  const [servicioOpen, setServicioOpen] = useState(false);
+  const [servicioSel, setServicioSel] = useState("");
+
+  useEffect(() => {
+    if (!servicioOpen) return;
+    const close = () => setServicioOpen(false);
+    document.addEventListener("click", close);
+    return () => document.removeEventListener("click", close);
+  }, [servicioOpen]);
 
   // Input base styles — dark, matches site palette
   const iCls = "w-full px-3 py-2.5 rounded-xl border text-sm outline-none transition-colors text-white placeholder:text-white/25 focus:border-[#ff8d2b]";
@@ -438,58 +487,149 @@ export default function HeroPage() {
 
         {/* ── SCENE 1: HERO ─────────────────────────────────────────────────── */}
         {sceneReady && <div className="absolute inset-0 flex items-center z-10 pointer-events-none" style={{ opacity: heroO }}>
-          <div className="max-w-6xl mx-auto px-8 w-full">
 
-            <div style={ha(0.1)}>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8">
-                Aliado Vital SST · Bogotá · Desde 1998
-              </p>
-            </div>
-
-            <h1 className="font-extrabold leading-[0.90] mb-10" style={{ fontSize: "clamp(52px, 8vw, 100px)" }}>
-              <span className="block overflow-hidden">
-                <span className="block" style={ha(0.2)}>Tu socio</span>
-              </span>
-              <span className="block">
-                <span
-                  className="block text-transparent bg-clip-text"
-                  style={{ ...ha(0.3), backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)" }}
-                >
-                  estratégico
-                </span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="block text-white/85" style={ha(0.4)}>en SST.</span>
-              </span>
-            </h1>
-
-            <p className="text-xl text-white/45 max-w-lg leading-relaxed mb-12" style={ha(0.5)}>
-              Protegemos a tu equipo con soluciones a la medida &nbsp;sin
-              improvisaciones, con respaldo académico y experiencia real.
-            </p>
-
-            <div
-              className="flex flex-col sm:flex-row gap-4"
-              style={{ ...ha(0.6), pointerEvents: "auto" }}
-            >
-              <button 
-                className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
-                style={{ background: "#ff8d2b" }}
+          <AnimatePresence mode="wait">
+            {heroSlide === 0 ? (
+              <motion.div
+                key="slide-consalud"
+                className="max-w-6xl mx-auto px-8 w-full"
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               >
-                Diagnostico Gratuito ➤               
-              </button>
-              <button className="px-8 py-3.5 rounded-full border border-white/20 hover:border-[#ff8d2b]/50 text-white/60 hover:text-white font-semibold transition-all cursor-pointer bg-transparent">
-                Conocer Consalud
-              </button>
-            </div>
-          </div>
+                <div style={ha(0.1)}>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8">
+                    Aliado Vital SST · Bogotá · Desde 1998
+                  </p>
+                </div>
+
+                <h1 className="font-extrabold leading-[0.90] mb-10" style={{ fontSize: "clamp(52px, 8vw, 100px)" }}>
+                  <span className="block overflow-hidden">
+                    <span className="block" style={ha(0.2)}>Tu socio</span>
+                  </span>
+                  <span className="block">
+                    <span
+                      className="block text-transparent bg-clip-text"
+                      style={{ ...ha(0.3), backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)" }}
+                    >
+                      estratégico
+                    </span>
+                  </span>
+                  <span className="block overflow-hidden">
+                    <span className="block text-white/85" style={ha(0.4)}>en SST.</span>
+                  </span>
+                </h1>
+
+                <p className="text-xl text-white/45 max-w-lg leading-relaxed mb-12" style={ha(0.5)}>
+                  Protegemos a tu equipo con soluciones a la medida &nbsp;sin
+                  improvisaciones, con respaldo académico y experiencia real.
+                </p>
+
+                <div
+                  className="flex flex-col sm:flex-row gap-4"
+                  style={{ ...ha(0.6), pointerEvents: heroO > 0.05 ? "auto" : "none" }}
+                >
+                  <button
+                    className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
+                    style={{ background: "#ff8d2b" }}
+                  >
+                    Diagnostico Gratuito ➤
+                  </button>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="slide-vigia"
+                className="max-w-6xl mx-auto px-8 w-full"
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.10, duration: 0.5 }}
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8">
+                    Plataforma Tecnológica SST · IA & Visión Computacional
+                  </p>
+                </motion.div>
+
+                <h1 className="font-extrabold leading-[0.90] mb-10" style={{ fontSize: "clamp(52px, 8vw, 100px)" }}>
+                  <motion.span
+                    className="block"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.20, duration: 0.55 }}
+                  >
+                    Vigía
+                  </motion.span>
+                  <motion.span
+                    className="block text-transparent bg-clip-text"
+                    style={{ backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.30, duration: 0.55 }}
+                  >
+                    Salud Inteligente
+                  </motion.span>
+                </h1>
+
+                <motion.p
+                  className="text-xl text-white/45 max-w-lg leading-relaxed mb-12"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.40, duration: 0.55 }}
+                >
+                  Vigilancia laboral en tiempo real mediante IA, cámaras y sensores.
+                  Detecta riesgos, notifica al instante y genera planes de acción correctivos.
+                </motion.p>
+
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  style={{ pointerEvents: heroO > 0.05 ? "auto" : "none" }}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.50, duration: 0.55 }}
+                >
+                  <button
+                    className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
+                    style={{ background: "#ff8d2b" }}
+                  >
+                    Reserva tu demo ➤
+                  </button>
+                  <button
+                    className="px-8 py-3.5 rounded-full font-semibold text-white hover:bg-white/10 transition-all cursor-pointer"
+                    style={{ background: "transparent", border: "1.5px solid rgba(255,255,255,0.25)" }}
+                  >
+                    Conocer más
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div
             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
             style={{ opacity: hCue }}
           >
+            {/* Slide indicators */}
+            <div className="flex gap-2 mb-1">
+              {[0, 1].map(i => (
+                <div
+                  key={i}
+                  className="rounded-full transition-all duration-500"
+                  style={{
+                    width: heroSlide === i ? 22 : 6,
+                    height: 6,
+                    background: heroSlide === i ? "#ff8d2b" : "rgba(255,255,255,0.25)",
+                  }}
+                />
+              ))}
+            </div>
             <span className="tracking-[0.3em] uppercase text-[11px] font-semibold text-white/40">Scroll</span>
-            {/* Mouse outline */}
             <div
               className="relative flex justify-center pt-2.5 rounded-full border-2"
               style={{ width: 30, height: 48, borderColor: "rgba(255,141,43,0.55)" }}
@@ -527,7 +667,7 @@ export default function HeroPage() {
               <div className="relative h-px mb-8" style={{ background: "rgba(255,255,255,0.07)" }}>
                 <div
                   className="absolute top-0 left-0 h-full"
-                  style={{ width: `${nLine * 100}%`, background: "linear-gradient(90deg, #ff8d2b, #0546f2)" }}
+                  style={{ width: `${nLine * 100}%`, background: "linear-gradient(90deg, #ff8d2b, #0546f2,  #f5f3e6 )" }}
                 />
               </div>
 
@@ -556,11 +696,12 @@ export default function HeroPage() {
                   return (
                     <div
                       key={v.name}
-                      className="p-5 rounded-2xl border pointer-events-auto"
+                      className="p-5 rounded-2xl border"
                       onMouseEnter={() => setHoveredVal(i)}
                       onMouseLeave={() => setHoveredVal(null)}
                       style={{
                         ...scT,
+                        pointerEvents: nosO > 0.05 ? "auto" : "none",
                         background:  "rgba(3,8,28,0.92)",
                         borderColor: hov ? `${v.accent}55` : `${v.accent}25`,
                         boxShadow:   hov ? `0 8px 36px ${v.accent}40` : "none",
@@ -701,10 +842,10 @@ export default function HeroPage() {
               </div>
             </div>
 
-            <div className="flex justify-center" style={{ pointerEvents: "auto" }}>
+            <div className="flex justify-center" style={{ pointerEvents: marcO > 0.05 ? "auto" : "none" }}>
               {MARCAS.map((marca, i) => (
-                <div key={marca.name} style={{ ...(i === 0 ? lft(mC[0]) : rgt(mC[1])), pointerEvents: "auto" }}>
-                  <BrandCard {...marca} />
+                <div key={marca.name} style={i === 0 ? lft(mC[0]) : rgt(mC[1])}>
+                  <BrandCard {...marca} onExpand={() => setActiveMarca(i)} />
                 </div>
               ))}
             </div>
@@ -728,21 +869,50 @@ export default function HeroPage() {
             </div>
 
             {/* Form card */}
-            <div className="pointer-events-auto" style={up(cForm, 24)}>
+            <form onSubmit={handleSubmit} style={{ ...up(cForm, 24), pointerEvents: contO > 0.05 ? "auto" : "none" }}>
               <div className="rounded-2xl p-5 md:p-7 border" style={{ background: "rgba(3,8,28,0.85)", borderColor: "rgba(255,141,43,0.15)" }}>
 
                 <div className="grid grid-cols-2 gap-3 mb-3">
-                  <input className={iCls} style={iSty} placeholder="Nombre completo" />
-                  <input className={iCls} style={iSty} placeholder="Empresa" />
-                  <input className={iCls} style={iSty} placeholder="Cargo" />
-                  <input className={iCls} style={iSty} placeholder="Teléfono" type="tel" />
-                  <input className={iCls} style={iSty} placeholder="Email" type="email" />
-                  <select className={iCls} style={{ ...iSty, color: "rgba(255,255,255,0.40)" }}>
-                    <option value="">Servicio de interés</option>
-                    {SERVICIOS.map(s => (
-                      <option key={s.title} value={s.title}>{s.title}</option>
-                    ))}
-                  </select>
+                  <input className={iCls} style={iSty} placeholder="Nombre completo *" value={formData.nombre}   onChange={setField("nombre")}   required />
+                  <input className={iCls} style={iSty} placeholder="Empresa"            value={formData.empresa}  onChange={setField("empresa")} />
+                  <input className={iCls} style={iSty} placeholder="Cargo"              value={formData.cargo}    onChange={setField("cargo")} />
+                  <input className={iCls} style={iSty} placeholder="Teléfono"  type="tel"   value={formData.telefono} onChange={setField("telefono")} />
+                  <input className={iCls} style={iSty} placeholder="Email *"   type="email" value={formData.email}    onChange={setField("email")}    required />
+                  {/* Custom dark dropdown — replaces native select */}
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={e => { e.stopPropagation(); setServicioOpen(o => !o); }}
+                      className={iCls + " flex items-center justify-between text-left"}
+                      style={{ ...iSty, color: servicioSel ? "white" : "rgba(255,255,255,0.25)" }}
+                    >
+                      <span>{servicioSel || "Servicio de interés"}</span>
+                      <ChevronDown size={14} style={{ opacity: 0.4, flexShrink: 0, transform: servicioOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+                    </button>
+                    {servicioOpen && (
+                      <div
+                        className="absolute left-0 right-0 z-50 rounded-xl border overflow-hidden"
+                        style={{ top: "calc(100% + 4px)", background: "rgba(3,8,28,0.97)", borderColor: "rgba(255,141,43,0.25)", boxShadow: "0 12px 40px rgba(0,0,0,0.7)" }}
+                      >
+                        {SERVICIOS.map(s => (
+                          <button
+                            key={s.title}
+                            type="button"
+                            onClick={e => { e.stopPropagation(); setServicioSel(s.title); setServicioOpen(false); }}
+                            className="w-full text-left px-3 py-2.5 text-sm transition-colors"
+                            style={{
+                              color: servicioSel === s.title ? "#ff8d2b" : "rgba(255,255,255,0.75)",
+                              background: servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent",
+                            }}
+                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                            onMouseLeave={e => (e.currentTarget.style.background = servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent")}
+                          >
+                            {s.title}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="mb-3">
@@ -773,19 +943,34 @@ export default function HeroPage() {
                   style={{ ...iSty, resize: "none" }}
                   rows={3}
                   placeholder="Mensaje o consulta (opcional)"
+                  value={formData.mensaje}
+                  onChange={setField("mensaje")}
                 />
 
-                <div className="flex justify-end mt-3">
+                <div className="flex items-center justify-between mt-3">
+                  {formStatus === "success" && (
+                    <p className="text-sm font-semibold" style={{ color: "#2ecc71" }}>
+                      ¡Consulta enviada! Te contactamos pronto.
+                    </p>
+                  )}
+                  {formStatus === "error" && (
+                    <p className="text-sm font-semibold" style={{ color: "#e74c3c" }}>
+                      Error al enviar. Intenta de nuevo.
+                    </p>
+                  )}
+                  {formStatus !== "success" && formStatus !== "error" && <span />}
                   <button
-                    className="px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all"
+                    type="submit"
+                    disabled={formStatus === "loading"}
+                    className="px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ background: "#ff8d2b", color: "#05123e" }}
                   >
-                    Enviar consulta →
+                    {formStatus === "loading" ? "Enviando…" : "Enviar consulta →"}
                   </button>
                 </div>
 
               </div>
-            </div>
+            </form>
 
             {/* Contact info row */}
             <div
@@ -803,6 +988,234 @@ export default function HeroPage() {
 
           </div>
         </div>
+
+        {/* ── MARCA EXPANDED PANEL ─────────────────────────────────────────── */}
+        <AnimatePresence>
+          {activeMarca !== null && (() => {
+            const marca = MARCAS[activeMarca];
+            const canPrev = activeMarca > 0;
+            const canNext = activeMarca < MARCAS.length - 1;
+            return (
+              <motion.div
+                key="marca-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                style={{
+                  position: "absolute", inset: 0, zIndex: 100,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(2,6,22,0.88)",
+                  backdropFilter: "blur(14px)",
+                  pointerEvents: "auto",
+                }}
+                onClick={() => setActiveMarca(null)}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 8 }}
+                  transition={{ duration: 0.3, ease: [0.34, 1.2, 0.64, 1] }}
+                  style={{
+                    width: "min(900px, 92vw)",
+                    height: "min(520px, 88vh)",
+                    display: "grid",
+                    gridTemplateColumns: "2fr 3fr",
+                    borderRadius: 24,
+                    overflow: "hidden",
+                    border: `1px solid ${marca.accent}33`,
+                    boxShadow: `0 24px 80px rgba(0,0,0,0.6), 0 0 60px ${marca.accent}12`,
+                  }}
+                  onClick={e => e.stopPropagation()}
+                >
+                  {/* LEFT PANEL */}
+                  <div style={{
+                    background: "rgba(2,6,22,1)",
+                    display: "flex", flexDirection: "column",
+                    alignItems: "center", justifyContent: "center",
+                    padding: 32, position: "relative",
+                    borderRight: `1px solid ${marca.accent}22`,
+                  }}>
+                    {/* Badge */}
+                    <div style={{
+                      position: "absolute", top: 20, left: 20,
+                      fontSize: 9, fontWeight: 700, letterSpacing: "0.18em",
+                      textTransform: "uppercase", color: marca.accent,
+                      border: `1px solid ${marca.accent}44`,
+                      borderRadius: 6, padding: "4px 8px",
+                    }}>
+                      {marca.badge ?? "TECNOLOGÍA SST"}
+                    </div>
+
+                    {/* Cerrar */}
+                    <button
+                      style={{
+                        position: "absolute", top: 14, right: 14,
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        borderRadius: 8, padding: "5px 10px",
+                        color: "rgba(255,255,255,0.35)", fontSize: 11,
+                        cursor: "pointer", lineHeight: 1,
+                      }}
+                      onClick={() => setActiveMarca(null)}
+                    >✕</button>
+
+                    {/* Logo */}
+                    <img
+                      src={marca.logo} alt={marca.name}
+                      style={{ height: 130, objectFit: "contain", marginBottom: 12 }}
+                    />
+
+                    {/* Tabs + flechas */}
+                    <div style={{ position: "absolute", bottom: 20, left: 0, right: 0, padding: "0 16px" }}>
+                      <div style={{ display: "flex", gap: 6, justifyContent: "center", flexWrap: "wrap", marginBottom: 10 }}>
+                        {MARCAS.map((m, i) => (
+                          <button
+                            key={m.name}
+                            style={{
+                              fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
+                              textTransform: "uppercase",
+                              padding: "5px 12px", borderRadius: 20, border: "1px solid",
+                              borderColor: i === activeMarca ? marca.accent : "rgba(255,255,255,0.1)",
+                              background: i === activeMarca ? `${marca.accent}22` : "transparent",
+                              color: i === activeMarca ? marca.accent : "rgba(255,255,255,0.3)",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => setActiveMarca(i)}
+                          >
+                            {m.name}
+                          </button>
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", justifyContent: "center", gap: 8 }}>
+                        <button
+                          style={{
+                            width: 32, height: 32, borderRadius: "50%",
+                            border: "1px solid rgba(255,255,255,0.1)",
+                            background: canPrev ? "rgba(255,255,255,0.06)" : "transparent",
+                            color: canPrev ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
+                            cursor: canPrev ? "pointer" : "default",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                          }}
+                          onClick={() => canPrev && setActiveMarca(activeMarca - 1)}
+                        >
+                          <ChevronLeft size={16} />
+                        </button>
+                        <button
+                          style={{
+                            width: 32, height: 32, borderRadius: "50%",
+                            border: "1px solid rgba(255,255,255,0.1)",
+                            background: canNext ? "rgba(255,255,255,0.06)" : "transparent",
+                            color: canNext ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
+                            cursor: canNext ? "pointer" : "default",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                          }}
+                          onClick={() => canNext && setActiveMarca(activeMarca + 1)}
+                        >
+                          <ChevronRight size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* RIGHT PANEL */}
+                  <div style={{
+                    background: "rgba(5,14,40,0.98)",
+                    padding: "28px 32px",
+                    overflowY: "auto",
+                    display: "flex", flexDirection: "column", gap: 16,
+                  }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: marca.accent, margin: 0 }}>
+                      ENTIDAD TECNOLÓGICA SST COLOMBIA
+                    </p>
+
+                    <div>
+                      <h2 style={{ fontSize: 26, fontWeight: 800, color: "white", margin: "0 0 4px", lineHeight: 1.2 }}>
+                        {marca.fullName ?? marca.name}
+                      </h2>
+                      <p style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.4)", margin: 0, letterSpacing: "0.1em" }}>
+                        ROL PRINCIPAL:&nbsp;
+                        <span style={{ color: "rgba(255,255,255,0.65)" }}>
+                          {marca.role ?? marca.tagline.toUpperCase()}
+                        </span>
+                      </p>
+                    </div>
+
+                    <div style={{
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      borderRadius: 12, padding: "14px 16px",
+                    }}>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 6px" }}>
+                        VISIÓN Y PROPÓSITO
+                      </p>
+                      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>
+                        {marca.description}
+                      </p>
+                    </div>
+
+                    <div>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: marca.accent, margin: "0 0 10px" }}>
+                        CARACTERÍSTICAS CLAVE
+                      </p>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                        {marca.features.map(f => (
+                          <div key={f.title} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                            <CheckSquare size={13} style={{ color: marca.accent, flexShrink: 0, marginTop: 1 }} />
+                            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", lineHeight: 1.4 }}>{f.title}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: marca.accent, margin: "0 0 10px" }}>
+                        MÓDULOS & CAPACIDADES
+                      </p>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                        {marca.extras.map(ex => (
+                          <div key={ex} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ color: marca.accent, fontSize: 10 }}>◆</span>
+                            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.55)" }}>{ex}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      marginTop: "auto", paddingTop: 12,
+                      borderTop: "1px solid rgba(255,255,255,0.06)",
+                    }}>
+                      <div>
+                        <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 4px" }}>
+                          ESTADO ALIANZA
+                        </p>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2ecc71" }} />
+                          <span style={{ fontSize: 12, fontWeight: 600, color: "#2ecc71" }}>
+                            {marca.status ?? "Activa & Disponible"}
+                          </span>
+                        </div>
+                      </div>
+                      <button style={{
+                        padding: "10px 20px", borderRadius: 20,
+                        background: "transparent",
+                        border: `1px solid ${marca.accent}`,
+                        color: marca.accent,
+                        fontSize: 11, fontWeight: 700,
+                        letterSpacing: "0.1em", textTransform: "uppercase",
+                        cursor: "pointer",
+                      }}>
+                        CONECTAR CONVENIO →
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })()}
+        </AnimatePresence>
 
       </div>
     </div>

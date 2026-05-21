@@ -6,6 +6,7 @@ __turbopack_context__.s([
     "default",
     ()=>HeroPage
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.2.6_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.2.6_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.2.6_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.2.6_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/next/dist/shared/lib/app-dynamic.js [app-client] (ecmascript)");
@@ -22,10 +23,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lu
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@1.16.0_react@19.2.6/node_modules/lucide-react/dist/esm/icons/award.mjs [app-client] (ecmascript) <export default as Award>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@1.16.0_react@19.2.6/node_modules/lucide-react/dist/esm/icons/zap.mjs [app-client] (ecmascript) <export default as Zap>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@1.16.0_react@19.2.6/node_modules/lucide-react/dist/esm/icons/chevron-down.mjs [app-client] (ecmascript) <export default as ChevronDown>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@1.16.0_react@19.2.6/node_modules/lucide-react/dist/esm/icons/chevron-left.mjs [app-client] (ecmascript) <export default as ChevronLeft>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/lucide-react@1.16.0_react@19.2.6/node_modules/lucide-react/dist/esm/icons/chevron-right.mjs [app-client] (ecmascript) <export default as ChevronRight>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/framer-motion@12.39.0_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/framer-motion@12.39.0_react-dom@19.2.6_react@19.2.6__react@19.2.6/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$emailjs$2b$browser$40$4$2e$4$2e$1$2f$node_modules$2f40$emailjs$2f$browser$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/@emailjs+browser@4.4.1/node_modules/@emailjs/browser/es/index.js [app-client] (ecmascript) <locals>");
 ;
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 "use client";
+;
+;
 ;
 ;
 ;
@@ -84,19 +92,19 @@ const VALORES = [
         name: "Integridad",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"],
         desc: "Transparencia y confiabilidad frente a todos los procesos, guardando siempre confidencialidad y lealtad con nuestros clientes.",
-        accent: "#4d7fff"
+        accent: " #05123e "
     },
     {
         name: "Experiencia",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"],
         desc: "Contamos con un equipo de trabajo multidisciplinar con gran trayectoria en diferentes sectores económicos que permiten tener una visión acertada a las necesidades de nuestros clientes.",
-        accent: "#ff8d2b"
+        accent: "linear-gradient(90deg, #05123e, #ff8d2b)"
     },
     {
         name: "Adaptabilidad",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"],
         desc: "Tenemos la capacidad de responder adecuada y oportunamente a las exigencias del entorno y de nuestros clientes, generando soluciones específicas para cada uno.",
-        accent: "#4d7fff"
+        accent: " #0546f2"
     }
 ];
 const SERVICIOS = [
@@ -131,7 +139,7 @@ const SERVICIOS = [
             "Ambiental y calidad",
             "Batería de riesgo psicosocial"
         ],
-        accent: "#4d7fff"
+        accent: " #0546f2"
     },
     {
         title: "Gestión del Riesgo",
@@ -161,7 +169,7 @@ const SERVICIOS = [
             "Uso eficiente de agua y energía",
             "Preparación ante emergencias ambientales"
         ],
-        accent: "#4d7fff"
+        accent: " #0546f2"
     },
     {
         title: "Capacitaciones",
@@ -188,7 +196,7 @@ const SERVICIOS = [
             "Consultoría en Sistema General de Riesgos Laborales",
             "Aspectos legales del SG-SST"
         ],
-        accent: "#4d7fff"
+        accent: " #0546f2"
     },
     {
         title: "Auditorías",
@@ -208,17 +216,20 @@ const SERVICIOS = [
 const MARCAS = [
     {
         name: "VIGIA",
+        fullName: "Vigía Salud Inteligente",
         logo: "/vigia.png",
         accent: "#ff8d2b",
+        badge: "PLATAFORMA TECNOLÓGICA SST",
         tagline: "Con inteligencia artificial",
-        description: "Utiliza cámaras y sensores para detectar situaciones de riesgo, notificar al usuario y desarrollar planes de acción correctivos en tiempo real y a futuro.",
+        role: "MONITOREO PREDICTIVO & SST",
+        description: "Plataforma inteligente de vigilancia laboral mediante IA, cámaras y sensores para detectar riesgos en tiempo real, notificar y generar planes de acción correctivos.",
         features: [
             {
                 icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
                     size: 16
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 133,
+                    lineNumber: 142,
                     columnNumber: 15
                 }, ("TURBOPACK compile-time value", void 0)),
                 title: "Detección de EPP",
@@ -229,7 +240,7 @@ const MARCAS = [
                     size: 16
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 134,
+                    lineNumber: 143,
                     columnNumber: 15
                 }, ("TURBOPACK compile-time value", void 0)),
                 title: "Control de Distracciones",
@@ -240,7 +251,7 @@ const MARCAS = [
                     size: 16
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 135,
+                    lineNumber: 144,
                     columnNumber: 15
                 }, ("TURBOPACK compile-time value", void 0)),
                 title: "Seguimiento Ocular 3D",
@@ -251,7 +262,7 @@ const MARCAS = [
                     size: 16
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 136,
+                    lineNumber: 145,
                     columnNumber: 15
                 }, ("TURBOPACK compile-time value", void 0)),
                 title: "Alertas en Tiempo Real",
@@ -262,387 +273,203 @@ const MARCAS = [
             "Conteo de producción en tiempo real",
             "Análisis de ergonomía y postura",
             "Detección de emergencias y accidentes"
-        ]
+        ],
+        status: "Activa & Disponible"
     }
 ];
-function BrandCard({ name, logo, accent, tagline, description, features, extras }) {
+function BrandCard({ name, logo, accent, tagline, onExpand }) {
     _s();
-    const [flipped, setFlipped] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [hovered, setHovered] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [tilt, setTilt] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const cardRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const handleMouseMove = (e)=>{
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        setTilt({
+            y: (e.clientX - rect.left - rect.width / 2) / (rect.width / 2) * 10,
+            x: -((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * 10
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        ref: cardRef,
         style: {
-            width: 420,
-            minHeight: 520,
+            width: 380,
+            height: 460,
             position: "relative",
             cursor: "pointer",
-            pointerEvents: "auto",
-            userSelect: "none"
+            userSelect: "none",
+            transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.03 : 1})`,
+            transition: hovered ? "transform 0.08s linear" : "transform 0.45s cubic-bezier(0.23,1,0.32,1)"
         },
-        onClick: ()=>setFlipped((f)=>!f),
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: 24,
-                    border: `1px solid ${accent}33`,
-                    background: "rgba(5,18,62,0.92)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 24,
-                    padding: 40,
-                    transition: "opacity 0.3s",
-                    opacity: flipped ? 0 : 1,
-                    pointerEvents: flipped ? "none" : "auto",
-                    zIndex: flipped ? 0 : 1
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "brand-logo-wrap",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "brand-logo-spin",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: logo,
-                                alt: name,
-                                style: {
-                                    height: 110,
-                                    objectFit: "contain"
-                                },
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 179,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 178,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 177,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            textAlign: "center"
+        onMouseEnter: ()=>setHovered(true),
+        onMouseMove: handleMouseMove,
+        onMouseLeave: ()=>{
+            setHovered(false);
+            setTilt({
+                x: 0,
+                y: 0
+            });
+        },
+        onClick: onExpand,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            style: {
+                position: "absolute",
+                inset: 0,
+                borderRadius: 24,
+                border: `1px solid ${hovered ? `${accent}66` : `${accent}33`}`,
+                background: hovered ? "rgba(255,255,255,0.07)" : "rgba(5,18,62,0.92)",
+                backdropFilter: hovered ? "blur(8px)" : undefined,
+                boxShadow: hovered ? `0 12px 45px rgba(255,141,43,0.18), 0 6px 30px rgba(0,0,0,0.4)` : "0 6px 30px rgba(0,0,0,0.4)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 24,
+                padding: 40,
+                overflow: "hidden",
+                transition: "background 0.3s, box-shadow 0.3s, border-color 0.3s"
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        position: "absolute",
+                        top: -40,
+                        right: -40,
+                        width: 140,
+                        height: 140,
+                        background: `radial-gradient(circle, ${accent}25, transparent 70%)`,
+                        borderRadius: "50%",
+                        filter: "blur(20px)",
+                        pointerEvents: "none",
+                        opacity: hovered ? 1 : 0,
+                        transition: "opacity 0.4s"
+                    }
+                }, void 0, false, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 202,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        perspective: 1000,
+                        display: "flex",
+                        justifyContent: "center"
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].img, {
+                        src: logo,
+                        alt: name,
+                        draggable: false,
+                        animate: {
+                            rotateY: hovered ? 360 : 0
                         },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                style: {
-                                    fontSize: 28,
-                                    fontWeight: 800,
-                                    color: "white",
-                                    margin: 0,
-                                    letterSpacing: 3
-                                },
-                                children: name
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 183,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: {
-                                    fontSize: 13,
-                                    fontWeight: 600,
-                                    color: accent,
-                                    margin: "6px 0 0"
-                                },
-                                children: tagline
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 184,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 182,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        transition: hovered ? {
+                            duration: 1.2,
+                            ease: [
+                                0.25,
+                                1,
+                                0.5,
+                                1
+                            ]
+                        } : {
+                            duration: 0.4
+                        },
                         style: {
-                            height: 2,
-                            width: 36,
-                            background: accent
+                            height: 100,
+                            objectFit: "contain",
+                            display: "block"
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 186,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        style: {
-                            fontSize: 14,
-                            fontWeight: 600,
-                            color: accent
-                        },
-                        children: "Ver más →"
-                    }, void 0, false, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 187,
-                        columnNumber: 9
+                        lineNumber: 211,
+                        columnNumber: 11
                     }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/views/HeroPage.tsx",
-                lineNumber: 158,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                style: {
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: 24,
-                    border: `1px solid ${accent}33`,
-                    background: "rgba(3,10,38,0.97)",
-                    padding: 24,
-                    overflowY: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 16,
-                    transition: flipped ? "opacity 0.3s 0.15s" : "opacity 0.2s",
-                    opacity: flipped ? 1 : 0,
-                    pointerEvents: flipped ? "auto" : "none",
-                    zIndex: flipped ? 1 : 0
-                },
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: "flex",
-                            alignItems: "flex-start",
-                            justifyContent: "space-between"
-                        },
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        style: {
-                                            fontSize: 18,
-                                            fontWeight: 700,
-                                            color: "white",
-                                            margin: 0
-                                        },
-                                        children: name
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 211,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        style: {
-                                            fontSize: 10,
-                                            fontWeight: 600,
-                                            color: accent,
-                                            margin: "2px 0 0",
-                                            textTransform: "uppercase",
-                                            letterSpacing: "0.1em"
-                                        },
-                                        children: tagline
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 212,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 210,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                style: {
-                                    color: "rgba(255,255,255,0.4)",
-                                    fontSize: 12,
-                                    cursor: "pointer",
-                                    background: "none",
-                                    border: "none",
-                                    pointerEvents: "auto"
-                                },
-                                onClick: (e)=>{
-                                    e.stopPropagation();
-                                    setFlipped(false);
-                                },
-                                children: "← Volver"
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 214,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 209,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        style: {
-                            color: "rgba(255,255,255,0.6)",
-                            fontSize: 12,
-                            lineHeight: 1.6,
-                            margin: 0
-                        },
-                        children: description
-                    }, void 0, false, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 220,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        style: {
-                            display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            gap: 8
-                        },
-                        children: features.map(({ icon, title, desc })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    borderRadius: 12,
-                                    padding: 12,
-                                    background: "rgba(255,141,43,0.07)",
-                                    border: `1px solid ${accent}22`
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 6,
-                                            marginBottom: 4,
-                                            color: accent
-                                        },
-                                        children: [
-                                            icon,
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                style: {
-                                                    fontSize: 11,
-                                                    fontWeight: 700,
-                                                    color: "white"
-                                                },
-                                                children: title
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 227,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 225,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        style: {
-                                            fontSize: 10,
-                                            color: "rgba(255,255,255,0.5)",
-                                            lineHeight: 1.5,
-                                            margin: 0
-                                        },
-                                        children: desc
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 229,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, title, true, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 224,
-                                columnNumber: 13
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 222,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                style: {
-                                    fontSize: 10,
-                                    fontWeight: 600,
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.1em",
-                                    color: accent,
-                                    marginBottom: 8,
-                                    margin: "0 0 8px"
-                                },
-                                children: "Módulos adicionales"
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 235,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                style: {
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: 6
-                                },
-                                children: extras.map((ex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 8
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                style: {
-                                                    width: 4,
-                                                    height: 4,
-                                                    borderRadius: "50%",
-                                                    background: accent,
-                                                    flexShrink: 0
-                                                }
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 239,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                style: {
-                                                    fontSize: 11,
-                                                    color: "rgba(255,255,255,0.6)"
-                                                },
-                                                children: ex
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 240,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, ex, true, {
-                                        fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 238,
-                                        columnNumber: 15
-                                    }, this))
-                            }, void 0, false, {
-                                fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 236,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 234,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/views/HeroPage.tsx",
-                lineNumber: 191,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+                }, void 0, false, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 210,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        textAlign: "center"
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                            style: {
+                                fontSize: 26,
+                                fontWeight: 800,
+                                color: "white",
+                                margin: 0,
+                                letterSpacing: 3
+                            },
+                            children: name
+                        }, void 0, false, {
+                            fileName: "[project]/src/views/HeroPage.tsx",
+                            lineNumber: 220,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            style: {
+                                fontSize: 13,
+                                fontWeight: 600,
+                                color: accent,
+                                margin: "6px 0 0"
+                            },
+                            children: tagline
+                        }, void 0, false, {
+                            fileName: "[project]/src/views/HeroPage.tsx",
+                            lineNumber: 221,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 219,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        height: 2,
+                        width: 36,
+                        background: accent
+                    }
+                }, void 0, false, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 223,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: accent,
+                        border: `1px solid ${accent}44`,
+                        borderRadius: 20,
+                        padding: "8px 20px",
+                        background: hovered ? `${accent}15` : "transparent",
+                        transition: "background 0.2s"
+                    },
+                    children: "Explorar →"
+                }, void 0, false, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 224,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/views/HeroPage.tsx",
+            lineNumber: 187,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/src/views/HeroPage.tsx",
-        lineNumber: 146,
+        lineNumber: 171,
         columnNumber: 5
     }, this);
 }
-_s(BrandCard, "QYn2hzWSEiNCpFk01FECw92BS70=");
+_s(BrandCard, "Bw3bjfHh2KCVbbpMGxedBCr4yAc=");
 _c1 = BrandCard;
 const CONTACTO_INFO = [
     {
@@ -695,6 +522,20 @@ function HeroPage() {
     _s1();
     const p = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useScrollProgress$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollProgress"])();
     const [sceneReady, setSceneReady] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [activeMarca, setActiveMarca] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [heroSlide, setHeroSlide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HeroPage.useEffect": ()=>{
+            const id = setInterval({
+                "HeroPage.useEffect.id": ()=>setHeroSlide({
+                        "HeroPage.useEffect.id": (s)=>(s + 1) % 2
+                    }["HeroPage.useEffect.id"])
+            }["HeroPage.useEffect.id"], 5000);
+            return ({
+                "HeroPage.useEffect": ()=>clearInterval(id)
+            })["HeroPage.useEffect"];
+        }
+    }["HeroPage.useEffect"], []);
     // ── Section opacities (asymmetric bands) ─────────────────────────────────
     const heroO = p < 0.10 ? 1 : p < 0.15 ? 1 - (p - 0.10) / 0.05 : 0;
     const nosO = fade(p, 0.10, 0.12, 0.205, 0.22);
@@ -852,9 +693,87 @@ function HeroPage() {
             })["HeroPage.useEffect"];
         }
     }["HeroPage.useEffect"], []);
+    // Lock scroll while a marca panel is open
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HeroPage.useEffect": ()=>{
+            if (activeMarca !== null) {
+                document.documentElement.style.overflowY = "hidden";
+            } else {
+                document.documentElement.style.overflowY = "";
+            }
+            return ({
+                "HeroPage.useEffect": ()=>{
+                    document.documentElement.style.overflowY = "";
+                }
+            })["HeroPage.useEffect"];
+        }
+    }["HeroPage.useEffect"], [
+        activeMarca
+    ]);
     // Form state
     const [empRange, setEmpRange] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [hoveredVal, setHoveredVal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        nombre: "",
+        empresa: "",
+        cargo: "",
+        telefono: "",
+        email: "",
+        mensaje: ""
+    });
+    const [formStatus, setFormStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("idle");
+    const setField = (k)=>(e)=>setFormData((prev)=>({
+                    ...prev,
+                    [k]: e.target.value
+                }));
+    const handleSubmit = async (ev)=>{
+        ev.preventDefault();
+        if (!formData.nombre || !formData.email) return;
+        setFormStatus("loading");
+        try {
+            await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$emailjs$2b$browser$40$4$2e$4$2e$1$2f$node_modules$2f40$emailjs$2f$browser$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].send(("TURBOPACK compile-time value", "service_sn3zvc2"), ("TURBOPACK compile-time value", "template_subn0d8"), {
+                from_name: formData.nombre,
+                empresa: formData.empresa,
+                cargo: formData.cargo,
+                telefono: formData.telefono,
+                reply_to: formData.email,
+                servicio: servicioSel || "No especificado",
+                empleados: empRange || "No especificado",
+                mensaje: formData.mensaje,
+                name: formData.nombre,
+                title: `Nuevo contacto: ${formData.nombre} (${formData.empresa})`
+            }, ("TURBOPACK compile-time value", "aDducFvi1XeQO09Sr"));
+            setFormStatus("success");
+            setFormData({
+                nombre: "",
+                empresa: "",
+                cargo: "",
+                telefono: "",
+                email: "",
+                mensaje: ""
+            });
+            setEmpRange("");
+            setServicioSel("");
+        } catch  {
+            setFormStatus("error");
+        }
+    };
+    const [servicioOpen, setServicioOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [servicioSel, setServicioSel] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HeroPage.useEffect": ()=>{
+            if (!servicioOpen) return;
+            const close = {
+                "HeroPage.useEffect.close": ()=>setServicioOpen(false)
+            }["HeroPage.useEffect.close"];
+            document.addEventListener("click", close);
+            return ({
+                "HeroPage.useEffect": ()=>document.removeEventListener("click", close)
+            })["HeroPage.useEffect"];
+        }
+    }["HeroPage.useEffect"], [
+        servicioOpen
+    ]);
     // Input base styles — dark, matches site palette
     const iCls = "w-full px-3 py-2.5 rounded-xl border text-sm outline-none transition-colors text-white placeholder:text-white/25 focus:border-[#ff8d2b]";
     const iSty = {
@@ -876,7 +795,7 @@ function HeroPage() {
                     onReady: ()=>setSceneReady(true)
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 393,
+                    lineNumber: 442,
                     columnNumber: 9
                 }, this),
                 SECTIONS.map(({ num }, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -888,7 +807,7 @@ function HeroPage() {
                         children: num
                     }, num, false, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 397,
+                        lineNumber: 446,
                         columnNumber: 11
                     }, this)),
                 SECTIONS.map(({ num, label }, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -905,12 +824,12 @@ function HeroPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 409,
+                            lineNumber: 458,
                             columnNumber: 13
                         }, this)
                     }, num, false, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 408,
+                        lineNumber: 457,
                         columnNumber: 11
                     }, this)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -927,7 +846,7 @@ function HeroPage() {
                                     children: label
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 423,
+                                    lineNumber: 472,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -939,19 +858,19 @@ function HeroPage() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 426,
+                                    lineNumber: 475,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, label, true, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 422,
+                            lineNumber: 471,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 416,
+                    lineNumber: 465,
                     columnNumber: 9
                 }, this),
                 sceneReady && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -960,104 +879,126 @@ function HeroPage() {
                         opacity: heroO
                     },
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "max-w-6xl mx-auto px-8 w-full",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: ha(0.1),
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8",
-                                        children: "Aliado Vital SST · Bogotá · Desde 1998"
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                            mode: "wait",
+                            children: heroSlide === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                className: "max-w-6xl mx-auto px-8 w-full",
+                                initial: {
+                                    opacity: 0,
+                                    x: 40
+                                },
+                                animate: {
+                                    opacity: 1,
+                                    x: 0
+                                },
+                                exit: {
+                                    opacity: 0,
+                                    x: -40
+                                },
+                                transition: {
+                                    duration: 0.55,
+                                    ease: [
+                                        0.23,
+                                        1,
+                                        0.32,
+                                        1
+                                    ]
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: ha(0.1),
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8",
+                                            children: "Aliado Vital SST · Bogotá · Desde 1998"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/views/HeroPage.tsx",
+                                            lineNumber: 502,
+                                            columnNumber: 19
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 444,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 443,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "font-extrabold leading-[0.90] mb-10",
-                                    style: {
-                                        fontSize: "clamp(52px, 8vw, 100px)"
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "block overflow-hidden",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        lineNumber: 501,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                        className: "font-extrabold leading-[0.90] mb-10",
+                                        style: {
+                                            fontSize: "clamp(52px, 8vw, 100px)"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "block overflow-hidden",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "block",
+                                                    style: ha(0.2),
+                                                    children: "Tu socio"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 509,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 508,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "block",
-                                                style: ha(0.2),
-                                                children: "Tu socio"
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "block text-transparent bg-clip-text",
+                                                    style: {
+                                                        ...ha(0.3),
+                                                        backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)"
+                                                    },
+                                                    children: "estratégico"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 512,
+                                                    columnNumber: 21
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 451,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 450,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "block",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "block text-transparent bg-clip-text",
-                                                style: {
-                                                    ...ha(0.3),
-                                                    backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)"
-                                                },
-                                                children: "estratégico"
+                                                lineNumber: 511,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "block overflow-hidden",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "block text-white/85",
+                                                    style: ha(0.4),
+                                                    children: "en SST."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 520,
+                                                    columnNumber: 21
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 454,
-                                                columnNumber: 17
+                                                lineNumber: 519,
+                                                columnNumber: 19
                                             }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 453,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "block overflow-hidden",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "block text-white/85",
-                                                style: ha(0.4),
-                                                children: "en SST."
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 462,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 461,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 449,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-xl text-white/45 max-w-lg leading-relaxed mb-12",
-                                    style: ha(0.5),
-                                    children: "Protegemos a tu equipo con soluciones a la medida  sin improvisaciones, con respaldo académico y experiencia real."
-                                }, void 0, false, {
-                                    fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 466,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-col sm:flex-row gap-4",
-                                    style: {
-                                        ...ha(0.6),
-                                        pointerEvents: "auto"
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 507,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-xl text-white/45 max-w-lg leading-relaxed mb-12",
+                                        style: ha(0.5),
+                                        children: "Protegemos a tu equipo con soluciones a la medida  sin improvisaciones, con respaldo académico y experiencia real."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 524,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex flex-col sm:flex-row gap-4",
+                                        style: {
+                                            ...ha(0.6),
+                                            pointerEvents: heroO > 0.05 ? "auto" : "none"
+                                        },
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             className: "px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none",
                                             style: {
                                                 background: "#ff8d2b"
@@ -1065,27 +1006,200 @@ function HeroPage() {
                                             children: "Diagnostico Gratuito ➤"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 475,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "px-8 py-3.5 rounded-full border border-white/20 hover:border-[#ff8d2b]/50 text-white/60 hover:text-white font-semibold transition-all cursor-pointer bg-transparent",
-                                            children: "Conocer Consalud"
+                                            lineNumber: 533,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 529,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, "slide-consalud", true, {
+                                fileName: "[project]/src/views/HeroPage.tsx",
+                                lineNumber: 493,
+                                columnNumber: 15
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                className: "max-w-6xl mx-auto px-8 w-full",
+                                initial: {
+                                    opacity: 0,
+                                    x: 40
+                                },
+                                animate: {
+                                    opacity: 1,
+                                    x: 0
+                                },
+                                exit: {
+                                    opacity: 0,
+                                    x: -40
+                                },
+                                transition: {
+                                    duration: 0.55,
+                                    ease: [
+                                        0.23,
+                                        1,
+                                        0.32,
+                                        1
+                                    ]
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        initial: {
+                                            opacity: 0,
+                                            y: 16
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.10,
+                                            duration: 0.5
+                                        },
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8",
+                                            children: "Plataforma Tecnológica SST · IA & Visión Computacional"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 481,
-                                            columnNumber: 15
+                                            lineNumber: 555,
+                                            columnNumber: 19
                                         }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 471,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 550,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                        className: "font-extrabold leading-[0.90] mb-10",
+                                        style: {
+                                            fontSize: "clamp(52px, 8vw, 100px)"
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].span, {
+                                                className: "block",
+                                                initial: {
+                                                    opacity: 0,
+                                                    y: 20
+                                                },
+                                                animate: {
+                                                    opacity: 1,
+                                                    y: 0
+                                                },
+                                                transition: {
+                                                    delay: 0.20,
+                                                    duration: 0.55
+                                                },
+                                                children: "Vigía"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 561,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].span, {
+                                                className: "block text-transparent bg-clip-text",
+                                                style: {
+                                                    backgroundImage: "linear-gradient(90deg, #ff8d2b 0%, #0546f2 100%)"
+                                                },
+                                                initial: {
+                                                    opacity: 0,
+                                                    y: 20
+                                                },
+                                                animate: {
+                                                    opacity: 1,
+                                                    y: 0
+                                                },
+                                                transition: {
+                                                    delay: 0.30,
+                                                    duration: 0.55
+                                                },
+                                                children: "Salud Inteligente"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 569,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 560,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
+                                        className: "text-xl text-white/45 max-w-lg leading-relaxed mb-12",
+                                        initial: {
+                                            opacity: 0,
+                                            y: 16
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.40,
+                                            duration: 0.55
+                                        },
+                                        children: "Vigilancia laboral en tiempo real mediante IA, cámaras y sensores. Detecta riesgos, notifica al instante y genera planes de acción correctivos."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 580,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                        className: "flex flex-col sm:flex-row gap-4",
+                                        style: {
+                                            pointerEvents: heroO > 0.05 ? "auto" : "none"
+                                        },
+                                        initial: {
+                                            opacity: 0,
+                                            y: 16
+                                        },
+                                        animate: {
+                                            opacity: 1,
+                                            y: 0
+                                        },
+                                        transition: {
+                                            delay: 0.50,
+                                            duration: 0.55
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                className: "px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none",
+                                                style: {
+                                                    background: "#ff8d2b"
+                                                },
+                                                children: "Reserva tu demo ➤"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 597,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                className: "px-8 py-3.5 rounded-full font-semibold text-white hover:bg-white/10 transition-all cursor-pointer",
+                                                style: {
+                                                    background: "transparent",
+                                                    border: "1.5px solid rgba(255,255,255,0.25)"
+                                                },
+                                                children: "Conocer más"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 603,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 590,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, "slide-vigia", true, {
+                                fileName: "[project]/src/views/HeroPage.tsx",
+                                lineNumber: 542,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 441,
+                            lineNumber: 491,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1094,12 +1208,34 @@ function HeroPage() {
                                 opacity: hCue
                             },
                             children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex gap-2 mb-1",
+                                    children: [
+                                        0,
+                                        1
+                                    ].map((i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "rounded-full transition-all duration-500",
+                                            style: {
+                                                width: heroSlide === i ? 22 : 6,
+                                                height: 6,
+                                                background: heroSlide === i ? "#ff8d2b" : "rgba(255,255,255,0.25)"
+                                            }
+                                        }, i, false, {
+                                            fileName: "[project]/src/views/HeroPage.tsx",
+                                            lineNumber: 621,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                    lineNumber: 619,
+                                    columnNumber: 13
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "tracking-[0.3em] uppercase text-[11px] font-semibold text-white/40",
                                     children: "Scroll"
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 491,
+                                    lineNumber: 632,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1119,12 +1255,12 @@ function HeroPage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 497,
+                                        lineNumber: 637,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 493,
+                                    lineNumber: 633,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
@@ -1137,19 +1273,19 @@ function HeroPage() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 502,
+                                    lineNumber: 642,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 487,
+                            lineNumber: 614,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 440,
+                    lineNumber: 489,
                     columnNumber: 24
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1169,12 +1305,12 @@ function HeroPage() {
                                             children: "Quiénes somos"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 512,
+                                            lineNumber: 652,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 511,
+                                        lineNumber: 651,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1184,12 +1320,12 @@ function HeroPage() {
                                             children: "Expertos que simplifican la normativa SST"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 515,
+                                            lineNumber: 655,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 514,
+                                        lineNumber: 654,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1199,12 +1335,12 @@ function HeroPage() {
                                             children: "Desde 1998 en Bogotá, acompañamos a empresas colombianas con un modelo a la medida equipo interdisciplinar, respaldo académico y cero improvisaciones."
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 520,
+                                            lineNumber: 660,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 519,
+                                        lineNumber: 659,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1216,16 +1352,16 @@ function HeroPage() {
                                             className: "absolute top-0 left-0 h-full",
                                             style: {
                                                 width: `${nLine * 100}%`,
-                                                background: "linear-gradient(90deg, #ff8d2b, #0546f2)"
+                                                background: "linear-gradient(90deg, #ff8d2b, #0546f2,  #f5f3e6 )"
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 528,
+                                            lineNumber: 668,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 527,
+                                        lineNumber: 667,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1254,7 +1390,7 @@ function HeroPage() {
                                                         children: val
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 541,
+                                                        lineNumber: 681,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1262,24 +1398,24 @@ function HeroPage() {
                                                         children: label
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 542,
+                                                        lineNumber: 682,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, label, true, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 540,
+                                                lineNumber: 680,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 534,
+                                        lineNumber: 674,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 510,
+                                lineNumber: 650,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1291,12 +1427,12 @@ function HeroPage() {
                                             children: "Nuestros valores"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 550,
+                                            lineNumber: 690,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 549,
+                                        lineNumber: 689,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1305,11 +1441,12 @@ function HeroPage() {
                                             const hov = hoveredVal === i;
                                             const scT = sc(nC[i]);
                                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-5 rounded-2xl border pointer-events-auto",
+                                                className: "p-5 rounded-2xl border",
                                                 onMouseEnter: ()=>setHoveredVal(i),
                                                 onMouseLeave: ()=>setHoveredVal(null),
                                                 style: {
                                                     ...scT,
+                                                    pointerEvents: nosO > 0.05 ? "auto" : "none",
                                                     background: "rgba(3,8,28,0.92)",
                                                     borderColor: hov ? `${v.accent}55` : `${v.accent}25`,
                                                     boxShadow: hov ? `0 8px 36px ${v.accent}40` : "none",
@@ -1328,12 +1465,12 @@ function HeroPage() {
                                                             strokeWidth: 1.5
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                                            lineNumber: 573,
+                                                            lineNumber: 714,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 572,
+                                                        lineNumber: 713,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1344,7 +1481,7 @@ function HeroPage() {
                                                         children: String(i + 1).padStart(2, "0")
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 575,
+                                                        lineNumber: 716,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1355,7 +1492,7 @@ function HeroPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 581,
+                                                        lineNumber: 722,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1363,7 +1500,7 @@ function HeroPage() {
                                                         children: v.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 582,
+                                                        lineNumber: 723,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1371,36 +1508,36 @@ function HeroPage() {
                                                         children: v.desc
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 583,
+                                                        lineNumber: 724,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, v.name, true, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 557,
+                                                lineNumber: 697,
                                                 columnNumber: 21
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 552,
+                                        lineNumber: 692,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 548,
+                                lineNumber: 688,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 508,
+                        lineNumber: 648,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 507,
+                    lineNumber: 647,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1419,12 +1556,12 @@ function HeroPage() {
                                         children: "Lo que hacemos"
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 598,
+                                        lineNumber: 739,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 597,
+                                    lineNumber: 738,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1434,18 +1571,18 @@ function HeroPage() {
                                         children: "Nuestros servicios"
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 601,
+                                        lineNumber: 742,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 600,
+                                    lineNumber: 741,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 596,
+                            lineNumber: 737,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1462,19 +1599,19 @@ function HeroPage() {
                                         children: " / "
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 609,
+                                        lineNumber: 750,
                                         columnNumber: 15
                                     }, this),
                                     String(SERVICIOS.length).padStart(2, "0")
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 607,
+                                lineNumber: 748,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 606,
+                            lineNumber: 747,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1514,12 +1651,12 @@ function HeroPage() {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                                            lineNumber: 641,
+                                                            lineNumber: 782,
                                                             columnNumber: 36
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 640,
+                                                        lineNumber: 781,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1531,7 +1668,7 @@ function HeroPage() {
                                                         children: String(i + 1).padStart(2, "0")
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 643,
+                                                        lineNumber: 784,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1542,7 +1679,7 @@ function HeroPage() {
                                                         }
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 649,
+                                                        lineNumber: 790,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1550,7 +1687,7 @@ function HeroPage() {
                                                         children: s.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 650,
+                                                        lineNumber: 791,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1561,7 +1698,7 @@ function HeroPage() {
                                                         children: s.norm
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 651,
+                                                        lineNumber: 792,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1569,13 +1706,13 @@ function HeroPage() {
                                                         children: s.desc
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 654,
+                                                        lineNumber: 795,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 636,
+                                                lineNumber: 777,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1586,7 +1723,7 @@ function HeroPage() {
                                                         children: "Incluye"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 659,
+                                                        lineNumber: 800,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1601,42 +1738,42 @@ function HeroPage() {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                                        lineNumber: 663,
+                                                                        lineNumber: 804,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     b
                                                                 ]
                                                             }, b, true, {
                                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                                lineNumber: 662,
+                                                                lineNumber: 803,
                                                                 columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                                        lineNumber: 660,
+                                                        lineNumber: 801,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 658,
+                                                lineNumber: 799,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 631,
+                                        lineNumber: 772,
                                         columnNumber: 19
                                     }, this)
                                 }, s.title, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 621,
+                                    lineNumber: 762,
                                     columnNumber: 17
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 615,
+                            lineNumber: 756,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1650,18 +1787,18 @@ function HeroPage() {
                                     }
                                 }, i, false, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 678,
+                                    lineNumber: 819,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/views/HeroPage.tsx",
-                            lineNumber: 676,
+                            lineNumber: 817,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 593,
+                    lineNumber: 734,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1682,12 +1819,12 @@ function HeroPage() {
                                             children: "Nuestras marcas"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 697,
+                                            lineNumber: 838,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 696,
+                                        lineNumber: 837,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1697,56 +1834,54 @@ function HeroPage() {
                                             children: "Un universo de soluciones"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 700,
+                                            lineNumber: 841,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 699,
+                                        lineNumber: 840,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 695,
+                                lineNumber: 836,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex justify-center",
                                 style: {
-                                    pointerEvents: "auto"
+                                    pointerEvents: marcO > 0.05 ? "auto" : "none"
                                 },
                                 children: MARCAS.map((marca, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        style: {
-                                            ...i === 0 ? lft(mC[0]) : rgt(mC[1]),
-                                            pointerEvents: "auto"
-                                        },
+                                        style: i === 0 ? lft(mC[0]) : rgt(mC[1]),
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(BrandCard, {
-                                            ...marca
+                                            ...marca,
+                                            onExpand: ()=>setActiveMarca(i)
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 707,
+                                            lineNumber: 848,
                                             columnNumber: 19
                                         }, this)
                                     }, marca.name, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 706,
+                                        lineNumber: 847,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 704,
+                                lineNumber: 845,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 694,
+                        lineNumber: 835,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 693,
+                    lineNumber: 834,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1767,12 +1902,12 @@ function HeroPage() {
                                             children: "Trabajemos juntos"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 721,
+                                            lineNumber: 862,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 720,
+                                        lineNumber: 861,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1782,23 +1917,26 @@ function HeroPage() {
                                             children: "Protege a tu equipo hoy"
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 726,
+                                            lineNumber: 867,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 725,
+                                        lineNumber: 866,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 719,
+                                lineNumber: 860,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "pointer-events-auto",
-                                style: up(cForm, 24),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                                onSubmit: handleSubmit,
+                                style: {
+                                    ...up(cForm, 24),
+                                    pointerEvents: contO > 0.05 ? "auto" : "none"
+                                },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "rounded-2xl p-5 md:p-7 border",
                                     style: {
@@ -1812,83 +1950,146 @@ function HeroPage() {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     className: iCls,
                                                     style: iSty,
-                                                    placeholder: "Nombre completo"
+                                                    placeholder: "Nombre completo *",
+                                                    value: formData.nombre,
+                                                    onChange: setField("nombre"),
+                                                    required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 735,
+                                                    lineNumber: 876,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     className: iCls,
                                                     style: iSty,
-                                                    placeholder: "Empresa"
+                                                    placeholder: "Empresa",
+                                                    value: formData.empresa,
+                                                    onChange: setField("empresa")
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 736,
+                                                    lineNumber: 877,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     className: iCls,
                                                     style: iSty,
-                                                    placeholder: "Cargo"
+                                                    placeholder: "Cargo",
+                                                    value: formData.cargo,
+                                                    onChange: setField("cargo")
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 737,
+                                                    lineNumber: 878,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     className: iCls,
                                                     style: iSty,
                                                     placeholder: "Teléfono",
-                                                    type: "tel"
+                                                    type: "tel",
+                                                    value: formData.telefono,
+                                                    onChange: setField("telefono")
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 738,
+                                                    lineNumber: 879,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     className: iCls,
                                                     style: iSty,
-                                                    placeholder: "Email",
-                                                    type: "email"
+                                                    placeholder: "Email *",
+                                                    type: "email",
+                                                    value: formData.email,
+                                                    onChange: setField("email"),
+                                                    required: true
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 739,
+                                                    lineNumber: 880,
                                                     columnNumber: 19
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                    className: iCls,
-                                                    style: {
-                                                        ...iSty,
-                                                        color: "rgba(255,255,255,0.40)"
-                                                    },
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "relative",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                            value: "",
-                                                            children: "Servicio de interés"
-                                                        }, void 0, false, {
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            type: "button",
+                                                            onClick: (e)=>{
+                                                                e.stopPropagation();
+                                                                setServicioOpen((o)=>!o);
+                                                            },
+                                                            className: iCls + " flex items-center justify-between text-left",
+                                                            style: {
+                                                                ...iSty,
+                                                                color: servicioSel ? "white" : "rgba(255,255,255,0.25)"
+                                                            },
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    children: servicioSel || "Servicio de interés"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                                    lineNumber: 889,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
+                                                                    size: 14,
+                                                                    style: {
+                                                                        opacity: 0.4,
+                                                                        flexShrink: 0,
+                                                                        transform: servicioOpen ? "rotate(180deg)" : "none",
+                                                                        transition: "transform 0.2s"
+                                                                    }
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                                    lineNumber: 890,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
                                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                                            lineNumber: 741,
+                                                            lineNumber: 883,
                                                             columnNumber: 21
                                                         }, this),
-                                                        SERVICIOS.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: s.title,
-                                                                children: s.title
-                                                            }, s.title, false, {
-                                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                                lineNumber: 743,
-                                                                columnNumber: 23
-                                                            }, this))
+                                                        servicioOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "absolute left-0 right-0 z-50 rounded-xl border overflow-hidden",
+                                                            style: {
+                                                                top: "calc(100% + 4px)",
+                                                                background: "rgba(3,8,28,0.97)",
+                                                                borderColor: "rgba(255,141,43,0.25)",
+                                                                boxShadow: "0 12px 40px rgba(0,0,0,0.7)"
+                                                            },
+                                                            children: SERVICIOS.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                    type: "button",
+                                                                    onClick: (e)=>{
+                                                                        e.stopPropagation();
+                                                                        setServicioSel(s.title);
+                                                                        setServicioOpen(false);
+                                                                    },
+                                                                    className: "w-full text-left px-3 py-2.5 text-sm transition-colors",
+                                                                    style: {
+                                                                        color: servicioSel === s.title ? "#ff8d2b" : "rgba(255,255,255,0.75)",
+                                                                        background: servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent"
+                                                                    },
+                                                                    onMouseEnter: (e)=>e.currentTarget.style.background = "rgba(255,255,255,0.06)",
+                                                                    onMouseLeave: (e)=>e.currentTarget.style.background = servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent",
+                                                                    children: s.title
+                                                                }, s.title, false, {
+                                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                                    lineNumber: 898,
+                                                                    columnNumber: 27
+                                                                }, this))
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/views/HeroPage.tsx",
+                                                            lineNumber: 893,
+                                                            columnNumber: 23
+                                                        }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 740,
+                                                    lineNumber: 882,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 734,
+                                            lineNumber: 875,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1899,7 +2100,7 @@ function HeroPage() {
                                                     children: "Número de empleados"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 749,
+                                                    lineNumber: 919,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1921,18 +2122,18 @@ function HeroPage() {
                                                             children: r
                                                         }, r, false, {
                                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                                            lineNumber: 754,
+                                                            lineNumber: 924,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                                    lineNumber: 752,
+                                                    lineNumber: 922,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 748,
+                                            lineNumber: 918,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1942,40 +2143,73 @@ function HeroPage() {
                                                 resize: "none"
                                             },
                                             rows: 3,
-                                            placeholder: "Mensaje o consulta (opcional)"
+                                            placeholder: "Mensaje o consulta (opcional)",
+                                            value: formData.mensaje,
+                                            onChange: setField("mensaje")
                                         }, void 0, false, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 771,
+                                            lineNumber: 941,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex justify-end mt-3",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: "px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all",
-                                                style: {
-                                                    background: "#ff8d2b",
-                                                    color: "#05123e"
-                                                },
-                                                children: "Enviar consulta →"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 779,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            className: "flex items-center justify-between mt-3",
+                                            children: [
+                                                formStatus === "success" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm font-semibold",
+                                                    style: {
+                                                        color: "#2ecc71"
+                                                    },
+                                                    children: "¡Consulta enviada! Te contactamos pronto."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 952,
+                                                    columnNumber: 21
+                                                }, this),
+                                                formStatus === "error" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm font-semibold",
+                                                    style: {
+                                                        color: "#e74c3c"
+                                                    },
+                                                    children: "Error al enviar. Intenta de nuevo."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 957,
+                                                    columnNumber: 21
+                                                }, this),
+                                                formStatus !== "success" && formStatus !== "error" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {}, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 961,
+                                                    columnNumber: 74
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    type: "submit",
+                                                    disabled: formStatus === "loading",
+                                                    className: "px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed",
+                                                    style: {
+                                                        background: "#ff8d2b",
+                                                        color: "#05123e"
+                                                    },
+                                                    children: formStatus === "loading" ? "Enviando…" : "Enviar consulta →"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                    lineNumber: 962,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/views/HeroPage.tsx",
-                                            lineNumber: 778,
+                                            lineNumber: 950,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/views/HeroPage.tsx",
-                                    lineNumber: 732,
+                                    lineNumber: 873,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 731,
+                                lineNumber: 872,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1993,7 +2227,7 @@ function HeroPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 797,
+                                                lineNumber: 982,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2004,7 +2238,7 @@ function HeroPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 798,
+                                                lineNumber: 983,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2012,44 +2246,670 @@ function HeroPage() {
                                                 children: value
                                             }, void 0, false, {
                                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                                lineNumber: 799,
+                                                lineNumber: 984,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, label, true, {
                                         fileName: "[project]/src/views/HeroPage.tsx",
-                                        lineNumber: 796,
+                                        lineNumber: 981,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/views/HeroPage.tsx",
-                                lineNumber: 791,
+                                lineNumber: 976,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/views/HeroPage.tsx",
-                        lineNumber: 716,
+                        lineNumber: 857,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/views/HeroPage.tsx",
-                    lineNumber: 715,
+                    lineNumber: 856,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                    children: activeMarca !== null && (()=>{
+                        const marca = MARCAS[activeMarca];
+                        const canPrev = activeMarca > 0;
+                        const canNext = activeMarca < MARCAS.length - 1;
+                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                            initial: {
+                                opacity: 0
+                            },
+                            animate: {
+                                opacity: 1
+                            },
+                            exit: {
+                                opacity: 0
+                            },
+                            transition: {
+                                duration: 0.25
+                            },
+                            style: {
+                                position: "absolute",
+                                inset: 0,
+                                zIndex: 100,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                background: "rgba(2,6,22,0.88)",
+                                backdropFilter: "blur(14px)",
+                                pointerEvents: "auto"
+                            },
+                            onClick: ()=>setActiveMarca(null),
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$framer$2d$motion$40$12$2e$39$2e$0_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                initial: {
+                                    opacity: 0,
+                                    scale: 0.95,
+                                    y: 12
+                                },
+                                animate: {
+                                    opacity: 1,
+                                    scale: 1,
+                                    y: 0
+                                },
+                                exit: {
+                                    opacity: 0,
+                                    scale: 0.95,
+                                    y: 8
+                                },
+                                transition: {
+                                    duration: 0.3,
+                                    ease: [
+                                        0.34,
+                                        1.2,
+                                        0.64,
+                                        1
+                                    ]
+                                },
+                                style: {
+                                    width: "min(900px, 92vw)",
+                                    height: "min(520px, 88vh)",
+                                    display: "grid",
+                                    gridTemplateColumns: "2fr 3fr",
+                                    borderRadius: 24,
+                                    overflow: "hidden",
+                                    border: `1px solid ${marca.accent}33`,
+                                    boxShadow: `0 24px 80px rgba(0,0,0,0.6), 0 0 60px ${marca.accent}12`
+                                },
+                                onClick: (e)=>e.stopPropagation(),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            background: "rgba(2,6,22,1)",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            padding: 32,
+                                            position: "relative",
+                                            borderRight: `1px solid ${marca.accent}22`
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    position: "absolute",
+                                                    top: 20,
+                                                    left: 20,
+                                                    fontSize: 9,
+                                                    fontWeight: 700,
+                                                    letterSpacing: "0.18em",
+                                                    textTransform: "uppercase",
+                                                    color: marca.accent,
+                                                    border: `1px solid ${marca.accent}44`,
+                                                    borderRadius: 6,
+                                                    padding: "4px 8px"
+                                                },
+                                                children: marca.badge ?? "TECNOLOGÍA SST"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1040,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                style: {
+                                                    position: "absolute",
+                                                    top: 14,
+                                                    right: 14,
+                                                    background: "rgba(255,255,255,0.04)",
+                                                    border: "1px solid rgba(255,255,255,0.1)",
+                                                    borderRadius: 8,
+                                                    padding: "5px 10px",
+                                                    color: "rgba(255,255,255,0.35)",
+                                                    fontSize: 11,
+                                                    cursor: "pointer",
+                                                    lineHeight: 1
+                                                },
+                                                onClick: ()=>setActiveMarca(null),
+                                                children: "✕"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1051,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                src: marca.logo,
+                                                alt: marca.name,
+                                                style: {
+                                                    height: 130,
+                                                    objectFit: "contain",
+                                                    marginBottom: 12
+                                                }
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1064,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    position: "absolute",
+                                                    bottom: 20,
+                                                    left: 0,
+                                                    right: 0,
+                                                    padding: "0 16px"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: "flex",
+                                                            gap: 6,
+                                                            justifyContent: "center",
+                                                            flexWrap: "wrap",
+                                                            marginBottom: 10
+                                                        },
+                                                        children: MARCAS.map((m, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                style: {
+                                                                    fontSize: 10,
+                                                                    fontWeight: 700,
+                                                                    letterSpacing: "0.1em",
+                                                                    textTransform: "uppercase",
+                                                                    padding: "5px 12px",
+                                                                    borderRadius: 20,
+                                                                    border: "1px solid",
+                                                                    borderColor: i === activeMarca ? marca.accent : "rgba(255,255,255,0.1)",
+                                                                    background: i === activeMarca ? `${marca.accent}22` : "transparent",
+                                                                    color: i === activeMarca ? marca.accent : "rgba(255,255,255,0.3)",
+                                                                    cursor: "pointer"
+                                                                },
+                                                                onClick: ()=>setActiveMarca(i),
+                                                                children: m.name
+                                                            }, m.name, false, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1073,
+                                                                columnNumber: 27
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1071,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: "flex",
+                                                            justifyContent: "center",
+                                                            gap: 8
+                                                        },
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                style: {
+                                                                    width: 32,
+                                                                    height: 32,
+                                                                    borderRadius: "50%",
+                                                                    border: "1px solid rgba(255,255,255,0.1)",
+                                                                    background: canPrev ? "rgba(255,255,255,0.06)" : "transparent",
+                                                                    color: canPrev ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
+                                                                    cursor: canPrev ? "pointer" : "default",
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center"
+                                                                },
+                                                                onClick: ()=>canPrev && setActiveMarca(activeMarca - 1),
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__["ChevronLeft"], {
+                                                                    size: 16
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                                    lineNumber: 1102,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1091,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                style: {
+                                                                    width: 32,
+                                                                    height: 32,
+                                                                    borderRadius: "50%",
+                                                                    border: "1px solid rgba(255,255,255,0.1)",
+                                                                    background: canNext ? "rgba(255,255,255,0.06)" : "transparent",
+                                                                    color: canNext ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
+                                                                    cursor: canNext ? "pointer" : "default",
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center"
+                                                                },
+                                                                onClick: ()=>canNext && setActiveMarca(activeMarca + 1),
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
+                                                                    size: 16
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/views/HeroPage.tsx",
+                                                                    lineNumber: 1115,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1104,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1090,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1070,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 1032,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        style: {
+                                            background: "rgba(5,14,40,0.98)",
+                                            padding: "28px 32px",
+                                            overflowY: "auto",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            gap: 16
+                                        },
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                style: {
+                                                    fontSize: 9,
+                                                    fontWeight: 700,
+                                                    letterSpacing: "0.2em",
+                                                    textTransform: "uppercase",
+                                                    color: marca.accent,
+                                                    margin: 0
+                                                },
+                                                children: "ENTIDAD TECNOLÓGICA SST COLOMBIA"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1128,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                        style: {
+                                                            fontSize: 26,
+                                                            fontWeight: 800,
+                                                            color: "white",
+                                                            margin: "0 0 4px",
+                                                            lineHeight: 1.2
+                                                        },
+                                                        children: marca.fullName ?? marca.name
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1133,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: 10,
+                                                            fontWeight: 600,
+                                                            color: "rgba(255,255,255,0.4)",
+                                                            margin: 0,
+                                                            letterSpacing: "0.1em"
+                                                        },
+                                                        children: [
+                                                            "ROL PRINCIPAL: ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                style: {
+                                                                    color: "rgba(255,255,255,0.65)"
+                                                                },
+                                                                children: marca.role ?? marca.tagline.toUpperCase()
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1138,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1136,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1132,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    background: "rgba(255,255,255,0.03)",
+                                                    border: "1px solid rgba(255,255,255,0.07)",
+                                                    borderRadius: 12,
+                                                    padding: "14px 16px"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: 9,
+                                                            fontWeight: 700,
+                                                            letterSpacing: "0.2em",
+                                                            textTransform: "uppercase",
+                                                            color: "rgba(255,255,255,0.25)",
+                                                            margin: "0 0 6px"
+                                                        },
+                                                        children: "VISIÓN Y PROPÓSITO"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1149,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: 12,
+                                                            color: "rgba(255,255,255,0.6)",
+                                                            lineHeight: 1.6,
+                                                            margin: 0
+                                                        },
+                                                        children: marca.description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1152,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1144,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: 9,
+                                                            fontWeight: 700,
+                                                            letterSpacing: "0.2em",
+                                                            textTransform: "uppercase",
+                                                            color: marca.accent,
+                                                            margin: "0 0 10px"
+                                                        },
+                                                        children: "CARACTERÍSTICAS CLAVE"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1158,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: "grid",
+                                                            gridTemplateColumns: "1fr 1fr",
+                                                            gap: 6
+                                                        },
+                                                        children: marca.features.map((f)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: "flex",
+                                                                    alignItems: "flex-start",
+                                                                    gap: 8
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$1$2e$16$2e$0_react$40$19$2e$2$2e$6$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$check$2d$big$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckSquare$3e$__["CheckSquare"], {
+                                                                        size: 13,
+                                                                        style: {
+                                                                            color: marca.accent,
+                                                                            flexShrink: 0,
+                                                                            marginTop: 1
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1164,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            fontSize: 11,
+                                                                            color: "rgba(255,255,255,0.6)",
+                                                                            lineHeight: 1.4
+                                                                        },
+                                                                        children: f.title
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1165,
+                                                                        columnNumber: 29
+                                                                    }, this)
+                                                                ]
+                                                            }, f.title, true, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1163,
+                                                                columnNumber: 27
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1161,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1157,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        style: {
+                                                            fontSize: 9,
+                                                            fontWeight: 700,
+                                                            letterSpacing: "0.2em",
+                                                            textTransform: "uppercase",
+                                                            color: marca.accent,
+                                                            margin: "0 0 10px"
+                                                        },
+                                                        children: "MÓDULOS & CAPACIDADES"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1172,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        style: {
+                                                            display: "flex",
+                                                            flexDirection: "column",
+                                                            gap: 7
+                                                        },
+                                                        children: marca.extras.map((ex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    gap: 8
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            color: marca.accent,
+                                                                            fontSize: 10
+                                                                        },
+                                                                        children: "◆"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1178,
+                                                                        columnNumber: 29
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            fontSize: 11,
+                                                                            color: "rgba(255,255,255,0.55)"
+                                                                        },
+                                                                        children: ex
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1179,
+                                                                        columnNumber: 29
+                                                                    }, this)
+                                                                ]
+                                                            }, ex, true, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1177,
+                                                                columnNumber: 27
+                                                            }, this))
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1175,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1171,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                style: {
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "space-between",
+                                                    marginTop: "auto",
+                                                    paddingTop: 12,
+                                                    borderTop: "1px solid rgba(255,255,255,0.06)"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                style: {
+                                                                    fontSize: 9,
+                                                                    fontWeight: 700,
+                                                                    letterSpacing: "0.2em",
+                                                                    textTransform: "uppercase",
+                                                                    color: "rgba(255,255,255,0.25)",
+                                                                    margin: "0 0 4px"
+                                                                },
+                                                                children: "ESTADO ALIANZA"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1191,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                style: {
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    gap: 6
+                                                                },
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        style: {
+                                                                            width: 7,
+                                                                            height: 7,
+                                                                            borderRadius: "50%",
+                                                                            background: "#2ecc71"
+                                                                        }
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1195,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        style: {
+                                                                            fontSize: 12,
+                                                                            fontWeight: 600,
+                                                                            color: "#2ecc71"
+                                                                        },
+                                                                        children: marca.status ?? "Activa & Disponible"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                                        lineNumber: 1196,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                                lineNumber: 1194,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1190,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        style: {
+                                                            padding: "10px 20px",
+                                                            borderRadius: 20,
+                                                            background: "transparent",
+                                                            border: `1px solid ${marca.accent}`,
+                                                            color: marca.accent,
+                                                            fontSize: 11,
+                                                            fontWeight: 700,
+                                                            letterSpacing: "0.1em",
+                                                            textTransform: "uppercase",
+                                                            cursor: "pointer"
+                                                        },
+                                                        children: "CONECTAR CONVENIO →"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                                        lineNumber: 1201,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/views/HeroPage.tsx",
+                                                lineNumber: 1185,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/views/HeroPage.tsx",
+                                        lineNumber: 1122,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/views/HeroPage.tsx",
+                                lineNumber: 1014,
+                                columnNumber: 17
+                            }, this)
+                        }, "marca-overlay", false, {
+                            fileName: "[project]/src/views/HeroPage.tsx",
+                            lineNumber: 999,
+                            columnNumber: 15
+                        }, this);
+                    })()
+                }, void 0, false, {
+                    fileName: "[project]/src/views/HeroPage.tsx",
+                    lineNumber: 993,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/views/HeroPage.tsx",
-            lineNumber: 390,
+            lineNumber: 439,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/views/HeroPage.tsx",
-        lineNumber: 389,
+        lineNumber: 438,
         columnNumber: 5
     }, this);
 }
-_s1(HeroPage, "76EzKnfHI1GIjMCbA2LO0vdISlo=", false, function() {
+_s1(HeroPage, "FG/lR05EAjhS6Pri9dLEHV3zZfA=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useScrollProgress$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollProgress"]
     ];
