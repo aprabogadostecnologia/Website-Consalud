@@ -112,25 +112,136 @@ const SERVICIOS = [
   },
 ];
 
-const MARCAS = [
-  { name: "VIGIA", logo: "/vigia.png", accent: "#ff8d2b" },
+type Marca = {
+  name: string;
+  logo: string;
+  accent: string;
+  tagline: string;
+  description: string;
+  features: { icon: React.ReactNode; title: string; desc: string }[];
+  extras: string[];
+};
+
+const MARCAS: Marca[] = [
+  {
+    name: "VIGIA",
+    logo: "/vigia.png",
+    accent: "#ff8d2b",
+    tagline: "Con inteligencia artificial",
+    description: "Utiliza cámaras y sensores para detectar situaciones de riesgo, notificar al usuario y desarrollar planes de acción correctivos en tiempo real y a futuro.",
+    features: [
+      { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Identifica 6 EPP: cascos, guantes, gafas, tapaoídos, tapabocas y chalecos reflectivos." },
+      { icon: <AlertTriangle size={16} />, title: "Control de Distracciones", desc: "Detecta teléfonos en manos del personal y genera alertas visuales inmediatas." },
+      { icon: <Eye size={16} />, title: "Seguimiento Ocular 3D", desc: "Determina si un trabajador opera maquinaria mientras usa su celular." },
+      { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificaciones por email con captura de la infracción y app exclusiva del cliente." },
+    ],
+    extras: ["Conteo de producción en tiempo real", "Análisis de ergonomía y postura", "Detección de emergencias y accidentes"],
+  },
 ];
 
-function BrandCard({ name, logo, accent, style }: { name: string; logo: string; accent: string; style?: React.CSSProperties }) {
+function BrandCard({ name, logo, accent, tagline, description, features, extras }: Marca) {
+  const [flipped, setFlipped] = useState(false);
+
   return (
     <div
-      className="p-10 rounded-3xl border pointer-events-auto cursor-pointer select-none"
-      style={{ borderColor: `${accent}33`, background: "rgba(5,18,62,0.92)", ...style }}
+      style={{
+        width: 420,
+        minHeight: 520,
+        position: "relative",
+        cursor: "pointer",
+        pointerEvents: "auto",
+        userSelect: "none",
+      }}
+      onClick={() => setFlipped(f => !f)}
     >
-      <div className="flex flex-col items-center gap-6">
+      {/* ── Frente ── */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: 24,
+          border: `1px solid ${accent}33`,
+          background: "rgba(5,18,62,0.92)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 24,
+          padding: 40,
+          transition: "opacity 0.3s",
+          opacity: flipped ? 0 : 1,
+          pointerEvents: flipped ? "none" : "auto",
+          zIndex: flipped ? 0 : 1,
+        }}
+      >
         <div className="brand-logo-wrap">
           <div className="brand-logo-spin">
-            <img src={logo} alt={name} className="h-20 object-contain" draggable={false} />
+            <img src={logo} alt={name} style={{ height: 110, objectFit: "contain" }} draggable={false} />
           </div>
         </div>
-        <h3 className="text-2xl font-bold text-white tracking-wide">{name}</h3>
-        <div className="h-0.5" style={{ width: 36, background: accent }} />
-        <span className="text-sm font-semibold" style={{ color: accent }}>Explorar →</span>
+        <div style={{ textAlign: "center" }}>
+          <h3 style={{ fontSize: 28, fontWeight: 800, color: "white", margin: 0, letterSpacing: 3 }}>{name}</h3>
+          <p style={{ fontSize: 13, fontWeight: 600, color: accent, margin: "6px 0 0" }}>{tagline}</p>
+        </div>
+        <div style={{ height: 2, width: 36, background: accent }} />
+        <span style={{ fontSize: 14, fontWeight: 600, color: accent }}>Ver más →</span>
+      </div>
+
+      {/* ── Reverso ── */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: 24,
+          border: `1px solid ${accent}33`,
+          background: "rgba(3,10,38,0.97)",
+          padding: 24,
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+          transition: flipped ? "opacity 0.3s 0.15s" : "opacity 0.2s",
+          opacity: flipped ? 1 : 0,
+          pointerEvents: flipped ? "auto" : "none",
+          zIndex: flipped ? 1 : 0,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+          <div>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: "white", margin: 0 }}>{name}</h3>
+            <p style={{ fontSize: 10, fontWeight: 600, color: accent, margin: "2px 0 0", textTransform: "uppercase", letterSpacing: "0.1em" }}>{tagline}</p>
+          </div>
+          <button
+            style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, cursor: "pointer", background: "none", border: "none", pointerEvents: "auto" }}
+            onClick={e => { e.stopPropagation(); setFlipped(false); }}
+          >← Volver</button>
+        </div>
+
+        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, lineHeight: 1.6, margin: 0 }}>{description}</p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          {features.map(({ icon, title, desc }) => (
+            <div key={title} style={{ borderRadius: 12, padding: 12, background: "rgba(255,141,43,0.07)", border: `1px solid ${accent}22` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4, color: accent }}>
+                {icon}
+                <span style={{ fontSize: 11, fontWeight: 700, color: "white" }}>{title}</span>
+              </div>
+              <p style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", lineHeight: 1.5, margin: 0 }}>{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <p style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: accent, marginBottom: 8, margin: "0 0 8px" }}>Módulos adicionales</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            {extras.map(ex => (
+              <div key={ex} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 4, height: 4, borderRadius: "50%", background: accent, flexShrink: 0 }} />
+                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{ex}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -590,15 +701,11 @@ export default function HeroPage() {
               </div>
             </div>
 
-            <div className="flex justify-center">
-              {MARCAS.map(({ name, logo, accent }, i) => (
-                <BrandCard
-                  key={name}
-                  name={name}
-                  logo={logo}
-                  accent={accent}
-                  style={i === 0 ? lft(mC[0]) : rgt(mC[1])}
-                />
+            <div className="flex justify-center" style={{ pointerEvents: "auto" }}>
+              {MARCAS.map((marca, i) => (
+                <div key={marca.name} style={{ ...(i === 0 ? lft(mC[0]) : rgt(mC[1])), pointerEvents: "auto" }}>
+                  <BrandCard {...marca} />
+                </div>
               ))}
             </div>
           </div>
