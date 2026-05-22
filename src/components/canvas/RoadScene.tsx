@@ -419,8 +419,8 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
       return texture;
     };
 
-    const glowTextureA = createGlowTexture('rgba(5, 18, 62, 1)'); // Electric blue
-    const glowTextureB = createGlowTexture('rgba(255, 141, 43, 1)');  // Saffron gold
+    const glowTextureA = createGlowTexture('rgba(37, 99, 235, 1)'); // Electric blue
+    const glowTextureB = createGlowTexture('rgba(256, 177, 60, 1)');  // Saffron gold
 
     const glowSpriteMatA = new THREE.SpriteMaterial({
       map: glowTextureA,
@@ -472,7 +472,11 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     // ── DISTRIBUTE LOW-POLY PINE TREES ALONG ROAD CORRIDOR ─────────────────
     const treeMtl = getMtlFileAsString();
     const treeObj = getObjFileAsString();
-    const baseTreeGroup = parseCustomObj(treeObj, treeMtl);
+    // Four foliage variants with brand palette — weighted random selection per tree
+    const baseTreeGroupA = parseCustomObj(treeObj, treeMtl, 0x0546f2); // 40% electric blue
+    const baseTreeGroupB = parseCustomObj(treeObj, treeMtl, 0xff8d2b); // 25% vibrant orange
+    const baseTreeGroupC = parseCustomObj(treeObj, treeMtl, 0xf5f3e6); // 20% soft cream
+    const baseTreeGroupD = parseCustomObj(treeObj, treeMtl, 0x05123e); // 15% navy
 
     const treeGroup = new THREE.Group();
     // Step through the path points to spawn trees with rich organic clusters
@@ -511,7 +515,9 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
               pos.y = terrainH(pos.x, pos.z, tbZn) - 0.15 * sFactor;
 
               // Instantiate a lightweight shared clone of the pine tree model
-              const tree = baseTreeGroup.clone();
+              const rCol = Math.random();
+              const srcGroup = rCol < 0.40 ? baseTreeGroupA : rCol < 0.65 ? baseTreeGroupB : rCol < 0.85 ? baseTreeGroupC : baseTreeGroupD;
+              const tree = srcGroup.clone();
               tree.position.copy(pos);
               tree.rotation.y = Math.random() * Math.PI * 2;
               tree.scale.set(sFactor, sFactor, sFactor);
@@ -907,7 +913,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
 
     // ── Lights ────────────────────────────────────────────────────────────────
     scene.add(new THREE.AmbientLight(0x081024, 6)); // Warm therapeutic ambient light
-    const dir = new THREE.DirectionalLight(0xe2b13c, 3); // Warm amber sunlight of justice
+    const dir = new THREE.DirectionalLight(0xff8d2b, 3); // Warm brand-orange solar vitality light
     dir.position.set(300, 800, -600);
     scene.add(dir);
     const cL1 = new THREE.PointLight(C.neonA, 16, 150);
@@ -952,7 +958,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
 
 
       // ── Bird Flight Timer Controls ─────────────────────────────────────────
-      const scroll  = progressRef.current;
+      const scroll  = Number.isFinite(progressRef.current) ? progressRef.current : 0;
       const roadT   = getRoadT(scroll);
       const oAlpha  = getOrbitAlpha(scroll);
       const sec     = getCurrentSection(scroll);
@@ -1152,7 +1158,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
 }
 
 // ── CUSTOM LOW-POLY OBJ & MTL PARSER FOR PINE TREES ─────────────────────────
-function parseCustomObj(objText: string, mtlText: string): THREE.Group {
+function parseCustomObj(objText: string, mtlText: string, foliageColor?: number): THREE.Group {
   const group = new THREE.Group();
 
   // 1. Parse materials
@@ -1180,13 +1186,16 @@ function parseCustomObj(objText: string, mtlText: string): THREE.Group {
 
   // Fallbacks
   if (!materials["Material.002"]) {
-    materials["Material.002"] = new THREE.MeshStandardMaterial({ color: 0x463f06, roughness: 0.9, flatShading: true });
+    materials["Material.002"] = new THREE.MeshStandardMaterial({ color: 0x463f06, flatShading: true, roughness: 0.9, metalness: 0.08 });
   }
   if (!materials["Material.003"]) {
-    materials["Material.003"] = new THREE.MeshStandardMaterial({ color: 0x1b0a0d, roughness: 0.9, flatShading: true });
+    materials["Material.003"] = new THREE.MeshStandardMaterial({ color: 0x1b0a0d, flatShading: true, roughness: 0.9, metalness: 0.08 });
   }
   if (!materials["Material.004"]) {
     materials["Material.004"] = new THREE.MeshStandardMaterial({ color: 0x05433d, roughness: 0.9, flatShading: true });
+  }
+  if (foliageColor !== undefined) {
+    materials["Material.004"] = new THREE.MeshStandardMaterial({ color: foliageColor, flatShading: true, roughness: 0.9, metalness: 0.08 });
   }
 
   // 2. Parse vertices, normals, and faces
