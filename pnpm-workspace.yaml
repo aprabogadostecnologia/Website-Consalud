@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 allowBuilds:
   sharp: set this to true or false
+=======
+onlyBuiltDependencies:
+  - sharp
+
+>>>>>>> 4c95ec225a8ec84dd6656ee35ced6cba855fd58a
