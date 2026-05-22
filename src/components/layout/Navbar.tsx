@@ -36,6 +36,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 navbar-glass transition-all duration-300">
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
         <button
           onClick={() => scrollTo(0)}
           className="bg-transparent border-none cursor-pointer flex items-center"
