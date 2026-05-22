@@ -441,8 +441,8 @@ function RoadScene({ progress, className, onReady }) {
                     return texture;
                 }
             }["RoadScene.useEffect.createGlowTexture"];
-            const glowTextureA = createGlowTexture('rgba(5, 18, 62, 1)'); // Electric blue
-            const glowTextureB = createGlowTexture('rgba(255, 141, 43, 1)'); // Saffron gold
+            const glowTextureA = createGlowTexture('rgba(37, 99, 235, 1)'); // Electric blue
+            const glowTextureB = createGlowTexture('rgba(256, 177, 60, 1)'); // Saffron gold
             const glowSpriteMatA = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SpriteMaterial"]({
                 map: glowTextureA,
                 color: 0xffffff,
@@ -494,7 +494,11 @@ function RoadScene({ progress, className, onReady }) {
             // ── DISTRIBUTE LOW-POLY PINE TREES ALONG ROAD CORRIDOR ─────────────────
             const treeMtl = getMtlFileAsString();
             const treeObj = getObjFileAsString();
-            const baseTreeGroup = parseCustomObj(treeObj, treeMtl);
+            // Four foliage variants with brand palette — weighted random selection per tree
+            const baseTreeGroupA = parseCustomObj(treeObj, treeMtl, 0x0546f2); // 40% electric blue
+            const baseTreeGroupB = parseCustomObj(treeObj, treeMtl, 0xff8d2b); // 25% vibrant orange
+            const baseTreeGroupC = parseCustomObj(treeObj, treeMtl, 0xf5f3e6); // 20% soft cream
+            const baseTreeGroupD = parseCustomObj(treeObj, treeMtl, 0x05123e); // 15% navy
             const treeGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
             // Step through the path points to spawn trees with rich organic clusters
             for(let i = 10; i < N - 10; i += 7){
@@ -551,7 +555,9 @@ function RoadScene({ progress, className, onReady }) {
                                 // Sink the tree slightly so that the trunk trunk is buried nicely in sloping ground
                                 pos.y = terrainH(pos.x, pos.z, tbZn) - 0.15 * sFactor;
                                 // Instantiate a lightweight shared clone of the pine tree model
-                                const tree = baseTreeGroup.clone();
+                                const rCol = Math.random();
+                                const srcGroup = rCol < 0.40 ? baseTreeGroupA : rCol < 0.65 ? baseTreeGroupB : rCol < 0.85 ? baseTreeGroupC : baseTreeGroupD;
+                                const tree = srcGroup.clone();
                                 tree.position.copy(pos);
                                 tree.rotation.y = Math.random() * Math.PI * 2;
                                 tree.scale.set(sFactor, sFactor, sFactor);
@@ -986,7 +992,7 @@ function RoadScene({ progress, className, onReady }) {
             birdsGroup.add(b3.group);
             // ── Lights ────────────────────────────────────────────────────────────────
             scene.add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AmbientLight"](0x081024, 6)); // Warm therapeutic ambient light
-            const dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DirectionalLight"](0xe2b13c, 3); // Warm amber sunlight of justice
+            const dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DirectionalLight"](0xff8d2b, 3); // Warm brand-orange solar vitality light
             dir.position.set(300, 800, -600);
             scene.add(dir);
             const cL1 = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PointLight"](C.neonA, 16, 150);
@@ -1030,7 +1036,7 @@ function RoadScene({ progress, className, onReady }) {
                     }
                 }["RoadScene.useEffect.animate"]);
                 // ── Bird Flight Timer Controls ─────────────────────────────────────────
-                const scroll = progressRef.current;
+                const scroll = Number.isFinite(progressRef.current) ? progressRef.current : 0;
                 const roadT = getRoadT(scroll);
                 const oAlpha = getOrbitAlpha(scroll);
                 const sec = getCurrentSection(scroll);
@@ -1217,14 +1223,14 @@ function RoadScene({ progress, className, onReady }) {
         }
     }, void 0, false, {
         fileName: "[project]/src/components/canvas/RoadScene.tsx",
-        lineNumber: 1151,
+        lineNumber: 1157,
         columnNumber: 10
     }, this);
 }
 _s(RoadScene, "zDt1/gX72jmfkH8o+QTqHvVDGic=");
 _c = RoadScene;
 // ── CUSTOM LOW-POLY OBJ & MTL PARSER FOR PINE TREES ─────────────────────────
-function parseCustomObj(objText, mtlText) {
+function parseCustomObj(objText, mtlText, foliageColor) {
     const group = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
     // 1. Parse materials
     const materials = {};
@@ -1251,15 +1257,17 @@ function parseCustomObj(objText, mtlText) {
     if (!materials["Material.002"]) {
         materials["Material.002"] = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
             color: 0x463f06,
+            flatShading: true,
             roughness: 0.9,
-            flatShading: true
+            metalness: 0.08
         });
     }
     if (!materials["Material.003"]) {
         materials["Material.003"] = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
             color: 0x1b0a0d,
+            flatShading: true,
             roughness: 0.9,
-            flatShading: true
+            metalness: 0.08
         });
     }
     if (!materials["Material.004"]) {
@@ -1267,6 +1275,14 @@ function parseCustomObj(objText, mtlText) {
             color: 0x05433d,
             roughness: 0.9,
             flatShading: true
+        });
+    }
+    if (foliageColor !== undefined) {
+        materials["Material.004"] = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
+            color: foliageColor,
+            flatShading: true,
+            roughness: 0.9,
+            metalness: 0.08
         });
     }
     // 2. Parse vertices, normals, and faces

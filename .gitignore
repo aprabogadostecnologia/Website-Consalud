@@ -7,23 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-<<<<<<< HEAD
-
-=======
-node_modules
->>>>>>> 4c95ec225a8ec84dd6656ee35ced6cba855fd58a
 dist
 dist-ssr
 *.local
 
-<<<<<<< HEAD
 # Next.js
 .next/
 node_modules/
 out/
 
-=======
->>>>>>> 4c95ec225a8ec84dd6656ee35ced6cba855fd58a
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -34,3 +26,5 @@ out/
 *.njsproj
 *.sln
 *.sw?
+
+.env

@@ -64,20 +64,19 @@ const NAV_ITEMS = [
     },
     {
         label: "Marcas",
-        fraction: 0.73
+        fraction: 0.84
     },
     {
         label: "Contacto",
         fraction: 0.95
     }
 ];
-// Band boundaries matching PAGE_BANDS in HeroPage
 const BANDS = [
     0,
     0.10,
     0.22,
-    0.78,
-    0.88,
+    0.82,
+    0.90,
     1.00
 ];
 function getActiveIndex(p) {
@@ -97,6 +96,12 @@ function Navbar() {
     _s();
     const p = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useScrollProgress$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollProgress"])();
     const activeIdx = getActiveIndex(p);
+    function openVigia() {
+        scrollTo(0.84);
+        setTimeout(()=>{
+            window.dispatchEvent(new CustomEvent("openVigia"));
+        }, 650);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         className: "fixed top-0 left-0 right-0 z-50 navbar-glass transition-all duration-300",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -113,12 +118,12 @@ function Navbar() {
                         height: 48
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Navbar.tsx",
-                        lineNumber: 38,
-                        columnNumber: 9
+                        lineNumber: 44,
+                        columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Navbar.tsx",
-                    lineNumber: 34,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -140,34 +145,44 @@ function Navbar() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/layout/Navbar.tsx",
-                                        lineNumber: 56,
+                                        lineNumber: 62,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/layout/Navbar.tsx",
-                                lineNumber: 50,
+                                lineNumber: 56,
                                 columnNumber: 15
                             }, this)
                         }, item.label, false, {
                             fileName: "[project]/src/components/layout/Navbar.tsx",
-                            lineNumber: 49,
+                            lineNumber: 55,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Navbar.tsx",
-                    lineNumber: 47,
+                    lineNumber: 53,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: openVigia,
+                    className: "hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-[9px] uppercase font-bold tracking-wider border transition-all duration-300 cursor-pointer bg-white/[0.03] hover:bg-[#ff8d2b]/15 border-[#ff8d2b]/30 text-[#ff8d2b] hover:text-white hover:border-[#ff8d2b]",
+                    title: "Ir directo a Vigía",
+                    children: "🤝 VIGÍA"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/layout/Navbar.tsx",
+                    lineNumber: 75,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/layout/Navbar.tsx",
-            lineNumber: 33,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/layout/Navbar.tsx",
-        lineNumber: 32,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
