@@ -3,9 +3,9 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 const NAV_ITEMS = [
   { label: "Inicio",    fraction: 0.00 },
-  { label: "Nosotros",  fraction: 0.22 },
+  { label: "Nosotros",  fraction: 0.202 },
   { label: "Servicios", fraction: 0.23 },
-  { label: "Marcas",    fraction: 0.84 },
+  { label: "Marcas",    fraction: 0.855 },
   { label: "Contacto",  fraction: 0.95 },
 ];
 
@@ -27,7 +27,7 @@ export default function Navbar() {
   const p = useScrollProgress();
   const activeIdx = getActiveIndex(p);
   function openVigia() {
-    scrollTo(0.84);
+    scrollTo(0.855);
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent("openVigia"));
     }, 650);

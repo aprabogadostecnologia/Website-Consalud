@@ -255,6 +255,17 @@ export default function HeroPage() {
     return () => { document.documentElement.style.overflowY = ""; };
   }, [activeMarca]);
 
+  // Demo modal state
+  const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [demoData, setDemoData] = useState({ nombre: "", correo: "", empresa: "", telefono: "" });
+  const [demoStatus, setDemoStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setDemoModalOpen(false); };
+    if (demoModalOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [demoModalOpen]);
+
   // Form state
   const [empRange, setEmpRange] = useState("");
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
@@ -295,6 +306,47 @@ export default function HeroPage() {
       setFormStatus("error");
     }
   };
+  const handleDemoSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!demoData.nombre || !demoData.correo) return;
+    setDemoStatus("loading");
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: demoData.nombre,
+          reply_to:  demoData.correo,
+          empresa:   demoData.empresa || "No especificada",
+          cargo:     "Demo Vigía",
+          telefono:  demoData.telefono || "No especificado",
+          servicio:  "Demo Vigía — Solicitud desde Hero",
+          empleados: "No especificado",
+          mensaje:   "Solicitud de demo de Vigía desde el hero slide.",
+          name:      demoData.nombre,
+          date:      new Date().toLocaleDateString("es-CO", { year: "numeric", month: "long", day: "numeric" }),
+          title:     `🎯 Demo Vigía: ${demoData.nombre} — ${demoData.empresa}`,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+      const apikey = process.env.NEXT_PUBLIC_CALLMEBOT_APIKEY;
+      if (apikey) {
+        const msg = encodeURIComponent(
+          `🎯 Demo Vigía\n👤 ${demoData.nombre}\n📧 ${demoData.correo}\n🏢 ${demoData.empresa || "—"}\n📞 ${demoData.telefono || "—"}`
+        );
+        await fetch(`https://api.callmebot.com/whatsapp.php?phone=573112652715&text=${msg}&apikey=${apikey}`);
+      }
+      setDemoStatus("success");
+      setTimeout(() => {
+        setDemoModalOpen(false);
+        setDemoStatus("idle");
+        setDemoData({ nombre: "", correo: "", empresa: "", telefono: "" });
+      }, 2500);
+    } catch {
+      setDemoStatus("error");
+    }
+  };
+
   const [servicioOpen, setServicioOpen] = useState(false);
   const [servicioSel, setServicioSel] = useState("");
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
@@ -402,6 +454,11 @@ export default function HeroPage() {
                     <button
                       className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
                       style={{ background: "#ff8d2b" }}
+                      onClick={() => {
+                        setFormData(prev => ({ ...prev, mensaje: "Quiero solicitar mi diagnóstico gratuito de SST." }));
+                        const total = document.documentElement.scrollHeight - window.innerHeight;
+                        window.scrollTo({ top: 0.93 * total, behavior: "smooth" });
+                      }}
                     >
                       Diagnostico Gratuito ➤
                     </button>
@@ -476,12 +533,17 @@ export default function HeroPage() {
                     <button
                       className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
                       style={{ background: "#ff8d2b" }}
+                      onClick={() => setDemoModalOpen(true)}
                     >
-                      Agenda tu demo — Cupo Limitado ➤
+                      Reserva tu demo ➤
                     </button>
                     <button
                       className="px-8 py-3.5 rounded-full font-semibold text-white hover:bg-white/10 transition-all cursor-pointer"
                       style={{ background: "transparent", border: "1.5px solid rgba(255,255,255,0.25)" }}
+                      onClick={() => {
+                        const total = document.documentElement.scrollHeight - window.innerHeight;
+                        window.scrollTo({ top: 0.855 * total, behavior: "smooth" });
+                      }}
                     >
                       Conocer más
                     </button>
@@ -1297,15 +1359,21 @@ export default function HeroPage() {
                           </span>
                         </div>
                       </div>
-                      <button style={{
-                        padding: "10px 20px", borderRadius: 20,
-                        background: "transparent",
-                        border: `1px solid ${marca.accent}`,
-                        color: marca.accent,
-                        fontSize: 11, fontWeight: 700,
-                        letterSpacing: "0.1em", textTransform: "uppercase",
-                        cursor: "pointer",
-                      }}>
+                      <button
+                        style={{
+                          padding: "10px 20px", borderRadius: 20,
+                          background: "transparent",
+                          border: `1px solid ${marca.accent}`,
+                          color: marca.accent,
+                          fontSize: 11, fontWeight: 700,
+                          letterSpacing: "0.1em", textTransform: "uppercase",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          setActiveMarca(null);
+                          setTimeout(() => setDemoModalOpen(true), 280);
+                        }}
+                      >
                         CONECTAR CONVENIO →
                       </button>
                     </div>
@@ -1354,6 +1422,129 @@ export default function HeroPage() {
             </span>
           </div>
         )}
+
+        {/* ── DEMO MODAL ───────────────────────────────────────────────────── */}
+        <AnimatePresence>
+          {demoModalOpen && (
+            <motion.div
+              key="demo-modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                position: "fixed", inset: 0, zIndex: 200,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                background: "rgba(2,6,22,0.78)",
+                backdropFilter: "blur(18px)",
+              }}
+              onClick={() => setDemoModalOpen(false)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.93, y: 18 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.93, y: 10 }}
+                transition={{ duration: 0.3, ease: [0.34, 1.2, 0.64, 1] }}
+                style={{
+                  width: "min(440px, 92vw)",
+                  background: "rgba(3,8,28,0.98)",
+                  border: "1px solid rgba(255,141,43,0.28)",
+                  borderRadius: 22,
+                  padding: "32px 28px 28px",
+                  boxShadow: "0 24px 80px rgba(0,0,0,0.65), 0 0 60px rgba(255,141,43,0.07)",
+                  position: "relative",
+                }}
+                onClick={e => e.stopPropagation()}
+              >
+                {/* Close */}
+                <button
+                  style={{
+                    position: "absolute", top: 14, right: 14,
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    borderRadius: 8, padding: "5px 10px",
+                    color: "rgba(255,255,255,0.35)", fontSize: 11, cursor: "pointer", lineHeight: 1,
+                  }}
+                  onClick={() => setDemoModalOpen(false)}
+                >✕</button>
+
+                {/* Header */}
+                <div style={{ marginBottom: 24 }}>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#ff8d2b", margin: "0 0 8px" }}>
+                    VIGÍA · DEMO PERSONALIZADA
+                  </p>
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: "white", margin: "0 0 6px", lineHeight: 1.2 }}>
+                    Reserva tu sesión
+                  </h3>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.40)", margin: 0, lineHeight: 1.5 }}>
+                    Un especialista SST te contactará en menos de 24 horas.
+                  </p>
+                </div>
+
+                {/* Form */}
+                <form onSubmit={handleDemoSubmit}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+                    <input
+                      className={iCls} style={iSty}
+                      placeholder="Nombre completo *"
+                      value={demoData.nombre}
+                      onChange={e => setDemoData(d => ({ ...d, nombre: e.target.value }))}
+                      required
+                    />
+                    <input
+                      className={iCls} style={iSty}
+                      placeholder="Correo electrónico *"
+                      type="email"
+                      value={demoData.correo}
+                      onChange={e => setDemoData(d => ({ ...d, correo: e.target.value }))}
+                      required
+                    />
+                    <input
+                      className={iCls} style={iSty}
+                      placeholder="Empresa"
+                      value={demoData.empresa}
+                      onChange={e => setDemoData(d => ({ ...d, empresa: e.target.value }))}
+                    />
+                    <input
+                      className={iCls} style={iSty}
+                      placeholder="Teléfono"
+                      type="tel"
+                      value={demoData.telefono}
+                      onChange={e => setDemoData(d => ({ ...d, telefono: e.target.value }))}
+                    />
+                  </div>
+
+                  {demoStatus === "success" && (
+                    <p style={{ fontSize: 13, fontWeight: 600, color: "#2ecc71", marginBottom: 12 }}>
+                      ¡Solicitud enviada! Te contactamos pronto. ✓
+                    </p>
+                  )}
+                  {demoStatus === "error" && (
+                    <p style={{ fontSize: 13, fontWeight: 600, color: "#e74c3c", marginBottom: 12 }}>
+                      Error al enviar. Intenta de nuevo.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={demoStatus === "loading" || demoStatus === "success"}
+                    style={{
+                      width: "100%", padding: "12px",
+                      borderRadius: 12, background: "#ff8d2b",
+                      color: "#05123e", fontWeight: 700, fontSize: 14,
+                      border: "none", letterSpacing: "0.04em",
+                      cursor: demoStatus === "loading" ? "wait" : "pointer",
+                      opacity: demoStatus === "loading" || demoStatus === "success" ? 0.65 : 1,
+                      transition: "opacity 0.2s",
+                    }}
+                  >
+                    {demoStatus === "loading" ? "Enviando…" : "Agendar demo →"}
+                  </button>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
