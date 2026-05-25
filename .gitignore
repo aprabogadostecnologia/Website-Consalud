@@ -7,7 +7,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-
 dist
 dist-ssr
 *.local
@@ -27,3 +26,5 @@ out/
 *.njsproj
 *.sln
 *.sw?
+
+.env

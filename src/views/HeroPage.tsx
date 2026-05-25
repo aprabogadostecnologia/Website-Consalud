@@ -2,11 +2,11 @@
 import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
-import { CheckSquare, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { VALORES, SERVICIOS, MARCAS, CONTACTO_INFO, PAGE_BANDS, SECTIONS } from "@/data/heroData";
 import type { Marca } from "@/data/heroData";
+import { Shield, Users, AlertTriangle, Leaf, BookOpen, Scale, CheckSquare, Heart, Eye, Award, Zap, ChevronDown,ChevronLeft, ChevronRight } from "lucide-react";
 
 const RoadScene = dynamic(() => import("@/components/canvas/RoadScene"), { ssr: false });
 
