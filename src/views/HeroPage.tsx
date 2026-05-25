@@ -258,7 +258,7 @@ export default function HeroPage() {
   // Form state
   const [empRange, setEmpRange] = useState("");
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "" });
+  const [formData, setFormData] = useState({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", servicio: "", mensaje: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const setField = (k: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -278,16 +278,17 @@ export default function HeroPage() {
           cargo:     formData.cargo,
           telefono:  formData.telefono,
           reply_to:  formData.email,
-          servicio:  servicioSel || "No especificado",
+          servicio:  servicioSel || formData.servicio || "No especificado",
           empleados: empRange   || "No especificado",
           mensaje:   formData.mensaje,
-          name: formData.nombre,
-          title : `Nuevo contacto: ${formData.nombre} (${formData.empresa})`,
+          name:      formData.nombre,
+          date:      new Date().toLocaleDateString("es-CO", { year: "numeric", month: "long", day: "numeric" }),
+          title:     `Nuevo contacto: ${formData.nombre} (${formData.empresa})`,
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setFormStatus("success");
-      setFormData({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "", });
+      setFormData({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "",servicio: "" });
       setEmpRange("");
       setServicioSel("");
     } catch {
@@ -434,7 +435,7 @@ export default function HeroPage() {
                     transition={{ delay: 0.10, duration: 0.5 }}
                   >
                     <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8">
-                      Plataforma Tecnológica SST · IA & Visión Computacional
+                      El Futuro de la Prevención en Colombia · IA & Visión Computacional
                     </p>
                   </motion.div>
 
@@ -459,8 +460,10 @@ export default function HeroPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.40, duration: 0.55 }}
                   >
-                    Vigilancia laboral en tiempo real mediante IA, cámaras y sensores.
-                    Detecta riesgos, notifica al instante y genera planes de acción correctivos.
+                    <span style={{ display: "block", fontSize: "clamp(13px,1.5vw,15px)", color: "#ff8d2b", fontWeight: 700, marginBottom: 10 }}>
+                      En Colombia, un trabajador fallece cada 20 horas.
+                    </span>
+                    Vigía alerta ANTES del incidente — cámaras, IA y rastreo visual inteligente para prevenir en tiempo real. Desarrollada en Colombia con Ingeniería Alemana.
                   </motion.p>
 
                   <motion.div
@@ -474,7 +477,7 @@ export default function HeroPage() {
                       className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
                       style={{ background: "#ff8d2b" }}
                     >
-                      Reserva tu demo ➤
+                      Agenda tu demo — Cupo Limitado ➤
                     </button>
                     <button
                       className="px-8 py-3.5 rounded-full font-semibold text-white hover:bg-white/10 transition-all cursor-pointer"
@@ -561,7 +564,7 @@ export default function HeroPage() {
                         animate={{ opacity: [1, 0.3, 1] }}
                         transition={{ duration: 1.6, repeat: Infinity }}
                       />
-                      <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" }}>Próximamente · 2025</span>
+                      <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" }}>Próximamente · 2026</span>
                     </div>
                   </motion.div>
                 </div>
