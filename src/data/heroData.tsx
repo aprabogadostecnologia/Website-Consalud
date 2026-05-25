@@ -115,21 +115,23 @@ export const MARCAS: Marca[] = [
     fullName: "Vigía Salud Inteligente",
     logo: "/vigiaWhite.png",
     accent: "#ff8d2b",
-    badge: "PLATAFORMA TECNOLÓGICA SST",
-    tagline: "Con inteligencia artificial",
-    phrase: "Plataforma inteligente de vigilancia epidemiológica y prevención de riesgos para salvaguardar tu bienestar integral.",
-    role: "MONITOREO PREDICTIVO & SST",
-    description: "Plataforma inteligente de vigilancia laboral mediante IA, cámaras y sensores para detectar riesgos en tiempo real, notificar y generar planes de acción correctivos.",
+    badge: "EL FUTURO DE LA PREVENCIÓN EN COLOMBIA",
+    tagline: "Seguridad Predictiva en Tiempo Real",
+    phrase: "En Colombia, un trabajador fallece cada 20 horas. Vigía alerta ANTES del incidente.",
+    role: "PRIMER SISTEMA DE RASTREO VISUAL INTELIGENTE DE COLOMBIA",
+    description: "Cámaras. Inteligencia artificial. 100% prevención. Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.",
     features: [
-      { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Identifica 6 EPP: cascos, guantes, gafas, tapaoídos, tapabocas y chalecos reflectivos." },
-      { icon: <AlertTriangle size={16} />, title: "Control de Distracciones", desc: "Detecta teléfonos en manos del personal y genera alertas visuales inmediatas." },
-      { icon: <Eye size={16} />, title: "Seguimiento Ocular 3D", desc: "Determina si un trabajador opera maquinaria mientras usa su celular." },
-      { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificaciones por email con captura de la infracción y app exclusiva del cliente." },
+      { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Reconoce casco, chaleco y guantes en milisegundos con 95%+ de confianza. Alerta inmediata por no uso." },
+      { icon: <AlertTriangle size={16} />, title: "Control de Celulares", desc: "Rastreo Inteligente de Mirada: detecta manipulación de celular con 93%+ confianza y alerta al instante." },
+      { icon: <Eye size={16} />, title: "Seguimiento Ocular 3D", desc: "Determina si un trabajador opera maquinaria mientras usa su celular. Prevención antes del incidente." },
+      { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificación por email o WhatsApp al supervisor SST con evidencia visual y exportación PDF." },
     ],
     extras: [
-      "Conteo de producción en tiempo real",
-      "Análisis de ergonomía y postura",
-      "Detección de emergencias y accidentes",
+      "Siniestralidad — reducción drástica de incidentes y accidentes",
+      "Planes de Mejora — datos exactos para cumplimiento normativo HSE",
+      "Capital Humano — protección operativa y optimización de costos",
+      "Flujo: Cámaras optimizadas → AI Vigía → Alerta Real + soporte documental",
+      "Despliegue en días, no meses · Reportes generados al instante",
     ],
     status: "Activa & Disponible",
     videoSrc: "/Video%20Project.mp4",
@@ -138,8 +140,8 @@ export const MARCAS: Marca[] = [
 
 // ── Contacto ──────────────────────────────────────────────────────────────────
 export const CONTACTO_INFO = [
-  { label: "Email",     value: "direccion@consalud.com.co" },
-  { label: "Numero",    value: "311 265 2715 · 324 209 7512" },
+  { label: "Email",     value: "consalud@consultoresempresariales.com.co" },
+  { label: "Numero",    value: "311 265 2715 · 305 788 3941" },
   { label: "Dirección", value: "Calle 92 # 16 - 30, Bogotá" },
 ];
 
