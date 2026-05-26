@@ -56,15 +56,15 @@ const NAV_ITEMS = [
     },
     {
         label: "Nosotros",
-        fraction: 0.22
+        fraction: 0.202
     },
     {
         label: "Servicios",
         fraction: 0.23
     },
     {
-        label: "Marcas",
-        fraction: 0.84
+        label: "Productos digitales",
+        fraction: 0.855
     },
     {
         label: "Contacto",
@@ -97,7 +97,7 @@ function Navbar() {
     const p = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useScrollProgress$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useScrollProgress"])();
     const activeIdx = getActiveIndex(p);
     function openVigia() {
-        scrollTo(0.84);
+        scrollTo(0.855);
         setTimeout(()=>{
             window.dispatchEvent(new CustomEvent("openVigia"));
         }, 650);
@@ -105,7 +105,7 @@ function Navbar() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         className: "fixed top-0 left-0 right-0 z-50 navbar-glass transition-all duration-300",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-            className: "max-w-6xl mx-auto px-6 h-16 flex items-center justify-between",
+            className: "max-w-6xl mx-auto px-6 h-20 flex items-center justify-between",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: ()=>scrollTo(0),
@@ -113,9 +113,9 @@ function Navbar() {
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                         src: "/conSaludWhite.png",
                         alt: "Consalud",
-                        className: "h-14 w-auto",
-                        width: 48,
-                        height: 48
+                        className: "h-16 w-auto",
+                        width: 60,
+                        height: 57
                     }, void 0, false, {
                         fileName: "[project]/src/components/layout/Navbar.tsx",
                         lineNumber: 44,
@@ -166,9 +166,19 @@ function Navbar() {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: openVigia,
-                    className: "hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-[9px] uppercase font-bold tracking-wider border transition-all duration-300 cursor-pointer bg-white/[0.03] hover:bg-[#ff8d2b]/15 border-[#ff8d2b]/30 text-[#ff8d2b] hover:text-white hover:border-[#ff8d2b]",
+                    className: "hidden sm:flex items-center gap-1.5 px-3 py-1.5  rounded-full font-mono   font-bold tracking-wider border transition-all duration-300 cursor-pointer bg-white/[0.03] hover:bg-[#ff8d2b]/15 border-[#ff8d2b]/30 text-[#ff8d2b] hover:text-white hover:border-[#ff8d2b]",
                     title: "Ir directo a Vigía",
-                    children: "🤝 VIGÍA"
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_react$2d$dom$40$19$2e$2$2e$6_react$40$19$2e$2$2e$6_$5f$react$40$19$2e$2$2e$6$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: "/vigiaWhite.png",
+                        alt: "Vigía",
+                        className: "h-4 w-auto",
+                        width: 20,
+                        height: 20
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/layout/Navbar.tsx",
+                        lineNumber: 80,
+                        columnNumber: 11
+                    }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/layout/Navbar.tsx",
                     lineNumber: 75,

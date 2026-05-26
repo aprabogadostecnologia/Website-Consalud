@@ -5,7 +5,7 @@ const NAV_ITEMS = [
   { label: "Inicio",    fraction: 0.00 },
   { label: "Nosotros",  fraction: 0.202 },
   { label: "Servicios", fraction: 0.23 },
-  { label: "Marcas",    fraction: 0.855 },
+  { label: "Productos digitales",    fraction: 0.855 },
   { label: "Contacto",  fraction: 0.95 },
 ];
 
@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 navbar-glass transition-all duration-300">
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
 
         <button
           onClick={() => scrollTo(0)}
@@ -44,9 +44,9 @@ export default function Navbar() {
           <img
             src="/conSaludWhite.png"
             alt="Consalud"
-            className="h-14 w-auto"
-            width={48}
-            height={48}
+            className="h-16 w-auto"
+            width={60}
+            height={57}
           />
         </button>
 
@@ -74,10 +74,10 @@ export default function Navbar() {
         {/* Vigía direct-access button */}
         <button
           onClick={openVigia}
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full font-mono text-[9px] uppercase font-bold tracking-wider border transition-all duration-300 cursor-pointer bg-white/[0.03] hover:bg-[#ff8d2b]/15 border-[#ff8d2b]/30 text-[#ff8d2b] hover:text-white hover:border-[#ff8d2b]"
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5  rounded-full font-mono   font-bold tracking-wider border transition-all duration-300 cursor-pointer bg-white/[0.03] hover:bg-[#ff8d2b]/15 border-[#ff8d2b]/30 text-[#ff8d2b] hover:text-white hover:border-[#ff8d2b]"
           title="Ir directo a Vigía"
         >
-          🤝 VIGÍA
+          <img src="/vigiaWhite.png" alt="Vigía" className="h-4 w-auto" width={20} height={20} />
         </button>
 
       </nav>

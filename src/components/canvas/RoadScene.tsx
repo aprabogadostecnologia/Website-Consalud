@@ -963,16 +963,9 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
       const oAlpha  = getOrbitAlpha(scroll);
       const sec     = getCurrentSection(scroll);
 
-      if (sec !== 0) {
-        birdsTimer = -4.0; // Negative means silent pre-delay
-      } else {
-        // Increment timer in Hero mode
-        birdsTimer += 0.016;
-
-        // Loop the flight cycle: 15 seconds active flight, then 9 seconds silent resting
-        if (birdsTimer > 24.0) {
-          birdsTimer = 0.0;
-        }
+      // Timer runs through the entire journey
+      if (birdsTimer > 24.0) {
+        birdsTimer = 0.0;
       }
 
       const vPos = PATH.getPoint(roadT);
@@ -1060,8 +1053,8 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
         attr.needsUpdate = true;
       }
 
-      // ── Bird Flight Path & Wing Flapping Animation (Hero mode) ─────────────────
-      if (birdsTimer >= 0 && sec === 0) {
+      // ── Bird Flight Path & Wing Flapping Animation ────────────────────────────
+      if (birdsTimer >= 0) {
         birdsGroup.visible = true;
 
         // Animate wing flapping with slightly offset frequencies for organic feel
@@ -1074,8 +1067,8 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
         b3.leftWing.rotation.z  = Math.sin(birdsTimer * 13 + 0.6) * 0.60;
         b3.rightWing.rotation.z = -Math.sin(birdsTimer * 13 + 0.6) * 0.60;
 
-        // Center on the first stop flag (where the camera orbits in the Hero)
-        const heroStopPos = PATH.getPoint(STOP_TS[0]);
+        // Orbit center follows the current section's anchor point
+        const heroStopPos = stopPos;
 
         // 1. Red Macaw: sweeping circle over the road and peaks
         const b1Angle = birdsTimer * 0.32 + 0.5;
@@ -1128,8 +1121,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
         const b3Dir = new THREE.Vector3(nextB3X - b3X, nextB3Y - b3Y, nextB3Z - b3Z).normalize();
         b3.group.lookAt(b3.group.position.clone().add(b3Dir));
 
-      } else {
-        birdsGroup.visible = false;
       }
 
       renderer.render(scene, camera);
