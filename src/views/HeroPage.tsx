@@ -118,6 +118,81 @@ function BrandCard({ name, logo, accent, tagline, phrase, onExpand }: Marca & { 
   );
 }
 
+function ContactCard({ onOpen }: { onOpen: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setTilt({
+      y:  ((e.clientX - rect.left  - rect.width  / 2) / (rect.width  / 2)) * 10,
+      x: -((e.clientY - rect.top   - rect.height / 2) / (rect.height / 2)) * 10,
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      style={{
+        width: 340, height: 420,
+        position: "relative", cursor: "pointer", userSelect: "none",
+        transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${hovered ? 1.03 : 1})`,
+        transition: hovered ? "transform 0.08s linear" : "transform 0.45s cubic-bezier(0.23,1,0.32,1)",
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => { setHovered(false); setTilt({ x: 0, y: 0 }); }}
+      onClick={onOpen}
+    >
+      <div style={{
+        position: "absolute", inset: 0, borderRadius: 24,
+        border: `1px solid ${hovered ? "#ff8d2b66" : "#ff8d2b33"}`,
+        background: hovered ? "rgba(255,255,255,0.07)" : "rgba(5,18,62,0.92)",
+        backdropFilter: hovered ? "blur(8px)" : undefined,
+        boxShadow: hovered ? "0 12px 45px rgba(255,141,43,0.18), 0 6px 30px rgba(0,0,0,0.4)" : "0 6px 30px rgba(0,0,0,0.4)",
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+        gap: 20, padding: 36, overflow: "hidden",
+        transition: "background 0.3s, box-shadow 0.3s, border-color 0.3s",
+      }}>
+        <div style={{
+          position: "absolute", top: -40, right: -40, width: 140, height: 140,
+          background: "radial-gradient(circle, #ff8d2b25, transparent 70%)",
+          borderRadius: "50%", filter: "blur(20px)", pointerEvents: "none",
+          opacity: hovered ? 1 : 0, transition: "opacity 0.4s",
+        }} />
+
+        <div style={{ perspective: 1000, display: "flex", justifyContent: "center" }}>
+          <motion.img
+            src="/logoConsalud.png" alt="Consalud" draggable={false}
+            animate={{ rotateY: hovered ? 360 : 0 }}
+            transition={hovered ? { duration: 1.2, ease: [0.25, 1, 0.5, 1] } : { duration: 0.4 }}
+            style={{ height: 90, objectFit: "contain", display: "block" }}
+          />
+        </div>
+
+        <div style={{ textAlign: "center" }}>
+          <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#ff8d2b", margin: "0 0 8px" }}>Trabajemos juntos</p>
+          <h3 style={{ fontSize: 22, fontWeight: 800, color: "white", margin: 0, letterSpacing: 1 }}>Protege a tu equipo hoy</h3>
+        </div>
+        <div style={{ height: 2, width: 36, background: "#ff8d2b" }} />
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.55, margin: "0 4px" }}>
+          Soluciones SST a la medida con respaldo académico y cero improvisaciones.
+        </p>
+        <div style={{
+          fontSize: 13, fontWeight: 600, color: "#ff8d2b",
+          border: "1px solid #ff8d2b44", borderRadius: 20, padding: "8px 20px",
+          background: hovered ? "#ff8d2b15" : "transparent",
+          transition: "background 0.2s",
+        }}>
+          Contactar →
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HeroPage() {
   const p = useScrollProgress();
   const [sceneReady, setSceneReady] = useState(false);
@@ -255,15 +330,24 @@ export default function HeroPage() {
     return () => window.removeEventListener("openVigia", handler);
   }, []);
 
-  // Lock scroll while a marca panel is open
+  // Form card modal state
+  const [formCardOpen, setFormCardOpen] = useState(false);
+
   useEffect(() => {
-    if (activeMarca !== null) {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFormCardOpen(false); };
+    if (formCardOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [formCardOpen]);
+
+  // Lock scroll while a marca panel or form card is open
+  useEffect(() => {
+    if (activeMarca !== null || formCardOpen) {
       document.documentElement.style.overflowY = "hidden";
     } else {
       document.documentElement.style.overflowY = "";
     }
     return () => { document.documentElement.style.overflowY = ""; };
-  }, [activeMarca]);
+  }, [activeMarca, formCardOpen]);
 
   // Demo modal state
   const [demoModalOpen, setDemoModalOpen] = useState(false);
@@ -277,10 +361,16 @@ export default function HeroPage() {
   }, [demoModalOpen]);
 
   // Form state
-  const [empRange, setEmpRange] = useState("");
   const [hoveredVal, setHoveredVal] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", servicio: "", mensaje: "" });
+  const [formData, setFormData] = useState({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", servicio: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  useEffect(() => {
+    if (formStatus === "success" && formCardOpen) {
+      const t = setTimeout(() => { setFormCardOpen(false); setFormStatus("idle"); }, 2200);
+      return () => clearTimeout(t);
+    }
+  }, [formStatus, formCardOpen]);
 
   const setField = (k: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setFormData(prev => ({ ...prev, [k]: e.target.value }));
@@ -300,8 +390,6 @@ export default function HeroPage() {
           telefono:  formData.telefono,
           reply_to:  formData.email,
           servicio:  servicioSel || formData.servicio || "No especificado",
-          empleados: empRange   || "No especificado",
-          mensaje:   formData.mensaje,
           name:      formData.nombre,
           date:      new Date().toLocaleDateString("es-CO", { year: "numeric", month: "long", day: "numeric" }),
           title:     `Nuevo contacto: ${formData.nombre} (${formData.empresa})`,
@@ -309,8 +397,7 @@ export default function HeroPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setFormStatus("success");
-      setFormData({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", mensaje: "",servicio: "" });
-      setEmpRange("");
+      setFormData({ nombre: "", empresa: "", cargo: "", telefono: "", email: "", servicio: "" });
       setServicioSel("");
     } catch {
       setFormStatus("error");
@@ -465,9 +552,9 @@ export default function HeroPage() {
                       className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
                       style={{ background: "#ff8d2b" }}
                       onClick={() => {
-                        setFormData(prev => ({ ...prev, mensaje: "Quiero solicitar mi diagnóstico gratuito de SST." }));
                         const total = document.documentElement.scrollHeight - window.innerHeight;
                         window.scrollTo({ top: 0.93 * total, behavior: "smooth" });
+                        setTimeout(() => setFormCardOpen(true), 1100);
                       }}
                     >
                       Diagnostico Gratuito ➤
@@ -586,91 +673,119 @@ export default function HeroPage() {
                 </motion.div>
               </motion.div>
             ) : (
-              /* ── Slide 2: Coming Soon ───────────────────────────────────────── */
+              /* ── Slide 2: Batería de Riesgo Psicosocial ────────────────────────── */
               <motion.div
-                key="slide-coming-soon"
+                key="slide-psicosocial"
                 className="max-w-6xl mx-auto px-8 w-full flex items-center justify-between gap-8"
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               >
-                {/* Left: teaser text */}
+                {/* Left */}
                 <div className="flex-1 min-w-0">
                   <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.10, duration: 0.5 }}>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.28em] mb-8" style={{ color: "#4ade80" }}>
-                      Nuevo Aliado · Bienestar Laboral · Próximamente
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.28em] mb-4" style={{ color: "#4ade80" }}>
+                      Bienestar Laboral · Normatividad SST
                     </p>
                   </motion.div>
 
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.20, duration: 0.55 }} style={{ marginBottom: 28 }}>
-                    {/* Redacted name bars */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 12 }}>
-                      <div style={{ height: 52, width: "78%", background: "rgba(255,255,255,0.10)", borderRadius: 8, position: "relative", overflow: "hidden" }}>
-                        <motion.div
-                          style={{ position: "absolute", top: 0, left: 0, width: "45%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(74,222,128,0.10), transparent)" }}
-                          animate={{ x: ["-100%", "300%"] }}
-                          transition={{ duration: 2.2, repeat: Infinity, ease: "linear" }}
-                        />
-                      </div>
-                      <div style={{ height: 52, width: "52%", background: "rgba(255,255,255,0.07)", borderRadius: 8, position: "relative", overflow: "hidden" }}>
-                        <motion.div
-                          style={{ position: "absolute", top: 0, left: 0, width: "45%", height: "100%", background: "linear-gradient(90deg, transparent, rgba(74,222,128,0.08), transparent)" }}
-                          animate={{ x: ["-100%", "300%"] }}
-                          transition={{ duration: 2.2, repeat: Infinity, ease: "linear", delay: 0.6 }}
-                        />
-                      </div>
-                    </div>
-                    <span style={{ fontSize: 10, color: "rgba(255,255,255,0.22)", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-                      [ Información pendiente de publicación ]
-                    </span>
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18, duration: 0.55 }} style={{ marginBottom: 16 }}>
+                    <h1 className="text-4xl md:text-5xl font-black text-white leading-tight" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.8)" }}>
+                      ¡Tu bienestar
+                    </h1>
+                    <h1 className="text-4xl md:text-5xl font-black leading-tight" style={{ marginBottom: 12, background: "linear-gradient(90deg, #4ade80, #22c55e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                      nos importa!
+                    </h1>
+                    <p style={{ fontSize: 11, color: "rgba(255,255,255,0.38)", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" }}>
+                      Encuesta · Batería de Riesgo Psicosocial
+                    </p>
                   </motion.div>
 
-                  <motion.p className="text-xl text-white/80 max-w-lg leading-relaxed mb-8" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.9)" }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.40, duration: 0.55 }}>
-                    Una nueva solución de bienestar integral y salud laboral se suma al ecosistema de Consalud.
+                  <motion.p
+                    className="text-[15px] text-white/65 max-w-md leading-relaxed mb-5"
+                    style={{ textShadow: "0 2px 8px rgba(0,0,0,0.7)" }}
+                    initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.30, duration: 0.55 }}
+                  >
+                    En cumplimiento de la normatividad SST, te invitamos a participar en nuestra encuesta de bienestar y salud emocional.
                   </motion.p>
 
-                  <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.50, duration: 0.55 }}>
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 18px", borderRadius: 20, border: "1px solid rgba(74,222,128,0.25)", background: "rgba(74,222,128,0.05)" }}>
-                      <motion.div
-                        style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ade80" }}
-                        animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.6, repeat: Infinity }}
-                      />
-                      <span style={{ fontSize: 11, color: "#4ade80", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" }}>Próximamente · 2026</span>
-                    </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.40, duration: 0.55 }}
+                    style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 24 }}
+                  >
+                    {[
+                      "Fortalecer un ambiente de trabajo saludable",
+                      "Promover tu bienestar y salud emocional",
+                      "Implementar acciones de mejora reales",
+                    ].map((text) => (
+                      <div key={text} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 14px", borderRadius: 10, background: "rgba(74,222,128,0.05)", border: "1px solid rgba(74,222,128,0.12)" }}>
+                        <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", flexShrink: 0 }} />
+                        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.68)", fontWeight: 500 }}>{text}</span>
+                      </div>
+                    ))}
                   </motion.div>
+
+                  <motion.p
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.60, duration: 0.55 }}
+                    style={{ fontSize: 12, color: "rgba(255,255,255,0.28)", fontStyle: "italic" }}
+                  >
+                    Juntos, cuidamos lo más importante:{" "}
+                    <span style={{ color: "#4ade80", fontStyle: "normal", fontWeight: 600 }}>las personas</span>
+                  </motion.p>
                 </div>
 
-                {/* Right: classified mystery card */}
+                {/* Right: info card */}
                 <motion.div
                   className="hidden md:flex flex-shrink-0 items-center justify-center"
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.30, duration: 0.65, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  <div style={{ width: 260, height: 300, borderRadius: 24, border: "1px solid rgba(74,222,128,0.15)", background: "rgba(5,18,62,0.75)", backdropFilter: "blur(20px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14, position: "relative", overflow: "hidden" }}>
-                    {/* Blurred content lines */}
-                    {[75, 55, 68, 45, 60].map((w, i) => (
-                      <div key={i} style={{ height: 9, width: `${w}%`, background: "rgba(255,255,255,0.05)", borderRadius: 4, filter: "blur(2px)" }} />
-                    ))}
-                    {/* Lock + label overlay */}
-                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12 }}>
-                      <motion.div
-                        style={{ width: 54, height: 54, borderRadius: "50%", border: "1.5px solid rgba(74,222,128,0.35)", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(74,222,128,0.06)" }}
-                        animate={{ boxShadow: ["0 0 0px rgba(74,222,128,0)", "0 0 22px rgba(74,222,128,0.28)", "0 0 0px rgba(74,222,128,0)"] }}
-                        transition={{ duration: 2.4, repeat: Infinity }}
-                      >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(74,222,128,0.65)" strokeWidth="2" strokeLinecap="round">
-                          <rect x="3" y="11" width="18" height="11" rx="2" />
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  <div style={{ width: 270, borderRadius: 24, border: "1px solid rgba(74,222,128,0.15)", background: "rgba(5,18,62,0.82)", backdropFilter: "blur(20px)", padding: "26px 22px" }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", color: "rgba(74,222,128,0.55)", textTransform: "uppercase", marginBottom: 20, textAlign: "center" }}>
+                      Tu participación nos permite
+                    </p>
+
+                    {/* Confidencial */}
+                    <div style={{ display: "flex", gap: 12, paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.05)", alignItems: "flex-start" }}>
+                      <div style={{ width: 34, height: 34, borderRadius: "50%", background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
-                      </motion.div>
-                      <p style={{ fontSize: 10, color: "rgba(74,222,128,0.45)", textTransform: "uppercase", letterSpacing: "0.22em", fontWeight: 600 }}>Próximamente</p>
+                      </div>
+                      <div>
+                        <p style={{ fontSize: 10, fontWeight: 800, color: "#4ade80", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 4 }}>CONFIDENCIAL</p>
+                        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.48)", lineHeight: 1.55 }}>Tus respuestas son completamente confidenciales.</p>
+                      </div>
                     </div>
-                    {/* CONFIDENCIAL stamp */}
-                    <div style={{ position: "absolute", top: 22, right: -28, transform: "rotate(38deg)", fontSize: 8, fontWeight: 800, letterSpacing: "0.22em", color: "rgba(74,222,128,0.22)", border: "1.5px solid rgba(74,222,128,0.18)", padding: "3px 26px", textTransform: "uppercase" }}>
-                      CONFIDENCIAL
+
+                    {/* Rápida */}
+                    <div style={{ display: "flex", gap: 12, paddingBottom: 14, marginBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.05)", alignItems: "flex-start" }}>
+                      <div style={{ width: 34, height: 34, borderRadius: "50%", background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"/>
+                          <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p style={{ fontSize: 10, fontWeight: 800, color: "#4ade80", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 4 }}>RÁPIDA</p>
+                        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.48)", lineHeight: 1.55 }}>Te tomará solo unos minutos.</p>
+                      </div>
+                    </div>
+
+                    {/* Importante */}
+                    <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                      <div style={{ width: 34, height: 34, borderRadius: "50%", background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                          <circle cx="9" cy="7" r="4"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p style={{ fontSize: 10, fontWeight: 800, color: "#4ade80", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 4 }}>IMPORTANTE</p>
+                        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.48)", lineHeight: 1.55 }}>Tu voz cuenta y hace la diferencia.</p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -833,23 +948,19 @@ export default function HeroPage() {
         {/* ── SCENE 3: SERVICIOS CAROUSEL ──────────────────────────────────── */}
         <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden" style={{ opacity: servO }}>
 
-          {/* Fixed header */}
-          <div className="absolute top-12 left-8 md:left-16">
+          {/* Fixed header — centered */}
+          <div className="absolute top-25 inset-x-0 flex flex-col items-center text-center px-8">
             <div style={lft(sLabel)}>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-2">Lo que hacemos</p>
             </div>
-            <div style={lft(sTitle, 30)}>
+            <div style={lft(sTitle, 30)} className="flex items-center gap-4">
               <h2 className="text-2xl md:text-3xl font-extrabold text-white">Nuestros servicios</h2>
+              <p className="text-sm font-semibold text-white/30 tabular-nums" style={{ opacity: sLabel }}>
+                {String(sActiveIdx + 1).padStart(2, "0")}
+                <span className="text-white/15"> / </span>
+                {String(SERVICIOS.length).padStart(2, "0")}
+              </p>
             </div>
-          </div>
-
-          {/* Card counter */}
-          <div className="absolute top-12 right-8" style={{ opacity: sLabel }}>
-            <p className="text-sm font-semibold text-white/30 tabular-nums">
-              {String(sActiveIdx + 1).padStart(2, "0")}
-              <span className="text-white/15"> / </span>
-              {String(SERVICIOS.length).padStart(2, "0")}
-            </p>
           </div>
 
           {/* Cards */}
@@ -863,7 +974,7 @@ export default function HeroPage() {
                   key={s.title}
                   className="absolute inset-x-0 px-8 md:px-20"
                   style={{
-                    top: "50%",
+                    top: "56%",
                     transform: `translateY(-50%) translateX(${-offset * 92}vw) scale(${Math.max(0.90, 1 - absOff * 0.05)})`,
                     opacity: Math.max(0, 1 - absOff * 0.85),
                     willChange: "transform, opacity",
@@ -930,9 +1041,9 @@ export default function HeroPage() {
 
         </div>
 
-        {/* ── SCENE 4: MARCAS ───────────────────────────────────────────────── */}
+        {/* ── SCENE 4: SERVICIOS DIGITALES ───────────────────────────────────────────────── */}
         <div className="absolute inset-0 flex items-center z-10 pointer-events-none" style={{ opacity: marcO }}>
-          <div className="max-w-6xl mx-auto px-8 w-full">
+          <div className="max-w-6xl mx-auto px-8 w-full pt-16">
             <div className="text-center mb-14">
               <div style={up(mLabel)}>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-3">Nuestras marcas</p>
@@ -954,127 +1065,14 @@ export default function HeroPage() {
 
         {/* ── SCENE 5: CONTACTO ─────────────────────────────────────────────── */}
         <div className="absolute inset-0 z-10 pointer-events-none" style={{ opacity: contO }}>
-          <div className="h-full flex flex-col justify-center max-w-5xl mx-auto px-8 py-8">
+          <div className="h-full flex flex-col items-center justify-center px-8 py-8 gap-8">
 
-            {/* Header */}
-            <div className="pointer-events-none mb-5">
-              <div style={lft(cLabel)}>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-1.5">
-                  Trabajemos juntos
-                </p>
-              </div>
-              <div style={lft(cTitle, 30)}>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white">Protege a tu equipo hoy</h2>
-              </div>
+            <div style={{ ...up(cForm, 24), pointerEvents: contO > 0.05 ? "auto" : "none" }}>
+              <ContactCard onOpen={() => setFormCardOpen(true)} />
             </div>
 
-            {/* Form card */}
-            <form onSubmit={handleSubmit} style={{ ...up(cForm, 24), pointerEvents: contO > 0.05 ? "auto" : "none" }}>
-              <div className="rounded-2xl p-5 md:p-7 border" style={{ background: "rgba(3,8,28,0.85)", borderColor: "rgba(255,141,43,0.15)" }}>
-
-                <div className="grid grid-cols-2 gap-3 mb-3">
-                  <input className={iCls} style={iSty} placeholder="Nombre completo *" value={formData.nombre}   onChange={setField("nombre")}   required />
-                  <input className={iCls} style={iSty} placeholder="Empresa"            value={formData.empresa}  onChange={setField("empresa")} />
-                  <input className={iCls} style={iSty} placeholder="Cargo"              value={formData.cargo}    onChange={setField("cargo")} />
-                  <input className={iCls} style={iSty} placeholder="Teléfono"  type="tel"   value={formData.telefono} onChange={setField("telefono")} />
-                  <input className={iCls} style={iSty} placeholder="Email *"   type="email" value={formData.email}    onChange={setField("email")}    required />
-                  {/* Custom dark dropdown — replaces native select */}
-                  <div className="relative">
-                    <button
-                      type="button"
-                      onClick={e => { e.stopPropagation(); setServicioOpen(o => !o); }}
-                      className={iCls + " flex items-center justify-between text-left"}
-                      style={{ ...iSty, color: servicioSel ? "white" : "rgba(255,255,255,0.25)" }}
-                    >
-                      <span>{servicioSel || "Servicio de interés"}</span>
-                      <ChevronDown size={14} style={{ opacity: 0.4, flexShrink: 0, transform: servicioOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-                    </button>
-                    {servicioOpen && (
-                      <div
-                        className="absolute left-0 right-0 z-50 rounded-xl border overflow-hidden"
-                        style={{ top: "calc(100% + 4px)", background: "rgba(3,8,28,0.97)", borderColor: "rgba(255,141,43,0.25)", boxShadow: "0 12px 40px rgba(0,0,0,0.7)" }}
-                      >
-                        {SERVICIOS.map(s => (
-                          <button
-                            key={s.title}
-                            type="button"
-                            onClick={e => { e.stopPropagation(); setServicioSel(s.title); setServicioOpen(false); }}
-                            className="w-full text-left px-3 py-2.5 text-sm transition-colors"
-                            style={{
-                              color: servicioSel === s.title ? "#ff8d2b" : "rgba(255,255,255,0.75)",
-                              background: servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent",
-                            }}
-                            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
-                            onMouseLeave={e => (e.currentTarget.style.background = servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent")}
-                          >
-                            {s.title}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="mb-3">
-                  <p className="text-[10px] font-semibold tracking-[0.2em] uppercase mb-2 text-white/30">
-                    Número de empleados
-                  </p>
-                  <div className="flex gap-2 flex-wrap">
-                    {["1 – 10", "11 – 50", "51 – 200", "+200"].map(r => (
-                      <button
-                        key={r}
-                        type="button"
-                        onClick={() => setEmpRange(r === empRange ? "" : r)}
-                        className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer border"
-                        style={{
-                          background:  empRange === r ? "#ff8d2b" : "rgba(255,255,255,0.05)",
-                          color:       empRange === r ? "#05123e" : "rgba(255,255,255,0.45)",
-                          borderColor: empRange === r ? "#ff8d2b" : "rgba(255,255,255,0.12)",
-                        }}
-                      >
-                        {r}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <textarea
-                  className={iCls}
-                  style={{ ...iSty, resize: "none" }}
-                  rows={3}
-                  placeholder="Mensaje o consulta (opcional)"
-                  value={formData.mensaje}
-                  onChange={setField("mensaje")}
-                />
-
-                <div className="flex items-center justify-between mt-3">
-                  {formStatus === "success" && (
-                    <p className="text-sm font-semibold" style={{ color: "#2ecc71" }}>
-                      ¡Consulta enviada! Te contactamos pronto.
-                    </p>
-                  )}
-                  {formStatus === "error" && (
-                    <p className="text-sm font-semibold" style={{ color: "#e74c3c" }}>
-                      Error al enviar. Intenta de nuevo.
-                    </p>
-                  )}
-                  {formStatus !== "success" && formStatus !== "error" && <span />}
-                  <button
-                    type="submit"
-                    disabled={formStatus === "loading"}
-                    className="px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{ background: "#ff8d2b", color: "#05123e" }}
-                  >
-                    {formStatus === "loading" ? "Enviando…" : "Enviar consulta →"}
-                  </button>
-                </div>
-
-              </div>
-            </form>
-
-            {/* Contact info row */}
             <div
-              className="pointer-events-none mt-5 flex justify-center flex-wrap gap-x-10 gap-y-3"
+              className="pointer-events-none flex justify-center flex-wrap gap-x-10 gap-y-3"
               style={{ opacity: cInfo }}
             >
               {CONTACTO_INFO.map(({ icon, label, value }) => (
@@ -1388,6 +1386,134 @@ export default function HeroPage() {
               </motion.div>
             );
           })()}
+        </AnimatePresence>
+
+        {/* ── FORM CARD MODAL ─────────────────────────────────────────────── */}
+        <AnimatePresence>
+          {formCardOpen && (
+            <motion.div
+              key="form-card-modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              style={{
+                position: "absolute", inset: 0, zIndex: 105,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                background: "rgba(2,6,22,0.88)",
+                backdropFilter: "blur(14px)",
+                pointerEvents: "auto",
+              }}
+              onClick={() => setFormCardOpen(false)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 8 }}
+                transition={{ duration: 0.3, ease: [0.34, 1.2, 0.64, 1] }}
+                style={{
+                  width: "min(460px, 92vw)",
+                  background: "rgba(3,8,28,0.98)",
+                  border: "1px solid rgba(255,141,43,0.28)",
+                  borderRadius: 22,
+                  padding: "28px 24px",
+                  boxShadow: "0 24px 80px rgba(0,0,0,0.65), 0 0 60px rgba(255,141,43,0.07)",
+                  position: "relative",
+                }}
+                onClick={e => e.stopPropagation()}
+              >
+                {/* Close */}
+                <button
+                  style={{
+                    position: "absolute", top: 14, right: 14,
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    borderRadius: 8, padding: "5px 10px",
+                    color: "rgba(255,255,255,0.35)", fontSize: 11, cursor: "pointer", lineHeight: 1,
+                  }}
+                  onClick={() => setFormCardOpen(false)}
+                >✕</button>
+
+                {/* Header */}
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 22 }}>
+                  <img src="/logoConsalud.png" alt="Consalud" style={{ height: 44, objectFit: "contain", flexShrink: 0 }} />
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#ff8d2b", margin: "0 0 4px" }}>
+                      Trabajemos juntos
+                    </p>
+                    <h3 style={{ fontSize: 20, fontWeight: 800, color: "white", margin: 0, lineHeight: 1.2 }}>
+                      Protege a tu equipo hoy
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Form */}
+                <form onSubmit={handleSubmit}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 12 }}>
+                    <input className={iCls} style={iSty} placeholder="Nombre completo *" value={formData.nombre}   onChange={setField("nombre")}   required />
+                    <input className={iCls} style={iSty} placeholder="Empresa"            value={formData.empresa}  onChange={setField("empresa")} />
+                    <input className={iCls} style={iSty} placeholder="Teléfono"  type="tel"   value={formData.telefono} onChange={setField("telefono")} />
+                    <input className={iCls} style={iSty} placeholder="Email *"   type="email" value={formData.email}    onChange={setField("email")}    required />
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={e => { e.stopPropagation(); setServicioOpen(o => !o); }}
+                        className={iCls + " flex items-center justify-between text-left"}
+                        style={{ ...iSty, color: servicioSel ? "white" : "rgba(255,255,255,0.25)" }}
+                      >
+                        <span>{servicioSel || "Servicio de interés"}</span>
+                        <ChevronDown size={14} style={{ opacity: 0.4, flexShrink: 0, transform: servicioOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+                      </button>
+                      {servicioOpen && (
+                        <div
+                          className="absolute left-0 right-0 z-50 rounded-xl border overflow-y-auto"
+                          style={{ top: "calc(100% + 4px)", maxHeight: 220, background: "rgba(3,8,28,0.97)", borderColor: "rgba(255,141,43,0.25)", boxShadow: "0 12px 40px rgba(0,0,0,0.7)" }}
+                        >
+                          {SERVICIOS.map(s => (
+                            <button
+                              key={s.title}
+                              type="button"
+                              onClick={e => { e.stopPropagation(); setServicioSel(s.title); setServicioOpen(false); }}
+                              className="w-full text-left px-3 py-2.5 text-sm transition-colors"
+                              style={{
+                                color: servicioSel === s.title ? "#ff8d2b" : "rgba(255,255,255,0.75)",
+                                background: servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent",
+                              }}
+                              onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                              onMouseLeave={e => (e.currentTarget.style.background = servicioSel === s.title ? "rgba(255,141,43,0.10)" : "transparent")}
+                            >
+                              {s.title}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    {formStatus === "success" && (
+                      <p className="text-sm font-semibold text-center" style={{ color: "#2ecc71" }}>
+                        ¡Consulta enviada! Te contactamos pronto.
+                      </p>
+                    )}
+                    {formStatus === "error" && (
+                      <p className="text-sm font-semibold text-center" style={{ color: "#e74c3c" }}>
+                        Error al enviar. Intenta de nuevo.
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={formStatus === "loading"}
+                      className="w-full px-7 py-2.5 rounded-full font-semibold text-sm cursor-pointer border-none hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{ background: "linear-gradient(to right, #ff8d2b, #05123e)", color: "#ffffff" }}
+                    >
+                      {formStatus === "loading" ? "Enviando…" : "Enviar consulta →"}
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
 
         {/* ── IMAGE LIGHTBOX ───────────────────────────────────────────────── */}

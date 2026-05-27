@@ -578,23 +578,12 @@ function RoadScene({ progress, className, onReady }) {
             const flagCtx = flagCanvas.getContext('2d');
             flagCtx.fillStyle = '#022424'; // deep therapeutic green
             flagCtx.fillRect(0, 0, 512, 256);
-            // Draw elegant pre-load vector elements for the Consalud primary flag
-            flagCtx.fillStyle = '#ffffff';
-            flagCtx.font = 'bold 36px system-ui, sans-serif';
-            flagCtx.textAlign = 'center';
-            flagCtx.textBaseline = 'middle';
-            flagCtx.fillText('DEFENSA MÉDICA', 256, 128);
-            // Draw fine warm amber-gold stripe border
-            flagCtx.strokeStyle = '#e2b13c';
-            flagCtx.lineWidth = 6;
-            flagCtx.strokeRect(12, 12, 488, 232);
             const logoFlagTex = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CanvasTexture"](flagCanvas);
             const logoImg = new window.Image();
             logoImg.onload = ({
                 "RoadScene.useEffect": ()=>{
                     // Clear previous text fallback to replace with rich logo
-                    flagCtx.fillStyle = '#05123e';
-                    flagCtx.fillRect(0, 0, 512, 256);
+                    flagCtx.fillStyle = 'linear-gradient(90deg, #05123e, #ff8d2b)'; // subtle gradient for visual interest
                     const pad = 40;
                     const aspect = logoImg.width / logoImg.height;
                     const maxH = flagCanvas.height - pad * 2;
@@ -612,10 +601,48 @@ function RoadScene({ progress, className, onReady }) {
                 }
             })["RoadScene.useEffect"];
             logoImg.src = '/conSaludWhite.png';
+            // Canvas texture for flag 3 (fi=3): Vigía logo on navy background
+            const vigiaFlagCanvas = document.createElement('canvas');
+            vigiaFlagCanvas.width = 512;
+            vigiaFlagCanvas.height = 256;
+            const vigiaFlagCtx = vigiaFlagCanvas.getContext('2d');
+            const _drawVigiaBg = {
+                "RoadScene.useEffect._drawVigiaBg": ()=>{
+                    vigiaFlagCtx.fillStyle = '#05123e';
+                    vigiaFlagCtx.fillRect(0, 0, 512, 256);
+                    vigiaFlagCtx.fillStyle = '#ff8d2b';
+                    vigiaFlagCtx.fillRect(0, 0, 10, 256);
+                    vigiaFlagCtx.strokeStyle = 'rgba(255,141,43,0.25)';
+                    vigiaFlagCtx.lineWidth = 4;
+                    vigiaFlagCtx.strokeRect(14, 10, 488, 236);
+                }
+            }["RoadScene.useEffect._drawVigiaBg"];
+            _drawVigiaBg();
+            const vigiaFlagTex = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CanvasTexture"](vigiaFlagCanvas);
+            const vigiaLogoImg = new window.Image();
+            vigiaLogoImg.onload = ({
+                "RoadScene.useEffect": ()=>{
+                    _drawVigiaBg();
+                    const pad = 32;
+                    const aspect = vigiaLogoImg.width / vigiaLogoImg.height;
+                    const maxH = vigiaFlagCanvas.height - pad * 2;
+                    const maxW = vigiaFlagCanvas.width - pad * 2 - 10;
+                    let w = maxH * aspect, h = maxH;
+                    if (w > maxW) {
+                        w = maxW;
+                        h = w / aspect;
+                    }
+                    const x = 10 + (vigiaFlagCanvas.width - 10 - w) / 2;
+                    const y = (vigiaFlagCanvas.height - h) / 2;
+                    vigiaFlagCtx.drawImage(vigiaLogoImg, x, y, w, h);
+                    vigiaFlagTex.needsUpdate = true;
+                }
+            })["RoadScene.useEffect"];
+            vigiaLogoImg.src = '/vigiaWhite.png';
             const SECTION_FLAGS = [
                 {
-                    num: "02",
-                    label: "Derechos",
+                    num: "",
+                    label: "NOSOTROS",
                     icon: {
                         "RoadScene.useEffect": (ctx, cx, cy, r)=>{
                             // Beautiful protective heart
@@ -628,9 +655,10 @@ function RoadScene({ progress, className, onReady }) {
                         }
                     }["RoadScene.useEffect"]
                 },
+                // Trigger logo load on the first flag's icon setup
                 {
-                    num: "03",
-                    label: "Garantías",
+                    num: "",
+                    label: "SERVICIOS",
                     icon: {
                         "RoadScene.useEffect": (ctx, cx, cy, r)=>{
                             // Medical protection cross / shield of rights
@@ -651,8 +679,8 @@ function RoadScene({ progress, className, onReady }) {
                     }["RoadScene.useEffect"]
                 },
                 {
-                    num: "04",
-                    label: "Defensa",
+                    num: "",
+                    label: "SERVICIOS DIGITALES",
                     icon: {
                         "RoadScene.useEffect": (ctx, cx, cy, r)=>{
                             // Scales of Justice symbol for legal health protection
@@ -670,7 +698,7 @@ function RoadScene({ progress, className, onReady }) {
                 },
                 {
                     num: "05",
-                    label: "Asistencia",
+                    label: "CONTACTO",
                     icon: {
                         "RoadScene.useEffect": (ctx, cx, cy, r)=>{
                             // Reassuring medical/legal care speech bubble with internal + symbol
@@ -804,6 +832,9 @@ function RoadScene({ progress, className, onReady }) {
                 const posAttr = clothGeo.attributes.position;
                 const flagMat = fi === 0 ? new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
                     map: logoFlagTex,
+                    side: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DoubleSide"]
+                }) : fi === 3 ? new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
+                    map: vigiaFlagTex,
                     side: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DoubleSide"]
                 }) : new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
                     map: makeSecTex(SECTION_FLAGS[fi - 1]),
@@ -1215,7 +1246,7 @@ function RoadScene({ progress, className, onReady }) {
         }
     }, void 0, false, {
         fileName: "[project]/src/components/canvas/RoadScene.tsx",
-        lineNumber: 1148,
+        lineNumber: 1172,
         columnNumber: 10
     }, this);
 }

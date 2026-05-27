@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { buildHospitalModel } from "./models/HospitalModel";
+import { buildConstruccionModel } from "./models/ConstruccionModel";
 
 interface RoadSceneProps {
   progress: number;
@@ -478,6 +480,21 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     const baseTreeGroupC = parseCustomObj(treeObj, treeMtl, 0xf5f3e6); // 20% soft cream
     const baseTreeGroupD = parseCustomObj(treeObj, treeMtl, 0x05123e); // 15% navy
 
+    // Pre-compute model clear zones (no trees within radius of each model)
+    const _hospT = STOP_TS[4];
+    const _hospP = PATH.getPoint(_hospT);
+    const _hospTan = PATH.getTangentAt(_hospT).normalize();
+    const _hospPerp = new THREE.Vector3(-_hospTan.z, 0, _hospTan.x).normalize();
+    const hospClearCenter = _hospP.clone().addScaledVector(_hospPerp, 18);
+    const HOSP_CLEAR_R = 28;
+
+    const _conT = STOP_TS[3];
+    const _conP = PATH.getPoint(_conT);
+    const _conTan = PATH.getTangentAt(_conT).normalize();
+    const _conPerp = new THREE.Vector3(-_conTan.z, 0, _conTan.x).normalize();
+    const conClearCenter = _conP.clone().addScaledVector(_conPerp, -14);
+    const CON_CLEAR_R = 28;
+
     const treeGroup = new THREE.Group();
     // Step through the path points to spawn trees with rich organic clusters
     for (let i = 10; i < N - 10; i += 7) {
@@ -508,6 +525,10 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
               
               // Apply organic height variation according to depth layers
               const sFactor = layer.scale[0] + Math.random() * (layer.scale[1] - layer.scale[0]);
+
+              // Skip trees inside model clear zones
+              if (pos.distanceTo(hospClearCenter) < HOSP_CLEAR_R) continue;
+              if (pos.distanceTo(conClearCenter) < CON_CLEAR_R) continue;
 
               // Query the custom noise elevation formula to map the trees precisely onto the ground
               const tbZn = Math.max(0, Math.min(1, 1 - (pos.z - zWorldMin) / TD));
@@ -542,23 +563,14 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     flagCtx.fillStyle = '#022424'; // deep therapeutic green
     flagCtx.fillRect(0, 0, 512, 256);
     
-    // Draw elegant pre-load vector elements for the Consalud primary flag
-    flagCtx.fillStyle = '#ffffff';
-    flagCtx.font = 'bold 36px system-ui, sans-serif';
-    flagCtx.textAlign = 'center';
-    flagCtx.textBaseline = 'middle';
-    flagCtx.fillText('DEFENSA MÉDICA', 256, 128);
-    // Draw fine warm amber-gold stripe border
-    flagCtx.strokeStyle = '#e2b13c';
-    flagCtx.lineWidth = 6;
-    flagCtx.strokeRect(12, 12, 488, 232);
+    
 
     const logoFlagTex = new THREE.CanvasTexture(flagCanvas);
     const logoImg = new window.Image();
     logoImg.onload = () => {
       // Clear previous text fallback to replace with rich logo
-      flagCtx.fillStyle = '#05123e';
-      flagCtx.fillRect(0, 0, 512, 256);
+      flagCtx.fillStyle = 'linear-gradient(90deg, #05123e, #ff8d2b)'; // subtle gradient for visual interest
+     
       const pad = 40;
       const aspect = logoImg.width / logoImg.height;
       const maxH = flagCanvas.height - pad * 2;
@@ -573,10 +585,38 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     };
     logoImg.src = '/conSaludWhite.png';
 
+    // Canvas texture for flag 3 (fi=3): Vigía logo on navy background
+    const vigiaFlagCanvas = document.createElement('canvas');
+    vigiaFlagCanvas.width = 512; vigiaFlagCanvas.height = 256;
+    const vigiaFlagCtx = vigiaFlagCanvas.getContext('2d')!;
+    const _drawVigiaBg = () => {
+      vigiaFlagCtx.fillStyle = '#05123e'; vigiaFlagCtx.fillRect(0, 0, 512, 256);
+      vigiaFlagCtx.fillStyle = '#ff8d2b'; vigiaFlagCtx.fillRect(0, 0, 10, 256);
+      vigiaFlagCtx.strokeStyle = 'rgba(255,141,43,0.25)'; vigiaFlagCtx.lineWidth = 4;
+      vigiaFlagCtx.strokeRect(14, 10, 488, 236);
+    };
+    _drawVigiaBg();
+    const vigiaFlagTex = new THREE.CanvasTexture(vigiaFlagCanvas);
+    const vigiaLogoImg = new window.Image();
+    vigiaLogoImg.onload = () => {
+      _drawVigiaBg();
+      const pad = 32;
+      const aspect = vigiaLogoImg.width / vigiaLogoImg.height;
+      const maxH = vigiaFlagCanvas.height - pad * 2;
+      const maxW = vigiaFlagCanvas.width - pad * 2 - 10;
+      let w = maxH * aspect, h = maxH;
+      if (w > maxW) { w = maxW; h = w / aspect; }
+      const x = 10 + (vigiaFlagCanvas.width - 10 - w) / 2;
+      const y = (vigiaFlagCanvas.height - h) / 2;
+      vigiaFlagCtx.drawImage(vigiaLogoImg, x, y, w, h);
+      vigiaFlagTex.needsUpdate = true;
+    };
+    vigiaLogoImg.src = '/vigiaWhite.png';
+
     // Canvas textures for flags 1–4: section name + icon
     type IconFn = (ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) => void;
     const SECTION_FLAGS: { num: string; label: string; icon: IconFn }[] = [
-      { num: "02", label: "Derechos",
+      { num: "", label: "NOSOTROS",
         icon: (ctx, cx, cy, r) => {
           // Beautiful protective heart
           ctx.beginPath();
@@ -585,8 +625,10 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
           ctx.bezierCurveTo(cx - r, cy - r * 0.35, cx - r * 0.5, cy - r * 0.9, cx, cy - r * 0.45);
           ctx.closePath(); ctx.fill();
         } },
-      { num: "03", label: "Garantías",
-        icon: (ctx, cx, cy, r) => {
+     // Trigger logo load on the first flag's icon setup
+
+      { num: "", label: "SERVICIOS",
+        icon: (ctx, cx, cy, r) => { 
           // Medical protection cross / shield of rights
           ctx.beginPath();
           ctx.moveTo(cx, cy - r * 0.7);
@@ -602,7 +644,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
           ctx.fillRect(cx - r * 0.35, cy - r * 0.1, r * 0.7, r * 0.2);
           ctx.fillStyle = '#e2b13c'; // restore
         } },
-      { num: "04", label: "Defensa",
+      { num: "", label: "SERVICIOS DIGITALES",
         icon: (ctx, cx, cy, r) => {
           // Scales of Justice symbol for legal health protection
           ctx.fillRect(cx - r * 0.7, cy - r * 0.25, r * 1.4, r * 0.08);
@@ -611,7 +653,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
           ctx.beginPath(); ctx.arc(cx - r * 0.5, cy + r * 0.15, r * 0.24, 0, Math.PI); ctx.fill();
           ctx.beginPath(); ctx.arc(cx + r * 0.5, cy + r * 0.15, r * 0.24, 0, Math.PI); ctx.fill();
         } },
-      { num: "05", label: "Asistencia",
+      { num: "05", label: "CONTACTO",
         icon: (ctx, cx, cy, r) => {
           // Reassuring medical/legal care speech bubble with internal + symbol
           const hw = r * 0.7, hh = r * 0.45;
@@ -740,7 +782,9 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
       const posAttr = clothGeo.attributes.position as THREE.BufferAttribute;
 
       const flagMat = fi === 0
-        ? new THREE.MeshBasicMaterial({ map: logoFlagTex, side: THREE.DoubleSide })
+        ? new THREE.MeshBasicMaterial({ map: logoFlagTex,    side: THREE.DoubleSide })
+        : fi === 3
+        ? new THREE.MeshBasicMaterial({ map: vigiaFlagTex,   side: THREE.DoubleSide })
         : new THREE.MeshBasicMaterial({ map: makeSecTex(SECTION_FLAGS[fi - 1]), side: THREE.DoubleSide });
       const flagMesh = new THREE.Mesh(clothGeo, flagMat);
       fGroup.add(flagMesh);
@@ -920,6 +964,62 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     const cL2 = new THREE.PointLight(C.neonB, 16, 150);
     const bL  = new THREE.PointLight(0x030821, 6, 300); // Soothing deep forest backlight
     scene.add(cL1, cL2, bL);
+
+    // ── Section 3D models ─────────────────────────────────────────────────────
+    const hospitalGroup = buildHospitalModel();
+    const hospWorldPos = (() => {
+      const t = STOP_TS[4];
+      const p = PATH.getPoint(t);
+      const tan = PATH.getTangentAt(t).normalize();
+      const perp = new THREE.Vector3(-tan.z, 0, tan.x).normalize();
+      return p.clone().addScaledVector(perp, 18);
+    })();
+    hospitalGroup.position.copy(hospWorldPos);
+    hospitalGroup.position.y += 1;
+    // Face the hospital toward the road
+    const _toRoad = new THREE.Vector3().subVectors(PATH.getPoint(STOP_TS[4]), hospWorldPos).normalize();
+    hospitalGroup.rotation.y = Math.atan2(_toRoad.x, _toRoad.z);
+    hospitalGroup.scale.setScalar(0.7);
+    hospitalGroup.traverse(child => {
+      const mesh = child as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      mats.forEach(m => {
+        (m as THREE.MeshStandardMaterial).transparent = true;
+        (m as THREE.MeshStandardMaterial).opacity = 0;
+        (m as THREE.MeshStandardMaterial).depthWrite = false;
+      });
+    });
+    scene.add(hospitalGroup);
+
+    // ── Construcción model (Productos Digitales — STOP_TS[3]) ─────────────────
+    const construGroup = buildConstruccionModel();
+    {
+      const t = STOP_TS[3];
+      const p = PATH.getPoint(t);
+      const tan = PATH.getTangentAt(t).normalize();
+      const perp = new THREE.Vector3(-tan.z, 0, tan.x).normalize();
+      // Place 14 units to the LEFT of the road (negative perp)
+      construGroup.position.copy(p).addScaledVector(perp, -14);
+      // Ground using terrain height at the actual offset position
+      const cX = construGroup.position.x, cZ = construGroup.position.z;
+      const cZn = Math.max(0, Math.min(1, 1 - (cZ - zWorldMin) / TD));
+      construGroup.position.y = terrainH(cX, cZ, cZn) + 0.5;
+      const toRoad = new THREE.Vector3().subVectors(p, construGroup.position).normalize();
+      construGroup.rotation.y = Math.atan2(toRoad.x, toRoad.z);
+      construGroup.scale.setScalar(0.9);
+      construGroup.traverse(child => {
+        const mesh = child as THREE.Mesh;
+        if (!mesh.isMesh) return;
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        mats.forEach(m => {
+          (m as THREE.MeshStandardMaterial).transparent = true;
+          (m as THREE.MeshStandardMaterial).opacity = 0;
+          (m as THREE.MeshStandardMaterial).depthWrite = false;
+        });
+      });
+    }
+    scene.add(construGroup);
 
     const CAM_HEIGHT = 7, CAM_BACK = 18;
     const camPos    = PATH.getPoint(.002).clone().add(PATH.getTangentAt(.002).normalize().multiplyScalar(-CAM_BACK));
@@ -1121,6 +1221,30 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
         const b3Dir = new THREE.Vector3(nextB3X - b3X, nextB3Y - b3Y, nextB3Z - b3Z).normalize();
         b3.group.lookAt(b3.group.position.clone().add(b3Dir));
 
+      }
+
+      // ── Construcción model fade (Productos Digitales: 0.75 – 0.91) ──────────
+      const construOpacity = scroll < 0.75 ? 0 : scroll < 0.79 ? (scroll - 0.75) / 0.04 : scroll < 0.88 ? 1 : scroll < 0.91 ? 1 - (scroll - 0.88) / 0.03 : 0;
+      construGroup.visible = construOpacity > 0.01;
+      if (construGroup.visible) {
+        construGroup.traverse(child => {
+          const mesh = child as THREE.Mesh;
+          if (!mesh.isMesh) return;
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          mats.forEach(m => { (m as THREE.MeshStandardMaterial).opacity = construOpacity; });
+        });
+      }
+
+      // ── Hospital model fade (Contacto: 0.88 – 1.0) ───────────────────────
+      const hospOpacity = scroll < 0.88 ? 0 : scroll < 0.92 ? (scroll - 0.88) / 0.04 : 1;
+      hospitalGroup.visible = hospOpacity > 0.01;
+      if (hospitalGroup.visible) {
+        hospitalGroup.traverse(child => {
+          const mesh = child as THREE.Mesh;
+          if (!mesh.isMesh) return;
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          mats.forEach(m => { (m as THREE.MeshStandardMaterial).opacity = hospOpacity; });
+        });
       }
 
       renderer.render(scene, camera);
