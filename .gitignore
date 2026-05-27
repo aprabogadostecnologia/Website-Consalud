@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+.env
+
 dist
 dist-ssr
 *.local
@@ -27,4 +29,4 @@ out/
 *.sln
 *.sw?
 
-.env
+

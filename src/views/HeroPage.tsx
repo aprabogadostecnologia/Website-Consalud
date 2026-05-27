@@ -123,11 +123,22 @@ export default function HeroPage() {
   const [sceneReady, setSceneReady] = useState(false);
   const [activeMarca, setActiveMarca] = useState<number | null>(null);
   const [heroSlide, setHeroSlide] = useState(0);
+  const heroIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startHeroInterval = () => {
+    if (heroIntervalRef.current) clearInterval(heroIntervalRef.current);
+    heroIntervalRef.current = setInterval(() => setHeroSlide(s => (s + 1) % 3), 5000);
+  };
 
   useEffect(() => {
-    const id = setInterval(() => setHeroSlide(s => (s + 1) % 3), 5000);
-    return () => clearInterval(id);
+    startHeroInterval();
+    return () => { if (heroIntervalRef.current) clearInterval(heroIntervalRef.current); };
   }, []);
+
+  const goToSlide = (i: number) => {
+    setHeroSlide(i);
+    startHeroInterval();
+  };
 
   // ── Section opacities (asymmetric bands) ─────────────────────────────────
   const heroO = p < 0.10 ? 1 : p < 0.15 ? 1 - (p - 0.10) / 0.05 : 0;
@@ -181,7 +192,6 @@ export default function HeroPage() {
   // ── Marcas build ──
   const mLabel = e(mL, 0.00, 0.18);
   const mTitle = e(mL, 0.12, 0.32);
-  const mText  = e(mL, 0.28, 0.48);
   const mC     = [e(mL, 0.28, 0.56), e(mL, 0.44, 0.72)];
 
   // ── Contacto build ──
@@ -543,6 +553,7 @@ export default function HeroPage() {
                       onClick={() => {
                         const total = document.documentElement.scrollHeight - window.innerHeight;
                         window.scrollTo({ top: 0.855 * total, behavior: "smooth" });
+                        setTimeout(() => window.dispatchEvent(new CustomEvent("openVigia")), 650);
                       }}
                     >
                       Conocer más
@@ -669,23 +680,54 @@ export default function HeroPage() {
 
           <div
             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-            style={{ opacity: hCue }}
+            style={{ opacity: hCue, pointerEvents: heroO > 0.05 ? "auto" : "none" }}
           >
-            {/* Slide indicators */}
-            <div className="flex gap-2 mb-1">
-              {[0, 1, 2].map(i => (
-                <div
-                  key={i}
-                  className="rounded-full transition-all duration-500"
-                  style={{
-                    width: heroSlide === i ? 22 : 6,
-                    height: 6,
-                    background: heroSlide === i
-                      ? (i === 2 ? "#4ade80" : "#ff8d2b")
-                      : "rgba(255,255,255,0.25)",
-                  }}
-                />
-              ))}
+            {/* Flechas + dots en fila */}
+            <div className="flex items-center gap-3">
+              <button
+                className="flex items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
+                style={{
+                  width: 28, height: 28,
+                  background: "rgba(255,255,255,0.05)",
+                  borderColor: heroSlide === 0 ? "rgba(255,255,255,0.08)" : "rgba(255,141,43,0.35)",
+                  color: heroSlide === 0 ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.65)",
+                  cursor: heroSlide === 0 ? "default" : "pointer",
+                }}
+                onClick={() => heroSlide > 0 && goToSlide(heroSlide - 1)}
+              >
+                <ChevronLeft size={14} strokeWidth={2.5} />
+              </button>
+
+              <div className="flex gap-2">
+                {[0, 1, 2].map(i => (
+                  <div
+                    key={i}
+                    onClick={() => goToSlide(i)}
+                    className="rounded-full transition-all duration-500 cursor-pointer"
+                    style={{
+                      width: heroSlide === i ? 22 : 6,
+                      height: 6,
+                      background: heroSlide === i
+                        ? (i === 2 ? "#4ade80" : "#ff8d2b")
+                        : "rgba(255,255,255,0.25)",
+                    }}
+                  />
+                ))}
+              </div>
+
+              <button
+                className="flex items-center justify-center rounded-full border transition-all duration-200 hover:scale-110"
+                style={{
+                  width: 28, height: 28,
+                  background: "rgba(255,255,255,0.05)",
+                  borderColor: heroSlide === 2 ? "rgba(255,255,255,0.08)" : "rgba(255,141,43,0.35)",
+                  color: heroSlide === 2 ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.65)",
+                  cursor: heroSlide === 2 ? "default" : "pointer",
+                }}
+                onClick={() => heroSlide < 2 && goToSlide(heroSlide + 1)}
+              >
+                <ChevronRight size={14} strokeWidth={2.5} />
+              </button>
             </div>
             <span className="tracking-[0.3em] uppercase text-[11px] font-semibold text-white/40">Scroll</span>
             <div
@@ -1032,14 +1074,13 @@ export default function HeroPage() {
 
             {/* Contact info row */}
             <div
-              className="pointer-events-none mt-5 flex flex-wrap gap-x-8 gap-y-2"
+              className="pointer-events-none mt-5 flex justify-center flex-wrap gap-x-10 gap-y-3"
               style={{ opacity: cInfo }}
             >
-              {CONTACTO_INFO.map(({ label, value }) => (
-                <div key={label} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#ff8d2b" }} />
-                  <span className="text-white/30 text-xs tracking-wide">{label}:</span>
-                  <span className="text-white/60 text-xs font-medium">{value}</span>
+              {CONTACTO_INFO.map(({ icon, label, value }) => (
+                <div key={label} className="flex items-center gap-2.5">
+                  <span className="flex-shrink-0" style={{ color: "#ff8d2b" }}>{icon}</span>
+                  <span className="text-white/60 text-sm font-medium">{value}</span>
                 </div>
               ))}
             </div>
@@ -1126,8 +1167,9 @@ export default function HeroPage() {
                       fontSize: 120, fontWeight: 900, letterSpacing: "-4px",
                       color: "rgba(255,255,255,0.045)",
                       lineHeight: 1,
+                      boxShadow: `0 0 0px rgba(255,255,255,0), 0 0 8px rgba(255,255,255,0.12), 0 0 24px rgba(255,255,255,0.08)`,
                     }}>
-                      2020
+                      2021
                     </div>
 
                     {/* Logo */}
@@ -1136,47 +1178,17 @@ export default function HeroPage() {
                       style={{ height: 130, objectFit: "contain", position: "relative", zIndex: 1 }}
                     />
 
-                    {/* Footer: hito izq + flechas der */}
+                    {/* Footer: centrado */}
                     <div style={{
                       position: "absolute", bottom: 20, left: 20, right: 20,
-                      display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+                      display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
                     }}>
-                      <div>
-                        <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", margin: "0 0 4px" }}>
-                          HITO ANUAL
-                        </p>
-                        <p style={{ fontSize: 14, fontWeight: 800, color: marca.accent, margin: 0, letterSpacing: "0.04em" }}>
-                          ORIGEN 2020
-                        </p>
-                      </div>
-                      <div style={{ display: "flex", gap: 8 }}>
-                        <button
-                          style={{
-                            width: 36, height: 36, borderRadius: "50%",
-                            border: "1px solid rgba(255,255,255,0.12)",
-                            background: canPrev ? "rgba(255,255,255,0.06)" : "transparent",
-                            color: canPrev ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
-                            cursor: canPrev ? "pointer" : "default",
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                          }}
-                          onClick={() => canPrev && setActiveMarca(activeMarca - 1)}
-                        >
-                          <ChevronLeft size={16} />
-                        </button>
-                        <button
-                          style={{
-                            width: 36, height: 36, borderRadius: "50%",
-                            border: "1px solid rgba(255,255,255,0.12)",
-                            background: canNext ? "rgba(255,255,255,0.06)" : "transparent",
-                            color: canNext ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.15)",
-                            cursor: canNext ? "pointer" : "default",
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                          }}
-                          onClick={() => canNext && setActiveMarca(activeMarca + 1)}
-                        >
-                          <ChevronRight size={16} />
-                        </button>
-                      </div>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", margin: 0, textAlign: "center" }}>
+                        95% DE REDUCCIÓN EN INCIDENTES SST
+                      </p>
+                      <p style={{ fontSize: 14, fontWeight: 800, margin: 0, letterSpacing: "0.04em", background: "linear-gradient(90deg, #05123e, #ff8d2b)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", textAlign: "center" }}>
+                        COLOMBIA 𝓍 ALEMANIA
+                      </p>
                     </div>
                   </div>
 
@@ -1196,7 +1208,7 @@ export default function HeroPage() {
                         {marca.fullName ?? marca.name}
                       </h2>
                       <p style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.4)", margin: 0, letterSpacing: "0.1em" }}>
-                        ROL PRINCIPAL:&nbsp;
+                        &nbsp;
                         <span style={{ color: "rgba(255,255,255,0.65)" }}>
                           {marca.role ?? marca.tagline.toUpperCase()}
                         </span>
@@ -1350,14 +1362,8 @@ export default function HeroPage() {
                     }}>
                       <div>
                         <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 4px" }}>
-                          ESTADO ALIANZA
+                  
                         </p>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2ecc71" }} />
-                          <span style={{ fontSize: 12, fontWeight: 600, color: "#2ecc71" }}>
-                            {marca.status ?? "Activa & Disponible"}
-                          </span>
-                        </div>
                       </div>
                       <button
                         style={{
@@ -1374,7 +1380,7 @@ export default function HeroPage() {
                           setTimeout(() => setDemoModalOpen(true), 280);
                         }}
                       >
-                        CONECTAR CONVENIO →
+                        AGENDA TU DEMO →
                       </button>
                     </div>
                   </div>
@@ -1515,7 +1521,7 @@ export default function HeroPage() {
                   </div>
 
                   {demoStatus === "success" && (
-                    <p style={{ fontSize: 13, fontWeight: 600, color: "#2ecc71", marginBottom: 12 }}>
+                    <p style={{ fontSize: 23, fontWeight: 600, color: "#2ecc71", marginBottom: 12 }}>
                       ¡Solicitud enviada! Te contactamos pronto. ✓
                     </p>
                   )}

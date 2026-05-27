@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Shield, Users, AlertTriangle, Leaf, BookOpen, Scale, CheckSquare,
-  Heart, Eye, Award, Zap,
+  Heart, Eye, Award, Zap,Mail, Phone, MapPin
 } from "lucide-react";
 
 // ── Valores ───────────────────────────────────────────────────────────────────
@@ -119,12 +119,13 @@ export const MARCAS: Marca[] = [
     tagline: "Seguridad Predictiva en Tiempo Real",
     phrase: "En Colombia, un trabajador fallece cada 20 horas. Vigía alerta ANTES del incidente.",
     role: "PRIMER SISTEMA DE RASTREO VISUAL INTELIGENTE DE COLOMBIA",
-    description: "Cámaras. Inteligencia artificial. 100% prevención. Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.",
+    description: "Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.",
     features: [
       { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Reconoce casco, chaleco y guantes en milisegundos con 95%+ de confianza. Alerta inmediata por no uso." },
       { icon: <AlertTriangle size={16} />, title: "Control de Celulares", desc: "Rastreo Inteligente de Mirada: detecta manipulación de celular con 93%+ confianza y alerta al instante." },
       { icon: <Eye size={16} />, title: "Seguimiento Ocular 3D", desc: "Determina si un trabajador opera maquinaria mientras usa su celular. Prevención antes del incidente." },
       { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificación por email o WhatsApp al supervisor SST con evidencia visual y exportación PDF." },
+      { icon: <BookOpen size={16} />, title: "Reportes Automáticos", desc: "Generación automática de reportes de cumplimiento normativo HSE para auditorías y seguimiento." },
     ],
     extras: [
       "Siniestralidad — reducción drástica de incidentes y accidentes",
@@ -133,16 +134,15 @@ export const MARCAS: Marca[] = [
       "Flujo: Cámaras optimizadas → AI Vigía → Alerta Real + soporte documental",
       "Despliegue en días, no meses · Reportes generados al instante",
     ],
-    status: "Activa & Disponible",
     videoSrc: "/Video%20Project.mp4",
   },
 ];
 
 // ── Contacto ──────────────────────────────────────────────────────────────────
 export const CONTACTO_INFO = [
-  { label: "Email",     value: "consalud@consultoresempresariales.com.co" },
-  { label: "Numero",    value: "311 265 2715 · 305 788 3941" },
-  { label: "Dirección", value: "Calle 92 # 16 - 30, Bogotá" },
+  { icon: <Mail size={22} />, label: "Email",     value: "consalud@consultoresempresariales.com.co" },
+  { icon: <Phone size={22} />, label: "Numero",    value: "+57 305 788 3941" },
+  { icon: <MapPin size={22} />, label: "Dirección", value: "Calle 92 # 16 - 30, Bogotá" },
 ];
 
 // ── Scroll bands ──────────────────────────────────────────────────────────────
