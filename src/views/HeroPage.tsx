@@ -193,6 +193,332 @@ function ContactCard({ onOpen }: { onOpen: () => void }) {
   );
 }
 
+// ── Vigía slide keyframes ─────────────────────────────────────────────────────
+const vigiaKeyframes = `
+  @keyframes vigiaECG {
+    from { stroke-dashoffset: 180; }
+    to   { stroke-dashoffset: -28; }
+  }
+  @keyframes vigiaStatPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,65,65,0.7); }
+    50%       { opacity: 0.72; box-shadow: 0 0 0 6px rgba(255,65,65,0); }
+  }
+  @keyframes vigiaGlowPulse {
+    0%, 100% { opacity: 0.52; }
+    50%       { opacity: 0.92; }
+  }
+  @keyframes vigiaScan {
+    0%   { top: 0%;   opacity: 1; }
+    85%  { opacity: 0.7; }
+    100% { top: 100%; opacity: 0; }
+  }
+`;
+
+function VigiaSlide({ heroO, onDemo, onKnowMore }: {
+  heroO: number;
+  onDemo: () => void;
+  onKnowMore: () => void;
+}) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [scanPhase, setScanPhase] = useState<"hidden" | "scanning" | "detected">("hidden");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const runCycle = () => {
+      setScanPhase("scanning");
+      setTimeout(() => setScanPhase("detected"), 1900);
+      setTimeout(() => setScanPhase("hidden"), 3600);
+    };
+    const t = setTimeout(runCycle, 1400);
+    const iv = setInterval(runCycle, 6200);
+    return () => { clearTimeout(t); clearInterval(iv); };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setTilt({
+      y:  ((e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)) * 7,
+      x: -((e.clientY - rect.top  - rect.height / 2) / (rect.height / 2)) * 7,
+    });
+  };
+
+  return (
+    <motion.div
+      key="slide-vigia"
+      style={{ width: "100%", display: "flex", alignItems: "center", padding: "0 40px", gap: 0 }}
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -40 }}
+      transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+    >
+      <style>{vigiaKeyframes}</style>
+
+      {/* ── LEFT 40%: texto ── */}
+      <div style={{ flex: "0 0 40%", display: "flex", flexDirection: "column", gap: 18, paddingRight: 40, minWidth: 0 }}>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.45 }}
+          style={{ margin: 0, fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#ff8d2b" }}
+        >
+          IA · Visión Computacional · Colombia × Alemania
+        </motion.p>
+
+        <motion.img
+          src="/vigiaWhite.png" alt="Vigía Salud Inteligente" draggable={false}
+          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16, duration: 0.55 }}
+          style={{ height: "clamp(52px, 7vw, 76px)", objectFit: "contain", display: "block", alignSelf: "flex-start" }}
+        />
+
+        {/* Stat card */}
+        <motion.div
+          initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.26, duration: 0.55 }}
+          style={{
+            borderRadius: 14,
+            background: "rgba(220,30,30,0.06)",
+            border: "1px solid rgba(220,30,30,0.22)",
+            padding: "16px 18px",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          {/* ECG line */}
+          <svg width="150" height="26" viewBox="0 0 150 26" fill="none" style={{ display: "block", marginBottom: 12 }}>
+            <path
+              d="M0,13 L38,13 L45,2 L53,24 L60,13 L75,13 L80,6 L85,13 L150,13"
+              stroke="rgba(255,80,80,0.8)"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeDasharray="28 152"
+              style={{ animation: "vigiaECG 1.9s linear infinite" }}
+            />
+          </svg>
+
+          {/* Pulsing dot + label */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+            <div style={{
+              width: 8, height: 8, borderRadius: "50%", background: "rgba(255,65,65,1)", flexShrink: 0,
+              animation: "vigiaStatPulse 1.3s ease-in-out infinite",
+            }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,100,100,0.75)" }}>
+              ESTADÍSTICA COLOMBIA · 2024
+            </span>
+          </div>
+
+          <p style={{ margin: 0, color: "rgba(255,255,255,0.88)", fontSize: 14, lineHeight: 1.65, fontWeight: 500 }}>
+            Un trabajador fallece cada{" "}
+            <span style={{
+              fontSize: 38, fontWeight: 900, color: "#ff8d2b", lineHeight: 1,
+              display: "inline-block", verticalAlign: "middle",
+              textShadow: "0 0 24px rgba(255,141,43,0.55)",
+            }}>20</span>
+            {" "}horas en Colombia.
+          </p>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38, duration: 0.55 }}
+          style={{ margin: 0, fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}
+        >
+          Vigía detecta riesgos en milisegundos, notifica al supervisor SST y genera reportes de cumplimiento HSE al instante. Cámaras + IA en tiempo real.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.46, duration: 0.55 }}
+          style={{ display: "flex", gap: 12, flexWrap: "wrap", pointerEvents: heroO > 0.05 ? "auto" : "none" }}
+        >
+          <button
+            style={{
+              background: "#ff8d2b", color: "#05123e", border: "none",
+              borderRadius: 40, padding: "12px 26px", fontWeight: 700, fontSize: 14, cursor: "pointer",
+            }}
+            onClick={onDemo}
+          >
+            Reserva tu demo ➤
+          </button>
+          <button
+            style={{
+              background: "transparent", color: "white",
+              border: "1.5px solid rgba(255,255,255,0.25)",
+              borderRadius: 40, padding: "12px 22px", fontWeight: 600, fontSize: 14, cursor: "pointer",
+            }}
+            onClick={onKnowMore}
+          >
+            Conocer más
+          </button>
+        </motion.div>
+      </div>
+
+      {/* ── RIGHT 60%: producto + efectos ── */}
+      <div style={{ flex: "1", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+
+        {/* Ambient glow */}
+        <div style={{
+          position: "absolute",
+          width: "75%", height: "75%",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,141,43,0.30) 0%, rgba(255,141,43,0.10) 45%, transparent 70%)",
+          filter: "blur(38px)",
+          animation: "vigiaGlowPulse 3.2s ease-in-out infinite",
+          pointerEvents: "none",
+        }} />
+
+        {/* Tilt container */}
+        <div
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+          style={{
+            position: "relative",
+            transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+            transition: (tilt.x === 0 && tilt.y === 0)
+              ? "transform 0.55s cubic-bezier(0.23,1,0.32,1)"
+              : "transform 0.08s linear",
+            cursor: "crosshair",
+            userSelect: "none",
+          }}
+        >
+          <motion.img
+            src="/heroVigia.png"
+            alt="Vigía en acción"
+            draggable={false}
+            animate={{ y: [0, -18, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            style={{
+              height: "clamp(240px, 32vw, 420px)",
+              width: "auto",
+              objectFit: "contain",
+              display: "block",
+              filter: "drop-shadow(0 0 48px rgba(255,141,43,0.50)) drop-shadow(0 20px 44px rgba(0,0,0,0.65))",
+            }}
+          />
+
+          {/* Detection overlay */}
+          {scanPhase !== "hidden" && (
+            <div style={{ position: "absolute", inset: "12% 18%", pointerEvents: "none" }}>
+              {/* Corner brackets */}
+              {(["tl","tr","bl","br"] as const).map(c => (
+                <div key={c} style={{
+                  position: "absolute", width: 18, height: 18,
+                  ...(c.includes("t") ? { top: 0 } : { bottom: 0 }),
+                  ...(c.includes("l") ? { left: 0 } : { right: 0 }),
+                  borderTop:    c.includes("t") ? "2px solid rgba(255,141,43,0.95)" : "none",
+                  borderBottom: c.includes("b") ? "2px solid rgba(255,141,43,0.95)" : "none",
+                  borderLeft:   c.includes("l") ? "2px solid rgba(255,141,43,0.95)" : "none",
+                  borderRight:  c.includes("r") ? "2px solid rgba(255,141,43,0.95)" : "none",
+                }} />
+              ))}
+
+              {/* Scan line */}
+              {scanPhase === "scanning" && (
+                <div style={{
+                  position: "absolute", left: 0, right: 0, height: 2,
+                  background: "linear-gradient(90deg, transparent, rgba(255,141,43,0.85), transparent)",
+                  boxShadow: "0 0 8px rgba(255,141,43,0.5)",
+                  animation: "vigiaScan 1.9s ease-in-out forwards",
+                }} />
+              )}
+
+              {/* Detection label */}
+              {scanPhase === "detected" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.22 }}
+                  style={{
+                    position: "absolute", top: -30, left: 0,
+                    background: "rgba(255,141,43,0.95)",
+                    borderRadius: 6, padding: "4px 10px",
+                    fontSize: 10, fontWeight: 700, color: "#05123e",
+                    letterSpacing: "0.06em", whiteSpace: "nowrap",
+                    boxShadow: "0 2px 12px rgba(255,141,43,0.4)",
+                  }}
+                >
+                  ⚠ Riesgo detectado · 97.4% confianza
+                </motion.div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function FlipCard({ s, i }: { s: (typeof SERVICIOS)[number]; i: number }) {
+  const [flipped, setFlipped] = useState(false);
+  const accent = s.accent.trim();
+  return (
+    <div
+      style={{ perspective: 900, height: 195 }}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          transformStyle: "preserve-3d",
+          transition: "transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+        }}
+      >
+        {/* FRONT */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+          borderRadius: 16,
+          background: "rgba(3,8,28,0.92)",
+          border: `1px solid ${accent}33`,
+          padding: "18px 16px",
+          display: "flex", flexDirection: "column", gap: 6,
+          overflow: "hidden",
+        }}>
+          {s.icon && <s.icon size={22} strokeWidth={1.5} style={{ color: accent }} />}
+          <p style={{ fontSize: 36, fontWeight: 900, color: `${accent}45`, lineHeight: 1, margin: 0, fontVariantNumeric: "tabular-nums" }}>
+            {String(i + 1).padStart(2, "0")}
+          </p>
+          <div style={{ height: 2, width: 22, background: accent }} />
+          <h3 style={{ fontSize: 13, fontWeight: 700, color: "white", margin: 0, lineHeight: 1.3 }}>{s.title}</h3>
+          <p style={{ fontSize: 9, color: `${accent}77`, margin: "auto 0 0", letterSpacing: "0.08em" }}>Pasa el cursor →</p>
+        </div>
+
+        {/* BACK */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+          transform: "rotateY(180deg)",
+          borderRadius: 16,
+          background: "rgba(3,8,28,0.97)",
+          border: `1px solid ${accent}55`,
+          padding: "14px 12px",
+          display: "flex", flexDirection: "column", gap: 5,
+          overflow: "hidden",
+        }}>
+          <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: accent, margin: 0 }}>
+            {s.norm}
+          </p>
+          <p style={{ fontSize: 10, color: "rgba(255,255,255,0.62)", lineHeight: 1.45, margin: 0 }}>{s.desc}</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 3, marginTop: 2 }}>
+            {s.bullets.slice(0, 4).map(b => (
+              <div key={b} style={{ display: "flex", alignItems: "flex-start", gap: 5 }}>
+                <span style={{ color: accent, fontSize: 7, flexShrink: 0, marginTop: 3 }}>◆</span>
+                <span style={{ fontSize: 9.5, color: "rgba(255,255,255,0.52)", lineHeight: 1.35 }}>{b}</span>
+              </div>
+            ))}
+            {s.bullets.length > 4 && (
+              <p style={{ fontSize: 9, color: `${accent}66`, margin: "1px 0 0 12px" }}>+{s.bullets.length - 4} más</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HeroPage() {
   const p = useScrollProgress();
   const [sceneReady, setSceneReady] = useState(false);
@@ -246,23 +572,9 @@ export default function HeroPage() {
   const years    = Math.round(nS1 * 27);
   const services = Math.round(nS2 * 7);
 
-  // ── Servicios carousel ──
-  const sLabel    = e(sL, 0.00, 0.03);
-  const sTitle    = e(sL, 0.01, 0.05);
-  // Dwell mapping: 55% hold per card + 0.8-segment tail so last card has reading time
-  const _N     = SERVICIOS.length;
-  const _hold  = 0.65;
-  const _tail  = 0.8;
-  const _sRaw  = sL * (_N - 1 + _tail);
-  let sActiveF: number;
-  if (_sRaw >= _N - 1) {
-    sActiveF = _N - 1;
-  } else {
-    const _sSeg = Math.floor(Math.min(_sRaw, _N - 1.0001));
-    const _sW   = _sRaw - _sSeg;
-    sActiveF = _sSeg + (_sW < _hold ? 0 : (_sW - _hold) / (1 - _hold));
-  }
-  const sActiveIdx = Math.min(_N - 1, Math.max(0, Math.round(sActiveF)));
+  // ── Servicios grid ──
+  const sLabel = e(sL, 0.00, 0.03);
+  const sTitle = e(sL, 0.01, 0.05);
 
   // ── Marcas build ──
   const mLabel = e(mL, 0.00, 0.18);
@@ -319,7 +631,7 @@ export default function HeroPage() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
-      clearTimeout(snapTimeout);
+      clearTimeout(snapTimeout); 
     };
   }, []);
 
@@ -573,105 +885,16 @@ export default function HeroPage() {
                 </div>
               </motion.div>
             ) : heroSlide === 1 ? (
-              <motion.div
+              <VigiaSlide
                 key="slide-vigia"
-                className="max-w-6xl mx-auto px-8 w-full flex items-center justify-between gap-8"
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-              >
-                {/* Left: text content */}
-                <div className="flex-1 min-w-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.10, duration: 0.5 }}
-                  >
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-8">
-                      El Futuro de la Prevención en Colombia · IA & Visión Computacional
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.20, duration: 0.55 }}
-                    style={{ marginBottom: 40 }}
-                  >
-                    <img
-                      src="/vigiaWhite.png"
-                      alt="Vigía Salud Inteligente"
-                      style={{ height: "clamp(80px, 12vw, 160px)", objectFit: "contain", display: "block" }}
-                      draggable={false}
-                    />
-                  </motion.div>
-
-                  <motion.p
-                    className="text-xl text-white/80 max-w-lg leading-relaxed mb-12"
-                    style={{ textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.40, duration: 0.55 }}
-                  >
-                    <span style={{ display: "block", fontSize: "clamp(13px,1.5vw,15px)", color: "#ff8d2b", fontWeight: 700, marginBottom: 10 }}>
-                      En Colombia, un trabajador fallece cada 20 horas.
-                    </span>
-                    Vigía alerta ANTES del incidente — cámaras, IA y rastreo visual inteligente para prevenir en tiempo real. Desarrollada en Colombia con Ingeniería Alemana.
-                  </motion.p>
-
-                  <motion.div
-                    className="flex flex-col sm:flex-row gap-4"
-                    style={{ pointerEvents: heroO > 0.05 ? "auto" : "none" }}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.50, duration: 0.55 }}
-                  >
-                    <button
-                      className="px-8 py-3.5 rounded-full font-semibold text-[#05123e] hover:brightness-110 transition-all cursor-pointer border-none"
-                      style={{ background: "#ff8d2b" }}
-                      onClick={() => setDemoModalOpen(true)}
-                    >
-                      Reserva tu demo ➤
-                    </button>
-                    <button
-                      className="px-8 py-3.5 rounded-full font-semibold text-white hover:bg-white/10 transition-all cursor-pointer"
-                      style={{ background: "transparent", border: "1.5px solid rgba(255,255,255,0.25)" }}
-                      onClick={() => {
-                        const total = document.documentElement.scrollHeight - window.innerHeight;
-                        window.scrollTo({ top: 0.855 * total, behavior: "smooth" });
-                        setTimeout(() => window.dispatchEvent(new CustomEvent("openVigia")), 650);
-                      }}
-                    >
-                      Conocer más
-                    </button>
-                  </motion.div>
-                </div>
-
-                {/* Right: hero product image */}
-                <motion.div
-                  className="hidden md:flex flex-shrink-0 items-center justify-center"
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.30, duration: 0.65, ease: [0.23, 1, 0.32, 1] }}
-                >
-                  <motion.img
-                    src="/heroVigia.png"
-                    alt="Vigía en acción"
-                    draggable={false}
-                    whileHover={{ scale: 1.06, y: -12 }}
-                    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-                    style={{
-                      height: "clamp(180px, 22vw, 300px)",
-                      width: "auto",
-                      objectFit: "contain",
-                      display: "block",
-                      cursor: "pointer",
-                      filter: "drop-shadow(0 0 32px rgba(255,141,43,0.45)) drop-shadow(0 12px 32px rgba(0,0,0,0.55))",
-                    }}
-                  />
-                </motion.div>
-              </motion.div>
+                heroO={heroO}
+                onDemo={() => setDemoModalOpen(true)}
+                onKnowMore={() => {
+                  const total = document.documentElement.scrollHeight - window.innerHeight;
+                  window.scrollTo({ top: 0.855 * total, behavior: "smooth" });
+                  setTimeout(() => window.dispatchEvent(new CustomEvent("openVigia")), 650);
+                }}
+              />
             ) : (
               /* ── Slide 2: Batería de Riesgo Psicosocial ────────────────────────── */
               <motion.div
@@ -945,98 +1168,49 @@ export default function HeroPage() {
           </div>
         </div>
 
-        {/* ── SCENE 3: SERVICIOS CAROUSEL ──────────────────────────────────── */}
+        {/* ── SCENE 3: SERVICIOS GRID ──────────────────────────────────────── */}
         <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden" style={{ opacity: servO }}>
 
-          {/* Fixed header — centered */}
-          <div className="absolute top-25 inset-x-0 flex flex-col items-center text-center px-8">
+          {/* Header */}
+          <div className="absolute top-20 inset-x-0 flex flex-col items-center text-center px-8">
             <div style={lft(sLabel)}>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#ff8d2b] mb-2">Lo que hacemos</p>
             </div>
-            <div style={lft(sTitle, 30)} className="flex items-center gap-4">
+            <div style={lft(sTitle, 30)}>
               <h2 className="text-2xl md:text-3xl font-extrabold text-white">Nuestros servicios</h2>
-              <p className="text-sm font-semibold text-white/30 tabular-nums" style={{ opacity: sLabel }}>
-                {String(sActiveIdx + 1).padStart(2, "0")}
-                <span className="text-white/15"> / </span>
-                {String(SERVICIOS.length).padStart(2, "0")}
-              </p>
             </div>
           </div>
 
-          {/* Cards */}
-          <div className="absolute inset-0 flex items-center">
-            {SERVICIOS.map((s, i) => {
-              const offset = sActiveF - i;
-              const absOff = Math.abs(offset);
-              if (absOff > 2.5) return null;
-              return (
-                <div
-                  key={s.title}
-                  className="absolute inset-x-0 px-8 md:px-20"
-                  style={{
-                    top: "56%",
-                    transform: `translateY(-50%) translateX(${-offset * 92}vw) scale(${Math.max(0.90, 1 - absOff * 0.05)})`,
-                    opacity: Math.max(0, 1 - absOff * 0.85),
-                    willChange: "transform, opacity",
-                  }}
-                >
-                  <div
-                    className="max-w-5xl mx-auto rounded-3xl border grid grid-cols-1 md:grid-cols-5 overflow-hidden"
-                    style={{ borderColor: `${s.accent}22`, background: "rgba(3,8,28,0.92)" }}
-                  >
-                    {/* Left panel */}
-                    <div
-                      className="md:col-span-2 p-8 md:p-10 border-b md:border-b-0 md:border-r"
-                      style={{ borderColor: `${s.accent}18` }}
-                    >
-                      <div className="mb-4">
-                        {s.icon && <s.icon size={40} strokeWidth={1.5} style={{ color: s.accent }} />}
-                      </div>
-                      <p
-                        className="text-7xl font-extrabold leading-none mb-4 select-none"
-                        style={{ color: `${s.accent}55`, fontVariantNumeric: "tabular-nums" }}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </p>
-                      <div className="h-0.5 mb-5" style={{ width: 28, background: s.accent }} />
-                      <h3 className="text-xl md:text-2xl font-extrabold text-white leading-snug mb-3">{s.title}</h3>
-                      <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: s.accent }}>
-                        {s.norm}
-                      </p>
-                      <p className="text-white/70 text-sm leading-relaxed">{s.desc}</p>
-                    </div>
-
-                    {/* Right panel */}
-                    <div className="md:col-span-3 p-8 md:p-10">
-                      <p className="text-[10px] tracking-[0.28em] uppercase text-white/25 mb-5">Incluye</p>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-                        {s.bullets.map(b => (
-                          <li key={b} className="flex items-start gap-2.5 text-white/75 text-sm leading-snug">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: s.accent }} />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+          {/* Flip card grid */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingTop: 100,
+              paddingLeft: 32,
+              paddingRight: 32,
+              pointerEvents: servO > 0.05 ? "auto" : "none",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: 10,
+                maxWidth: 1100,
+                width: "100%",
+              }}
+            >
+              {SERVICIOS.map((s, i) => (
+                <div key={s.title} style={{ width: 240, flexShrink: 0 }}>
+                  <FlipCard s={s} i={i} />
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Progress pills */}
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-2">
-            {SERVICIOS.map((s, i) => (
-              <div
-                key={i}
-                className="rounded-full transition-all duration-300"
-                style={{
-                  width: Math.abs(sActiveF - i) < 0.5 ? 22 : 5,
-                  height: 4,
-                  background: Math.abs(sActiveF - i) < 0.5 ? s.accent : "rgba(255,255,255,0.15)",
-                }}
-              />
-            ))}
+              ))}
+            </div>
           </div>
 
         </div>

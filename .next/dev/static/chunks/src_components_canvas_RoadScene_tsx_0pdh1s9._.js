@@ -889,138 +889,6 @@ function RoadScene({ progress, className, onReady }) {
                 size: 0.7,
                 sizeAttenuation: true
             })));
-            // ── Low-Poly Majestic Birds of Welfare ─────────────────────────────────────
-            const birdsGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
-            scene.add(birdsGroup);
-            function createLowPolyBird(colorBody, colorWings, colorBeak, scale = 1.0) {
-                const bird = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
-                // Sharp low-poly body geometry
-                const bodyGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ConeGeometry"](0.38 * scale, 1.4 * scale, 4);
-                bodyGeo.rotateX(Math.PI / 2);
-                const bodyMat = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: colorBody,
-                    flatShading: true,
-                    roughness: 0.6,
-                    metalness: 0.1
-                });
-                const bodyMesh = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](bodyGeo, bodyMat);
-                bird.add(bodyMesh);
-                // Curved low-poly beak
-                const beakGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ConeGeometry"](0.12 * scale, 0.45 * scale, 4);
-                beakGeo.rotateX(Math.PI * 0.4);
-                const beakMat = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: colorBeak,
-                    flatShading: true,
-                    roughness: 0.5
-                });
-                const beakMesh = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](beakGeo, beakMat);
-                beakMesh.position.set(0, -0.05 * scale, 0.75 * scale);
-                bird.add(beakMesh);
-                // Majestic long tail feathers (low-poly diamond tapered)
-                const tailGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ConeGeometry"](0.16 * scale, 1.1 * scale, 4);
-                tailGeo.rotateX(-Math.PI * 0.52);
-                const tailMat = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: colorWings,
-                    flatShading: true,
-                    roughness: 0.7
-                });
-                const tailMesh = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](tailGeo, tailMat);
-                tailMesh.position.set(0, -0.15 * scale, -0.85 * scale);
-                bird.add(tailMesh);
-                // Low-poly eyes
-                const eyeGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SphereGeometry"](0.04 * scale, 4, 4);
-                const eyeMat = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshBasicMaterial"]({
-                    color: 0x010410
-                });
-                const leftEye = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](eyeGeo, eyeMat);
-                leftEye.position.set(-0.16 * scale, 0.1 * scale, 0.55 * scale);
-                const rightEye = leftEye.clone();
-                rightEye.position.x = 0.16 * scale;
-                bird.add(leftEye, rightEye);
-                // LEFT WING GROUP (pivot on the shoulder)
-                const leftWingGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
-                leftWingGroup.position.set(-0.25 * scale, 0.1 * scale, 0.1 * scale);
-                const leftWingGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BufferGeometry"]();
-                const verticesL = new Float32Array([
-                    // Triangle 1: inner wing
-                    0,
-                    0,
-                    0.3 * scale,
-                    0,
-                    0,
-                    -0.3 * scale,
-                    -0.8 * scale,
-                    -0.15 * scale,
-                    -0.1 * scale,
-                    // Triangle 2: outer wing
-                    0,
-                    0,
-                    -0.3 * scale,
-                    -0.8 * scale,
-                    -0.15 * scale,
-                    -0.1 * scale,
-                    -1.8 * scale,
-                    -0.4 * scale,
-                    -0.25 * scale
-                ]);
-                leftWingGeo.setAttribute('position', new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BufferAttribute"](verticesL, 3));
-                leftWingGeo.computeVertexNormals();
-                const leftWingMesh = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](leftWingGeo, new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: colorWings,
-                    side: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DoubleSide"],
-                    flatShading: true,
-                    roughness: 0.6
-                }));
-                leftWingGroup.add(leftWingMesh);
-                // RIGHT WING GROUP (pivot on the shoulder)
-                const rightWingGroup = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Group"]();
-                rightWingGroup.position.set(0.25 * scale, 0.1 * scale, 0.1 * scale);
-                const rightWingGeo = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BufferGeometry"]();
-                const verticesR = new Float32Array([
-                    // Triangle 1: inner wing
-                    0,
-                    0,
-                    0.3 * scale,
-                    0,
-                    0,
-                    -0.3 * scale,
-                    0.8 * scale,
-                    -0.15 * scale,
-                    -0.1 * scale,
-                    // Triangle 2: outer wing
-                    0,
-                    0,
-                    -0.3 * scale,
-                    0.8 * scale,
-                    -0.15 * scale,
-                    -0.1 * scale,
-                    1.8 * scale,
-                    -0.4 * scale,
-                    -0.25 * scale
-                ]);
-                rightWingGeo.setAttribute('position', new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BufferAttribute"](verticesR, 3));
-                rightWingGeo.computeVertexNormals();
-                const rightWingMesh = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Mesh"](rightWingGeo, new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: colorWings,
-                    side: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DoubleSide"],
-                    flatShading: true,
-                    roughness: 0.6
-                }));
-                rightWingGroup.add(rightWingMesh);
-                bird.add(leftWingGroup, rightWingGroup);
-                return {
-                    group: bird,
-                    leftWing: leftWingGroup,
-                    rightWing: rightWingGroup
-                };
-            }
-            // Launch a premium macaw parrot, an amber phoenix, and a digital turquoise bird
-            const b1 = createLowPolyBird(0xff3b30, 0x00d8f6, 0xe2b13c, 1.25);
-            const b2 = createLowPolyBird(0xe2b13c, 0x2563eb, 0xff5533, 1.0);
-            const b3 = createLowPolyBird(0x00d8f6, 0xffffff, 0xe2b13c, 0.9);
-            birdsGroup.add(b1.group);
-            birdsGroup.add(b2.group);
-            birdsGroup.add(b3.group);
             // ── Lights ────────────────────────────────────────────────────────────────
             scene.add(new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AmbientLight"](0x081024, 6)); // Warm therapeutic ambient light
             const dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DirectionalLight"](0xff8d2b, 3); // Warm brand-orange solar vitality light
@@ -1046,12 +914,12 @@ function RoadScene({ progress, className, onReady }) {
                 }
             }["RoadScene.useEffect.onResize"];
             window.addEventListener("resize", onResize);
-            let birdsTimer = 0;
+            let animTime = 0;
             let frame = 0, animId = 0;
             function animate() {
                 animId = requestAnimationFrame(animate);
                 frame++;
-                birdsTimer += 0.016;
+                animTime += 0.016;
                 // Rotate street lamps so they spin like active beacons
                 rotatingBulbs.forEach({
                     "RoadScene.useEffect.animate": (b)=>{
@@ -1066,15 +934,10 @@ function RoadScene({ progress, className, onReady }) {
                         sprite.rotation.z += 0.002;
                     }
                 }["RoadScene.useEffect.animate"]);
-                // ── Bird Flight Timer Controls ─────────────────────────────────────────
                 const scroll = Number.isFinite(progressRef.current) ? progressRef.current : 0;
                 const roadT = getRoadT(scroll);
                 const oAlpha = getOrbitAlpha(scroll);
                 const sec = getCurrentSection(scroll);
-                // Timer runs through the entire journey
-                if (birdsTimer > 24.0) {
-                    birdsTimer = 0.0;
-                }
                 const vPos = PATH.getPoint(roadT);
                 const vTan = PATH.getTangentAt(roadT).normalize();
                 // Travel camera calculations
@@ -1109,7 +972,7 @@ function RoadScene({ progress, className, onReady }) {
                     tex.offset.x -= 0.0035;
                 }
                 // ── Cloth physics (Verlet integration) ───────────────────────────────
-                const ft = birdsTimer;
+                const ft = animTime;
                 const GRAV = -0.006;
                 const DAMP = 0.981;
                 const SUBS = 6;
@@ -1155,61 +1018,6 @@ function RoadScene({ progress, className, onReady }) {
                     }
                     attr.needsUpdate = true;
                 }
-                // ── Bird Flight Path & Wing Flapping Animation ────────────────────────────
-                if (birdsTimer >= 0) {
-                    birdsGroup.visible = true;
-                    // Animate wing flapping with slightly offset frequencies for organic feel
-                    b1.leftWing.rotation.z = Math.sin(birdsTimer * 12) * 0.60;
-                    b1.rightWing.rotation.z = -Math.sin(birdsTimer * 12) * 0.60;
-                    b2.leftWing.rotation.z = Math.sin(birdsTimer * 14 + 0.3) * 0.60;
-                    b2.rightWing.rotation.z = -Math.sin(birdsTimer * 14 + 0.3) * 0.60;
-                    b3.leftWing.rotation.z = Math.sin(birdsTimer * 13 + 0.6) * 0.60;
-                    b3.rightWing.rotation.z = -Math.sin(birdsTimer * 13 + 0.6) * 0.60;
-                    // Orbit center follows the current section's anchor point
-                    const heroStopPos = stopPos;
-                    // 1. Red Macaw: sweeping circle over the road and peaks
-                    const b1Angle = birdsTimer * 0.32 + 0.5;
-                    const b1Radius = 26 + Math.sin(birdsTimer * 0.2) * 6;
-                    const b1Y = heroStopPos.y + 11 + Math.cos(birdsTimer * 0.4) * 3.5;
-                    const b1X = heroStopPos.x + Math.cos(b1Angle) * b1Radius;
-                    const b1Z = heroStopPos.z + Math.sin(b1Angle) * b1Radius;
-                    const nextB1Angle = (birdsTimer + 0.04) * 0.32 + 0.5;
-                    const nextB1Radius = 26 + Math.sin((birdsTimer + 0.04) * 0.2) * 6;
-                    const nextB1Y = heroStopPos.y + 11 + Math.cos((birdsTimer + 0.04) * 0.4) * 3.5;
-                    const nextB1X = heroStopPos.x + Math.cos(nextB1Angle) * nextB1Radius;
-                    const nextB1Z = heroStopPos.z + Math.sin(nextB1Angle) * nextB1Radius;
-                    b1.group.position.set(b1X, b1Y, b1Z);
-                    const b1Dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"](nextB1X - b1X, nextB1Y - b1Y, nextB1Z - b1Z).normalize();
-                    b1.group.lookAt(b1.group.position.clone().add(b1Dir));
-                    // 2. Amber Phoenix: slightly larger orbit, trailing majestically
-                    const b2Angle = birdsTimer * 0.28 + 2.8;
-                    const b2Radius = 31 + Math.sin(birdsTimer * 0.3) * 5;
-                    const b2Y = heroStopPos.y + 14 + Math.sin(birdsTimer * 0.5) * 3.0;
-                    const b2X = heroStopPos.x + Math.cos(b2Angle) * b2Radius;
-                    const b2Z = heroStopPos.z + Math.sin(b2Angle) * b2Radius;
-                    const nextB2Angle = (birdsTimer + 0.04) * 0.28 + 2.8;
-                    const nextB2Radius = 31 + Math.sin((birdsTimer + 0.04) * 0.3) * 5;
-                    const nextB2Y = heroStopPos.y + 14 + Math.sin((birdsTimer + 0.04) * 0.5) * 3.0;
-                    const nextB2X = heroStopPos.x + Math.cos(nextB2Angle) * nextB2Radius;
-                    const nextB2Z = heroStopPos.z + Math.sin(nextB2Angle) * nextB2Radius;
-                    b2.group.position.set(b2X, b2Y, b2Z);
-                    const b2Dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"](nextB2X - b2X, nextB2Y - b2Y, nextB2Z - b2Z).normalize();
-                    b2.group.lookAt(b2.group.position.clone().add(b2Dir));
-                    // 3. Digital Turquoise: high-altitude, tight/fast circle, diving elegantly
-                    const b3Angle = birdsTimer * 0.40 + 4.5;
-                    const b3Radius = 22 + Math.cos(birdsTimer * 0.3) * 4;
-                    const b3Y = heroStopPos.y + 16 + Math.sin(birdsTimer * 0.6) * 4.0;
-                    const b3X = heroStopPos.x + Math.cos(b3Angle) * b3Radius;
-                    const b3Z = heroStopPos.z + Math.sin(b3Angle) * b3Radius;
-                    const nextB3Angle = (birdsTimer + 0.04) * 0.40 + 4.5;
-                    const nextB3Radius = 22 + Math.cos((birdsTimer + 0.04) * 0.3) * 4;
-                    const nextB3Y = heroStopPos.y + 16 + Math.sin((birdsTimer + 0.04) * 0.6) * 4.0;
-                    const nextB3X = heroStopPos.x + Math.cos(nextB3Angle) * nextB3Radius;
-                    const nextB3Z = heroStopPos.z + Math.sin(nextB3Angle) * nextB3Radius;
-                    b3.group.position.set(b3X, b3Y, b3Z);
-                    const b3Dir = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$three$40$0$2e$184$2e$0$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"](nextB3X - b3X, nextB3Y - b3Y, nextB3Z - b3Z).normalize();
-                    b3.group.lookAt(b3.group.position.clone().add(b3Dir));
-                }
                 renderer.render(scene, camera);
             }
             animate();
@@ -1246,7 +1054,7 @@ function RoadScene({ progress, className, onReady }) {
         }
     }, void 0, false, {
         fileName: "[project]/src/components/canvas/RoadScene.tsx",
-        lineNumber: 1172,
+        lineNumber: 971,
         columnNumber: 10
     }, this);
 }

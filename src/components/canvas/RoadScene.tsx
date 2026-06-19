@@ -1,7 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { buildHospitalModel } from "./models/HospitalModel";
-import { buildConstruccionModel } from "./models/ConstruccionModel";
 
 interface RoadSceneProps {
   progress: number;
@@ -480,21 +478,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     const baseTreeGroupC = parseCustomObj(treeObj, treeMtl, 0xf5f3e6); // 20% soft cream
     const baseTreeGroupD = parseCustomObj(treeObj, treeMtl, 0x05123e); // 15% navy
 
-    // Pre-compute model clear zones (no trees within radius of each model)
-    const _hospT = STOP_TS[4];
-    const _hospP = PATH.getPoint(_hospT);
-    const _hospTan = PATH.getTangentAt(_hospT).normalize();
-    const _hospPerp = new THREE.Vector3(-_hospTan.z, 0, _hospTan.x).normalize();
-    const hospClearCenter = _hospP.clone().addScaledVector(_hospPerp, 18);
-    const HOSP_CLEAR_R = 28;
-
-    const _conT = STOP_TS[3];
-    const _conP = PATH.getPoint(_conT);
-    const _conTan = PATH.getTangentAt(_conT).normalize();
-    const _conPerp = new THREE.Vector3(-_conTan.z, 0, _conTan.x).normalize();
-    const conClearCenter = _conP.clone().addScaledVector(_conPerp, -14);
-    const CON_CLEAR_R = 28;
-
     const treeGroup = new THREE.Group();
     // Step through the path points to spawn trees with rich organic clusters
     for (let i = 10; i < N - 10; i += 7) {
@@ -525,10 +508,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
               
               // Apply organic height variation according to depth layers
               const sFactor = layer.scale[0] + Math.random() * (layer.scale[1] - layer.scale[0]);
-
-              // Skip trees inside model clear zones
-              if (pos.distanceTo(hospClearCenter) < HOSP_CLEAR_R) continue;
-              if (pos.distanceTo(conClearCenter) < CON_CLEAR_R) continue;
 
               // Query the custom noise elevation formula to map the trees precisely onto the ground
               const tbZn = Math.max(0, Math.min(1, 1 - (pos.z - zWorldMin) / TD));
@@ -831,130 +810,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     scene.add(new THREE.Points(starGeo,
       new THREE.PointsMaterial({ color: 0xffffff, size: 0.7, sizeAttenuation: true })));
 
-    // ── Low-Poly Majestic Birds of Welfare ─────────────────────────────────────
-    const birdsGroup = new THREE.Group();
-    scene.add(birdsGroup);
-
-    function createLowPolyBird(colorBody: number, colorWings: number, colorBeak: number, scale = 1.0) {
-      const bird = new THREE.Group();
-
-      // Sharp low-poly body geometry
-      const bodyGeo = new THREE.ConeGeometry(0.38 * scale, 1.4 * scale, 4);
-      bodyGeo.rotateX(Math.PI / 2);
-      const bodyMat = new THREE.MeshStandardMaterial({
-        color: colorBody,
-        flatShading: true,
-        roughness: 0.6,
-        metalness: 0.1
-      });
-      const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
-      bird.add(bodyMesh);
-
-      // Curved low-poly beak
-      const beakGeo = new THREE.ConeGeometry(0.12 * scale, 0.45 * scale, 4);
-      beakGeo.rotateX(Math.PI * 0.4);
-      const beakMat = new THREE.MeshStandardMaterial({
-        color: colorBeak,
-        flatShading: true,
-        roughness: 0.5
-      });
-      const beakMesh = new THREE.Mesh(beakGeo, beakMat);
-      beakMesh.position.set(0, -0.05 * scale, 0.75 * scale);
-      bird.add(beakMesh);
-
-      // Majestic long tail feathers (low-poly diamond tapered)
-      const tailGeo = new THREE.ConeGeometry(0.16 * scale, 1.1 * scale, 4);
-      tailGeo.rotateX(-Math.PI * 0.52);
-      const tailMat = new THREE.MeshStandardMaterial({
-        color: colorWings,
-        flatShading: true,
-        roughness: 0.7
-      });
-      const tailMesh = new THREE.Mesh(tailGeo, tailMat);
-      tailMesh.position.set(0, -0.15 * scale, -0.85 * scale);
-      bird.add(tailMesh);
-
-      // Low-poly eyes
-      const eyeGeo = new THREE.SphereGeometry(0.04 * scale, 4, 4);
-      const eyeMat = new THREE.MeshBasicMaterial({ color: 0x010410 });
-      const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
-      leftEye.position.set(-0.16 * scale, 0.1 * scale, 0.55 * scale);
-      const rightEye = leftEye.clone();
-      rightEye.position.x = 0.16 * scale;
-      bird.add(leftEye, rightEye);
-
-      // LEFT WING GROUP (pivot on the shoulder)
-      const leftWingGroup = new THREE.Group();
-      leftWingGroup.position.set(-0.25 * scale, 0.1 * scale, 0.1 * scale);
-      
-      const leftWingGeo = new THREE.BufferGeometry();
-      const verticesL = new Float32Array([
-        // Triangle 1: inner wing
-        0, 0, 0.3 * scale,
-        0, 0, -0.3 * scale,
-        -0.8 * scale, -0.15 * scale, -0.1 * scale,
-        
-        // Triangle 2: outer wing
-        0, 0, -0.3 * scale,
-        -0.8 * scale, -0.15 * scale, -0.1 * scale,
-        -1.8 * scale, -0.4 * scale, -0.25 * scale
-      ]);
-      leftWingGeo.setAttribute('position', new THREE.BufferAttribute(verticesL, 3));
-      leftWingGeo.computeVertexNormals();
-
-      const leftWingMesh = new THREE.Mesh(leftWingGeo, new THREE.MeshStandardMaterial({
-        color: colorWings,
-        side: THREE.DoubleSide,
-        flatShading: true,
-        roughness: 0.6
-      }));
-      leftWingGroup.add(leftWingMesh);
-
-      // RIGHT WING GROUP (pivot on the shoulder)
-      const rightWingGroup = new THREE.Group();
-      rightWingGroup.position.set(0.25 * scale, 0.1 * scale, 0.1 * scale);
-
-      const rightWingGeo = new THREE.BufferGeometry();
-      const verticesR = new Float32Array([
-        // Triangle 1: inner wing
-        0, 0, 0.3 * scale,
-        0, 0, -0.3 * scale,
-        0.8 * scale, -0.15 * scale, -0.1 * scale,
-        
-        // Triangle 2: outer wing
-        0, 0, -0.3 * scale,
-        0.8 * scale, -0.15 * scale, -0.1 * scale,
-        1.8 * scale, -0.4 * scale, -0.25 * scale
-      ]);
-      rightWingGeo.setAttribute('position', new THREE.BufferAttribute(verticesR, 3));
-      rightWingGeo.computeVertexNormals();
-
-      const rightWingMesh = new THREE.Mesh(rightWingGeo, new THREE.MeshStandardMaterial({
-        color: colorWings,
-        side: THREE.DoubleSide,
-        flatShading: true,
-        roughness: 0.6
-      }));
-      rightWingGroup.add(rightWingMesh);
-
-      bird.add(leftWingGroup, rightWingGroup);
-
-      return {
-        group: bird,
-        leftWing: leftWingGroup,
-        rightWing: rightWingGroup
-      };
-    }
-
-    // Launch a premium macaw parrot, an amber phoenix, and a digital turquoise bird
-    const b1 = createLowPolyBird(0xff3b30, 0x00d8f6, 0xe2b13c, 1.25);
-    const b2 = createLowPolyBird(0xe2b13c, 0x2563eb, 0xff5533, 1.0);
-    const b3 = createLowPolyBird(0x00d8f6, 0xffffff, 0xe2b13c, 0.9);
-
-    birdsGroup.add(b1.group);
-    birdsGroup.add(b2.group);
-    birdsGroup.add(b3.group);
-
     // ── Lights ────────────────────────────────────────────────────────────────
     scene.add(new THREE.AmbientLight(0x081024, 6)); // Warm therapeutic ambient light
     const dir = new THREE.DirectionalLight(0xff8d2b, 3); // Warm brand-orange solar vitality light
@@ -964,62 +819,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     const cL2 = new THREE.PointLight(C.neonB, 16, 150);
     const bL  = new THREE.PointLight(0x030821, 6, 300); // Soothing deep forest backlight
     scene.add(cL1, cL2, bL);
-
-    // ── Section 3D models ─────────────────────────────────────────────────────
-    const hospitalGroup = buildHospitalModel();
-    const hospWorldPos = (() => {
-      const t = STOP_TS[4];
-      const p = PATH.getPoint(t);
-      const tan = PATH.getTangentAt(t).normalize();
-      const perp = new THREE.Vector3(-tan.z, 0, tan.x).normalize();
-      return p.clone().addScaledVector(perp, 18);
-    })();
-    hospitalGroup.position.copy(hospWorldPos);
-    hospitalGroup.position.y += 1;
-    // Face the hospital toward the road
-    const _toRoad = new THREE.Vector3().subVectors(PATH.getPoint(STOP_TS[4]), hospWorldPos).normalize();
-    hospitalGroup.rotation.y = Math.atan2(_toRoad.x, _toRoad.z);
-    hospitalGroup.scale.setScalar(0.7);
-    hospitalGroup.traverse(child => {
-      const mesh = child as THREE.Mesh;
-      if (!mesh.isMesh) return;
-      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-      mats.forEach(m => {
-        (m as THREE.MeshStandardMaterial).transparent = true;
-        (m as THREE.MeshStandardMaterial).opacity = 0;
-        (m as THREE.MeshStandardMaterial).depthWrite = false;
-      });
-    });
-    scene.add(hospitalGroup);
-
-    // ── Construcción model (Productos Digitales — STOP_TS[3]) ─────────────────
-    const construGroup = buildConstruccionModel();
-    {
-      const t = STOP_TS[3];
-      const p = PATH.getPoint(t);
-      const tan = PATH.getTangentAt(t).normalize();
-      const perp = new THREE.Vector3(-tan.z, 0, tan.x).normalize();
-      // Place 14 units to the LEFT of the road (negative perp)
-      construGroup.position.copy(p).addScaledVector(perp, -14);
-      // Ground using terrain height at the actual offset position
-      const cX = construGroup.position.x, cZ = construGroup.position.z;
-      const cZn = Math.max(0, Math.min(1, 1 - (cZ - zWorldMin) / TD));
-      construGroup.position.y = terrainH(cX, cZ, cZn) + 0.5;
-      const toRoad = new THREE.Vector3().subVectors(p, construGroup.position).normalize();
-      construGroup.rotation.y = Math.atan2(toRoad.x, toRoad.z);
-      construGroup.scale.setScalar(0.9);
-      construGroup.traverse(child => {
-        const mesh = child as THREE.Mesh;
-        if (!mesh.isMesh) return;
-        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-        mats.forEach(m => {
-          (m as THREE.MeshStandardMaterial).transparent = true;
-          (m as THREE.MeshStandardMaterial).opacity = 0;
-          (m as THREE.MeshStandardMaterial).depthWrite = false;
-        });
-      });
-    }
-    scene.add(construGroup);
 
     const CAM_HEIGHT = 7, CAM_BACK = 18;
     const camPos    = PATH.getPoint(.002).clone().add(PATH.getTangentAt(.002).normalize().multiplyScalar(-CAM_BACK));
@@ -1037,12 +836,12 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
     };
     window.addEventListener("resize", onResize);
     
-    let birdsTimer = 0;
+    let animTime = 0;
     let frame = 0, animId = 0;
     function animate() {
       animId = requestAnimationFrame(animate);
       frame++;
-      birdsTimer += 0.016;
+      animTime += 0.016;
 
       // Rotate street lamps so they spin like active beacons
       rotatingBulbs.forEach(b => {
@@ -1057,16 +856,10 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
       });
 
 
-      // ── Bird Flight Timer Controls ─────────────────────────────────────────
       const scroll  = Number.isFinite(progressRef.current) ? progressRef.current : 0;
       const roadT   = getRoadT(scroll);
       const oAlpha  = getOrbitAlpha(scroll);
       const sec     = getCurrentSection(scroll);
-
-      // Timer runs through the entire journey
-      if (birdsTimer > 24.0) {
-        birdsTimer = 0.0;
-      }
 
       const vPos = PATH.getPoint(roadT);
       const vTan = PATH.getTangentAt(roadT).normalize();
@@ -1115,7 +908,7 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
       }
 
       // ── Cloth physics (Verlet integration) ───────────────────────────────
-      const ft   = birdsTimer;
+      const ft   = animTime;
       const GRAV = -0.006;
       const DAMP = 0.981;
       const SUBS = 6;
@@ -1151,100 +944,6 @@ export default function RoadScene({ progress, className, onReady }: RoadScenePro
           attr.setXYZ(i, cf.particles[i].pos.x, cf.particles[i].pos.y, cf.particles[i].pos.z);
         }
         attr.needsUpdate = true;
-      }
-
-      // ── Bird Flight Path & Wing Flapping Animation ────────────────────────────
-      if (birdsTimer >= 0) {
-        birdsGroup.visible = true;
-
-        // Animate wing flapping with slightly offset frequencies for organic feel
-        b1.leftWing.rotation.z  = Math.sin(birdsTimer * 12) * 0.60;
-        b1.rightWing.rotation.z = -Math.sin(birdsTimer * 12) * 0.60;
-
-        b2.leftWing.rotation.z  = Math.sin(birdsTimer * 14 + 0.3) * 0.60;
-        b2.rightWing.rotation.z = -Math.sin(birdsTimer * 14 + 0.3) * 0.60;
-
-        b3.leftWing.rotation.z  = Math.sin(birdsTimer * 13 + 0.6) * 0.60;
-        b3.rightWing.rotation.z = -Math.sin(birdsTimer * 13 + 0.6) * 0.60;
-
-        // Orbit center follows the current section's anchor point
-        const heroStopPos = stopPos;
-
-        // 1. Red Macaw: sweeping circle over the road and peaks
-        const b1Angle = birdsTimer * 0.32 + 0.5;
-        const b1Radius = 26 + Math.sin(birdsTimer * 0.2) * 6;
-        const b1Y = heroStopPos.y + 11 + Math.cos(birdsTimer * 0.4) * 3.5;
-        const b1X = heroStopPos.x + Math.cos(b1Angle) * b1Radius;
-        const b1Z = heroStopPos.z + Math.sin(b1Angle) * b1Radius;
-
-        const nextB1Angle = (birdsTimer + 0.04) * 0.32 + 0.5;
-        const nextB1Radius = 26 + Math.sin((birdsTimer + 0.04) * 0.2) * 6;
-        const nextB1Y = heroStopPos.y + 11 + Math.cos((birdsTimer + 0.04) * 0.4) * 3.5;
-        const nextB1X = heroStopPos.x + Math.cos(nextB1Angle) * nextB1Radius;
-        const nextB1Z = heroStopPos.z + Math.sin(nextB1Angle) * nextB1Radius;
-
-        b1.group.position.set(b1X, b1Y, b1Z);
-        const b1Dir = new THREE.Vector3(nextB1X - b1X, nextB1Y - b1Y, nextB1Z - b1Z).normalize();
-        b1.group.lookAt(b1.group.position.clone().add(b1Dir));
-
-        // 2. Amber Phoenix: slightly larger orbit, trailing majestically
-        const b2Angle = birdsTimer * 0.28 + 2.8;
-        const b2Radius = 31 + Math.sin(birdsTimer * 0.3) * 5;
-        const b2Y = heroStopPos.y + 14 + Math.sin(birdsTimer * 0.5) * 3.0;
-        const b2X = heroStopPos.x + Math.cos(b2Angle) * b2Radius;
-        const b2Z = heroStopPos.z + Math.sin(b2Angle) * b2Radius;
-
-        const nextB2Angle = (birdsTimer + 0.04) * 0.28 + 2.8;
-        const nextB2Radius = 31 + Math.sin((birdsTimer + 0.04) * 0.3) * 5;
-        const nextB2Y = heroStopPos.y + 14 + Math.sin((birdsTimer + 0.04) * 0.5) * 3.0;
-        const nextB2X = heroStopPos.x + Math.cos(nextB2Angle) * nextB2Radius;
-        const nextB2Z = heroStopPos.z + Math.sin(nextB2Angle) * nextB2Radius;
-
-        b2.group.position.set(b2X, b2Y, b2Z);
-        const b2Dir = new THREE.Vector3(nextB2X - b2X, nextB2Y - b2Y, nextB2Z - b2Z).normalize();
-        b2.group.lookAt(b2.group.position.clone().add(b2Dir));
-
-        // 3. Digital Turquoise: high-altitude, tight/fast circle, diving elegantly
-        const b3Angle = birdsTimer * 0.40 + 4.5;
-        const b3Radius = 22 + Math.cos(birdsTimer * 0.3) * 4;
-        const b3Y = heroStopPos.y + 16 + Math.sin(birdsTimer * 0.6) * 4.0;
-        const b3X = heroStopPos.x + Math.cos(b3Angle) * b3Radius;
-        const b3Z = heroStopPos.z + Math.sin(b3Angle) * b3Radius;
-
-        const nextB3Angle = (birdsTimer + 0.04) * 0.40 + 4.5;
-        const nextB3Radius = 22 + Math.cos((birdsTimer + 0.04) * 0.3) * 4;
-        const nextB3Y = heroStopPos.y + 16 + Math.sin((birdsTimer + 0.04) * 0.6) * 4.0;
-        const nextB3X = heroStopPos.x + Math.cos(nextB3Angle) * nextB3Radius;
-        const nextB3Z = heroStopPos.z + Math.sin(nextB3Angle) * nextB3Radius;
-
-        b3.group.position.set(b3X, b3Y, b3Z);
-        const b3Dir = new THREE.Vector3(nextB3X - b3X, nextB3Y - b3Y, nextB3Z - b3Z).normalize();
-        b3.group.lookAt(b3.group.position.clone().add(b3Dir));
-
-      }
-
-      // ── Construcción model fade (Productos Digitales: 0.75 – 0.91) ──────────
-      const construOpacity = scroll < 0.75 ? 0 : scroll < 0.79 ? (scroll - 0.75) / 0.04 : scroll < 0.88 ? 1 : scroll < 0.91 ? 1 - (scroll - 0.88) / 0.03 : 0;
-      construGroup.visible = construOpacity > 0.01;
-      if (construGroup.visible) {
-        construGroup.traverse(child => {
-          const mesh = child as THREE.Mesh;
-          if (!mesh.isMesh) return;
-          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-          mats.forEach(m => { (m as THREE.MeshStandardMaterial).opacity = construOpacity; });
-        });
-      }
-
-      // ── Hospital model fade (Contacto: 0.88 – 1.0) ───────────────────────
-      const hospOpacity = scroll < 0.88 ? 0 : scroll < 0.92 ? (scroll - 0.88) / 0.04 : 1;
-      hospitalGroup.visible = hospOpacity > 0.01;
-      if (hospitalGroup.visible) {
-        hospitalGroup.traverse(child => {
-          const mesh = child as THREE.Mesh;
-          if (!mesh.isMesh) return;
-          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
-          mats.forEach(m => { (m as THREE.MeshStandardMaterial).opacity = hospOpacity; });
-        });
       }
 
       renderer.render(scene, camera);
