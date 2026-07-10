@@ -5,21 +5,15 @@ export default function WavesBackground() {
   const scrollYRef = useRef<number>(0);
 
   useEffect(() => {
-    // Scroll listener to update scroll position and canvas opacity dynamically
+    // Scroll listener — waves always visible, subtly more opaque when scrolled
     const handleScroll = () => {
       const scrollY = window.scrollY;
       scrollYRef.current = scrollY;
 
-      // Starts fading in at scrollY = 150px, fully visible at 80% viewport height
-      const startFade = 150;
-      const endFade = window.innerHeight * 0.8;
-      let targetOpacity = 0;
-      
-      if (scrollY > startFade) {
-        targetOpacity = Math.min(0.25, ((scrollY - startFade) / (endFade - startFade)) * 0.25);
-      } else {
-        targetOpacity = 0;
-      }
+      // Base opacity 0.15 from the hero; ramps up to 0.28 by 80% of viewport height
+      const rampEnd = window.innerHeight * 0.8;
+      const extra = Math.min(0.13, (scrollY / rampEnd) * 0.13);
+      const targetOpacity = 0.15 + extra;
 
       if (canvasRef.current) {
         canvasRef.current.style.opacity = String(targetOpacity);
@@ -198,7 +192,7 @@ export default function WavesBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full z-0 select-none pointer-events-none transition-opacity duration-500"
-      style={{ opacity: 0 }}
+      style={{ opacity: 0.15 }}
     />
   );
 }

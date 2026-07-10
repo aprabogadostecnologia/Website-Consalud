@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import RoadScene from "./components/RoadScene";
 import StaticSections from "./components/StaticSections";
+import VigiaPage from "./pages/VigiaPage";
 // @ts-ignore
 import consaludWhiteLogo from "./assets/images/conSaludWhite.png";
 // @ts-ignore
@@ -11,13 +13,19 @@ import vigiaColorLogo from "./assets/images/vigia.png";
 // @ts-ignore
 import heroVigiaImg from "./assets/images/heroVigia.png";
 // @ts-ignore
-import vigiaDashboard from "./assets/images/vigia_dashboard_1779379879154.png";
+import vigiaDashboard from "./assets/images/EscritorioDavid.png";
 // @ts-ignore
-import vigiaWorker from "./assets/images/vigia_worker_1779379901252.png";
+import vigiaWorker from "./assets/images/kevinChaleco.png";
 // @ts-ignore
-import reunionImg from "./assets/images/reuinion.webp";
+import logoConsalud from "./assets/images/logoConsalud.png";
 // @ts-ignore
-import familiaImg from "./assets/images/familia.jpg";
+import consaludLogo from "./assets/images/Consalud.png";
+// @ts-ignore
+import consaludHero1 from "./assets/images/consalud hero 1.png";
+// @ts-ignore
+import consaludHero2 from "./assets/images/consalud hero2.jpg";
+// @ts-ignore
+import vigiaSlide2 from "./assets/images/vigiaSlide 2.png";
 import {
   Compass, ChevronLeft, ChevronRight, Volume2, VolumeX,
   ArrowRight, Zap, Building, ChevronDown, Brain, ShieldCheck, Activity, Sparkles, CheckCircle,
@@ -26,7 +34,7 @@ import {
 import Footer from "./components/Footer";
 
 // Predefined WhatsApp contact link using standard wa.me scheme and pre-filled message
-const WHATSAPP_URL = "https://wa.me/573152003000?text=Hola!%20Quiero%20solicitar%20asesor%C3%ADa%20sobre%20los%20servicios%20de%20SG-SST%20y%20Vig%C3%ADa.";
+const WHATSAPP_URL = "https://wa.me/573057883941?text=Hola!%20Quiero%20solicitar%20asesor%C3%ADa%20sobre%20los%20servicios%20de%20SG-SST%20y%20Vig%C3%ADa.";
 
 // Beautiful interactive vector SVGs for each allied brand, custom-illustrated with extreme transparency
 const VigiaLogoSvg = () => (
@@ -127,7 +135,7 @@ const DcjLogoSvg = () => (
         <span className="text-xl font-black text-white tracking-tight leading-none font-sans">DCJ</span>
         <span className="text-[9px] font-black text-[#ff8d2b] tracking-wider leading-none">TALENTO HUMANO 3.0</span>
       </div>
-      <span className="text-[8px] text-slate-300 tracking-wide font-medium leading-none mt-1">Conectamos talento, potenciamos personas</span>
+      <span className="text-[8px] text-slate-300 tracking-wide font-semibold leading-none mt-1">Conectamos talento, potenciamos personas</span>
     </div>
   </div>
 );
@@ -256,13 +264,13 @@ export const BRAND_THEMES: {
 };
 
 const SECTIONS = [
-  { index: 1, label: "nosotros", logoBadge: "🛡️", targetId: "sec-landing-1" },
-  { index: 2, label: "servicios", logoBadge: "✚", targetId: "sec-landing-2" },
-  { index: 3, label: "productos digitales", logoBadge: "💻", targetId: "sec-landing-3" },
-  { index: 4, label: "contacto", logoBadge: "💬", targetId: "sec-landing-4" }
+  { index: 1, label: "servicios", logoBadge: "✚", targetId: "sec-landing-2" },
+  { index: 2, label: "nosotros", logoBadge: "🛡️", targetId: "sec-landing-1" },
+  { index: 3, label: "contacto", logoBadge: "💬", targetId: "sec-landing-4" }
 ];
 
 export default function App() {
+  const navigate = useNavigate();
   const progress = 0.04; // Fija la cámara en el fondo del Hero (frente a la montaña de inicio)
   const [activeBrandIdx, setActiveBrandIdx] = useState(0);
   const [brandCardHovered, setBrandCardHovered] = useState(false);
@@ -270,8 +278,13 @@ export default function App() {
   const [brandCardRotateX, setBrandCardRotateX] = useState(0);
   const [brandCardRotateY, setBrandCardRotateY] = useState(0);
 
+  // Vigía hero card tilt effect
+  const vigiaHeroCardRef = useRef<HTMLDivElement>(null);
+  const [vigiaHeroCardTilt, setVigiaHeroCardTilt] = useState({ x: 0, y: 0 });
+  const [isVigiaHeroCardHovered, setIsVigiaHeroCardHovered] = useState(false);
+
   // Hero Cycling HUD states
-  const [heroMode, setHeroMode] = useState<"consalud" | "vigia" | "bateria">("consalud");
+  const [heroMode, setHeroMode] = useState<"consalud" | "vigia">("consalud");
   const [isHeroCycling, setIsHeroCycling] = useState(true);
   const [heroCycleProgress, setHeroCycleProgress] = useState(0);
 
@@ -283,6 +296,8 @@ export default function App() {
   const [slideDirection, setSlideDirection] = useState<"next" | "prev">("next");
   const [modalToast, setModalToast] = useState("");
   const [activeMarca, setActiveMarca] = useState<number | null>(null);
+  const [pendingContactService, setPendingContactService] = useState<string | null>(null);
+  const [pendingServiceModal, setPendingServiceModal] = useState<string | null>(null);
 
   // Global modifiers and helpers
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -305,7 +320,7 @@ export default function App() {
       if (window.scrollY < 20 && e.deltaY > 0 && !scrollingActive) {
         e.preventDefault();
         scrollingActive = true;
-        const target = document.getElementById("sec-landing-1");
+        const target = document.getElementById("sec-landing-2");
         if (target) {
           target.scrollIntoView({ behavior: "smooth" });
           setTimeout(() => {
@@ -425,11 +440,7 @@ export default function App() {
 
   useEffect(() => {
     if (heroCycleProgress >= 100) {
-      setHeroMode(curr => {
-        if (curr === "consalud") return "vigia";
-        if (curr === "vigia") return "bateria";
-        return "consalud";
-      });
+      setHeroMode(curr => curr === "consalud" ? "vigia" : "consalud");
       setHeroCycleProgress(0);
     }
   }, [heroCycleProgress]);
@@ -533,42 +544,60 @@ export default function App() {
     setBrandCardRotateY(0);
   };
 
+  const handleVigiaHeroCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsVigiaHeroCardHovered(true);
+    if (!vigiaHeroCardRef.current) return;
+    const rect = vigiaHeroCardRef.current.getBoundingClientRect();
+    setVigiaHeroCardTilt({
+      y:  ((e.clientX - rect.left  - rect.width  / 2) / (rect.width  / 2)) * 10,
+      x: -((e.clientY - rect.top   - rect.height / 2) / (rect.height / 2)) * 10,
+    });
+  };
+
+  const handleVigiaHeroCardMouseLeave = () => {
+    setIsVigiaHeroCardHovered(false);
+    setVigiaHeroCardTilt({ x: 0, y: 0 });
+  };
+
   return (
+    <Routes>
+      <Route path="/vigia" element={<VigiaPage />} />
+      <Route path="*" element={
     <div className="relative min-h-screen w-full bg-white text-slate-800 font-sans selection:bg-[#ff8d2b]/20 selection:text-slate-900">
-      
+
       {/* GLASSMORPHIC FIXED NAVBAR: Full-width Apple-style premium bar with elegant rounded bottom edge */}
       <div className="fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 pointer-events-auto">
         <header className={`w-full backdrop-blur-[12px] backdrop-saturate-[200%] border-b border-white/[0.125] text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] relative overflow-hidden transition-all duration-300 rounded-none ${
-          scrollY > 250 
-            ? "bg-[#05123e]/85 border-b-white/[0.15]" 
-            : "bg-[#091f4c]/24 border-b-white/[0.08]"
+          scrollY > 250
+            ? "bg-[#05123e]/95 border-b-white/[0.15]"
+            : "bg-[#05123e]/75 border-b-white/[0.12]"
         }`}>
-          <div className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16 2xl:px-24 flex items-center justify-between transition-all duration-300 h-20">
-            
+          <div className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16 2xl:px-24 flex items-center justify-between transition-all duration-300 h-[72px]">
+
             {/* Logo Brand Identifier */}
-            <div 
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            <div
+              onClick={() => navigate("/")}
               className="flex items-center gap-3 cursor-pointer group select-none"
             >
-              <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-[160px] h-14">
+              <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-[200px] h-14">
                 <img 
                   src={consaludWhiteLogo} 
                   alt="Consalud Logo" 
-                  className="absolute max-w-full max-h-full object-contain filter drop-shadow-sm transition-all duration-300 opacity-100 scale-100" 
+                  className="absolute max-w-full max-h-20 object-contain filter drop-shadow-sm transition-all duration-300 opacity-100 scale-100" 
                   referrerPolicy="no-referrer"
                 />
               </div>
             </div>
 
             {/* Navigation link triggers linked to static page anchors */}
-            <nav className="hidden md:flex items-center gap-7 select-none">
+            <nav className="hidden md:flex items-center gap-9 select-none">
               {SECTIONS.map((sec) => {
                 const isActive = activeSectionId === sec.index;
                 return (
                   <button
                     key={sec.index}
                     onClick={() => jumpToLandingSection(sec.targetId, sec.index)}
-                    className={`relative py-1.5 px-0.5 text-[11px] font-mono tracking-widest uppercase transition-colors duration-300 cursor-pointer focus:outline-none ${
+                    className={`relative py-2 px-0.5 text-[15px] font-mono tracking-widest uppercase transition-colors duration-300 cursor-pointer focus:outline-none ${
                       isActive 
                         ? "text-white font-bold" 
                         : "text-slate-300 hover:text-white"
@@ -588,30 +617,25 @@ export default function App() {
             </nav>
 
             {/* Control widgets panel */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               
               {/* VIGIA Interactive Action Button */}
               <button
                 onClick={() => {
                   playRetroChime("click");
-                  // Navigate to Productos Digitales (section index 3)
-                  jumpToLandingSection("sec-landing-3", 3);
-                  // Automatically open VIGIA details card
-                  setTimeout(() => {
-                    setActiveMarca(0);
-                  }, 400); // short delay so the scroll begins smoothly before opening
+                  navigate("/vigia");
                 }}
-                className={`flex items-center justify-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md select-none transition-all duration-300 cursor-pointer active:scale-95 group shadow-sm hover:shadow-md ${
+                className={`flex items-center justify-center gap-2 rounded-full border px-3.5 py-1.5 backdrop-blur-md select-none transition-all duration-300 cursor-pointer active:scale-95 group shadow-sm hover:shadow-md ${
                   scrollY > 100
                     ? "bg-orange-500/10 border-orange-400/80 hover:border-orange-500 hover:bg-orange-500/15"
                     : "bg-[#05123e]/40 border-orange-500/60 hover:border-orange-500 hover:bg-[#05123e]/70"
                 }`}
                 title="Ir a Software VIGÍA SST"
               >
-                <img 
-                  src={vigiaWhiteLogo} 
-                  alt="VIGIA" 
-                  className="h-4.5 sm:h-5 w-auto object-contain brightness-100 drop-shadow-[0_2px_4px_rgba(255,141,43,0.25)]" 
+                <img
+                  src={vigiaWhiteLogo}
+                  alt="VIGIA"
+                  className="h-5 w-auto object-contain brightness-100 drop-shadow-[0_2px_4px_rgba(255,141,43,0.25)]"
                   referrerPolicy="no-referrer"
                 />
               </button>
@@ -628,17 +652,6 @@ export default function App() {
                 <MessageCircle className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform duration-300" />
                 <span className="text-xs font-bold tracking-wide">WhatsApp</span>
               </a>
-
-              {/* Sound toggle */}
-              <button
-                onClick={() => {
-                  setSoundEnabled(!soundEnabled);
-                  if(!soundEnabled) setTimeout(() => playRetroChime("info"), 12);
-                }}
-                className="p-1.8 rounded-full border transition cursor-pointer bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white"
-              >
-                {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5 text-red-500" />}
-              </button>
 
               {/* Mobile Hamburger button Toggle */}
               <button
@@ -681,460 +694,298 @@ export default function App() {
         </header>
       </div>
 
-      {/* 1. HERO SECTION: Lives WebGL canyon 3D experience occupies top 100vh viewport */}
-      <section className="relative h-screen min-h-[620px] w-full flex flex-col justify-between overflow-hidden shrink-0 select-none">
-        
-        {/* Background layer: absolute webgl component */}
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#010410]" style={{ opacity: window.innerHeight > 0 ? Math.max(0, 1 - scrollY / window.innerHeight) : 1 }}>
-          <RoadScene progress={progress} active={webglActive} className="w-full h-full object-cover" />
-        </div>
+      {/* 1. HERO SECTION: 50/50 split layout */}
+      <section className="relative h-[88vh] min-h-[560px] md:h-screen md:min-h-[620px] w-full flex flex-col justify-between overflow-hidden shrink-0 select-none">
 
-        {/* Atmospheric grid grid & glow overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,_rgba(0,0,0,0.2)_50%)] bg-[length:100%_4px] pointer-events-none z-10 opacity-30" />
-        <div className="absolute inset-0 bg-radial-vignette pointer-events-none z-10" style={{ background: "radial-gradient(circle, transparent 40%, rgba(1, 4, 16, 0.8) 100%)" }} />
+        {/* ── CONSALUD: full-width photo layout ── */}
+        {heroMode === "consalud" && (
+          <>
+            {/* Photo background — hero2 + lighter overlay to preserve resolution */}
+            <div className="absolute inset-0 z-0">
+              <img src={consaludHero2} alt="" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-[#05123e]/55" />
+              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#05123e]/70 to-transparent" />
+            </div>
 
-        {/* Floating flat-integrated HUD overlay inside Hero absolute bounds */}
-        <div className={`relative z-20 w-full mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 flex items-center h-full pt-28 md:pt-36 pb-20 pointer-events-none transition-all duration-300 ${
-          heroMode === "bateria" ? "max-w-[1536px]" : "max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px]"
-        }`}>
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-            
-            {/* Left side: Information and Selector */}
-            <div className={`flex flex-col justify-center pointer-events-auto select-text text-left transition-all duration-300 ${
-              heroMode === "bateria"
-                ? "md:col-span-4 md:-ml-12"
-                : heroMode === "vigia"
-                  ? "md:col-span-5 md:-ml-8" 
-                  : "md:col-span-7 md:ml-0"
-            }`}>
-              <AnimatePresence mode="wait">
+            {/* Main text + logo card — centered vertically in available space above strip */}
+            <motion.div
+              key="consalud-layout"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-30 flex items-center pointer-events-none"
+              style={{ bottom: "185px", top: "72px" }}
+            >
+              <div className="w-full px-8 md:px-14 lg:px-16 2xl:px-24 flex items-center justify-between gap-10">
+
+                {/* Left: text + CTA */}
+                <div className="max-w-xl lg:max-w-2xl pointer-events-auto select-text">
+                  <span className="text-[10px] sm:text-xs font-mono font-black tracking-[0.25em] uppercase text-[#ff8d2b] block mb-[clamp(0.5rem,1.5vh,1rem)]">
+                    ALIADO VITAL SST · BOGOTÁ · DESDE 1998
+                  </span>
+                  <h1 className="text-[clamp(1.75rem,min(6vw,10vh),6rem)] font-black tracking-tight text-white leading-[0.94] mb-[clamp(0.5rem,1.5vh,1rem)]">
+                    Tu Aliado <span className="bg-gradient-to-r from-[#05123e] to-[#ff8d2b] bg-clip-text text-transparent">Estratégico  en SST</span>
+                  </h1>
+                  <p className="text-white/90 text-[clamp(0.875rem,min(1.8vw,3vh),1.375rem)] font-sans font-semibold leading-relaxed max-w-md mb-[clamp(0.75rem,2vh,1.75rem)]">
+                    Protejemos a tu equipo y tu empresa con soluciones a la medida sin improvisaciones, con respaldo académico y experiencia en
+                    mercado Colombiano de salud ocupacional. <span className="text-[#ff8d2b] font-bold">¡Tu tranquilidad es nuestra prioridad!</span>
+                  </p>
+
+                  {/* Mobile slide selector — horizontal, below the text (mobile only) */}
+                  <div className="flex md:hidden items-center gap-2 pointer-events-auto select-none max-w-xs mt-2">
+                    <button
+                      onClick={() => { setHeroMode("consalud"); setHeroCycleProgress(0); playRetroChime("click"); }}
+                      className="relative flex-1 py-2.5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase overflow-hidden transition-all duration-300 cursor-pointer bg-[#ff8d2b] text-white shadow-sm"
+                    >
+                      {isHeroCycling && (
+                        <span
+                          className="absolute inset-0 bg-black/15 origin-left pointer-events-none"
+                          style={{ transform: `scaleX(${heroCycleProgress / 100})`, transition: "transform 75ms linear" }}
+                        />
+                      )}
+                      <span className="relative z-10">Consalud</span>
+                    </button>
+                    <button
+                      onClick={() => { setHeroMode("vigia"); setHeroCycleProgress(0); playRetroChime("click"); }}
+                      className="relative flex-1 py-2.5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase overflow-hidden transition-all duration-300 cursor-pointer bg-white/10 text-slate-300 border border-white/20"
+                    >
+                      <span className="relative z-10">Vigía</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Right: Consalud logo card */}
                 <motion.div
-                  key={heroMode}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="space-y-6"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="hidden lg:flex shrink-0 w-80 xl:w-96 mr-12 pointer-events-none select-none"
                 >
-                  {/* Eyebrow Tag */}
-                  <div className="flex flex-col gap-1.5">
-                    <span className={`text-[10px] sm:text-xs font-mono font-black tracking-[0.25em] uppercase block leading-relaxed ${
-                      heroMode === "vigia" 
-                        ? "text-[#ff8d2b] max-w-[260px] sm:max-w-xs" 
-                        : heroMode === "bateria"
-                          ? "text-[#ff8d2b]"
-                          : "text-[#ff8d2b]"
-                    }`}>
-                      {heroMode === "vigia" 
-                        ? "EL FUTURO DE LA PREVENCIÓN EN COLOMBIA · IA & VISIÓN COMPUTACIONAL" 
-                        : heroMode === "consalud"
-                          ? "ALIADO VITAL SST · BOGOTÁ · DESDE 1998"
-                          : "OBLIGATORIEDAD · MULTAS Y SANCIONES · BENEFICIOS PARA LA EMPRESA"}
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                    {/* Corner accents */}
+                    <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#ff8d2b]/70 rounded-tl" />
+                    <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#ff8d2b]/70 rounded-tr" />
+                    <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#ff8d2b]/70 rounded-bl" />
+                    <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#ff8d2b]/70 rounded-br" />
+                    <img
+                      src={consaludHero1}
+                      alt="Consalud"
+                      className="w-full h-auto object-contain filter drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
+                    />
+                    <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b] animate-pulse" />
+                     ALIADO VITAL SST · BOGOTÁ · DESDE 1998
+                    </div>
+                  </div>
+                </motion.div>
+
+              </div>
+            </motion.div>
+
+            {/* ── Bottom 4-section strip — absolute, always above carousel controls. Hidden on mobile (see request). ── */}
+            <div className="hidden md:grid absolute left-0 right-0 z-30 border-t border-white/20 grid-cols-4 pointer-events-auto" style={{ bottom: "88px" }}>
+              <button
+                onClick={() => { playRetroChime("nav"); jumpToLandingSection("sec-landing-2", 1); }}
+                className="group flex flex-col gap-2 p-4 md:p-5 border-r border-white/20 hover:bg-white/10 transition-all duration-300 text-left backdrop-blur-sm"
+              >
+                <ShieldCheck className="w-6 h-6 md:w-7 md:h-7 text-[#ff8d2b]" />
+                <span className="text-white font-bold text-sm md:text-base leading-snug">Seguridad y Salud en el Trabajo</span>
+                <span className="text-[#ff8d2b] font-bold group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </button>
+              <button
+                onClick={() => { playRetroChime("nav"); jumpToLandingSection("sec-landing-1", 2); }}
+                className="group flex flex-col gap-2 p-4 md:p-5 border-r border-white/20 hover:bg-white/10 transition-all duration-300 text-left backdrop-blur-sm"
+              >
+                <Users className="w-6 h-6 md:w-7 md:h-7 text-[#ff8d2b]" />
+                <span className="text-white font-bold text-sm md:text-base leading-snug">Nosotros</span>
+                <span className="text-[#ff8d2b] font-bold group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </button>
+              <button
+                onClick={() => { playRetroChime("click"); jumpToLandingSection("sec-landing-2", 1); setTimeout(() => setPendingServiceModal("Batería de Riesgo Psicosocial"), 600); }}
+                className="group flex flex-col gap-2 p-4 md:p-5 border-r border-white/20 hover:bg-white/10 transition-all duration-300 text-left backdrop-blur-sm"
+              >
+                <Brain className="w-6 h-6 md:w-7 md:h-7 text-[#ff8d2b]" />
+                <span className="text-white font-bold text-sm md:text-base leading-snug">Batería Psicosocial</span>
+                <span className="text-[#ff8d2b] font-bold group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </button>
+              <button
+                onClick={() => { playRetroChime("nav"); jumpToLandingSection("sec-landing-4", 4); }}
+                className="group flex flex-col gap-2 p-4 md:p-5 hover:bg-white/10 transition-all duration-300 text-left backdrop-blur-sm"
+              >
+                <MessageCircle className="w-6 h-6 md:w-7 md:h-7 text-[#ff8d2b]" />
+                <span className="text-white font-bold text-sm md:text-base leading-snug">Contacto</span>
+                <span className="text-[#ff8d2b] font-bold group-hover:translate-x-1 transition-transform duration-200">→</span>
+              </button>
+            </div>
+          </>
+        )}
+ 
+        {/* ── VIGÍA: full photo background + centered card ── */}
+        {heroMode === "vigia" && (
+          <>
+            {/* Photo background + overlay */}
+            <div className="absolute inset-0 z-0">
+              <img src={vigiaSlide2} className="absolute inset-0 w-full h-full object-cover object-center" alt="" />
+              <div className="absolute inset-0 bg-[#05123e]/65" />
+              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#05123e]/75 to-transparent" />
+            </div>
+
+            {/* Main content — mirrors Consalud layout */}
+            <motion.div
+              key="vigia-layout"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-30 flex items-center pointer-events-none"
+              style={{ bottom: "185px", top: "72px" }}
+            >
+              <div className="w-full px-8 md:px-14 lg:px-16 2xl:px-24 flex items-center justify-between gap-10">
+
+                {/* Left: logo + text + badge + CTA */}
+                <div className="max-w-xl lg:max-w-2xl pointer-events-auto select-text ml-4 md:ml-10 lg:ml-16">
+                  <span className="text-xs sm:text-sm font-mono font-black tracking-[0.25em] uppercase text-[#ff8d2b] block mb-[clamp(0.5rem,1.5vh,1.25rem)]">
+                    EL FUTURO DE LA PREVENCIÓN EN COLOMBIA
+                  </span>
+                  <div className="mb-[clamp(0.5rem,1.5vh,1.5rem)]">
+                    <img
+                      src={vigiaWhiteLogo}
+                      alt="VIGÍA"
+                      className="h-[clamp(3rem,min(9vw,13vh),9.5rem)] w-auto object-contain filter drop-shadow-[0_2px_16px_rgba(255,141,43,0.3)]"
+                    />
+                  </div>
+                  <p className="text-white/90 text-[clamp(0.875rem,min(1.8vw,3vh),1.625rem)] font-sans font-semibold leading-relaxed max-w-lg mb-[clamp(0.75rem,2vh,1.75rem)]">
+                    Vigía alerta antes del incidente. Cámaras con inteligencia artificial colombiana e ingeniería alemana, todo trabajando para que ningún trabajador salga lastimado.
+                  </p>
+                  <div className="flex items-center gap-3 mb-[clamp(0.75rem,2vh,2rem)]">
+                    <span className="text-xs font-mono font-black tracking-[0.15em] uppercase text-slate-400">Seguridad Predictiva en Tiempo Real</span>
+                    <span className="w-px h-4 bg-white/20" />
+                    <span className="text-lg font-black tracking-wide text-white">
+                      COLOMBIA <span className="text-[#ff8d2b]">𝓍</span> ALEMANIA
                     </span>
                   </div>
+                  <button
+                    onClick={() => { playRetroChime("click"); navigate("/vigia"); }}
+                    className="inline-flex items-center gap-2 px-8 py-[clamp(0.5rem,1.2vh,1rem)] rounded-full bg-[#ff8d2b] text-white font-black text-base tracking-wider hover:bg-[#ff8d2b]/85 transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(255,141,43,0.4)] hover:scale-[1.03]"
+                  >
+                    Conocer Vigía <ArrowRight className="w-4 h-4" />
+                  </button>
 
-                  {/* Title / Logo Area */}
-                  {heroMode === "vigia" ? (
-                    <div className="space-y-3">
-                      {/* Premium Interactive VIGIA Wordmark Logo */}
-                      <div className="flex items-center select-none pointer-events-none mb-1">
-                        <img 
-                          src={vigiaWhiteLogo} 
-                          alt="VIGIA Logo" 
-                          className="h-20 sm:h-22 md:h-26 w-auto object-contain filter drop-shadow-[0_8px_30px_rgba(255,255,255,0.15)] brightness-100" 
-                          referrerPolicy="no-referrer"
+                  {/* Mobile slide selector — horizontal, below the text (mobile only) */}
+                  <div className="flex md:hidden items-center gap-2 pointer-events-auto select-none max-w-xs mt-5">
+                    <button
+                      onClick={() => { setHeroMode("consalud"); setHeroCycleProgress(0); playRetroChime("click"); }}
+                      className="relative flex-1 py-2.5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase overflow-hidden transition-all duration-300 cursor-pointer bg-white/10 text-slate-300 border border-white/20"
+                    >
+                      <span className="relative z-10">Consalud</span>
+                    </button>
+                    <button
+                      onClick={() => { setHeroMode("vigia"); setHeroCycleProgress(0); playRetroChime("click"); }}
+                      className="relative flex-1 py-2.5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase overflow-hidden transition-all duration-300 cursor-pointer bg-[#05123e] text-white shadow-sm"
+                    >
+                      {isHeroCycling && (
+                        <span
+                          className="absolute inset-0 bg-white/15 origin-left pointer-events-none"
+                          style={{ transform: `scaleX(${heroCycleProgress / 100})`, transition: "transform 75ms linear" }}
                         />
-                      </div>
+                      )}
+                      <span className="relative z-10">Vigía</span>
+                    </button>
+                  </div>
+                </div>
 
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-white font-sans max-w-xl lg:max-w-2xl xl:max-w-3xl font-medium drop-shadow-md">
-                        Vigía alerta antes del incidente, Cámaras con inteligencia artificial colombiana e ingeniería alemana todo trabajando para que ningún trabajador salga lastimado por algo que se pudo ver venir.
-                      </p>
-
-                      {/* CTA Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-4 pt-4 pointer-events-auto">
-                        <button
-                          onClick={() => {
-                            playRetroChime("nav");
-                            jumpToLandingSection("sec-landing-4", 4);
-                          }}
-                          className="px-8 py-3.5 rounded-full bg-[#ff8d2b] hover:bg-[#ff8d2b]/95 text-[#010410] font-black text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#ff8d2b]/20 hover:shadow-[#ff8d2b]/35 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2"
-                        >
-                          Reserva tu demo <span className="text-[10px]">➤</span>
-                        </button>
-                        <button
-                          onClick={() => jumpToLandingSection("sec-landing-3", 3)}
-                          className="px-8 py-3.5 rounded-full border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider transition-all duration-300 backdrop-blur-sm cursor-pointer"
-                        >
-                          Conocer más
-                        </button>
-                      </div>
-                    </div>
-                  ) : heroMode === "consalud" ? (
-                    <div className="space-y-4 pt-4">
-                      {/* Grand scale typographic display for Consalud */}
-                      <img 
-                          src={consaludWhiteLogo} 
-                          alt="Consalud Logo" 
-                          className="h-30 sm:h-34 md:h-38 w-auto object-contain filter drop-shadow-[0_8px_30px_rgba(255,255,255,0.15)] brightness-100"
-                          referrerPolicy="no-referrer"
-                        />
-
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-slate-200 font-sans max-w-xl lg:max-w-2xl xl:max-w-3xl font-medium drop-shadow-md">
-                        Protegemos a tu equipo con soluciones a la medida sin improvisaciones, con respaldo académico y experiencia real en el mercado colombiano de salud ocupacional.
-                      </p>
-
-                      {/* CTA Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-4 pt-4 pointer-events-auto">
-                        <button
-                          onClick={() => {
-                            playRetroChime("click");
-                            jumpToLandingSection("sec-landing-4", 4);
-                          }}
-                          className="px-8 py-3.5 rounded-full bg-[#ff8d2b] hover:bg-[#ff8d2b]/95 text-[#010410] font-black text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#ff8d2b]/20 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2"
-                        >
-                          Diagnóstico Gratuito <span className="text-[10px]"></span>
-                        </button>
-                        <button
-                          onClick={() => jumpToLandingSection("sec-landing-2", 2)}
-                          className="px-8 py-3.5 rounded-full border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white font-bold text-xs sm:text-sm tracking-wider transition-all duration-300 backdrop-blur-sm cursor-pointer"
-                        >
-                          Descubrir Soluciones
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-4 pt-1 text-left">
-                      <h1 className="text-4xl sm:text-5.5xl md:text-6xl lg:text-[68px] xl:text-[76px] font-black tracking-tighter text-white leading-[0.95] sm:leading-[0.9] md:leading-[0.85] text-left">
-                        Batería de <br />
-                        <span className="text-[#ff8d2b]">Riesgo</span> <br />
-                        Psicosocial
-                      </h1>
-
-                      <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium italic text-slate-100 max-w-xl leading-relaxed">
-                        "Evaluar hoy, prevenir siempre, cuidar a tu equipo es hacer crecer tu empresa."
-                      </p>
-
-                      <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-relaxed text-white font-sans max-w-lg lg:max-w-xl xl:max-w-2xl font-medium drop-shadow-md">
-                        La Batería de Riesgo Psicosocial permite identificar, medir y prevenir factores que pueden afectar la salud mental, el bienestar y el desempeño de los trabajadores.
-                      </p>
-
-                      {/* CTA Action Buttons */}
-                      <div className="flex flex-wrap items-center gap-3 pt-2 pointer-events-auto">
-                        <button
-                          onClick={() => {
-                            playRetroChime("nav");
-                            jumpToLandingSection("sec-landing-4", 4);
-                          }}
-                          className="px-6 py-3 rounded-full bg-[#ff8d2b] hover:bg-[#ff8d2b]/90 text-[#010410] font-black text-[11px] sm:text-xs tracking-widest uppercase transition-all duration-300 shadow-lg shadow-[#ff8d2b]/20 hover:shadow-[#ff8d2b]/35 hover:scale-[1.03] active:scale-[0.98] cursor-pointer flex items-center gap-2"
-                        >
-                          EVALUAR AHORA <span className="text-[10px]"></span>
-                        </button>
-                        <button
-                          onClick={() => jumpToLandingSection("sec-landing-1", 1)}
-                          className="px-6 py-3 rounded-full border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white font-bold text-[11px] sm:text-xs tracking-wider transition-all duration-300 backdrop-blur-sm cursor-pointer"
-                        >
-                          Consultar Normatividad
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Right side: Interactive Integrated Graphic Element */}
-            <div className={`flex flex-col justify-center transition-all duration-300 ${
-              heroMode === "bateria"
-                ? "md:col-span-8 min-h-[300px] md:min-h-[460px]"
-                : heroMode === "vigia"
-                  ? "md:col-span-7 min-h-[340px] md:min-h-[500px]"
-                  : "md:col-span-5 min-h-[290px] md:min-h-[420px]"
-            }`}>
-              <AnimatePresence mode="wait">
+                {/* Right: Vigía hero image */}
                 <motion.div
-                  key={heroMode}
-                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: -30 }}
-                  transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                  className="w-full"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="hidden lg:flex shrink-0 w-[600px] xl:w-[720px] mr-8 pointer-events-none select-none items-center justify-center"
                 >
-                  {heroMode === "vigia" ? (
-                    // PREMIUM TALL VIGIA DASHBOARD PREVIEW IMAGE CARD - Uses object-contain so nothing is cropped
-                    <div className="w-full relative pointer-events-auto rounded-3xl border border-white/15 bg-slate-950/30 backdrop-blur-md overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.65)] group/vigiaImg">
-                      {/* Subtitle subtle bar */}
-                      <div className="absolute top-3 left-4 z-10 flex items-center gap-1.5 px-2 py-1 rounded-md bg-black/60 border border-white/10 font-mono text-[9px] text-[#ff8d2b] select-none pointer-events-none">
-                        <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                        VIGÍA SISTEMA ACTIVO · VISTA PRINCIPAL
-                      </div>
- 
-                      {/* Tall portraited dashboard image - fitted without any cropping */}
-                      <img 
-                        src={heroVigiaImg} 
-                        alt="Vigía Panel Principal" 
-                        className="w-full h-auto min-h-[340px] md:min-h-[480px] lg:h-[580px] object-contain transition-transform duration-700 ease-out scale-100 group-hover/vigiaImg:scale-102"
-                        referrerPolicy="no-referrer"
-                      />
- 
-                      {/* Subtle ambient lens flare border highlight */}
-                      <div className="absolute inset-0 rounded-3xl ring-1 ring-white/10 pointer-events-none" />
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                    {/* Corner accents */}
+                    <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#38bdf8]/70 rounded-tl" />
+                    <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#38bdf8]/70 rounded-tr" />
+                    <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#38bdf8]/70 rounded-bl" />
+                    <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#38bdf8]/70 rounded-br" />
+                    <img
+                      src={heroVigiaImg}
+                      alt="Vigía"
+                      className="w-full h-auto object-contain filter drop-shadow-[0_12px_60px_rgba(56,189,248,0.4)]"
+                    />
+                    <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
+                      <span className="w-2 h-2 rounded-full bg-[#ff8d2b] animate-pulse" />
+                     SISTEMA DE PREVENCIÓN IA EN TIEMPO REAL
                     </div>
-                  ) : heroMode === "consalud" ? (
-                    // CONSALUD BRAND PANEL: wordmark + tagline + overlapping family/team photo collage
-                    <div className="w-full flex items-center justify-center py-6 select-none pointer-events-auto">
-                      <div className="relative w-full max-w-md rounded-3xl border border-white/15 bg-gradient-to-br from-[#05123e] via-[#0a1f5f] to-[#05123e] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 sm:p-10">
-
-                        {/* Dotted accent top-left */}
-                        <div className="absolute top-6 left-6 grid grid-cols-6 gap-1.5 opacity-70 pointer-events-none">
-                          {Array.from({ length: 24 }).map((_, i) => (
-                            <span key={i} className="w-1 h-1 rounded-full bg-[#ff8d2b]" />
-                          ))}
-                        </div>
-
-                        {/* Decorative curved line accents */}
-                        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400" fill="none">
-                          <path d="M260,0 C340,60 380,160 320,260" stroke="#ff8d2b" strokeWidth="1.5" opacity="0.5" />
-                          <path d="M300,-20 C400,80 420,220 340,320" stroke="white" strokeWidth="1" opacity="0.15" />
-                        </svg>
-
-                        <div className="relative z-10 flex flex-col gap-6">
-                          <img
-                            src={consaludWhiteLogo}
-                            alt="Consalud Logo"
-                            className="h-10 sm:h-12 w-auto object-contain"
-                            referrerPolicy="no-referrer"
-                          />
-
-                          <p className="text-xl sm:text-2xl font-bold text-white leading-snug">
-                            Bienestar que construye <span className="text-[#ff8d2b]">futuro</span>
-                          </p>
-
-                          {/* Overlapping photo collage: team/work + family */}
-                          <div className="relative h-56 sm:h-64 w-full mt-2">
-                            <div className="absolute top-0 right-0 w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white/10 shadow-xl">
-                              <img src={reunionImg} alt="Equipo Consalud trabajando seguro" className="w-full h-full object-cover" />
-                            </div>
-                            <div className="absolute bottom-0 left-0 w-44 h-44 sm:w-52 sm:h-52 rounded-full overflow-hidden border-4 border-white shadow-2xl z-10">
-                              <img src={familiaImg} alt="Familias protegidas por Consalud" className="w-full h-full object-cover" />
-                            </div>
-                          </div>
-
-                          {/* Icon row */}
-                          <div className="flex items-center gap-5 justify-end pt-2">
-                            <Heart className="w-6 h-6 text-white/80" />
-                            <Users className="w-6 h-6 text-white/80" />
-                            <ShieldCheck className="w-6 h-6 text-white/80" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center gap-6 md:gap-8 w-full select-text pointer-events-auto">
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 w-full">
-                        
-                        {/* Card 1: Obligatoriedad */}
-                        <div className="rounded-2xl border border-[#22c55e]/25 bg-white/5 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-start gap-4 shadow-[0_12px_40px_rgba(34,197,94,0.12)] hover:shadow-[0_15px_45px_rgba(34,197,94,0.22)] hover:border-[#22c55e]/50 transition-all duration-300 relative overflow-hidden group min-h-[260px] md:min-h-[290px] text-center">
-                          {/* Accent top line indicator */}
-                          <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#22c55e]" />
-                          
-                          {/* Centered Tag & Icon above Title */}
-                          <div className="flex flex-col items-center justify-center gap-2">
-                            <span className="text-[9px] sm:text-[11px] font-mono font-bold text-[#22c55e]/80 uppercase tracking-widest leading-none">LEY CO</span>
-                            <div className="p-2.5 sm:p-3 rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 text-[#22c55e] max-w-fit">
-                              <ShieldCheck className="w-7 h-7 sm:w-9 sm:h-9 " />
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <h3 className="text-base sm:text-lg font-black text-[#22c55e] tracking-tight">Obligatoriedad</h3>
-                            <p className="text-xs sm:text-[13px] text-white/95 leading-relaxed font-sans font-medium">
-                              Exigida por ley colombiana. Aplica a todas las empresas públicas y privadas. Evaluación cada 2 años.
-                            </p>
-                          </div>
-                          
-                          {/* Soft subtle glow spot in background */}
-                          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#22c55e]/5 rounded-full blur-2xl pointer-events-none" />
-                        </div>
-
-                        {/* Card 2: Multas y Sanciones */}
-                        <div className="rounded-2xl border border-[#ff8d2b]/25 bg-white/5 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-start gap-4 shadow-[0_12px_40px_rgba(255,141,43,0.12)] hover:shadow-[0_15px_45px_rgba(255,141,43,0.22)] hover:border-[#ff8d2b]/50 transition-all duration-300 relative overflow-hidden group min-h-[260px] md:min-h-[290px] text-center">
-                          {/* Accent top line indicator */}
-                          <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#ff8d2b]" />
-                          
-                          {/* Centered Tag & Icon above Title */}
-                          <div className="flex flex-col items-center justify-center gap-2">
-                            <span className="text-[9px] sm:text-[11px] font-mono font-bold text-[#ff8d2b]/80 uppercase tracking-widest leading-none">SST RIESGOS</span>
-                            <div className="p-2.5 sm:p-3 rounded-xl bg-[#ff8d2b]/10 border border-[#ff8d2b]/20 text-[#ff8d2b] max-w-fit">
-                              <AlertTriangle className="w-7 h-7 sm:w-9 sm:h-9" />
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <h3 className="text-base sm:text-lg font-black text-[#ff8d2b] tracking-tight">Multas y Sanciones</h3>
-                            <p className="text-xs sm:text-[13px] text-white/95 leading-relaxed font-sans font-medium">
-                              Sanciones de 1 a 5.000 SMMLV. Medidas correctivas e investigaciones laborales por incumplimiento.
-                            </p>
-                          </div>
-                          
-                          {/* Soft subtle glow spot in background */}
-                          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#ff8d2b]/5 rounded-full blur-2xl pointer-events-none" />
-                        </div>
-
-                        {/* Card 3: Beneficios para la Empresa */}
-                        <div className="rounded-2xl border border-[#3b82f6]/25 bg-white/5 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-start gap-4 shadow-[0_12px_40px_rgba(59,130,246,0.12)] hover:shadow-[0_15px_45px_rgba(59,130,246,0.22)] hover:border-[#3b82f6]/50 transition-all duration-300 relative overflow-hidden group min-h-[260px] md:min-h-[290px] text-center">
-                          {/* Accent top line indicator */}
-                          <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#3b82f6]" />
-                          
-                          {/* Centered Tag & Icon above Title */}
-                          <div className="flex flex-col items-center justify-center gap-2">
-                            <span className="text-[9px] sm:text-[11px] font-mono font-bold text-[#3b82f6]/80 uppercase tracking-widest leading-none">PRODUCTIVIDAD</span>
-                            <div className="p-2.5 sm:p-3 rounded-xl bg-[#3b82f6]/10 border border-[#3b82f6]/20 text-[#3b82f6] max-w-fit">
-                              <TrendingUp className="w-7 h-7 sm:w-9 sm:h-9" />
-                            </div>
-                          </div>
-
-                          <div className="space-y-2">
-                            <h3 className="text-base sm:text-lg font-black text-[#3b82f6] tracking-tight">Beneficios</h3>
-                            <p className="text-xs sm:text-[13px] text-white/95 leading-relaxed font-sans font-medium">
-                              Equipos más saludables, mayor productividad y reducción de costos por ausentismo y rotación.
-                            </p>
-                          </div>
-                          
-                          {/* Soft subtle glow spot in background */}
-                          <div className="absolute -bottom-10 -right-10 w-28 h-28 bg-[#3b82f6]/5 rounded-full blur-2xl pointer-events-none" />
-                        </div>
-
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </motion.div>
-              </AnimatePresence>
-            </div>
 
+              </div>
+            </motion.div>
+          </>
+        )}
+
+        {/* Slide selector — frosted segmented control, centered within the safe content zone (below navbar, above bottom strip). Desktop only: on mobile it renders inline below the text instead. */}
+        <div
+          className="hidden md:flex absolute z-40 pointer-events-auto select-none right-4 md:right-6 items-center"
+          style={{ top: "72px", bottom: "185px" }}
+        >
+          <div className="flex flex-col items-center gap-1 bg-white/85 backdrop-blur-md border border-slate-200/70 shadow-md px-1 py-1 rounded-full">
+            {/* Consalud tab */}
+            <button
+              onClick={() => {
+                setHeroMode("consalud");
+                setHeroCycleProgress(0);
+                playRetroChime("click");
+              }}
+              className={`relative transition-all duration-300 px-2 py-5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase cursor-pointer overflow-hidden ${
+                heroMode === "consalud"
+                  ? "bg-[#ff8d2b] text-white shadow-sm"
+                  : "text-slate-400 hover:text-slate-600"
+              }`}
+            >
+              {heroMode === "consalud" && isHeroCycling && (
+                <span
+                  className="absolute inset-0 bg-black/15 origin-bottom pointer-events-none"
+                  style={{ transform: `scaleY(${heroCycleProgress / 100})`, transition: "transform 75ms linear" }}
+                />
+              )}
+              <span className="relative z-10 [writing-mode:vertical-lr] rotate-180">Consalud</span>
+            </button>
+            {/* Vigía tab */}
+            <button
+              onClick={() => {
+                setHeroMode("vigia");
+                setHeroCycleProgress(0);
+                playRetroChime("click");
+              }}
+              className={`relative transition-all duration-300 px-2 py-5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase cursor-pointer overflow-hidden ${
+                heroMode === "vigia"
+                  ? "bg-[#05123e] text-white shadow-sm"
+                  : "text-slate-400 hover:text-slate-600"
+              }`}
+            >
+              {heroMode === "vigia" && isHeroCycling && (
+                <span
+                  className="absolute inset-0 bg-white/15 origin-bottom pointer-events-none"
+                  style={{ transform: `scaleY(${heroCycleProgress / 100})`, transition: "transform 75ms linear" }}
+                />
+              )}
+              <span className="relative z-10 [writing-mode:vertical-lr] rotate-180">Vigía</span>
+            </button>
           </div>
         </div>
 
-        {/* Carousel & Scroll Indicator controls (FIDELITY ALIGNED EXACTLY WITH CAPTURE) */}
-        <div className="relative z-20 pb-12 w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 flex flex-col items-center pointer-events-auto select-none">
-          
-          {/* Custom Carousel Arrows & Progress Lines widget */}
-          <div className="flex items-center justify-center gap-6 mb-7 bg-slate-950/40 backdrop-blur-sm border border-white/5 py-2.5 px-6 rounded-full shadow-lg">
-            
-            {/* Back action */}
-            <button
-              onClick={() => {
-                playRetroChime("click");
-                setHeroMode(curr => {
-                  if (curr === "consalud") return "bateria";
-                  if (curr === "vigia") return "consalud";
-                  return "vigia";
-                });
-                setIsHeroCycling(false);
-              }}
-              className="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-white border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all cursor-pointer"
-            >
-              <span className="text-xs">❮</span>
-            </button>
-
-            {/* Carousel Active dots/bars indicators */}
-            <div className="flex items-center gap-2.5">
-              {/* Consalud */}
-              <button 
-                onClick={() => { setHeroMode("consalud"); setIsHeroCycling(false); playRetroChime("click"); }}
-                className={`transition-all duration-300 cursor-pointer ${
-                  heroMode === "consalud" 
-                    ? "w-7 h-1.5 rounded-full bg-[#ff8d2b]" 
-                    : "w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/50"
-                }`}
-              />
-              {/* Vigia */}
-              <button 
-                onClick={() => { setHeroMode("vigia"); setIsHeroCycling(false); playRetroChime("click"); }}
-                className={`transition-all duration-300 cursor-pointer ${
-                  heroMode === "vigia" 
-                    ? "w-7 h-1.5 rounded-full bg-[#ff8d2b]" 
-                    : "w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/50"
-                }`}
-              />
-              {/* Bateria */}
-              <button 
-                onClick={() => { setHeroMode("bateria"); setIsHeroCycling(false); playRetroChime("click"); }}
-                className={`transition-all duration-300 cursor-pointer ${
-                  heroMode === "bateria" 
-                    ? "w-7 h-1.5 rounded-full bg-[#ff8d2b]" 
-                    : "w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/50"
-                }`}
-              />
-            </div>
-
-            {/* Next action */}
-            <button
-              onClick={() => {
-                playRetroChime("click");
-                setHeroMode(curr => {
-                  if (curr === "consalud") return "vigia";
-                  if (curr === "vigia") return "bateria";
-                  return "consalud";
-                });
-                setIsHeroCycling(false);
-              }}
-              className="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-white border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all cursor-pointer"
-            >
-              <span className="text-xs">❯</span>
-            </button>
-          </div>
-
-          {/* Autoplay progress bar if cycling is alive */}
-          {isHeroCycling ? (
-            <div className="w-24 h-0.5 bg-white/5 overflow-hidden rounded-full mb-6">
-              <div 
-                className="h-full transition-all duration-75"
-                style={{ 
-                  width: `${heroCycleProgress}%`, 
-                  backgroundColor: heroMode === "consalud" 
-                    ? "#00d8f6" 
-                    : heroMode === "vigia" 
-                      ? "#ff8d2b" 
-                      : "#d946ef" 
-                }}
-              />
-            </div>
-          ) : (
-            <button
-              onClick={() => {
-                playRetroChime("info");
-                setIsHeroCycling(true);
-                setHeroCycleProgress(0);
-              }}
-              className="text-[15px] font-mono font-black text-[#ff8d2b] tracking-wider mb-6 hover:underline uppercase"
-            >
-              ► Activar Autoplay
-            </button>
-          )}
-
-          {/* Animated Scroll down helper exactly matched from reference */}
-          <div 
-            onClick={() => jumpToLandingSection("sec-landing-1", 1)}
-            className="flex flex-col items-center pointer-events-auto cursor-pointer group text-center"
-          >
-            <p className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em] leading-none mb-2.5 group-hover:text-white transition-colors duration-300">SCROLL</p>
-            
-            {/* Elegant computer mouse animated skeleton */}
-            <div className="w-5 h-9 rounded-full border-2 border-slate-400 group-hover:border-white transition-colors flex justify-center pt-1.5 relative">
-              <motion.div 
-                animate={{
-                  y: [0, 8, 0],
-                  opacity: [1, 0, 1]
-                }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="w-1 h-2 rounded-full bg-[#ff8d2b]"
-              />
-            </div>
+        {/* Scroll indicator — centered at the bottom */}
+        <div
+          onClick={() => jumpToLandingSection("sec-landing-2", 1)}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-auto cursor-pointer group text-center [@media(max-height:820px)]:hidden select-none"
+        >
+          <p className="text-[10px] font-mono text-slate-400 uppercase tracking-[0.25em] leading-none mb-2.5 group-hover:text-white transition-colors duration-300">SCROLL</p>
+          <div className="w-5 h-9 rounded-full border-2 border-slate-400 group-hover:border-white transition-colors flex justify-center pt-1.5">
+            <motion.div
+              animate={{ y: [0, 8, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-2 rounded-full bg-[#ff8d2b]"
+            />
           </div>
         </div>
 
@@ -1158,6 +1009,10 @@ export default function App() {
         playRetroChime={playRetroChime}
         activeMarca={activeMarca}
         setActiveMarca={setActiveMarca}
+        pendingContactService={pendingContactService}
+        onContactServiceHandled={() => setPendingContactService(null)}
+        pendingServiceModal={pendingServiceModal}
+        onPendingServiceModalHandled={() => setPendingServiceModal(null)}
       />
 
       {/* 3. COOP TIMELINE PERSISTENT PRESENTATIONAL MODAL (The full chronological convention journey) */}
@@ -1305,7 +1160,7 @@ export default function App() {
                   <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase font-bold flex items-center gap-1.5 leading-none">
                     <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: BRAND_THEMES[ALLIED_BRANDS[modalBrandIdx].name]?.primary }} /> RED PREVENCIÓN COLOMBIA
                   </span>
-                  <h2 className="text-2xl font-bold font-sans text-slate-900 mt-2 mb-1">{ALLIED_BRANDS[modalBrandIdx].fullName}</h2>
+                  <h2 className="text-3xl font-black font-sans text-slate-900 mt-2 mb-1">{ALLIED_BRANDS[modalBrandIdx].fullName}</h2>
                   <span className="text-[10px] font-mono font-bold tracking-wider" style={{ color: BRAND_THEMES[ALLIED_BRANDS[modalBrandIdx].name]?.primary }}>
                     Atribución: {ALLIED_BRANDS[modalBrandIdx].role}
                   </span>
@@ -1475,5 +1330,7 @@ export default function App() {
       </a>
 
     </div>
+      } />
+    </Routes>
   );
 }

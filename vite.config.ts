@@ -17,8 +17,8 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
-      // Allow access via localtunnel-style public tunnel hostnames for sharing previews.
-      allowedHosts: ['.loca.lt'],
+      // Allow access via public tunnel hostnames (localtunnel, ngrok) for sharing previews.
+      allowedHosts: ['.loca.lt', '.ngrok-free.dev', '.ngrok-free.app', '.ngrok.io', '.ngrok.app'],
     },
   };
 });
