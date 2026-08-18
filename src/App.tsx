@@ -761,7 +761,7 @@ export default function App() {
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="hidden lg:flex shrink-0 w-80 xl:w-96 mr-12 pointer-events-none select-none"
                 >
-                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "min(320px, calc(100vh - 380px))" }}>
                     {/* Corner accents */}
                     <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#ff8d2b]/70 rounded-tl" />
                     <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#ff8d2b]/70 rounded-tr" />
@@ -771,6 +771,7 @@ export default function App() {
                       src={consaludHero1}
                       alt="Consalud"
                       className="w-full h-auto object-contain filter drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
+                      style={{ maxHeight: "max(140px, calc(100vh - 460px))" }}
                     />
                     <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b] animate-pulse" />
@@ -838,7 +839,7 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               className="absolute inset-0 z-30 flex items-center pointer-events-none"
-              style={{ bottom: "185px", top: "72px" }}
+              style={{ bottom: "185px", top: "128px" }}
             >
               <div className="w-full px-8 md:px-14 lg:px-16 2xl:px-24 flex items-center justify-between gap-10">
 
@@ -900,7 +901,7 @@ export default function App() {
                   transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                   className="hidden lg:flex shrink-0 w-[600px] xl:w-[720px] mr-8 pointer-events-none select-none items-center justify-center"
                 >
-                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-6 shadow-2xl relative overflow-hidden" style={{ minHeight: "min(320px, calc(100vh - 400px))" }}>
                     {/* Corner accents */}
                     <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#38bdf8]/70 rounded-tl" />
                     <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#38bdf8]/70 rounded-tr" />
@@ -910,6 +911,7 @@ export default function App() {
                       src={heroVigiaImg}
                       alt="Vigía"
                       className="w-full h-auto object-contain filter drop-shadow-[0_12px_60px_rgba(56,189,248,0.4)]"
+                      style={{ maxHeight: "max(220px, calc(100vh - 430px))" }}
                     />
                     <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
                       <span className="w-2 h-2 rounded-full bg-[#ff8d2b] animate-pulse" />

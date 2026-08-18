@@ -588,15 +588,16 @@ export default function StaticSections({
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
-        from_name: formData.name,
-        company: formData.company,
-        phone: formData.phone,
-        email: formData.email,
-        service: formData.serviceOfInterest,
+        name: formData.name,
+        empresa: formData.company,
+        telefono: formData.phone,
+        reply_to: formData.email,
+        servicio: formData.serviceOfInterest,
+        date: new Date().toLocaleString("es-CO", { dateStyle: "long", timeStyle: "short", timeZone: "America/Bogota" }),
         ticket_id: ticketId,
       },
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    ).catch(() => {});
+    ).catch((err) => console.error("EmailJS error:", err));
 
     let currentStage = 0;
     const interval = setInterval(() => {
@@ -696,6 +697,14 @@ export default function StaticSections({
                                 className={`absolute inset-0 w-full h-full object-center pointer-events-none select-none ${service.bgImageFit === "contain" ? "object-contain p-8" : "object-cover"}`}
                                 style={{ opacity: 0.45 }}
                               />
+                            )}
+                            {/* Legibility scrim over the bg image — dark for dark cards, light for cream cards (dark text) */}
+                            {service.bgImage && (
+                              <div className={`absolute inset-0 pointer-events-none ${
+                                service.colorType === "cream"
+                                  ? "bg-gradient-to-t from-[#f5f3e6]/80 via-[#f5f3e6]/45 to-[#f5f3e6]/20"
+                                  : "bg-gradient-to-t from-[#05123e]/80 via-[#05123e]/45 to-[#05123e]/20"
+                              }`} />
                             )}
                             {/* Top accent line — always subtly visible */}
                             <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#ff8d2b] opacity-25 group-hover:opacity-100 transition-opacity duration-300" />
