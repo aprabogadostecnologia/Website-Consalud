@@ -102,7 +102,7 @@ export default function Footer({ jumpToLandingSection, playRetroChime, whatsappU
               <li className="flex items-center gap-2 text-slate-200 font-medium">
                 <Mail className="w-4 h-4 text-[#ff8d2b] shrink-0" />
                 <a href="mailto:contacto@consultoresempresariales.com.co" className="text-slate-100 hover:text-[#ff8d2b] transition-colors font-semibold underline decoration-dotted decoration-white/30 hover:decoration-[#ff8d2b]/80">
-                  Contacto@consultoresempresariales.com.co
+                  Consalud@consultoresempresariales.com.co
                 </a>
               </li>
             </ul>
