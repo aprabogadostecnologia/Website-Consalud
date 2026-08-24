@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
-import { Shield, AlertTriangle, Zap, BookOpen, MessageCircle, ArrowLeft } from "lucide-react";
+import { Eye, ScanEye, BellRing, FileCheck, MessageCircle, ArrowLeft } from "lucide-react";
 import Footer from "../components/Footer";
 import WavesBackground from "../components/WavesBackground";
 // @ts-ignore
 import vigiaColorLogo from "../assets/images/vigia.png";
 // @ts-ignore
-import vigiaWhiteLogo from "../assets/images/vigiaWhite.png";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
 // @ts-ignore
+import vigiaPrincipalLogo from "../assets/images/VIGIA_PRINCIPAL.svg";
 import logoConsalud from "../assets/images/logoConsalud.png";
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
@@ -21,13 +22,14 @@ import vigiaCapture1 from "../assets/images/Captura de pantalla 2026-06-22 11151
 // @ts-ignore
 import vigiaCapture2 from "../assets/images/Captura de pantalla 2026-06-22 111526.png";
 
+
 const WHATSAPP_VIGIA = `https://wa.me/573057883941?text=${encodeURIComponent("Hola, quiero solicitar una demo de la *Plataforma Vigía SST* de Consalud. Me gustaría conocer más sobre cómo puede ayudar a mi empresa.")}`;
 
 const FEATURES = [
-  { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Reconoce casco, chaleco y guantes en milisegundos con 95%+ de confianza. Alerta inmediata por no uso." },
-  { icon: <AlertTriangle size={16} />, title: "Control de Celulares", desc: "Rastreo Inteligente de Mirada: detecta manipulación de celular con 93%+ confianza y alerta al instante." },
-  { icon: <Zap size={16} />, title: "Alertas en Tiempo Real", desc: "Notificación por email o WhatsApp al supervisor SST con evidencia visual y exportación PDF." },
-  { icon: <BookOpen size={16} />, title: "Reportes Automáticos", desc: "Generación automática de reportes de cumplimiento normativo HSE para auditorías y seguimiento." },
+  { icon: <Eye size={16} />, title: "Observación inteligente", desc: "Analiza el entorno de trabajo de forma continua para identificar comportamientos y condiciones de riesgo." },
+  { icon: <ScanEye size={16} />, title: "Detección de riesgos", desc: "Reconoce EPP, celulares y situaciones críticas en milisegundos con evidencia visual." },
+  { icon: <BellRing size={16} />, title: "Alertas en tiempo real", desc: "Notifica al supervisor SST por email o WhatsApp cuando aparece una condición de riesgo." },
+  { icon: <FileCheck size={16} />, title: "Reportes automáticos", desc: "Convierte cada evento en trazabilidad y soporte documental para seguimiento y cumplimiento." },
 ];
 
 const EXTRAS = [
@@ -55,13 +57,13 @@ export default function VigiaPage() {
   const playChime = () => {};
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7faf9]">
 
       {/* WavesBackground — always visible, same as main page */}
       <WavesBackground />
 
       {/* ── NAVBAR ── */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-[#05123e]/85 backdrop-blur-[12px] border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[#10263a]/90 backdrop-blur-[12px] border-b border-[#00ef89]/20 shadow-[0_8px_32px_rgba(16,38,58,0.3)]">
         <div className="w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16 h-[72px] flex items-center justify-between">
 
           {/* Logo → home */}
@@ -71,17 +73,17 @@ export default function VigiaPage() {
           >
             <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-[200px] h-14">
               <img
-                src={vigiaWhiteLogo}
+                src={vigiaNewLogo}
                 alt="Vigía Logo"
-                className="absolute max-w-full max-h-full object-contain filter brightness-0 invert"
+                 className="absolute max-w-full max-h-full object-contain filter brightness-0 invert"
               />
             </div>
           </button>
 
           {/* Back + Vigía label */}
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-2 bg-[#ff8d2b]/10 border border-[#ff8d2b]/25 text-[#ff8d2b] text-[11px] font-mono font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b] animate-pulse" />
+            <div className="hidden sm:flex items-center gap-2 bg-[#00ef89]/10 border border-[#00ef89]/30 text-[#00ef89] text-[11px] font-mono font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00ef89] animate-pulse" />
               Plataforma Vigía SST
             </div>
             <button
@@ -97,28 +99,25 @@ export default function VigiaPage() {
 
       {/* ── CONTENT ── */}
       <main className="relative z-10 pt-[72px]">
-        <div className="w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 py-20 flex flex-col gap-16">
+        <div className="w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 pt-4 pb-20 md:pt-6 flex flex-col gap-16">
 
           {/* HEADER */}
           <motion.div
-            className="flex flex-col items-center text-center gap-5"
+            className="relative isolate flex flex-col items-center text-center gap-5 overflow-hidden rounded-[2rem] border border-[#dce9e5] bg-[#f8fbfa] px-6 py-12 shadow-[0_20px_60px_rgba(16,38,58,0.08)] sm:px-10 md:py-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 bg-[#ff8d2b]/10 border border-[#ff8d2b]/25 text-[#ff8d2b] text-[11px] font-mono font-black tracking-[0.25em] uppercase px-5 py-2 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b] animate-pulse" />
-              EL FUTURO DE LA PREVENCIÓN EN COLOMBIA
-            </div>
-            <img src={vigiaColorLogo} alt="Vigía" className="h-20 w-auto object-contain drop-shadow-[0_8px_24px_rgba(255,141,43,0.3)]" />
-            <h1 className="text-5xl sm:text-6xl md:text-[72px] font-black tracking-tight text-[#05123e]  leading-none">
-              Plataforma <span className="text-[#ff8d2b]">Vigía</span> SST
-            </h1>
-            <p className="text-slate-600 text-base sm:text-lg md:text-xl font-sans font-semibold max-w-2xl leading-relaxed">
+            <div className="pointer-events-none absolute inset-0 -z-10 opacity-70 [background-image:linear-gradient(135deg,transparent_24%,rgba(16,38,58,0.07)_25%,transparent_26%),linear-gradient(45deg,transparent_24%,rgba(16,38,58,0.05)_25%,transparent_26%)] [background-size:42px_42px]" />
+            <div className="pointer-events-none absolute -left-24 top-0 -z-10 h-full w-56 skew-x-[-24deg] bg-gradient-to-r from-[#00ef89]/20 to-transparent" />
+            <div className="pointer-events-none absolute -right-24 top-0 -z-10 h-full w-56 skew-x-[-24deg] bg-gradient-to-l from-[#00ef89]/15 to-transparent" />
+            <h1 className="sr-only">Vigía SST</h1>
+            <img src={vigiaPrincipalLogo} alt="Vigía SST" className="h-72 w-auto object-contain drop-shadow-[0_8px_24px_rgba(16,38,58,0.18)] sm:h-96 md:h-[28rem]" />
+            <p className="max-w-2xl text-base font-sans font-semibold leading-relaxed text-[#405568] sm:text-lg md:text-xl">
               Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.
             </p>
-            <p className="text-[10px] font-mono font-bold text-slate-400 tracking-[0.2em] uppercase">
-              PRIMER SISTEMA DE RASTREO VISUAL INTELIGENTE DE COLOMBIA
+            <p className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#587080]">
+              INTELIGENCIA VISUAL PARA LA PREVENCIÓN SST
             </p>
           </motion.div>
 
@@ -132,10 +131,10 @@ export default function VigiaPage() {
             {/* Left — logo + video */}
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
-                <img src={vigiaColorLogo} alt="Vigía Logo" className="h-14 w-auto object-contain drop-shadow-[0_4px_16px_rgba(255,141,43,0.25)]" />
+                <img src={vigiaNewLogo} alt="Vigía Logo" className="h-14 w-auto object-contain drop-shadow-[0_4px_16px_rgba(255,141,43,0.25)]" />
                 <div className="border-l border-slate-200 pl-4">
                   <p className="text-slate-900 font-black text-lg leading-tight">Seguridad Predictiva en Tiempo Real</p>
-                  <p className="text-[#ff8d2b] text-xs font-mono tracking-widest uppercase mt-0.5">Colombia × Alemania</p>
+                  <p className="text-[#00b879] text-xs font-mono tracking-widest uppercase mt-0.5">Colombia × Alemania</p>
                 </div>
               </div>
 
@@ -155,7 +154,7 @@ export default function VigiaPage() {
             {/* Right — features + extras */}
             <div className="flex flex-col gap-6">
               <div className="border-l-2 border-[#ff8d2b] pl-4 py-1">
-                <p className="text-slate-600 text-sm italic font-sans">"Sistema de prevención IA en Tiempo real para SST."</p>
+                <p className="text-slate-600 text-sm italic font-sans">"Siempre presente. Siempre alerta."</p>
               </div>
 
               <div>

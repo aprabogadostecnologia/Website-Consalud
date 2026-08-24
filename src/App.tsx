@@ -7,7 +7,7 @@ import VigiaPage from "./pages/VigiaPage";
 // @ts-ignore
 import consaludWhiteLogo from "./assets/images/conSaludWhite.png";
 // @ts-ignore
-import vigiaWhiteLogo from "./assets/images/vigiaWhite.png";
+import vigiaNewLogo from "./assets/images/vigia_newLogo.png";
 // @ts-ignore
 import vigiaColorLogo from "./assets/images/vigia.png";
 // @ts-ignore
@@ -633,7 +633,7 @@ export default function App() {
                 title="Ir a Software VIGÍA SST"
               >
                 <img
-                  src={vigiaWhiteLogo}
+                  src={vigiaNewLogo}
                   alt="VIGIA"
                   className="h-5 w-auto object-contain brightness-100 drop-shadow-[0_2px_4px_rgba(255,141,43,0.25)]"
                   referrerPolicy="no-referrer"
@@ -761,7 +761,7 @@ export default function App() {
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="hidden lg:flex shrink-0 w-80 xl:w-96 mr-12 pointer-events-none select-none"
                 >
-                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "min(320px, calc(100vh - 380px))" }}>
                     {/* Corner accents */}
                     <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#ff8d2b]/70 rounded-tl" />
                     <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#ff8d2b]/70 rounded-tr" />
@@ -771,6 +771,7 @@ export default function App() {
                       src={consaludHero1}
                       alt="Consalud"
                       className="w-full h-auto object-contain filter drop-shadow-[0_4px_24px_rgba(255,255,255,0.25)]"
+                      style={{ maxHeight: "max(140px, calc(100vh - 460px))" }}
                     />
                     <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b] animate-pulse" />
@@ -838,18 +839,18 @@ export default function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               className="absolute inset-0 z-30 flex items-center pointer-events-none"
-              style={{ bottom: "185px", top: "72px" }}
+              style={{ bottom: "185px", top: "128px" }}
             >
               <div className="w-full px-8 md:px-14 lg:px-16 2xl:px-24 flex items-center justify-between gap-10">
 
                 {/* Left: logo + text + badge + CTA */}
                 <div className="max-w-xl lg:max-w-2xl pointer-events-auto select-text ml-4 md:ml-10 lg:ml-16">
-                  <span className="text-xs sm:text-sm font-mono font-black tracking-[0.25em] uppercase text-[#ff8d2b] block mb-[clamp(0.5rem,1.5vh,1.25rem)]">
-                    EL FUTURO DE LA PREVENCIÓN EN COLOMBIA
+                  <span className="text-xs sm:text-sm font-mono font-black tracking-[0.25em] uppercase text-[#00ef89] block mb-[clamp(0.5rem,1.5vh,1.25rem)]">
+                    SIEMPRE PRESENTE · SIEMPRE ALERTA
                   </span>
                   <div className="mb-[clamp(0.5rem,1.5vh,1.5rem)]">
                     <img
-                      src={vigiaWhiteLogo}
+                      src={vigiaNewLogo}
                       alt="VIGÍA"
                       className="h-[clamp(3rem,min(9vw,13vh),9.5rem)] w-auto object-contain filter drop-shadow-[0_2px_16px_rgba(255,141,43,0.3)]"
                     />
@@ -858,15 +859,15 @@ export default function App() {
                     Vigía alerta antes del incidente. Cámaras con inteligencia artificial colombiana e ingeniería alemana, todo trabajando para que ningún trabajador salga lastimado.
                   </p>
                   <div className="flex items-center gap-3 mb-[clamp(0.75rem,2vh,2rem)]">
-                    <span className="text-xs font-mono font-black tracking-[0.15em] uppercase text-slate-400">Seguridad Predictiva en Tiempo Real</span>
+                    <span className="text-xs font-mono font-black tracking-[0.15em] uppercase text-slate-400">Siempre presente. Siempre alerta.</span>
                     <span className="w-px h-4 bg-white/20" />
                     <span className="text-lg font-black tracking-wide text-white">
-                      COLOMBIA <span className="text-[#ff8d2b]">𝓍</span> ALEMANIA
+                      COLOMBIA <span className="text-[#00ef89]">×</span> ALEMANIA
                     </span>
                   </div>
                   <button
                     onClick={() => { playRetroChime("click"); navigate("/vigia"); }}
-                    className="inline-flex items-center gap-2 px-8 py-[clamp(0.5rem,1.2vh,1rem)] rounded-full bg-[#ff8d2b] text-white font-black text-base tracking-wider hover:bg-[#ff8d2b]/85 transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(255,141,43,0.4)] hover:scale-[1.03]"
+                    className="inline-flex items-center gap-2 px-8 py-[clamp(0.5rem,1.2vh,1rem)] rounded-full bg-[#00ef89] text-[#10263a] font-black text-base tracking-wider hover:bg-[#2ec195] transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(0,239,137,0.35)] hover:scale-[1.03]"
                   >
                     Conocer Vigía <ArrowRight className="w-4 h-4" />
                   </button>
@@ -900,7 +901,7 @@ export default function App() {
                   transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
                   className="hidden lg:flex shrink-0 w-[600px] xl:w-[720px] mr-8 pointer-events-none select-none items-center justify-center"
                 >
-                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-12 shadow-2xl relative overflow-hidden" style={{ minHeight: "320px" }}>
+                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-6 shadow-2xl relative overflow-hidden" style={{ minHeight: "min(320px, calc(100vh - 400px))" }}>
                     {/* Corner accents */}
                     <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#38bdf8]/70 rounded-tl" />
                     <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#38bdf8]/70 rounded-tr" />
@@ -910,9 +911,10 @@ export default function App() {
                       src={heroVigiaImg}
                       alt="Vigía"
                       className="w-full h-auto object-contain filter drop-shadow-[0_12px_60px_rgba(56,189,248,0.4)]"
+                      style={{ maxHeight: "max(220px, calc(100vh - 430px))" }}
                     />
                     <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
-                      <span className="w-2 h-2 rounded-full bg-[#ff8d2b] animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-[#00ef89] animate-pulse" />
                      SISTEMA DE PREVENCIÓN IA EN TIEMPO REAL
                     </div>
                   </div>

@@ -12,6 +12,7 @@ import { BRAND_THEMES } from "../App";
 // @ts-ignore
 // @ts-ignore
 import vigiaColorLogo from "../assets/images/vigia.png";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
 // @ts-ignore
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
@@ -361,12 +362,12 @@ export const MARCAS: Marca[] = [
   {
     name: "VIGIA",
     fullName: "Vigía Salud Inteligente",
-    logo: "/vigiaWhite.png",
-    accent: "#ff8d2b",
+    logo: "/vigia_newLogo.png",
+    accent: "#00ef89",
     badge: "EL FUTURO DE LA PREVENCIÓN EN COLOMBIA",
-    tagline: "Seguridad Predictiva en Tiempo Real",
-    phrase: "Sistema de prevencion IA en Tiempo real para SST.",
-    role: "PRIMER SISTEMA DE RASTREO VISUAL INTELIGENTE DE COLOMBIA",
+    tagline: "Siempre presente. Siempre alerta.",
+    phrase: "Siempre presente. Siempre alerta.",
+    role: "INTELIGENCIA VISUAL PARA LA PREVENCIÓN SST",
     description: "Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.",
     features: [
       { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Reconoce casco, chaleco y guantes en milisegundos con 95%+ de confianza. Alerta inmediata por no uso." },
@@ -588,15 +589,16 @@ export default function StaticSections({
       import.meta.env.VITE_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
-        from_name: formData.name,
-        company: formData.company,
-        phone: formData.phone,
-        email: formData.email,
-        service: formData.serviceOfInterest,
+        name: formData.name,
+        empresa: formData.company,
+        telefono: formData.phone,
+        reply_to: formData.email,
+        servicio: formData.serviceOfInterest,
+        date: new Date().toLocaleString("es-CO", { dateStyle: "long", timeStyle: "short", timeZone: "America/Bogota" }),
         ticket_id: ticketId,
       },
       import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    ).catch(() => {});
+    ).catch((err) => console.error("EmailJS error:", err));
 
     let currentStage = 0;
     const interval = setInterval(() => {
@@ -696,6 +698,14 @@ export default function StaticSections({
                                 className={`absolute inset-0 w-full h-full object-center pointer-events-none select-none ${service.bgImageFit === "contain" ? "object-contain p-8" : "object-cover"}`}
                                 style={{ opacity: 0.45 }}
                               />
+                            )}
+                            {/* Legibility scrim over the bg image — dark for dark cards, light for cream cards (dark text) */}
+                            {service.bgImage && (
+                              <div className={`absolute inset-0 pointer-events-none ${
+                                service.colorType === "cream"
+                                  ? "bg-gradient-to-t from-[#f5f3e6]/80 via-[#f5f3e6]/45 to-[#f5f3e6]/20"
+                                  : "bg-gradient-to-t from-[#05123e]/80 via-[#05123e]/45 to-[#05123e]/20"
+                              }`} />
                             )}
                             {/* Top accent line — always subtly visible */}
                             <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#ff8d2b] opacity-25 group-hover:opacity-100 transition-opacity duration-300" />
@@ -1726,7 +1736,7 @@ export default function StaticSections({
                     {isVigia ? (
                       <div className="w-48 h-48 md:w-60 md:h-60 flex items-center justify-center transition-transform duration-500 hover:scale-105">
                         <img
-                          src={vigiaColorLogo}
+                          src={vigiaNewLogo}
                           alt="Vigía Logo"
                           className="w-full h-auto max-h-full object-contain filter drop-shadow-[0_10px_25px_rgba(255,141,43,0.35)]"
                           referrerPolicy="no-referrer"
