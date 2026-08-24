@@ -11,8 +11,6 @@ import vigiaNewLogo from "./assets/images/vigia_newLogo.png";
 // @ts-ignore
 import vigiaColorLogo from "./assets/images/vigia.png";
 // @ts-ignore
-import heroVigiaImg from "./assets/images/heroVigia.png";
-// @ts-ignore
 import vigiaDashboard from "./assets/images/EscritorioDavid.png";
 // @ts-ignore
 import vigiaWorker from "./assets/images/kevinChaleco.png";
@@ -25,16 +23,26 @@ import consaludHero1 from "./assets/images/consalud hero 1.png";
 // @ts-ignore
 import consaludHero2 from "./assets/images/consalud hero2.jpg";
 // @ts-ignore
-import vigiaSlide2 from "./assets/images/vigiaSlide 2.png";
+import vigiaRuedaTexto from "./assets/images/VIGIA_rueda_texto.svg";
+// @ts-ignore
+import vigiaRuedaCentro from "./assets/images/VIGIA_rueda_centro.svg";
 import {
   Compass, ChevronLeft, ChevronRight, Volume2, VolumeX,
   ArrowRight, Zap, Building, ChevronDown, Brain, ShieldCheck, Activity, Sparkles, CheckCircle,
-  MessageCircle, ExternalLink, AlertTriangle, TrendingUp, Heart, Users
+  MessageCircle, ExternalLink, AlertTriangle, TrendingUp, Heart, Users, Camera, Cpu, BellRing, FileCheck
 } from "lucide-react";
 import Footer from "./components/Footer";
 
 // Predefined WhatsApp contact link using standard wa.me scheme and pre-filled message
 const WHATSAPP_URL = "https://wa.me/573057883941?text=Hola!%20Quiero%20solicitar%20asesor%C3%ADa%20sobre%20los%20servicios%20de%20SG-SST%20y%20Vig%C3%ADa.";
+const WHATSAPP_VIGIA_URL = "https://wa.me/573057883941?text=" + encodeURIComponent("Hola, quiero solicitar una demo de la *Plataforma Vigía SST* de Consalud. Me gustaría conocer más sobre cómo puede ayudar a mi empresa.");
+
+const VIGIA_FLOW = [
+  <Camera className="w-full h-full" />,
+  <Cpu className="w-full h-full" />,
+  <BellRing className="w-full h-full" />,
+  <FileCheck className="w-full h-full" />,
+];
 
 // Beautiful interactive vector SVGs for each allied brand, custom-illustrated with extreme transparency
 const VigiaLogoSvg = () => (
@@ -627,15 +635,15 @@ export default function App() {
                 }}
                 className={`flex items-center justify-center gap-2 rounded-full border px-3.5 py-1.5 backdrop-blur-md select-none transition-all duration-300 cursor-pointer active:scale-95 group shadow-sm hover:shadow-md ${
                   scrollY > 100
-                    ? "bg-orange-500/10 border-orange-400/80 hover:border-orange-500 hover:bg-orange-500/15"
-                    : "bg-[#05123e]/40 border-orange-500/60 hover:border-orange-500 hover:bg-[#05123e]/70"
+                    ? "bg-[#00ef89]/10 border-[#00ef89]/80 hover:border-[#00ef89] hover:bg-[#00ef89]/15"
+                    : "bg-[#05123e]/40 border-[#00ef89]/60 hover:border-[#00ef89] hover:bg-[#05123e]/70"
                 }`}
                 title="Ir a Software VIGÍA SST"
               >
                 <img
                   src={vigiaNewLogo}
                   alt="VIGIA"
-                  className="h-5 w-auto object-contain brightness-100 drop-shadow-[0_2px_4px_rgba(255,141,43,0.25)]"
+                  className="h-5 w-auto object-contain brightness-100 drop-shadow-[0_2px_4px_rgba(0,239,137,0.25)]"
                   referrerPolicy="no-referrer"
                 />
               </button>
@@ -824,11 +832,16 @@ export default function App() {
         {/* ── VIGÍA: full photo background + centered card ── */}
         {heroMode === "vigia" && (
           <>
-            {/* Photo background + overlay */}
-            <div className="absolute inset-0 z-0">
-              <img src={vigiaSlide2} className="absolute inset-0 w-full h-full object-cover object-center" alt="" />
-              <div className="absolute inset-0 bg-[#05123e]/65" />
-              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#05123e]/75 to-transparent" />
+            {/* Flat gradient background + dotted texture, matching the new Vigía brand sheet */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0a1830] via-[#10263a] to-[#0c3a30] overflow-hidden">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(circle,rgba(56,189,248,0.6)_1px,transparent_1px)] [background-size:24px_24px]"
+                style={{ WebkitMaskImage: "linear-gradient(to bottom, black, transparent 65%)", maskImage: "linear-gradient(to bottom, black, transparent 65%)" }}
+              />
+              <div
+                className="pointer-events-none absolute inset-0 opacity-50 [background-image:radial-gradient(circle,rgba(0,239,137,0.55)_1px,transparent_1px)] [background-size:22px_22px]"
+                style={{ WebkitMaskImage: "linear-gradient(to top, black, transparent 55%)", maskImage: "linear-gradient(to top, black, transparent 55%)" }}
+              />
             </div>
 
             {/* Main content — mirrors Consalud layout */}
@@ -843,37 +856,71 @@ export default function App() {
             >
               <div className="w-full px-8 md:px-14 lg:px-16 2xl:px-24 flex items-center justify-between gap-10">
 
-                {/* Left: logo + text + badge + CTA */}
-                <div className="max-w-xl lg:max-w-2xl pointer-events-auto select-text ml-4 md:ml-10 lg:ml-16">
-                  <span className="text-xs sm:text-sm font-mono font-black tracking-[0.25em] uppercase text-[#00ef89] block mb-[clamp(0.5rem,1.5vh,1.25rem)]">
-                    SIEMPRE PRESENTE · SIEMPRE ALERTA
-                  </span>
-                  <div className="mb-[clamp(0.5rem,1.5vh,1.5rem)]">
+                {/* Left: logo + tagline + description card + flow-of-action */}
+                <div className="min-w-0 max-w-xl md:max-w-3xl pointer-events-auto select-text ml-4 md:ml-10 lg:ml-16">
+                  <div className="flex items-center gap-3 md:gap-5 mb-[clamp(0.35rem,1vh,0.6rem)] md:mb-[clamp(0.75rem,2vh,1.25rem)]">
+                    <img
+                      src={vigiaRuedaCentro}
+                      alt=""
+                      className="h-[clamp(1.75rem,6vw,2.5rem)] md:h-[clamp(3.5rem,min(8vw,10vh),6rem)] w-auto object-contain shrink-0"
+                    />
                     <img
                       src={vigiaNewLogo}
                       alt="VIGÍA"
-                      className="h-[clamp(3rem,min(9vw,13vh),9.5rem)] w-auto object-contain filter drop-shadow-[0_2px_16px_rgba(255,141,43,0.3)]"
+                      className="h-[clamp(2rem,7.5vw,3.25rem)] md:h-[clamp(5rem,min(11vw,13.5vh),8.5rem)] w-auto object-contain filter drop-shadow-[0_2px_16px_rgba(0,239,137,0.3)]"
                     />
                   </div>
-                  <p className="text-white/90 text-[clamp(0.875rem,min(1.8vw,3vh),1.625rem)] font-sans font-semibold leading-relaxed max-w-lg mb-[clamp(0.75rem,2vh,1.75rem)]">
-                    Vigía alerta antes del incidente. Cámaras con inteligencia artificial colombiana e ingeniería alemana, todo trabajando para que ningún trabajador salga lastimado.
-                  </p>
-                  <div className="flex items-center gap-3 mb-[clamp(0.75rem,2vh,2rem)]">
-                    <span className="text-xs font-mono font-black tracking-[0.15em] uppercase text-slate-400">Siempre presente. Siempre alerta.</span>
-                    <span className="w-px h-4 bg-white/20" />
-                    <span className="text-lg font-black tracking-wide text-white">
-                      COLOMBIA <span className="text-[#00ef89]">×</span> ALEMANIA
-                    </span>
+                  <span className="text-[10px] sm:text-xs md:text-[clamp(0.9rem,1.3vw,1.15rem)] font-mono font-black tracking-[0.25em] uppercase text-white/50 block mb-[clamp(1rem,2.5vh,1.5rem)] md:mb-[clamp(2rem,4.5vh,3.25rem)]">
+                    Siempre presente. Siempre alerta.
+                  </span>
+
+                  {/* Description text — no frame, just weightier type over the hero background */}
+                  <div className="relative mb-[clamp(0.85rem,2vh,1.25rem)] md:mb-[clamp(1.75rem,3.5vh,2.5rem)]">
+                    <p className="relative text-white text-sm sm:text-base md:text-[clamp(1.25rem,1.9vw,1.65rem)] font-sans font-bold leading-relaxed mb-3 md:mb-5">
+                      Vigía alerta antes del incidente. Cámaras con inteligencia artificial colombiana e ingeniería alemana, todo trabajando para que ningún trabajador salga lastimado.
+                    </p>
+                    <div className="relative flex items-center gap-3 md:gap-4">
+                      <span className="text-[9px] sm:text-[10px] md:text-[clamp(0.75rem,1vw,0.9rem)] font-mono font-black tracking-[0.15em] uppercase text-white/40">
+                        Siempre presente. Siempre alerta.
+                      </span>
+                      <span className="w-px h-4 md:h-6 bg-white/15 shrink-0" />
+                      {/* Colombia × Alemania flag badges */}
+                      <div className="relative flex items-center justify-center w-[2.5rem] h-[1.5rem] md:w-[3.75rem] md:h-[2.25rem] shrink-0">
+                        <div className="absolute left-0 w-6 h-6 md:w-9 md:h-9 rounded-full overflow-hidden border border-[#f8fbfa]/70 flex flex-col">
+                          <div className="h-1/2 bg-[#FCD116]" />
+                          <div className="h-1/4 bg-[#003893]" />
+                          <div className="h-1/4 bg-[#CE1126]" />
+                        </div>
+                        <div className="absolute right-0 w-6 h-6 md:w-9 md:h-9 rounded-full overflow-hidden border border-[#00ef89]/80 flex flex-col">
+                          <div className="h-1/3 bg-[#0a0a0a]" />
+                          <div className="h-1/3 bg-[#DD0000]" />
+                          <div className="h-1/3 bg-[#FFCE00]" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => { playRetroChime("click"); navigate("/vigia"); }}
-                    className="inline-flex items-center gap-2 px-8 py-[clamp(0.5rem,1.2vh,1rem)] rounded-full bg-[#00ef89] text-[#10263a] font-black text-base tracking-wider hover:bg-[#2ec195] transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(0,239,137,0.35)] hover:scale-[1.03]"
-                  >
-                    Conocer Vigía <ArrowRight className="w-4 h-4" />
-                  </button>
+
+                  {/* Flujo de acción */}
+                  <div>
+                    <p className="text-[10px] md:text-[clamp(0.8rem,1.1vw,1rem)] font-mono font-black tracking-[0.2em] text-[#00ef89] uppercase mb-2.5 md:mb-4">
+                      Flujo de Acción
+                    </p>
+                    <div className="flex items-center gap-2 md:gap-4">
+                      {VIGIA_FLOW.map((icon, i) => (
+                        <React.Fragment key={i}>
+                          <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-[clamp(3.5rem,6vw,4.75rem)] md:h-[clamp(3.5rem,6vw,4.75rem)] p-2 md:p-3.5 rounded-lg md:rounded-xl border border-[#00ef89]/40 bg-[#00ef89]/10 flex items-center justify-center text-[#00ef89] shrink-0">
+                            {icon}
+                          </div>
+                          {i < VIGIA_FLOW.length - 1 && (
+                            <span className="text-[#00ef89]/50 font-black text-base md:text-[clamp(1.5rem,2.2vw,2rem)] shrink-0">+</span>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* Mobile slide selector — horizontal, below the text (mobile only) */}
-                  <div className="flex md:hidden items-center gap-2 pointer-events-auto select-none max-w-xs mt-5">
+                  <div className="flex md:hidden items-center gap-2 pointer-events-auto select-none max-w-xs mt-6">
                     <button
                       onClick={() => { setHeroMode("consalud"); setHeroCycleProgress(0); playRetroChime("click"); }}
                       className="relative flex-1 py-2.5 rounded-full text-[10px] font-mono font-black tracking-widest uppercase overflow-hidden transition-all duration-300 cursor-pointer bg-white/10 text-slate-300 border border-white/20"
@@ -893,32 +940,33 @@ export default function App() {
                       <span className="relative z-10">Vigía</span>
                     </button>
                   </div>
+
+                  {/* Mobile CTA — the desktop CTA lives under the wheel badge on the right */}
+                  <button
+                    onClick={() => { playRetroChime("click"); navigate("/vigia"); }}
+                    className="md:hidden mt-5 inline-flex items-center gap-2 px-8 py-[clamp(0.5rem,1.2vh,0.85rem)] rounded-full bg-[#00ef89] text-[#10263a] font-black text-base tracking-wider hover:bg-[#2ec195] transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(0,239,137,0.35)] active:scale-[0.97]"
+                  >
+                    Conocer Vigía <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
 
-                {/* Right: Vigía hero image */}
-                <motion.div
-                  animate={{ y: [0, -12, 0] }}
-                  transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="hidden lg:flex shrink-0 w-[600px] xl:w-[720px] mr-8 pointer-events-none select-none items-center justify-center"
-                >
-                  <div className="w-full rounded-3xl bg-white/10 border border-white/25 backdrop-blur-md flex flex-col items-center justify-center p-6 shadow-2xl relative overflow-hidden" style={{ minHeight: "min(320px, calc(100vh - 400px))" }}>
-                    {/* Corner accents */}
-                    <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#38bdf8]/70 rounded-tl" />
-                    <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#38bdf8]/70 rounded-tr" />
-                    <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#38bdf8]/70 rounded-bl" />
-                    <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#38bdf8]/70 rounded-br" />
-                    <img
-                      src={heroVigiaImg}
-                      alt="Vigía"
-                      className="w-full h-auto object-contain filter drop-shadow-[0_12px_60px_rgba(56,189,248,0.4)]"
-                      style={{ maxHeight: "max(220px, calc(100vh - 430px))" }}
-                    />
-                    <div className="mt-4 flex items-center gap-2 text-[10px] font-mono font-black tracking-widest text-white/60 uppercase">
-                      <span className="w-2 h-2 rounded-full bg-[#00ef89] animate-pulse" />
-                     SISTEMA DE PREVENCIÓN IA EN TIEMPO REAL
-                    </div>
-                  </div>
-                </motion.div>
+                {/* Right: big spinning Vigía badge + CTA */}
+                <div className="hidden md:flex shrink-0 flex-col items-center gap-6 md:gap-8 mr-0 xl:-mr-6 pointer-events-auto select-none">
+                  <motion.div
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative h-[clamp(14rem,min(52vh,32vw),36rem)] w-[clamp(14rem,min(52vh,32vw),36rem)] pointer-events-none select-none filter drop-shadow-[0_12px_60px_rgba(0,239,137,0.3)]"
+                  >
+                    <img src={vigiaRuedaTexto} alt="" className="absolute inset-0 w-full h-full animate-[spin_24s_linear_infinite]" />
+                    <img src={vigiaRuedaCentro} alt="Vigía" className="absolute inset-0 w-full h-full" />
+                  </motion.div>
+                  <button
+                    onClick={() => { playRetroChime("click"); navigate("/vigia"); }}
+                    className="inline-flex items-center gap-2 px-8 md:px-10 py-[clamp(0.6rem,1.6vh,1.35rem)] rounded-full bg-[#00ef89] text-[#10263a] font-black text-base md:text-lg tracking-wider hover:bg-[#2ec195] transition-all duration-300 shadow-lg hover:shadow-[0_6px_24px_rgba(0,239,137,0.35)] hover:scale-[1.03]"
+                  >
+                    Conocer Vigía <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </button>
+                </div>
 
               </div>
             </motion.div>

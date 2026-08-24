@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .st0 { fill: #fff; }
+      .st1 { fill: #00ef89; }
+    </style>
+  </defs>
+<g>
+    <g>
+      <g>
+        <polygon class="st0" points="640.51 527.59 689.47 527.59 555.86 269.93 509.46 269.93 640.51 527.59"/>
+        <polygon class="st0" points="512.35 289.52 390.53 527.59 438.75 527.59 535.01 333.62 512.35 289.52"/>
+      </g>
+      <g>
+        <polygon class="st0" points="439.49 552.41 390.53 552.41 524.14 810.07 570.54 810.07 439.49 552.41"/>
+        <polygon class="st0" points="567.65 790.48 689.47 552.41 641.25 552.41 544.99 746.38 567.65 790.48"/>
+      </g>
+    </g>
+    <circle class="st1" cx="540" cy="540" r="39.16"/>
+  </g>
+</svg>
