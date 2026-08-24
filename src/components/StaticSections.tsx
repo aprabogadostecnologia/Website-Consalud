@@ -12,6 +12,7 @@ import { BRAND_THEMES } from "../App";
 // @ts-ignore
 // @ts-ignore
 import vigiaColorLogo from "../assets/images/vigia.png";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
 // @ts-ignore
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
@@ -361,12 +362,12 @@ export const MARCAS: Marca[] = [
   {
     name: "VIGIA",
     fullName: "Vigía Salud Inteligente",
-    logo: "/vigiaWhite.png",
-    accent: "#ff8d2b",
+    logo: "/vigia_newLogo.png",
+    accent: "#00ef89",
     badge: "EL FUTURO DE LA PREVENCIÓN EN COLOMBIA",
-    tagline: "Seguridad Predictiva en Tiempo Real",
-    phrase: "Sistema de prevencion IA en Tiempo real para SST.",
-    role: "PRIMER SISTEMA DE RASTREO VISUAL INTELIGENTE DE COLOMBIA",
+    tagline: "Siempre presente. Siempre alerta.",
+    phrase: "Siempre presente. Siempre alerta.",
+    role: "INTELIGENCIA VISUAL PARA LA PREVENCIÓN SST",
     description: "Desarrollada en Colombia con Ingeniería Alemana, Vigía detecta riesgos en milisegundos, notifica al supervisor SST por email o WhatsApp y genera reportes de cumplimiento normativo HSE al instante.",
     features: [
       { icon: <Shield size={16} />, title: "Detección de EPP", desc: "Reconoce casco, chaleco y guantes en milisegundos con 95%+ de confianza. Alerta inmediata por no uso." },
@@ -1735,7 +1736,7 @@ export default function StaticSections({
                     {isVigia ? (
                       <div className="w-48 h-48 md:w-60 md:h-60 flex items-center justify-center transition-transform duration-500 hover:scale-105">
                         <img
-                          src={vigiaColorLogo}
+                          src={vigiaNewLogo}
                           alt="Vigía Logo"
                           className="w-full h-auto max-h-full object-contain filter drop-shadow-[0_10px_25px_rgba(255,141,43,0.35)]"
                           referrerPolicy="no-referrer"

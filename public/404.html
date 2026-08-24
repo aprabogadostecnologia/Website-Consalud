@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consalud | Soluciones SST</title>
+    <script>
+      // GitHub Pages no soporta rutas de SPA (BrowserRouter) de forma nativa.
+      // Este truco codifica la ruta solicitada en la query string y redirige
+      // a index.html, donde el script en <head> la reconstruye con pushState.
+      // Referencia: https://github.com/rafgraph/spa-github-pages
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1).join('/') + '/?/' +
+        l.pathname.slice(1).replace(/&/g, '~and~') + (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
