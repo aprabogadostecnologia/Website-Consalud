@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { Eye, ScanEye, BellRing, FileCheck, MessageCircle, ArrowLeft, Target, Smartphone } from "lucide-react";
 import Footer from "../components/Footer";
 import WavesBackground from "../components/WavesBackground";
-import VigiaWaveParticles from "../components/VigiaWaveParticles";
 import { useFavicon } from "../hooks/useFavicon";
 // @ts-ignore
 import vigiaFavicon from "../assets/images/vigia_favicon.svg";
@@ -20,8 +19,6 @@ import vigiaNombre from "../assets/images/VIGIA_NOMBRE.svg";
 import vigiaRuedaTexto from "../assets/images/VIGIA_rueda_texto.svg";
 // @ts-ignore
 import vigiaRuedaCentro from "../assets/images/VIGIA_rueda_centro.svg";
-// @ts-ignore
-import constructorVigia from "../assets/images/constructorVigia.png";
 import logoConsalud from "../assets/images/logoConsalud.png";
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
@@ -89,20 +86,18 @@ export default function VigiaPage() {
           {/* Logo → home */}
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-0.5 cursor-pointer group select-none"
           >
-            <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-9 sm:w-[170px] md:w-[200px] h-9 sm:h-14">
-              <img
-                src={vigiaFavicon}
-                alt="Vigía"
-                className="absolute max-w-full max-h-full object-contain sm:hidden"
-              />
-              <img
-                src={vigiaNewLogo}
-                alt="Vigía Logo"
-                className="absolute max-w-full max-h-full object-contain hidden sm:block"
-              />
-            </div>
+            <img
+              src={vigiaFavicon}
+              alt=""
+              className="h-9 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-105"
+            />
+            <img
+              src={vigiaNewLogo}
+              alt="Vigía Logo"
+              className="hidden sm:block h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </button>
 
           {/* Back + Vigía label */}
@@ -132,66 +127,35 @@ export default function VigiaPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Decorative dotted texture — blue upper, green lower — each split into two interleaved
-              grids so dots twinkle on/off independently instead of fading as one flat block */}
-          <div
-            className="pointer-events-none absolute inset-0 animate-twinkle-blue-a [background-image:radial-gradient(circle,rgba(56,189,248,0.7)_1px,transparent_1px)] [background-size:24px_24px]"
-            style={{ WebkitMaskImage: "linear-gradient(to bottom, black, transparent 65%)", maskImage: "linear-gradient(to bottom, black, transparent 65%)" }}
-          />
-          <div
-            className="pointer-events-none absolute inset-0 animate-twinkle-blue-b [background-image:radial-gradient(circle,rgba(56,189,248,0.7)_1px,transparent_1px)] [background-size:24px_24px] [background-position:12px_12px]"
-            style={{ WebkitMaskImage: "linear-gradient(to bottom, black, transparent 65%)", maskImage: "linear-gradient(to bottom, black, transparent 65%)" }}
-          />
-          <div
-            className="pointer-events-none absolute inset-0 animate-twinkle-green-a [background-image:radial-gradient(circle,rgba(0,239,137,0.65)_1px,transparent_1px)] [background-size:22px_22px]"
-            style={{ WebkitMaskImage: "linear-gradient(to top, black, transparent 55%)", maskImage: "linear-gradient(to top, black, transparent 55%)" }}
-          />
-          <div
-            className="pointer-events-none absolute inset-0 animate-twinkle-green-b [background-image:radial-gradient(circle,rgba(0,239,137,0.65)_1px,transparent_1px)] [background-size:22px_22px] [background-position:11px_11px]"
-            style={{ WebkitMaskImage: "linear-gradient(to top, black, transparent 55%)", maskImage: "linear-gradient(to top, black, transparent 55%)" }}
-          />
-
-          {/* Decorative wave layers at the bottom edge — particle field whose ridge shape
-              is recomputed from time-varying sine harmonics every frame, same fluid
-              motion language as WavesBackground, instead of a static shape sliding via CSS */}
-          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-56 md:h-80 overflow-hidden">
-            <VigiaWaveParticles />
+          {/* Decorative wave layers at the bottom edge — each drifts at its own speed for a living ocean effect */}
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-28 md:h-40 overflow-hidden">
+            <svg
+              className="animate-wave-back absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,140 C240,190 480,70 720,110 C960,150 1200,60 1440,120 C1680,190 1920,70 2160,110 C2400,150 2640,60 2880,120 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.12" />
+            </svg>
+            <svg
+              className="animate-wave-mid absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,165 C260,120 500,190 760,150 C1000,115 1220,180 1440,150 C1700,120 1940,190 2200,150 C2440,115 2660,180 2880,150 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.18" />
+            </svg>
+            <svg
+              className="animate-wave-front absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,185 C300,150 560,200 820,175 C1080,150 1260,195 1440,175 C1740,150 2000,200 2260,175 C2520,150 2700,195 2880,175 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.28" />
+            </svg>
           </div>
 
-          {/* Spinning seal badge — sm..lg: top-right corner. xl+: perched above the left feature column */}
-          <div className="hidden sm:block absolute top-6 right-6 md:top-10 md:right-10 xl:top-14 xl:left-10 xl:right-auto 2xl:left-20 w-28 h-28 md:w-36 md:h-36 xl:w-24 xl:h-24 z-10">
+          {/* Spinning seal badge */}
+          <div className="hidden sm:block absolute top-6 right-6 md:top-10 md:right-10 w-28 h-28 md:w-36 md:h-36 z-10">
             <img src={vigiaRuedaTexto} alt="" className="absolute inset-0 w-full h-full animate-[spin_18s_linear_infinite]" />
             <img src={vigiaRuedaCentro} alt="" className="absolute inset-0 w-full h-full" />
-          </div>
-
-          {/* Numbered feature list — desktop: vertical column pinned to the left side, larger */}
-          <div className="hidden xl:flex flex-col gap-7 absolute left-10 2xl:left-20 top-1/2 -translate-y-1/2 z-10">
-            {HEADER_FEATURES.map((feat) => (
-              <div key={feat.n} className="flex items-center gap-4 text-left">
-                <div className="shrink-0 w-14 h-14 rounded-xl border border-[#00ef89]/50 bg-[#00ef89]/10 flex items-center justify-center text-[#00ef89]">
-                  {React.cloneElement(feat.icon, { size: 22 })}
-                </div>
-                <p className="text-sm font-mono font-black tracking-[0.1em] uppercase text-white">
-                  <span className="text-[#00ef89]">{feat.n}.</span> {feat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Worker + AI detection portrait — desktop: fills the full height of the hero on the right edge,
-              faded top and bottom so it reads as part of the hero rather than a pasted-on image. The badge
-              moved to the left column, so this now has the whole right edge to itself again.
-              Only shown from 2xl up, where there's real space beyond the centered content to hold it without clipping. */}
-          <div className="hidden 2xl:block absolute right-0 top-0 h-full z-[5] pointer-events-none">
-            <img
-              src={constructorVigia}
-              alt=""
-              className="h-full w-auto object-contain"
-              style={{
-                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 86%, transparent 100%)",
-                maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 86%, transparent 100%)",
-              }}
-            />
           </div>
 
           <div className="relative z-10 w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 py-12 sm:py-[3vh] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center text-center gap-8 sm:gap-[4vh]">
@@ -225,8 +189,8 @@ export default function VigiaPage() {
               </div>
             </div>
 
-            {/* Numbered feature list — mobile/tablet fallback, hidden once the left-column version takes over at xl */}
-            <div className="flex flex-wrap items-start justify-center gap-x-5 sm:gap-x-8 gap-y-4 xl:hidden">
+            {/* Numbered feature list */}
+            <div className="flex flex-wrap items-start justify-center gap-x-5 sm:gap-x-8 gap-y-4">
               {HEADER_FEATURES.map((feat) => (
                 <div key={feat.n} className="flex items-center gap-2.5 text-left">
                   <div className="shrink-0 w-[clamp(2.25rem,5.5vh,3rem)] h-[clamp(2.25rem,5.5vh,3rem)] rounded-lg border border-[#00ef89]/50 bg-[#00ef89]/10 flex items-center justify-center text-[#00ef89]">
@@ -241,17 +205,17 @@ export default function VigiaPage() {
           </div>
         </motion.section>
 
-        {/* Brand-line divider — just an accent, not a boxed section */}
+        {/* Brand-line divider — full viewport width, breaks out of any container padding */}
         <div
-          className="relative z-10 w-full h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
+          className="relative left-1/2 -translate-x-1/2 w-screen h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
           style={{ boxShadow: "0 0 14px 2px rgba(0,239,137,0.8)" }}
         />
 
         <div className="w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 pt-14 pb-20 md:pt-20 flex flex-col gap-16">
 
-          {/* Brand-line divider above the title/quote row */}
+          {/* Brand-line divider above the title/quote row — full viewport width */}
           <div
-            className="w-full h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
+            className="relative left-1/2 -translate-x-1/2 w-screen h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
             style={{ boxShadow: "0 0 10px 1px rgba(0,239,137,0.5)" }}
           />
 
@@ -320,9 +284,9 @@ export default function VigiaPage() {
             </div>
           </motion.div>
 
-          {/* Brand-line divider — just an accent, not a boxed section */}
+          {/* Brand-line divider — full viewport width */}
           <div
-            className="w-full h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
+            className="relative left-1/2 -translate-x-1/2 w-screen h-1 bg-gradient-to-r from-transparent via-[#00ef89] to-transparent"
             style={{ boxShadow: "0 0 10px 1px rgba(0,239,137,0.5)" }}
           />
 
