@@ -26,6 +26,8 @@ import consaludHero2 from "./assets/images/consalud hero2.jpg";
 import vigiaRuedaTexto from "./assets/images/VIGIA_rueda_texto.svg";
 // @ts-ignore
 import vigiaRuedaCentro from "./assets/images/VIGIA_rueda_centro.svg";
+// @ts-ignore
+import vigiaFavicon from "./assets/images/vigia_favicon.svg";
 import {
   Compass, ChevronLeft, ChevronRight, Volume2, VolumeX,
   ArrowRight, Zap, Building, ChevronDown, Brain, ShieldCheck, Activity, Sparkles, CheckCircle,
@@ -860,7 +862,7 @@ export default function App() {
                 <div className="min-w-0 max-w-xl md:max-w-3xl pointer-events-auto select-text ml-4 md:ml-10 lg:ml-16">
                   <div className="flex items-center gap-3 md:gap-5 mb-[clamp(0.35rem,1vh,0.6rem)] md:mb-[clamp(0.75rem,2vh,1.25rem)]">
                     <img
-                      src={vigiaRuedaCentro}
+                      src={vigiaFavicon}
                       alt=""
                       className="h-[clamp(1.75rem,6vw,2.5rem)] md:h-[clamp(3.5rem,min(8vw,10vh),6rem)] w-auto object-contain shrink-0"
                     />
@@ -879,19 +881,19 @@ export default function App() {
                     <p className="relative text-white text-sm sm:text-base md:text-[clamp(1.25rem,1.9vw,1.65rem)] font-sans font-bold leading-relaxed mb-3 md:mb-5">
                       Vigía alerta antes del incidente. Cámaras con inteligencia artificial colombiana e ingeniería alemana, todo trabajando para que ningún trabajador salga lastimado.
                     </p>
-                    <div className="relative flex items-center gap-3 md:gap-4">
-                      <span className="text-[9px] sm:text-[10px] md:text-[clamp(0.75rem,1vw,0.9rem)] font-mono font-black tracking-[0.15em] uppercase text-white/40">
+                    <div className="relative flex items-center gap-3 md:gap-5">
+                      <span className="text-[11px] sm:text-[13px] md:text-[clamp(0.95rem,1.3vw,1.15rem)] font-mono font-black tracking-[0.15em] uppercase text-white/40">
                         Siempre presente. Siempre alerta.
                       </span>
-                      <span className="w-px h-4 md:h-6 bg-white/15 shrink-0" />
+                      <span className="w-px h-5 md:h-8 bg-white/15 shrink-0" />
                       {/* Colombia × Alemania flag badges */}
-                      <div className="relative flex items-center justify-center w-[2.5rem] h-[1.5rem] md:w-[3.75rem] md:h-[2.25rem] shrink-0">
-                        <div className="absolute left-0 w-6 h-6 md:w-9 md:h-9 rounded-full overflow-hidden border border-[#f8fbfa]/70 flex flex-col">
+                      <div className="relative flex items-center justify-center w-[3.25rem] h-[2rem] md:w-[5rem] md:h-[3rem] shrink-0">
+                        <div className="absolute left-0 w-8 h-8 md:w-12 md:h-12 rounded-full overflow-hidden border border-[#f8fbfa]/70 flex flex-col">
                           <div className="h-1/2 bg-[#FCD116]" />
                           <div className="h-1/4 bg-[#003893]" />
                           <div className="h-1/4 bg-[#CE1126]" />
                         </div>
-                        <div className="absolute right-0 w-6 h-6 md:w-9 md:h-9 rounded-full overflow-hidden border border-[#00ef89]/80 flex flex-col">
+                        <div className="absolute right-0 w-8 h-8 md:w-12 md:h-12 rounded-full overflow-hidden border border-[#00ef89]/80 flex flex-col">
                           <div className="h-1/3 bg-[#0a0a0a]" />
                           <div className="h-1/3 bg-[#DD0000]" />
                           <div className="h-1/3 bg-[#FFCE00]" />

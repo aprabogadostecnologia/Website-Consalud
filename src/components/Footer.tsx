@@ -2,19 +2,43 @@ import React from "react";
 import { Globe, Shield, FileText, ShieldCheck, Phone, MapPin, Mail, MessageCircle } from "lucide-react";
 // @ts-ignore
 import consaludWhiteLogo from "../assets/images/conSaludWhite.png";
+// @ts-ignore
+import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
 
 interface FooterProps {
   jumpToLandingSection: (targetId: string, idx: number) => void;
   playRetroChime: (type: "nav" | "click" | "info" | "transition") => void;
   whatsappUrl: string;
+  variant?: "consalud" | "vigia";
 }
 
-export default function Footer({ jumpToLandingSection, playRetroChime, whatsappUrl }: FooterProps) {
+export default function Footer({ jumpToLandingSection, playRetroChime, whatsappUrl, variant = "consalud" }: FooterProps) {
+  const isVigia = variant === "vigia";
+
+  const topStripClass = isVigia
+    ? "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00ef89] to-transparent opacity-90"
+    : "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff8d2b] to-transparent opacity-90";
+  const logoShadowClass = isVigia
+    ? "h-40 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(0,239,137,0.3)]"
+    : "h-40 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(255,141,43,0.3)]";
+  const taglineAccentClass = isVigia ? "text-[#00ef89] font-black tracking-wide" : "text-[#ff8d2b] font-black tracking-wide";
+  const headingIconClass = isVigia ? "w-3.5 h-3.5 text-[#00ef89]" : "w-3.5 h-3.5 text-[#ff8d2b]";
+  const linkClass = isVigia
+    ? "text-slate-200 hover:text-[00ef89#] active:text-[#00ef89] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium"
+    : "text-slate-200 hover:text-[#ff8d2b] active:text-[#ff8d2b] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium";
+  const linkDotClass = isVigia
+    ? "w-1.5 h-1.5 rounded-full bg-[#00ef89]/60 group-hover:bg-[#00ef89] transition-colors"
+    : "w-1.5 h-1.5 rounded-full bg-[#ff8d2b]/60 group-hover:bg-[#ff8d2b] transition-colors";
+  const contactIconClass = isVigia ? "text-[#00ef89] shrink-0" : "text-[#ff8d2b] shrink-0";
+  const mailLinkClass = isVigia
+    ? "text-slate-100 hover:text-[#00ef89] transition-colors font-semibold underline decoration-dotted decoration-white/30 hover:decoration-[#00ef89]/80"
+    : "text-slate-100 hover:text-[#ff8d2b] transition-colors font-semibold underline decoration-dotted decoration-white/30 hover:decoration-[#ff8d2b]/80";
+
   return (
     <footer className="w-full relative z-30 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-white/15 pt-16 pb-12 px-6 md:px-14 cursor-default select-none">
 
       {/* Subtle decorative glowing neon strip top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff8d2b] to-transparent opacity-90" />
+      <div className={topStripClass} />
 
       <div className="max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
         {/* Main Content Grid */}
@@ -24,58 +48,65 @@ export default function Footer({ jumpToLandingSection, playRetroChime, whatsappU
           <div className="flex flex-col justify-start gap-5 lg:col-span-2">
             <div className="flex items-center gap-3">
               <img
-                src={consaludWhiteLogo}
-                alt="Consalud Logo"
-                className="h-40 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(255,141,43,0.3)]"
+                src={isVigia ? vigiaNewLogo : consaludWhiteLogo}
+                alt={isVigia ? "Vigía Logo" : "Consalud Logo"}
+                className={logoShadowClass}
               />
             </div>
 
+            {isVigia && (
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400">Un producto de</span>
+                <img src={consaludWhiteLogo} alt="Consalud" className="h-10 w-auto object-contain opacity-90" />
+              </div>
+            )}
+
             <p className="text-xs text-slate-300 font-sans leading-relaxed font-semibold max-w-xs">
               Alineamos el cumplimiento de la normatividad con tecnología predictiva.<br />
-              <span className="text-[#ff8d2b] font-black tracking-wide">Respaldo metodológico, legal y psicológico para la excelencia organizacional.</span>
+              <span className={taglineAccentClass}>Respaldo metodológico, legal y psicológico para la excelencia organizacional.</span>
             </p>
           </div>
 
           {/* Column 2: Ecosistema Digital (Interactive Links) */}
           <div className="flex flex-col gap-4">
             <h5 className="text-xs font-bold uppercase tracking-widest text-slate-100 font-mono flex items-center gap-2">
-              <Globe className="w-3.5 h-3.5 text-[#ff8d2b]" />
+              <Globe className={headingIconClass} />
               Ecosistema Digital
             </h5>
             <ul className="space-y-3.5 text-xs text-slate-200 font-sans">
               <li>
                 <button
                   onClick={() => jumpToLandingSection("sec-landing-2", 2)}
-                  className="text-slate-200 hover:text-[#ff8d2b] active:text-[#ff8d2b] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium"
+                  className={linkClass}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b]/60 group-hover:bg-[#ff8d2b] transition-colors" />
+                  <span className={linkDotClass} />
                   Plataforma Vigía SST
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => jumpToLandingSection("sec-landing-1", 1)}
-                  className="text-slate-200 hover:text-[#ff8d2b] active:text-[#ff8d2b] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium"
+                  className={linkClass}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b]/60 group-hover:bg-[#ff8d2b] transition-colors" />
+                  <span className={linkDotClass} />
                   Quiénes Somos & Valores
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => jumpToLandingSection("sec-landing-2", 2)}
-                  className="text-slate-200 hover:text-[#ff8d2b] active:text-[#ff8d2b] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium"
+                  className={linkClass}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b]/60 group-hover:bg-[#ff8d2b] transition-colors" />
+                  <span className={linkDotClass} />
                   Asesoría SG-SST Especializada
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => jumpToLandingSection("sec-landing-4", 4)}
-                  className="text-slate-200 hover:text-[#ff8d2b] active:text-[#ff8d2b] transition-colors duration-200 cursor-pointer text-left flex items-center gap-1.5 group font-medium"
+                  className={linkClass}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff8d2b]/60 group-hover:bg-[#ff8d2b] transition-colors" />
+                  <span className={linkDotClass} />
                   Preguntas Frecuentes FAQ
                 </button>
               </li>
@@ -86,22 +117,22 @@ export default function Footer({ jumpToLandingSection, playRetroChime, whatsappU
           {/* Column 4: Canales Directos */}
           <div className="flex flex-col gap-4">
             <h5 className="text-xs font-bold uppercase tracking-widest text-slate-100 font-mono flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-[#ff8d2b]" />
+              <Phone className={headingIconClass} />
               Enlace Directo
             </h5>
 
             <ul className="space-y-3.5 text-xs text-slate-200 font-sans">
               <li className="flex items-start gap-2 text-slate-200 leading-relaxed font-medium">
-                <MapPin className="w-4 h-4 text-[#ff8d2b] shrink-0 mt-0.5" />
+                <MapPin className={`w-4 h-4 mt-0.5 ${contactIconClass}`} />
                 <span>Oficinas Central: Ak 15 #88-66</span>
               </li>
               <li className="flex items-start gap-2 text-slate-200 leading-relaxed font-medium">
-                <Phone className="w-4 h-4 text-[#ff8d2b] shrink-0 mt-0.5" />
+                <Phone className={`w-4 h-4 mt-0.5 ${contactIconClass}`} />
                 <span>+57 305 788 3941</span>
               </li>
               <li className="flex items-center gap-2 text-slate-200 font-medium">
-                <Mail className="w-4 h-4 text-[#ff8d2b] shrink-0" />
-                <a href="mailto:contacto@consultoresempresariales.com.co" className="text-slate-100 hover:text-[#ff8d2b] transition-colors font-semibold underline decoration-dotted decoration-white/30 hover:decoration-[#ff8d2b]/80">
+                <Mail className={`w-4 h-4 ${contactIconClass}`} />
+                <a href="mailto:contacto@consultoresempresariales.com.co" className={mailLinkClass}>
                   Consalud@consultoresempresariales.com.co
                 </a>
               </li>

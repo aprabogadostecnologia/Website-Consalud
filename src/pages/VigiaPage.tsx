@@ -14,6 +14,8 @@ import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
 // @ts-ignore
 import vigiaPrincipalLogo from "../assets/images/VIGIA_PRINCIPAL_WHITE.svg";
 // @ts-ignore
+import vigiaNombre from "../assets/images/VIGIA_NOMBRE.svg";
+// @ts-ignore
 import vigiaRuedaTexto from "../assets/images/VIGIA_rueda_texto.svg";
 // @ts-ignore
 import vigiaRuedaCentro from "../assets/images/VIGIA_rueda_centro.svg";
@@ -56,7 +58,7 @@ const EXTRAS = [
 
 const GALLERY = [
   { src: escritorioDavid, label: "ALERTA POR MANIPULACIÓN DE CELULARES", title: "Detección de celulares" },
-  { src: kevinChaleco,    label: "ALERTA POR NO USO DE EPPs",            title: "Monitoreo de Bienestar" },
+  { src: kevinChaleco,    label: "ALERTA POR NO USO DE EPPs",            title: "Monitoreo de uso de EPPs preventivo" },
   { src: vigiaCapture1,   label: "CÁMARAS EN VIVO",                      title: "En tiempo real" },
   { src: vigiaCapture2,   label: "ALERTAS POR WHATSAPP/E-MAIL",          title: "Cumplimiento Normativo" },
 ];
@@ -86,7 +88,7 @@ export default function VigiaPage() {
             onClick={() => navigate("/")}
             className="flex items-center gap-3 cursor-pointer group select-none"
           >
-            <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-[200px] h-14">
+            <div className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-105 w-[130px] sm:w-[170px] md:w-[200px] h-14">
               <img
                 src={vigiaNewLogo}
                 alt="Vigía Logo"
@@ -122,26 +124,49 @@ export default function VigiaPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Decorative dotted texture — blue upper, green lower */}
+          {/* Decorative dotted texture — blue upper, green lower — each split into two interleaved
+              grids so dots twinkle on/off independently instead of fading as one flat block */}
           <div
-            className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(circle,rgba(56,189,248,0.6)_1px,transparent_1px)] [background-size:24px_24px]"
+            className="pointer-events-none absolute inset-0 animate-twinkle-blue-a [background-image:radial-gradient(circle,rgba(56,189,248,0.7)_1px,transparent_1px)] [background-size:24px_24px]"
             style={{ WebkitMaskImage: "linear-gradient(to bottom, black, transparent 65%)", maskImage: "linear-gradient(to bottom, black, transparent 65%)" }}
           />
           <div
-            className="pointer-events-none absolute inset-0 opacity-50 [background-image:radial-gradient(circle,rgba(0,239,137,0.55)_1px,transparent_1px)] [background-size:22px_22px]"
+            className="pointer-events-none absolute inset-0 animate-twinkle-blue-b [background-image:radial-gradient(circle,rgba(56,189,248,0.7)_1px,transparent_1px)] [background-size:24px_24px] [background-position:12px_12px]"
+            style={{ WebkitMaskImage: "linear-gradient(to bottom, black, transparent 65%)", maskImage: "linear-gradient(to bottom, black, transparent 65%)" }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 animate-twinkle-green-a [background-image:radial-gradient(circle,rgba(0,239,137,0.65)_1px,transparent_1px)] [background-size:22px_22px]"
+            style={{ WebkitMaskImage: "linear-gradient(to top, black, transparent 55%)", maskImage: "linear-gradient(to top, black, transparent 55%)" }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 animate-twinkle-green-b [background-image:radial-gradient(circle,rgba(0,239,137,0.65)_1px,transparent_1px)] [background-size:22px_22px] [background-position:11px_11px]"
             style={{ WebkitMaskImage: "linear-gradient(to top, black, transparent 55%)", maskImage: "linear-gradient(to top, black, transparent 55%)" }}
           />
 
-          {/* Decorative wave layers at the bottom edge */}
-          <svg
-            className="pointer-events-none absolute bottom-0 left-0 w-full h-28 md:h-40"
-            viewBox="0 0 1440 200"
-            preserveAspectRatio="none"
-          >
-            <path d="M0,140 C240,190 480,70 720,110 C960,150 1200,60 1440,120 L1440,200 L0,200 Z" fill="#00ef89" opacity="0.12" />
-            <path d="M0,165 C260,120 500,190 760,150 C1000,115 1220,180 1440,150 L1440,200 L0,200 Z" fill="#00ef89" opacity="0.18" />
-            <path d="M0,185 C300,150 560,200 820,175 C1080,150 1260,195 1440,175 L1440,200 L0,200 Z" fill="#00ef89" opacity="0.28" />
-          </svg>
+          {/* Decorative wave layers at the bottom edge — each drifts at its own speed for a living ocean effect */}
+          <div className="pointer-events-none absolute bottom-0 left-0 w-full h-28 md:h-40 overflow-hidden">
+            <svg
+              className="animate-wave-back absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,140 C240,190 480,70 720,110 C960,150 1200,60 1440,120 C1680,190 1920,70 2160,110 C2400,150 2640,60 2880,120 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.12" />
+            </svg>
+            <svg
+              className="animate-wave-mid absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,165 C260,120 500,190 760,150 C1000,115 1220,180 1440,150 C1700,120 1940,190 2200,150 C2440,115 2660,180 2880,150 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.18" />
+            </svg>
+            <svg
+              className="animate-wave-front absolute bottom-0 left-0 h-full w-[200%]"
+              viewBox="0 0 2880 200"
+              preserveAspectRatio="none"
+            >
+              <path d="M0,185 C300,150 560,200 820,175 C1080,150 1260,195 1440,175 C1740,150 2000,200 2260,175 C2520,150 2700,195 2880,175 L2880,200 L0,200 Z" fill="#00ef89" opacity="0.28" />
+            </svg>
+          </div>
 
           {/* Spinning seal badge */}
           <div className="hidden sm:block absolute top-6 right-6 md:top-10 md:right-10 w-28 h-28 md:w-36 md:h-36 z-10">
@@ -149,7 +174,7 @@ export default function VigiaPage() {
             <img src={vigiaRuedaCentro} alt="" className="absolute inset-0 w-full h-full" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 py-[3vh] h-[calc(100vh-72px)] flex flex-col items-center justify-center text-center gap-[4vh]">
+          <div className="relative z-10 w-full max-w-7xl xl:max-w-[1440px] mx-auto px-6 md:px-14 lg:px-16 2xl:px-24 py-12 sm:py-[3vh] min-h-[calc(100vh-72px)] flex flex-col items-center justify-center text-center gap-8 sm:gap-[4vh]">
             <h1 className="sr-only">Vigía SST</h1>
 
             <img src={vigiaPrincipalLogo} alt="Vigía SST" className="h-[clamp(9rem,40vh,26rem)] w-auto object-contain drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)]" />
@@ -181,7 +206,7 @@ export default function VigiaPage() {
             </div>
 
             {/* Numbered feature list */}
-            <div className="flex flex-wrap items-start justify-center gap-x-8 gap-y-3">
+            <div className="flex flex-wrap items-start justify-center gap-x-5 sm:gap-x-8 gap-y-4">
               {HEADER_FEATURES.map((feat) => (
                 <div key={feat.n} className="flex items-center gap-2.5 text-left">
                   <div className="shrink-0 w-[clamp(2.25rem,5.5vh,3rem)] h-[clamp(2.25rem,5.5vh,3rem)] rounded-lg border border-[#00ef89]/50 bg-[#00ef89]/10 flex items-center justify-center text-[#00ef89]">
@@ -208,7 +233,7 @@ export default function VigiaPage() {
             {/* Left — logo + video */}
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
-                <img src={vigiaNewLogo} alt="Vigía Logo" className="h-14 w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,239,137,0.25)]" />
+                <img src={vigiaNombre} alt="Vigía" className="h-10 w-auto object-contain" />
                 <div className="border-l border-slate-200 pl-4">
                   <p className="text-slate-900 font-black text-lg leading-tight">Seguridad Predictiva en Tiempo Real</p>
                   <p className="text-[#00b879] text-xs font-mono tracking-widest uppercase mt-0.5">Colombia × Alemania</p>
@@ -325,7 +350,7 @@ export default function VigiaPage() {
         </div>
       </main>
 
-      <Footer jumpToLandingSection={() => { navigate("/"); }} playRetroChime={playChime} whatsappUrl={WHATSAPP_VIGIA} />
+      <Footer jumpToLandingSection={() => { navigate("/"); }} playRetroChime={playChime} whatsappUrl={WHATSAPP_VIGIA} variant="vigia" />
 
       {/* Image zoom modal */}
       {expandedImage && (

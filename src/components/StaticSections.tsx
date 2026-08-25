@@ -864,7 +864,7 @@ export default function StaticSections({
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { src: escritorioDavid, label: "ALERTA POR MANIPULACIÓN DE CELULARES", title: "Detección de celulares" },
-                { src: kevinChaleco,    label: "ALERTA POR NO USO DE EPPs",            title: "Monitoreo de Bienestar" },
+                { src: kevinChaleco,    label: "ALERTA POR NO USO DE EPPs",            title: "Monitoreo de uso de EPPs preventivo" },
                 { src: vigiaCapture1,   label: "CÁMARAS EN VIVO",                      title: "En tiempo real" },
                 { src: vigiaCapture2,   label: "ALERTAS POR WHATSAPP/E-MAIL",          title: "Cumplimiento Normativo" },
               ].map((img, i) => (
@@ -1899,7 +1899,7 @@ export default function StaticSections({
                               <span className="text-[7px] font-mono tracking-widest text-[#ff8d2b] uppercase font-bold bg-black/75 px-1.5 py-0.5 rounded border border-[#ff8d2b]/20">
                               ALERTA POR NO USO DE EPPs
                               </span>
-                              <p className="text-[14px] font-sans font-bold text-slate-100 mt-0.5 leading-tight">Monitoreo de Bienestar</p>
+                              <p className="text-[14px] font-sans font-bold text-slate-100 mt-0.5 leading-tight">Monitoreo de uso de EPPs preventivo</p>
                             </div>
                           </div>
 
