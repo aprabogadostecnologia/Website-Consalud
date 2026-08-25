@@ -158,8 +158,8 @@ export default function VigiaPage() {
             <VigiaWaveParticles />
           </div>
 
-          {/* Spinning seal badge */}
-          <div className="hidden sm:block absolute top-6 right-6 md:top-10 md:right-10 w-28 h-28 md:w-36 md:h-36 z-10">
+          {/* Spinning seal badge — sm..lg: top-right corner. xl+: perched above the left feature column */}
+          <div className="hidden sm:block absolute top-6 right-6 md:top-10 md:right-10 xl:top-14 xl:left-10 xl:right-auto 2xl:left-20 w-28 h-28 md:w-36 md:h-36 xl:w-24 xl:h-24 z-10">
             <img src={vigiaRuedaTexto} alt="" className="absolute inset-0 w-full h-full animate-[spin_18s_linear_infinite]" />
             <img src={vigiaRuedaCentro} alt="" className="absolute inset-0 w-full h-full" />
           </div>
@@ -178,13 +178,19 @@ export default function VigiaPage() {
             ))}
           </div>
 
-          {/* Worker + AI detection portrait — desktop: pinned to the right side, mirroring the feature column.
+          {/* Worker + AI detection portrait — desktop: fills the full height of the hero on the right edge,
+              faded top and bottom so it reads as part of the hero rather than a pasted-on image. The badge
+              moved to the left column, so this now has the whole right edge to itself again.
               Only shown from 2xl up, where there's real space beyond the centered content to hold it without clipping. */}
-          <div className="hidden 2xl:block absolute right-10 top-1/2 -translate-y-[45%] z-[5] pointer-events-none">
+          <div className="hidden 2xl:block absolute right-0 top-0 h-full z-[5] pointer-events-none">
             <img
               src={constructorVigia}
               alt=""
-              className="h-[clamp(20rem,40vh,26rem)] w-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
+              className="h-full w-auto object-contain"
+              style={{
+                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 86%, transparent 100%)",
+                maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 86%, transparent 100%)",
+              }}
             />
           </div>
 
