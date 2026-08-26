@@ -41,6 +41,18 @@ const FEATURES = [
   { icon: <FileCheck size={16} />, title: "Reportes automáticos", desc: "Convierte cada evento en trazabilidad y soporte documental para seguimiento y cumplimiento." },
 ];
 
+const BG_ICON_SPOTS = [
+  { top: "6%", left: "6%", size: "110px", opacity: 0.1, rotate: -4 },
+  { top: "68%", left: "3%", size: "150px", opacity: 0.08, rotate: 4 },
+  { top: "12%", left: "87%", size: "85px", opacity: 0.09, rotate: 5 },
+  { top: "76%", left: "80%", size: "125px", opacity: 0.07, rotate: -3 },
+  { top: "40%", left: "93%", size: "65px", opacity: 0.1, rotate: 0 },
+  { top: "48%", left: "1%", size: "75px", opacity: 0.09, rotate: 2 },
+  { top: "22%", left: "44%", size: "70px", opacity: 0.08, rotate: 0 },
+  { top: "58%", left: "62%", size: "95px", opacity: 0.07, rotate: -2 },
+  { top: "65%", left: "32%", size: "60px", opacity: 0.09, rotate: 3 },
+];
+
 const HEADER_FEATURES = [
   { n: "01", icon: <Target size={16} />, label: "Detección de EPP" },
   { n: "02", icon: <BellRing size={16} />, label: "Alertas en tiempo real" },
@@ -127,6 +139,33 @@ export default function VigiaPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
+          {/* Scattered brand-mark watermarks — a few upright icons, not a dense repeat */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {BG_ICON_SPOTS.map((spot, i) => (
+              <svg
+                key={i}
+                viewBox="0 0 1080 1080"
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  top: spot.top,
+                  left: spot.left,
+                  width: spot.size,
+                  height: spot.size,
+                  opacity: spot.opacity,
+                  transform: `rotate(${spot.rotate}deg)`,
+                }}
+                fill="#00ef89"
+              >
+                <polygon points="734.48 515.98 829.2 515.98 570.68 17.44 480.91 17.44 734.48 515.98" />
+                <polygon points="486.5 55.35 250.79 515.98 344.1 515.98 530.35 140.68 486.5 55.35" />
+                <polygon points="345.52 564.02 250.8 564.02 509.32 1062.56 599.09 1062.56 345.52 564.02" />
+                <polygon points="593.5 1024.65 829.21 564.02 735.9 564.02 549.65 939.32 593.5 1024.65" />
+                <circle cx="540" cy="540" r="75.78" />
+              </svg>
+            ))}
+          </div>
+
           {/* Decorative wave layers at the bottom edge — each drifts at its own speed for a living ocean effect */}
           <div className="pointer-events-none absolute bottom-0 left-0 w-full h-28 md:h-40 overflow-hidden">
             <svg
