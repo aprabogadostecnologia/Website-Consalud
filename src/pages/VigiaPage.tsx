@@ -42,15 +42,18 @@ const FEATURES = [
 ];
 
 const BG_ICON_SPOTS = [
-  { top: "6%", left: "6%", size: "110px", opacity: 0.1, rotate: -4 },
-  { top: "68%", left: "3%", size: "150px", opacity: 0.08, rotate: 4 },
-  { top: "12%", left: "87%", size: "85px", opacity: 0.09, rotate: 5 },
-  { top: "76%", left: "80%", size: "125px", opacity: 0.07, rotate: -3 },
-  { top: "40%", left: "93%", size: "65px", opacity: 0.1, rotate: 0 },
-  { top: "48%", left: "1%", size: "75px", opacity: 0.09, rotate: 2 },
-  { top: "22%", left: "44%", size: "70px", opacity: 0.08, rotate: 0 },
-  { top: "58%", left: "62%", size: "95px", opacity: 0.07, rotate: -2 },
-  { top: "65%", left: "32%", size: "60px", opacity: 0.09, rotate: 3 },
+  { left: "6%", size: "110px", opacity: 0.1, rotate: -4, duration: 26, delay: -2 },
+  { left: "3%", size: "150px", opacity: 0.08, rotate: 4, duration: 32, delay: -14 },
+  { left: "87%", size: "85px", opacity: 0.09, rotate: 5, duration: 21, delay: -6 },
+  { left: "80%", size: "125px", opacity: 0.07, rotate: -3, duration: 29, delay: -20 },
+  { left: "93%", size: "65px", opacity: 0.1, rotate: 0, duration: 18, delay: -9 },
+  { left: "1%", size: "75px", opacity: 0.09, rotate: 2, duration: 24, delay: -17 },
+  { left: "44%", size: "70px", opacity: 0.08, rotate: 0, duration: 22, delay: -4 },
+  { left: "62%", size: "95px", opacity: 0.07, rotate: -2, duration: 30, delay: -23 },
+  { left: "32%", size: "60px", opacity: 0.09, rotate: 3, duration: 19, delay: -11 },
+  { left: "16%", size: "90px", opacity: 0.08, rotate: -5, duration: 27, delay: -7 },
+  { left: "53%", size: "70px", opacity: 0.1, rotate: 4, duration: 20, delay: -18 },
+  { left: "71%", size: "105px", opacity: 0.07, rotate: -1, duration: 31, delay: -3 },
 ];
 
 const HEADER_FEATURES = [
@@ -142,27 +145,31 @@ export default function VigiaPage() {
           {/* Scattered brand-mark watermarks — a few upright icons, not a dense repeat */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             {BG_ICON_SPOTS.map((spot, i) => (
-              <svg
+              <div
                 key={i}
-                viewBox="0 0 1080 1080"
-                aria-hidden="true"
+                className="animate-rombos-fall absolute"
                 style={{
-                  position: "absolute",
-                  top: spot.top,
                   left: spot.left,
                   width: spot.size,
                   height: spot.size,
                   opacity: spot.opacity,
-                  transform: `rotate(${spot.rotate}deg)`,
+                  animationDuration: `${spot.duration}s`,
+                  animationDelay: `${spot.delay}s`,
                 }}
-                fill="#00ef89"
               >
-                <polygon points="734.48 515.98 829.2 515.98 570.68 17.44 480.91 17.44 734.48 515.98" />
-                <polygon points="486.5 55.35 250.79 515.98 344.1 515.98 530.35 140.68 486.5 55.35" />
-                <polygon points="345.52 564.02 250.8 564.02 509.32 1062.56 599.09 1062.56 345.52 564.02" />
-                <polygon points="593.5 1024.65 829.21 564.02 735.9 564.02 549.65 939.32 593.5 1024.65" />
-                <circle cx="540" cy="540" r="75.78" />
-              </svg>
+                <svg
+                  viewBox="0 0 1080 1080"
+                  aria-hidden="true"
+                  style={{ width: "100%", height: "100%", transform: `rotate(${spot.rotate}deg)` }}
+                  fill="#00ef89"
+                >
+                  <polygon points="734.48 515.98 829.2 515.98 570.68 17.44 480.91 17.44 734.48 515.98" />
+                  <polygon points="486.5 55.35 250.79 515.98 344.1 515.98 530.35 140.68 486.5 55.35" />
+                  <polygon points="345.52 564.02 250.8 564.02 509.32 1062.56 599.09 1062.56 345.52 564.02" />
+                  <polygon points="593.5 1024.65 829.21 564.02 735.9 564.02 549.65 939.32 593.5 1024.65" />
+                  <circle cx="540" cy="540" r="75.78" />
+                </svg>
+              </div>
             ))}
           </div>
 

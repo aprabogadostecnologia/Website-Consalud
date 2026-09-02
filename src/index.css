@@ -38,6 +38,28 @@
   animation: waveDrift 11s linear infinite;
 }
 
+/* Cascading rombos in the Vigía hero background — fall from top to bottom, then loop */
+@keyframes rombosFall {
+  from {
+    top: -18%;
+  }
+  to {
+    top: 118%;
+  }
+}
+
+.animate-rombos-fall {
+  animation-name: rombosFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rombos-fall {
+    animation: none;
+  }
+}
+
 /* Twinkling dot texture — two interleaved grids per color, out of phase, so dots
    appear to switch on/off independently instead of the whole grid fading together */
 @keyframes twinkleBlueA {
