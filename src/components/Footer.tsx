@@ -1,9 +1,9 @@
 import React from "react";
 import { Globe, Shield, FileText, ShieldCheck, Phone, MapPin, Mail, MessageCircle } from "lucide-react";
 // @ts-ignore
-import consaludWhiteLogo from "../assets/images/conSaludWhite.png";
+import consaludWhiteLogo from "../assets/images/conSaludWhite.webp";
 // @ts-ignore
-import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.webp";
 
 interface FooterProps {
   jumpToLandingSection: (targetId: string, idx: number) => void;

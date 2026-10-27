@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LazyVideo from "../components/LazyVideo";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { Eye, ScanEye, BellRing, FileCheck, MessageCircle, ArrowLeft, Target, Smartphone } from "lucide-react";
@@ -8,9 +9,9 @@ import { useFavicon } from "../hooks/useFavicon";
 // @ts-ignore
 import vigiaFavicon from "../assets/images/vigia_favicon.svg";
 // @ts-ignore
-import vigiaColorLogo from "../assets/images/vigia.png";
+import vigiaColorLogo from "../assets/images/vigia.webp";
 // @ts-ignore
-import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.webp";
 // @ts-ignore
 import vigiaPrincipalLogo from "../assets/images/VIGIA_PRINCIPAL_WHITE.svg";
 // @ts-ignore
@@ -19,17 +20,17 @@ import vigiaNombre from "../assets/images/VIGIA_NOMBRE.svg";
 import vigiaRuedaTexto from "../assets/images/VIGIA_rueda_texto.svg";
 // @ts-ignore
 import vigiaRuedaCentro from "../assets/images/VIGIA_rueda_centro.svg";
-import logoConsalud from "../assets/images/logoConsalud.png";
+import logoConsalud from "../assets/images/logoConsalud.webp";
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
 // @ts-ignore
-import escritorioDavid from "../assets/images/EscritorioDavid.png";
+import escritorioDavid from "../assets/images/EscritorioDavid.webp";
 // @ts-ignore
-import kevinChaleco from "../assets/images/kevinChaleco.png";
+import kevinChaleco from "../assets/images/kevinChaleco.webp";
 // @ts-ignore
-import vigiaCapture1 from "../assets/images/Captura de pantalla 2026-06-22 111515.png";
+import vigiaCapture1 from "../assets/images/Captura de pantalla 2026-06-22 111515.webp";
 // @ts-ignore
-import vigiaCapture2 from "../assets/images/Captura de pantalla 2026-06-22 111526.png";
+import vigiaCapture2 from "../assets/images/Captura de pantalla 2026-06-22 111526.webp";
 
 
 const WHATSAPP_VIGIA = `https://wa.me/573057883941?text=${encodeURIComponent("Hola, quiero solicitar una demo de la *Plataforma Vigía SST* de Consalud. Me gustaría conocer más sobre cómo puede ayudar a mi empresa.")}`;
@@ -291,7 +292,7 @@ export default function VigiaPage() {
                   </div>
                   <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest ml-2">Demo en Vivo · Vigía SST</span>
                 </div>
-                <video src={projectVideo} autoPlay loop muted playsInline controls className="w-full aspect-video object-cover" />
+                <LazyVideo src={projectVideo} loop muted playsInline controls className="w-full aspect-video object-cover" />
               </div>
             </div>
 

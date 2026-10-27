@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyVideo from "./LazyVideo";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -8,45 +9,44 @@ import {
   Eye, Zap, Shield, Users, AlertTriangle, Leaf, GraduationCap, Scale, ClipboardCheck, X,
   BookOpen, CheckSquare
 } from "lucide-react";
-import { BRAND_THEMES } from "../App";
+import { BRAND_THEMES } from "../data/brandThemes";
 // @ts-ignore
 // @ts-ignore
-import vigiaColorLogo from "../assets/images/vigia.png";
-import vigiaNewLogo from "../assets/images/vigia_newLogo.png";
+import vigiaColorLogo from "../assets/images/vigia.webp";
+import vigiaNewLogo from "../assets/images/vigia_newLogo.webp";
 // @ts-ignore
 // @ts-ignore
 import projectVideo from "../assets/images/Video Project.mp4";
 // @ts-ignore
 import seguridadSaludBg from "../assets/images/seguridad&salud.webp";
 // @ts-ignore
-import outsourcingBg from "../assets/images/servicio outsourcing.jpg";
+import outsourcingBg from "../assets/images/servicio outsourcing.webp";
 // @ts-ignore
-import gestionRiesgoBg from "../assets/images/Gestion de riesgo.png";
+import gestionRiesgoBg from "../assets/images/Gestion de riesgo.webp";
 // @ts-ignore
-import gestionAmbientalBg from "../assets/images/gestion ambiental.jpg";
+import gestionAmbientalBg from "../assets/images/gestion ambiental.webp";
 // @ts-ignore
 import capacitacionesBg from "../assets/images/capacitaciones.webp";
 // @ts-ignore
-import asesoriaLegalBg from "../assets/images/asesoriaLegal.jpg";
+import asesoriaLegalBg from "../assets/images/asesoriaLegal.webp";
 // @ts-ignore
-import auditoriaBg from "../assets/images/auditoria.png";
+import auditoriaBg from "../assets/images/auditoria.webp";
 // @ts-ignore
-import bateriaBg from "../assets/images/bateriaSinFondo.png";
+import bateriaBg from "../assets/images/bateriaSinFondo.webp";
 // @ts-ignore
-import logoConsalud from "../assets/images/logoConsalud.png";
+import logoConsalud from "../assets/images/logoConsalud.webp";
 // @ts-ignore
-import consaludLogo from "../assets/images/Consalud.png";
+import consaludLogo from "../assets/images/Consalud.webp";
 // @ts-ignore
-import kevinChaleco from "../assets/images/kevinChaleco.png";
+import kevinChaleco from "../assets/images/kevinChaleco.webp";
 // @ts-ignore
-import escritorioDavid from "../assets/images/EscritorioDavid.png";
+import escritorioDavid from "../assets/images/EscritorioDavid.webp";
 // @ts-ignore
-import vigiaCapture1 from "../assets/images/Captura de pantalla 2026-06-22 111515.png";
+import vigiaCapture1 from "../assets/images/Captura de pantalla 2026-06-22 111515.webp";
 // @ts-ignore
-import vigiaCapture2 from "../assets/images/Captura de pantalla 2026-06-22 111526.png";
+import vigiaCapture2 from "../assets/images/Captura de pantalla 2026-06-22 111526.webp";
 // @ts-ignore
-import capturaSST from "../assets/images/Captura de pantalla 2026-05-19 155132.png";
-import QuantumCoreBackground from "./QuantumCoreBackground";
+import capturaSST from "../assets/images/Captura de pantalla 2026-05-19 155132.webp";
 import WavesBackground from "./WavesBackground";
 
 interface StaticSectionsProps {
@@ -808,9 +808,8 @@ export default function StaticSections({
                   </div>
                   <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest ml-2">Demo en Vivo · Vigía SST</span>
                 </div>
-                <video
+                <LazyVideo
                   src={projectVideo}
-                  autoPlay
                   loop
                   muted
                   playsInline
@@ -1835,9 +1834,8 @@ export default function StaticSections({
                       <p className="text-[14px] font-bold tracking-wider text-slate-500 uppercase mb-2.5 font-mono">
                         DEMO EN VIVO
                       </p>
-                      <video
+                      <LazyVideo
                         src={marca.videoSrc}
-                        autoPlay
                         loop
                         muted
                         playsInline
